@@ -9,7 +9,7 @@ import yaml
 WORKING_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKING_DIR))
 
-RESULTS_DIR = WORKING_DIR / "data" / "results"
+RESULTS_DIR = WORKING_DIR / "../../data/sh5c" / "results"
 REPORT_PATH = WORKING_DIR / "reports" / "SH5c_auto_report.md"
 
 

@@ -21,7 +21,7 @@ def main():
     args = parser.parse_args()
 
     config = load_config()
-    out_dir = Path("data/summarization")
+    out_dir = Path("../../data/sh2/summarization")
     out_path = out_dir / "papers.jsonl"
     split_path = out_dir / "split.json"
 

@@ -65,8 +65,8 @@ def main():
     config = load_config()
     summ_cfg = config["summarization"]
 
-    out_path = Path(summ_cfg.get("summaries_path", "data/summarization/summaries.jsonl"))
-    alpha_sweep_path = Path("data/summarization/alpha_sweep.json")
+    out_path = Path(summ_cfg.get("summaries_path", "../../data/sh2/summarization/summaries.jsonl"))
+    alpha_sweep_path = Path("../../data/sh2/summarization/alpha_sweep.json")
 
     if out_path.exists() and not args.force:
         print(f"Output exists: {out_path}. Use --force to rerun.")

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 
-def generate_report(results_dir: str = "data/results",
+def generate_report(results_dir: str = "../../data/sh5a/results",
                     figures_dir: str = "reports/figures",
                     output_path: str = "reports/SH5a_auto_report.md") -> None:
     """Generate a markdown report summarizing all results."""

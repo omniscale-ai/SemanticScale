@@ -16,7 +16,7 @@ def main():
     parser.add_argument('--max-length', type=int, default=512)
     args = parser.parse_args()
 
-    data_dir = Path('data')
+    data_dir = Path('../../data/sh5d')
     output_path = data_dir / 'step_embeddings.npz'
 
     if output_path.exists() and not args.force:

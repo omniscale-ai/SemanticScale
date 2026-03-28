@@ -3,10 +3,10 @@
 
 # Paths
 paths:
-  data_dir: "data"
-  sh0_data_dir: "data_sh0"
-  sh1_data_dir: "data_sh1"
-  sh3_data_dir: "data_sh3"
+  data_dir: "../../data/sh5"
+  sh0_data_dir: "../../data/sh0"
+  sh1_data_dir: "../../data/sh1"
+  sh3_data_dir: "../../data/sh3"
   sh1_embeddings: "embeddings/scibert_length_matched.npz"
   sh1_splits: "splits.json"
   sh3_questions: "questions.jsonl"

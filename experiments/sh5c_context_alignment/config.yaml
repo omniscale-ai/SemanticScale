@@ -4,21 +4,21 @@
 paths:
   working_dir: .  # Relative to experiment root
   python: python
-  sh5_data: data_sh5
-  sh3_data: data_sh3
-  output_data: data
-  results: data/results
+  sh5_data: ../../data/sh5
+  sh3_data: ../../data/sh3
+  output_data: ../../data/sh5c
+  results: ../../data/sh5c/results
   reports: reports
   figures: reports/figures
 
 data:
   sh5_files:
-    cot_slod_tags: data_sh5/cot_slod_tags.jsonl
-    answer_scores: data_sh5/answer_scores.jsonl
-    jump_metrics: data_sh5/jump_metrics.jsonl
-    selected_questions: data_sh5/selected_questions.jsonl
+    cot_slod_tags: ../../data/sh5/cot_slod_tags.jsonl
+    answer_scores: ../../data/sh5/answer_scores.jsonl
+    jump_metrics: ../../data/sh5/jump_metrics.jsonl
+    selected_questions: ../../data/sh5/selected_questions.jsonl
   sh3_files:
-    retrieval_results: data_sh3/results/retrieval_results.json
+    retrieval_results: ../../data/sh3/results/retrieval_results.json
   conditions:
     - chunks_only
     - naive_hybrid

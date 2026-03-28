@@ -4,17 +4,17 @@ project: SH2
 title: "Activation Steering Along the SLoD Axis"
 
 # --- Paths ---
-data_dir: data
+data_dir: ../../data/sh2
 reports_dir: reports
 figures_dir: reports/figures
 
 # --- Input Data ---
-sh0_spans: data/sh0/qasper_slod_length_matched.jsonl
-sh1_embeddings: data/sh1/embeddings/scibert_length_matched.npz
-sh1_splits: data/sh1/splits.json
-sh5_questions: data/sh5/selected_questions.jsonl
-sh5_answer_scores: data/sh5/answer_scores.jsonl
-sh5_cot_tags: data/sh5/cot_slod_tags.jsonl
+sh0_spans: ../../data/sh0/qasper_slod_length_matched.jsonl
+sh1_embeddings: ../../data/sh1/embeddings/scibert_length_matched.npz
+sh1_splits: ../../data/sh1/splits.json
+sh5_questions: ../../data/sh5/selected_questions.jsonl
+sh5_answer_scores: ../../data/sh5/answer_scores.jsonl
+sh5_cot_tags: ../../data/sh5/cot_slod_tags.jsonl
 
 # --- Generative Model ---
 generative_model:

@@ -9,8 +9,8 @@ sys.path.insert(0, str(WORKING_DIR))
 
 from src.subgroups import run_subgroup_analysis
 
-INPUT = WORKING_DIR / "data" / "alignment_features.jsonl"
-OUTPUT_DIR = WORKING_DIR / "data" / "results"
+INPUT = WORKING_DIR / "../../data/sh5c" / "alignment_features.jsonl"
+OUTPUT_DIR = WORKING_DIR / "../../data/sh5c" / "results"
 
 
 def main():

@@ -272,9 +272,9 @@ def logistic_regression_analysis(
 
 
 def run_full_analysis(
-    features_path: str = "data/features.jsonl",
-    features_agg_path: str = "data/features_agg.jsonl",
-    results_dir: str = "data/results",
+    features_path: str = "../../data/sh5a/features.jsonl",
+    features_agg_path: str = "../../data/sh5a/features_agg.jsonl",
+    results_dir: str = "../../data/sh5a/results",
 ) -> dict:
     """Run all analyses and save results."""
     out = Path(results_dir)

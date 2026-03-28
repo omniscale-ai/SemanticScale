@@ -10,8 +10,8 @@ sys.path.insert(0, str(WORKING_DIR))
 
 from src.alignment import process_all_traces
 
-INPUT = WORKING_DIR / "data" / "merged_traces.jsonl"
-OUTPUT = WORKING_DIR / "data" / "alignment_features.jsonl"
+INPUT = WORKING_DIR / "../../data/sh5c" / "merged_traces.jsonl"
+OUTPUT = WORKING_DIR / "../../data/sh5c" / "alignment_features.jsonl"
 
 
 def main():

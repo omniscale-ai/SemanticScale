@@ -12,14 +12,14 @@ from src.transition_matrix import build_all_matrices, aggregate_per_question, sa
 
 if __name__ == "__main__":
     force = "--force" in sys.argv
-    output_path = "data/transition_matrices.npz"
+    output_path = "../../data/sh5a/transition_matrices.npz"
 
     if os.path.exists(output_path) and not force:
         print(f"{output_path} already exists. Use --force to rerun.")
         sys.exit(0)
 
     print("Loading traces...")
-    traces = load_jsonl("data/traces.jsonl")
+    traces = load_jsonl("../../data/sh5a/traces.jsonl")
     print(f"  {len(traces)} traces loaded")
 
     print("Building transition matrices...")
@@ -36,9 +36,9 @@ if __name__ == "__main__":
     save_matrices(result, agg_hard, agg_soft, qids)
 
     # Also save aggregated metadata
-    with open("data/agg_metadata.jsonl", "w") as f:
+    with open("../../data/sh5a/agg_metadata.jsonl", "w") as f:
         for m in agg_hard_meta:
             f.write(json.dumps(m) + "\n")
-    print("  Saved aggregated metadata to data/agg_metadata.jsonl")
+    print("  Saved aggregated metadata to ../../data/sh5a/agg_metadata.jsonl")
 
     print("Stage B complete.")

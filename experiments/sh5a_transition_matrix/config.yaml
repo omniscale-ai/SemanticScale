@@ -2,17 +2,17 @@
 # All hyperparameters and paths in one place
 
 paths:
-  data_sh5: data_sh5
-  output_data: data
-  results: data/results
+  data_sh5: ../../data/sh5
+  output_data: ../../data/sh5a
+  results: ../../data/sh5a/results
   reports: reports
   figures: reports/figures
 
 data_files:
-  cot_slod_tags: data_sh5/cot_slod_tags.jsonl
-  answer_scores: data_sh5/answer_scores.jsonl
-  jump_metrics: data_sh5/jump_metrics.jsonl
-  selected_questions: data_sh5/selected_questions.jsonl
+  cot_slod_tags: ../../data/sh5/cot_slod_tags.jsonl
+  answer_scores: ../../data/sh5/answer_scores.jsonl
+  jump_metrics: ../../data/sh5/jump_metrics.jsonl
+  selected_questions: ../../data/sh5/selected_questions.jsonl
 
 slod_levels:
   - macro    # 0

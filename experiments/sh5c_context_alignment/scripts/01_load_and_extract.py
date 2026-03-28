@@ -9,7 +9,7 @@ sys.path.insert(0, str(WORKING_DIR))
 
 from src.data_loader import build_merged_traces, save_merged_traces
 
-OUTPUT = WORKING_DIR / "data" / "merged_traces.jsonl"
+OUTPUT = WORKING_DIR / "../../data/sh5c" / "merged_traces.jsonl"
 
 
 def main():

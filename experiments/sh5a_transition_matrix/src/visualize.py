@@ -194,7 +194,7 @@ def plot_sh5_comparison(summary: dict, output_path: str) -> None:
     print(f"Saved {output_path}")
 
 
-def generate_all_plots(results_dir: str = "data/results",
+def generate_all_plots(results_dir: str = "../../data/sh5a/results",
                        figures_dir: str = "reports/figures") -> None:
     """Generate all visualization plots."""
     Path(figures_dir).mkdir(parents=True, exist_ok=True)
@@ -238,7 +238,7 @@ def generate_all_plots(results_dir: str = "data/results",
 
     # 5. Cluster quality boxplot
     features = []
-    with open("data/features.jsonl") as f:
+    with open("../../data/sh5a/features.jsonl") as f:
         for line in f:
             if line.strip():
                 features.append(json.loads(line))

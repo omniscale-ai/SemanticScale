@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
 
-    data_dir = Path('data')
+    data_dir = Path('../../data/sh5d')
     output_corr = data_dir / 'correlation_table.csv'
     output_results = data_dir / 'analysis_results.json'
 

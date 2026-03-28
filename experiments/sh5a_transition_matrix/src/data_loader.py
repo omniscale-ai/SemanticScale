@@ -127,7 +127,7 @@ def save_traces(traces: list[dict], output_path: str) -> None:
     print(f"Saved {len(traces)} traces to {output_path}")
 
 
-def load_all(data_dir: str = "data_sh5", output_dir: str = "data") -> list[dict]:
+def load_all(data_dir: str = "../../data/sh5", output_dir: str = "../../data/sh5a") -> list[dict]:
     """Main entry: load all data, merge, validate, save."""
     output_path = Path(output_dir) / "traces.jsonl"
 

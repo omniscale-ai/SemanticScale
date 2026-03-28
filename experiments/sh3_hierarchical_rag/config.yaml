@@ -3,9 +3,9 @@
 
 # Paths
 paths:
-  data_dir: "data"
-  sh0_data_dir: "data_sh0"
-  sh1_data_dir: "data_sh1"
+  data_dir: "../../data/sh3"
+  sh0_data_dir: "../../data/sh0"
+  sh1_data_dir: "../../data/sh1"
   sh0_spans: "qasper_slod_length_matched.jsonl"
   sh1_embeddings: "embeddings/scibert_length_matched.npz"
   sh1_splits: "splits.json"

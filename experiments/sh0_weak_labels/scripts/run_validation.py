@@ -244,7 +244,7 @@ def main():
             logger.error(f"LLM validation failed: {e}")
 
     # Save sampled spans for review
-    samples_path = resolve_path("data/validation_samples.jsonl")
+    samples_path = resolve_path("../../data/sh0/validation_samples.jsonl")
     from src.utils import write_jsonl
     # Strip non-serializable fields and write
     clean_samples = []

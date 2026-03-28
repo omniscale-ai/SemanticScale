@@ -10,7 +10,7 @@ from src.analysis import run_full_analysis
 
 if __name__ == "__main__":
     force = "--force" in sys.argv
-    output_path = "data/results/summary.json"
+    output_path = "../../data/sh5a/results/summary.json"
 
     if os.path.exists(output_path) and not force:
         print(f"{output_path} already exists. Use --force to rerun.")

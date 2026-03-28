@@ -19,7 +19,7 @@ def main():
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
 
-    data_dir = Path('data')
+    data_dir = Path('../../data/sh5d')
     figures_dir = Path('reports/figures')
     figures_dir.mkdir(parents=True, exist_ok=True)
 
@@ -35,10 +35,10 @@ def main():
     step_embs = np.load(data_dir / 'step_embeddings.npz')
     step_embeddings = step_embs['embeddings']
 
-    sh1 = np.load('data_sh1/embeddings/scibert_length_matched.npz')
+    sh1 = np.load('../../data/sh1/embeddings/scibert_length_matched.npz')
     sh1_emb = sh1['embeddings']
     sh1_labels = sh1['labels']
-    with open('data_sh1/splits.json') as f:
+    with open('../../data/sh1/splits.json') as f:
         splits = json.load(f)
     test_idx = np.array(splits['test'])
     test_emb = sh1_emb[test_idx]

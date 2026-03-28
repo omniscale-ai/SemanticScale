@@ -1,11 +1,11 @@
 # SH0 Weak Label Bootstrap Configuration
 
 paths:
-  raw_data: data/qasper_raw.jsonl
-  labeled_spans: data/qasper_slod_spans.jsonl
-  length_matched: data/qasper_slod_length_matched.jsonl
-  validation_report: data/validation_report.json
-  label_distribution_plot: data/label_distribution.png
+  raw_data: ../../data/sh0/qasper_raw.jsonl
+  labeled_spans: ../../data/sh0/qasper_slod_spans.jsonl
+  length_matched: ../../data/sh0/qasper_slod_length_matched.jsonl
+  validation_report: ../../data/sh0/validation_report.json
+  label_distribution_plot: ../../data/sh0/label_distribution.png
 
 dataset:
   name: allenai/qasper

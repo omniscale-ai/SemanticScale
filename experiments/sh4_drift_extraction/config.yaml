@@ -1,9 +1,9 @@
 # SH4 Configuration: Abstraction Drift Predicts TKH Extraction Quality
 
 # --- Paths ---
-data_dir: data
-sh0_data_dir: data_sh0
-sh1_data_dir: data_sh1
+data_dir: ../../data/sh4
+sh0_data_dir: ../../data/sh0
+sh1_data_dir: ../../data/sh1
 reports_dir: reports
 primary_dataset: qasper_slod_length_matched.jsonl
 

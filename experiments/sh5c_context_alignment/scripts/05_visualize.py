@@ -10,8 +10,8 @@ sys.path.insert(0, str(WORKING_DIR))
 
 from src.visualization import generate_all_plots
 
-INPUT = WORKING_DIR / "data" / "alignment_features.jsonl"
-RESULTS_DIR = WORKING_DIR / "data" / "results"
+INPUT = WORKING_DIR / "../../data/sh5c" / "alignment_features.jsonl"
+RESULTS_DIR = WORKING_DIR / "../../data/sh5c" / "results"
 FIGURES_DIR = WORKING_DIR / "reports" / "figures"
 
 

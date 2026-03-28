@@ -12,8 +12,8 @@ def main():
     parser.add_argument('--force', action='store_true', help='Force recompute')
     args = parser.parse_args()
 
-    data_dir = Path('data')
-    data_dir.mkdir(exist_ok=True)
+    data_dir = Path('../../data/sh5d')
+    data_dir.mkdir(parents=True, exist_ok=True)
 
     output_steps = data_dir / 'cot_steps.parquet'
     output_scores = data_dir / 'answer_scores.parquet'
@@ -23,12 +23,12 @@ def main():
         return
 
     # Load all data
-    steps = load_cot_steps('data_sh5/cot_slod_tags.jsonl')
-    scores = load_answer_scores('data_sh5/answer_scores.jsonl')
-    jumps = load_jump_metrics('data_sh5/jump_metrics.jsonl')
+    steps = load_cot_steps('../../data/sh5/cot_slod_tags.jsonl')
+    scores = load_answer_scores('../../data/sh5/answer_scores.jsonl')
+    jumps = load_jump_metrics('../../data/sh5/jump_metrics.jsonl')
     embeddings, labels, splits = load_sh1_data(
-        'data_sh1/embeddings/scibert_length_matched.npz',
-        'data_sh1/splits.json'
+        '../../data/sh1/embeddings/scibert_length_matched.npz',
+        '../../data/sh1/splits.json'
     )
 
     # Validate

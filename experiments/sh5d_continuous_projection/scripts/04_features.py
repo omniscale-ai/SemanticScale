@@ -14,7 +14,7 @@ def main():
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
 
-    data_dir = Path('data')
+    data_dir = Path('../../data/sh5d')
     output_path = data_dir / 'trace_features.parquet'
 
     if output_path.exists() and not args.force:

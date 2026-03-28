@@ -57,7 +57,7 @@ def main():
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     # 1. Load summaries
-    summaries_path = Path(summ_cfg.get("summaries_path", "data/summarization/summaries.jsonl"))
+    summaries_path = Path(summ_cfg.get("summaries_path", "../../data/sh2/summarization/summaries.jsonl"))
     print(f"Loading summaries from {summaries_path}...")
     all_summaries = load_jsonl(str(summaries_path))
 
@@ -191,7 +191,7 @@ def main():
     print(f"\nVERDICT: {verdict}")
 
     # 8. Load alpha sweep for metadata
-    alpha_sweep_path = Path("data/summarization/alpha_sweep.json")
+    alpha_sweep_path = Path("../../data/sh2/summarization/alpha_sweep.json")
     alpha_sweep_data = {}
     selected_alpha = None
     if alpha_sweep_path.exists():

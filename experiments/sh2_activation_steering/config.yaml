@@ -4,17 +4,17 @@ project: SH2
 title: "Activation Steering Along the SLoD Axis"
 
 # --- Paths ---
-data_dir: data
+data_dir: ../../data/sh2
 reports_dir: reports
 figures_dir: reports/figures
 
 # --- Input Data ---
-sh0_spans: data/sh0/qasper_slod_length_matched.jsonl
-sh1_embeddings: data/sh1/embeddings/scibert_length_matched.npz
-sh1_splits: data/sh1/splits.json
-sh5_questions: data/sh5/selected_questions.jsonl
-sh5_answer_scores: data/sh5/answer_scores.jsonl
-sh5_cot_tags: data/sh5/cot_slod_tags.jsonl
+sh0_spans: ../../data/sh0/qasper_slod_length_matched.jsonl
+sh1_embeddings: ../../data/sh1/embeddings/scibert_length_matched.npz
+sh1_splits: ../../data/sh1/splits.json
+sh5_questions: ../../data/sh5/selected_questions.jsonl
+sh5_answer_scores: ../../data/sh5/answer_scores.jsonl
+sh5_cot_tags: ../../data/sh5/cot_slod_tags.jsonl
 
 # --- Hardware ---
 # GPU: NVIDIA L40S, 47.7 GB VRAM — no quantization needed; bfloat16 well-supported
@@ -125,13 +125,13 @@ summarization:
   max_source_tokens: 1024  # truncate paper text for model input
   alpha_values: [0.1, 0.2, 0.5, 1.0, 2.0]  # alpha sweep for summarization
   # Paths
-  papers_path: data/summarization/papers.jsonl
-  micro_references_path: data/summarization/micro_references.jsonl
-  steering_vectors_path: data/summarization/steering_vectors.npz
-  baseline_summaries_path: data/summarization/baseline_summaries.jsonl
-  steered_summaries_path: data/summarization/steered_summaries.jsonl
-  summaries_path: data/summarization/summaries.jsonl
-  evaluation_results_path: data/summarization/evaluation_results.json
+  papers_path: ../../data/sh2/summarization/papers.jsonl
+  micro_references_path: ../../data/sh2/summarization/micro_references.jsonl
+  steering_vectors_path: ../../data/sh2/summarization/steering_vectors.npz
+  baseline_summaries_path: ../../data/sh2/summarization/baseline_summaries.jsonl
+  steered_summaries_path: ../../data/sh2/summarization/steered_summaries.jsonl
+  summaries_path: ../../data/sh2/summarization/summaries.jsonl
+  evaluation_results_path: ../../data/sh2/summarization/evaluation_results.json
   # Prompt
   prompt_template: |
     You are a scientific research assistant. Read the following paper and provide a summary.

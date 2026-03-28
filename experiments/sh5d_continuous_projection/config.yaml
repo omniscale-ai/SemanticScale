@@ -3,16 +3,16 @@ project: SH5d
 title: "Probe-Free Embedding Distance as Behavioral Signature of Reasoning Quality"
 
 # Paths
-data_dir: data
+data_dir: ../../data/sh5d
 reports_dir: reports
 figures_dir: reports/figures
 
 # Input data
-sh5_cot_tags: data_sh5/cot_slod_tags.jsonl
-sh5_answer_scores: data_sh5/answer_scores.jsonl
-sh5_jump_metrics: data_sh5/jump_metrics.jsonl
-sh1_embeddings: data_sh1/embeddings/scibert_length_matched.npz
-sh1_splits: data_sh1/splits.json
+sh5_cot_tags: ../../data/sh5/cot_slod_tags.jsonl
+sh5_answer_scores: ../../data/sh5/answer_scores.jsonl
+sh5_jump_metrics: ../../data/sh5/jump_metrics.jsonl
+sh1_embeddings: ../../data/sh1/embeddings/scibert_length_matched.npz
+sh1_splits: ../../data/sh1/splits.json
 
 # Model
 scibert_model: allenai/scibert_scivocab_uncased

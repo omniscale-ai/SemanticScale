@@ -1,7 +1,7 @@
 # SH1 Configuration
 python: python  # Use system/venv python
-data_dir: data
-sh0_data_dir: data_sh0
+data_dir: ../../data/sh1
+sh0_data_dir: ../../data/sh0
 reports_dir: reports
 
 # Data

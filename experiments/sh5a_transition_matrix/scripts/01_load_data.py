@@ -10,7 +10,7 @@ from src.data_loader import load_all
 
 if __name__ == "__main__":
     force = "--force" in sys.argv
-    output_path = "data/traces.jsonl"
+    output_path = "../../data/sh5a/traces.jsonl"
 
     if os.path.exists(output_path) and not force:
         print(f"{output_path} already exists. Use --force to rerun.")

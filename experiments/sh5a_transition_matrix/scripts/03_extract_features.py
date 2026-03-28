@@ -13,14 +13,14 @@ from src.features import extract_all_features, extract_aggregated_features, save
 
 if __name__ == "__main__":
     force = "--force" in sys.argv
-    output_path = "data/features.jsonl"
+    output_path = "../../data/sh5a/features.jsonl"
 
     if os.path.exists(output_path) and not force:
         print(f"{output_path} already exists. Use --force to rerun.")
         sys.exit(0)
 
     print("Loading matrices...")
-    data = np.load("data/transition_matrices.npz")
+    data = np.load("../../data/sh5a/transition_matrices.npz")
     hard_matrices = data["hard_matrices"]
     soft_matrices = data["soft_matrices"]
     agg_hard = data["agg_hard_matrices"]
@@ -29,17 +29,17 @@ if __name__ == "__main__":
     print(f"  Agg Hard: {agg_hard.shape}, Agg Soft: {agg_soft.shape}")
 
     print("Loading metadata...")
-    metadata = load_jsonl("data/transition_matrices_meta.jsonl")
-    agg_metadata = load_jsonl("data/agg_metadata.jsonl")
+    metadata = load_jsonl("../../data/sh5a/transition_matrices_meta.jsonl")
+    agg_metadata = load_jsonl("../../data/sh5a/agg_metadata.jsonl")
     print(f"  {len(metadata)} trace records, {len(agg_metadata)} question records")
 
     print("Extracting per-trace features...")
     features = extract_all_features(hard_matrices, soft_matrices, metadata)
-    save_features(features, "data/features.jsonl")
+    save_features(features, "../../data/sh5a/features.jsonl")
 
     print("Extracting per-question features...")
     features_agg = extract_aggregated_features(agg_hard, agg_soft, agg_metadata)
-    save_features(features_agg, "data/features_agg.jsonl")
+    save_features(features_agg, "../../data/sh5a/features_agg.jsonl")
 
     # Quick stats
     print(f"\nFeature summary:")

@@ -127,7 +127,7 @@ def main():
     print("STEP 2: Re-evaluating summaries with LLM axis")
     print("=" * 60)
 
-    summaries_path = Path(summ_cfg.get("summaries_path", "data/summarization/summaries.jsonl"))
+    summaries_path = Path(summ_cfg.get("summaries_path", "../../data/sh2/summarization/summaries.jsonl"))
     all_summaries = load_jsonl(str(summaries_path))
 
     baseline_records = {r["paper_id"]: r for r in all_summaries if r["condition"] == "baseline"}

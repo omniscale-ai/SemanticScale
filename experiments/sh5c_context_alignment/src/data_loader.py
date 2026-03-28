@@ -36,10 +36,10 @@ def load_jsonl(path: Path) -> list[dict]:
 
 def load_sh5_data(working_dir: Path) -> dict:
     """Load all SH5 JSONL files into DataFrames."""
-    tags = pd.DataFrame(load_jsonl(working_dir / "data_sh5" / "cot_slod_tags.jsonl"))
-    scores = pd.DataFrame(load_jsonl(working_dir / "data_sh5" / "answer_scores.jsonl"))
-    metrics = pd.DataFrame(load_jsonl(working_dir / "data_sh5" / "jump_metrics.jsonl"))
-    questions = pd.DataFrame(load_jsonl(working_dir / "data_sh5" / "selected_questions.jsonl"))
+    tags = pd.DataFrame(load_jsonl(working_dir / "../../data/sh5" / "cot_slod_tags.jsonl"))
+    scores = pd.DataFrame(load_jsonl(working_dir / "../../data/sh5" / "answer_scores.jsonl"))
+    metrics = pd.DataFrame(load_jsonl(working_dir / "../../data/sh5" / "jump_metrics.jsonl"))
+    questions = pd.DataFrame(load_jsonl(working_dir / "../../data/sh5" / "selected_questions.jsonl"))
     return {
         "tags": tags,
         "scores": scores,
@@ -53,7 +53,7 @@ def load_sh3_retrieval(working_dir: Path, conditions: list[str], k: str) -> dict
 
     Returns dict: {(question_id, condition): [list of retrieved doc dicts]}
     """
-    path = working_dir / "data_sh3" / "results" / "retrieval_results.json"
+    path = working_dir / "../../data/sh3" / "results" / "retrieval_results.json"
     with open(path) as f:
         data = json.load(f)
 

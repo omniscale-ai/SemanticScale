@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
 
-    data_dir = Path('data')
+    data_dir = Path('../../data/sh5d')
     figures_dir = Path('reports/figures')
     figures_dir.mkdir(parents=True, exist_ok=True)
     output_path = data_dir / 'slod_axis.npz'
@@ -25,10 +25,10 @@ def main():
         return
 
     # Load SH1 data
-    sh1 = np.load('data_sh1/embeddings/scibert_length_matched.npz')
+    sh1 = np.load('../../data/sh1/embeddings/scibert_length_matched.npz')
     embeddings = sh1['embeddings']
     labels = sh1['labels']
-    with open('data_sh1/splits.json') as f:
+    with open('../../data/sh1/splits.json') as f:
         splits = json.load(f)
 
     train_idx = np.array(splits['train'])

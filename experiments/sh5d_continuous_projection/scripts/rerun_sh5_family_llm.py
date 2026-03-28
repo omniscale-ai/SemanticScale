@@ -25,22 +25,23 @@ from sklearn.preprocessing import StandardScaler
 from tqdm import tqdm
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-SH1_ROOT = PROJECT_ROOT.parent / "SLoD-SH1"
-SH5A_ROOT = PROJECT_ROOT.parent / "SLoD-SH5a"
-SH5C_ROOT = PROJECT_ROOT.parent / "SLoD-SH5c"
+REPO_ROOT = PROJECT_ROOT.parent.parent
+SH1_ROOT = PROJECT_ROOT.parent / "sh1_linear_probe"
+SH5A_ROOT = PROJECT_ROOT.parent / "sh5a_transition_matrix"
+SH5C_ROOT = PROJECT_ROOT.parent / "sh5c_context_alignment"
 
 LABEL_MAP = {"macro": 0, "meso": 1, "micro": 2}
 LABEL_NAMES = ["macro", "meso", "micro"]
 
-_SLOD_DATA_ROOT = Path(os.environ.get('SLOD_DATA_ROOT', str(Path(__file__).resolve().parent.parent.parent.parent / 'data')))
-SHARED_TAGS = _SLOD_DATA_ROOT / "SH5" / "cot_slod_tags.jsonl"
+_SLOD_DATA_ROOT = Path(os.environ.get('SLOD_DATA_ROOT', str(REPO_ROOT / 'data')))
+SHARED_TAGS = _SLOD_DATA_ROOT / "sh5" / "cot_slod_tags.jsonl"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 
 def load_llm_labels():
     """Load LLM labels from SH1 relabeling."""
-    relabel_dir = SH1_ROOT / "data" / "relabel"
+    relabel_dir = _SLOD_DATA_ROOT / "sh1" / "relabel"
     labels = {}
     for p in sorted(relabel_dir.glob("result_*.json")):
         with open(p) as f:
@@ -57,15 +58,13 @@ def train_llm_probe():
     """Train SciBERT LogReg probe on LLM labels."""
     logging.info("Training LLM probe...")
 
-    emb_path = SH1_ROOT / "data_sh0" / ".." / "data" / "embeddings" / "scibert_length_matched.npz"
-    if not emb_path.exists():
-        emb_path = _SLOD_DATA_ROOT / "SH1" / "embeddings" / "scibert_length_matched.npz"
+    emb_path = _SLOD_DATA_ROOT / "sh1" / "embeddings" / "scibert_length_matched.npz"
 
     data = np.load(emb_path, allow_pickle=True)
     embeddings = data["embeddings"]
 
     llm_labels = load_llm_labels()
-    meta_path = SH1_ROOT / "data" / "relabel" / "samples_metadata.json"
+    meta_path = _SLOD_DATA_ROOT / "sh1" / "relabel" / "samples_metadata.json"
     with open(meta_path) as f:
         metadata = json.load(f)
 
@@ -174,7 +173,7 @@ def recompute_slod_axis():
     """Compute new SLoD axis from LLM labels for SH5d."""
     logging.info("Computing LLM SLoD axis for SH5d...")
 
-    emb_path = _SLOD_DATA_ROOT / "SH1" / "embeddings" / "scibert_length_matched.npz"
+    emb_path = _SLOD_DATA_ROOT / "sh1" / "embeddings" / "scibert_length_matched.npz"
     data = np.load(emb_path, allow_pickle=True)
     embeddings = data["embeddings"]
 
@@ -222,7 +221,7 @@ def run_sh5d(llm_axis):
     logging.info("RERUNNING SH5d")
     logging.info("=" * 60)
 
-    data_dir = PROJECT_ROOT / "data"
+    data_dir = _SLOD_DATA_ROOT / "sh5d"
     files_to_backup = ["slod_axis.npz", "analysis_results.json"]
     backup_and_swap(data_dir, files_to_backup)
 
@@ -281,7 +280,7 @@ def run_sh5a(llm_tags_path):
     logging.info("RERUNNING SH5a")
     logging.info("=" * 60)
 
-    data_dir = SH5A_ROOT / "data"
+    data_dir = _SLOD_DATA_ROOT / "sh5a"
     tags_backup = swap_tags(llm_tags_path)
 
     python = sys.executable
@@ -316,7 +315,7 @@ def run_sh5c(llm_tags_path):
     logging.info("RERUNNING SH5c")
     logging.info("=" * 60)
 
-    data_dir = SH5C_ROOT / "data"
+    data_dir = _SLOD_DATA_ROOT / "sh5c"
     tags_backup = swap_tags(llm_tags_path)
 
     python = sys.executable
