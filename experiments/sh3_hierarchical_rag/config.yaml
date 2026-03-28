@@ -1,0 +1,136 @@
+# SH3 Configuration - SLoD-Routed Hierarchical RAG
+# All hyperparameters in one place. Scripts read from this file.
+
+# Paths
+paths:
+  data_dir: "data"
+  sh0_data_dir: "data_sh0"
+  sh1_data_dir: "data_sh1"
+  sh0_spans: "qasper_slod_length_matched.jsonl"
+  sh1_embeddings: "embeddings/scibert_length_matched.npz"
+  sh1_splits: "splits.json"
+
+# QASPER Dataset
+qasper:
+  eval_split: "test"
+  tune_split: "validation"
+  filter_unanswerable: true
+
+# 3-Level Index Construction
+index:
+  macro:
+    include_abstract: true
+    summary_strategy: "first_paragraph"
+  meso:
+    min_words: 5
+  micro:
+    chunk_sentences: 3
+    chunk_overlap: 1
+    min_words: 5
+    include_figure_captions: true
+
+# Embedding
+embedding:
+  retrieval_model: "minilm"  # or "specter2"
+  models:
+    minilm:
+      name: "all-MiniLM-L6-v2"
+      type: "sentence-transformer"
+      dim: 384
+      batch_size: 256
+    specter2:
+      name: "allenai/specter2_base"
+      type: "transformers"
+      dim: 768
+      batch_size: 64
+      max_length: 512
+  # Legacy fields kept for backward compatibility with existing code
+  model_name: "all-MiniLM-L6-v2"
+  batch_size: 256
+  normalize: true
+  dimension: 384
+
+# Query SLoD Classifier
+query_classifier:
+  encoder_model: "allenai/scibert_scivocab_uncased"
+  encoder_batch_size: 32
+  encoder_max_length: 512
+  probe:
+    type: "LogisticRegression"
+    C: 1.0
+    max_iter: 2000
+    solver: "lbfgs"
+    random_state: 42
+
+# Query Classifier v2 (question-specific probe)
+query_classifier_v2:
+  predictions_file: "query_slod_predictions_v2.json"
+  probe_train_ratio: 0.8
+  random_seed: 42
+
+# HyDE (Hypothetical Document Embedding) classifier
+hyde:
+  model: "claude-haiku-4-5-20251001"
+  max_tokens: 150
+  temperature: 0.3
+  prompt_template: "You are reading a scientific paper. Answer this question in 1-3 sentences as if you were writing the relevant part of the paper: {question}"
+  predictions_file: "query_slod_predictions_hyde.json"
+  batch_size: 10  # checkpoint saving frequency
+
+# Retrieval
+retrieval:
+  active_predictions_file: "query_slod_predictions.json"
+  top_k_values: [1, 3, 5, 10, 20]
+  conditions:
+    - "chunks_only"
+    - "summaries_only"
+    - "naive_hybrid"
+    - "naive_hybrid_parent"
+    - "slod_routed"
+    - "slod_routed_v2"
+    - "slod_weighted"
+    - "slod_weighted_parent"
+    - "naive_hybrid_bm25"
+    - "slod_weighted_bm25"
+    - "slod_weighted_parent_bm25"
+    - "naive_hybrid_rerank"
+    - "slod_weighted_parent_bm25_rerank"
+  rerank:
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    first_stage_k: 50  # retrieve this many candidates before re-ranking
+  routing_confidence_threshold: 0.6  # Below this, slod_routed_v2 falls back to naive_hybrid
+  slod_weighted:
+    boost_base: 0.5  # Score multiplier: boost = 1.0 + boost_base * confidence
+  bm25:
+    alpha: 0.7  # weight for dense score (1-alpha for BM25)
+    tokenizer: "whitespace"  # simple whitespace tokenization
+  similarity: "cosine"
+
+# Evaluation
+evaluation:
+  matching_threshold: 0.5
+  matching_thresholds: [0.3, 0.4, 0.5, 0.6]
+  primary_threshold: 0.5
+  compute_soft_metrics: true
+  bootstrap:
+    n_resamples: 10000
+    confidence_level: 0.95
+    random_seed: 42
+  metrics:
+    - "attribution_f1"
+    - "recall_at_k"
+    - "mrr"
+    - "token_cost"
+
+# Analysis
+analysis:
+  breakdowns:
+    - "by_slod_class"
+    - "by_answer_type"
+    - "confusion"
+  figures:
+    dpi: 150
+    format: "png"
+
+# Reproducibility
+seed: 42

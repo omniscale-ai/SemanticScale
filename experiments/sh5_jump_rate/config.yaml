@@ -1,0 +1,115 @@
+# SH5 Configuration — Jump Rate as Behavioral Signature
+# All hyperparameters in one place. Scripts read from this file.
+
+# Paths
+paths:
+  data_dir: "data"
+  sh0_data_dir: "data_sh0"
+  sh1_data_dir: "data_sh1"
+  sh3_data_dir: "data_sh3"
+  sh1_embeddings: "embeddings/scibert_length_matched.npz"
+  sh1_splits: "splits.json"
+  sh3_questions: "questions.jsonl"
+  sh3_retrieval_results: "results/retrieval_results.json"
+  sh3_evaluation_metrics: "results/evaluation_metrics.json"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+
+# Question Sampling
+sampling:
+  n_questions: 500
+  split: "test"
+  stratify_by: "answer_type"
+  random_seed: 42
+
+# SH3 Conditions and Retrieval
+retrieval:
+  conditions:
+    - "chunks_only"
+    - "naive_hybrid"
+    - "slod_weighted"
+    - "slod_weighted_parent"
+  routed_conditions:
+    - "slod_weighted"
+    - "slod_weighted_parent"
+  unrouted_conditions:
+    - "chunks_only"
+    - "naive_hybrid"
+  top_k: 5
+
+# CoT Generation (Claude Haiku)
+cot:
+  model: "claude-3-haiku-20240307"
+  max_tokens: 1024
+  temperature: 0.0
+  max_retries: 3
+  retry_base_delay: 1.0
+  max_retry_delay: 60.0
+  requests_per_minute: 800  # Stay under 1000 RPM limit
+  max_api_cost_usd: 2.00
+  min_steps_filter: 2  # Exclude traces with fewer steps from correlation analysis
+  prompt_template: |
+    You are answering a question about a scientific paper. You are given retrieved evidence passages.
+
+    Question: {question_text}
+
+    Evidence:
+    {evidence}
+
+    Think step by step. Number each reasoning step as "Step 1:", "Step 2:", etc. Provide at least 3 reasoning steps.
+    After your reasoning, provide a final answer on a new line starting with "ANSWER:".
+
+# SLoD Probe (reuse SH1)
+probe:
+  scibert_model: "allenai/scibert_scivocab_uncased"
+  scibert_batch_size: 64
+  scibert_max_length: 512
+  logreg_C: 0.01
+  logreg_max_iter: 1000
+  logreg_solver: "lbfgs"
+  logreg_multi_class: "multinomial"
+  label_map:
+    0: "macro"
+    1: "meso"
+    2: "micro"
+
+# Jump Metrics
+jump_metrics:
+  # SLoD numeric encoding for delta computation
+  level_encoding:
+    macro: 0
+    meso: 1
+    micro: 2
+
+# Answer Scoring
+scoring:
+  matching_threshold: 0.5  # Token-F1 threshold for attribution matching (same as SH3)
+  stopwords: true  # Remove stopwords for token-F1
+
+# Statistical Analysis
+statistics:
+  bootstrap_n: 10000
+  bootstrap_seed: 42
+  alpha: 0.05
+  # Exit criteria thresholds
+  min_correlation_rho: -0.10  # Spearman rho must be less than this
+  correlation_p_threshold: 0.05
+  condition_p_threshold: 0.05
+
+# Visualization
+visualization:
+  figure_dpi: 150
+  figure_format: "png"
+  color_palette: "Set2"
+  condition_colors:
+    chunks_only: "#66c2a5"
+    naive_hybrid: "#fc8d62"
+    slod_weighted: "#8da0cb"
+    slod_weighted_parent: "#e78ac3"
+  slod_colors:
+    macro: "#1b9e77"
+    meso: "#d95f02"
+    micro: "#7570b3"
+
+# Reproducibility
+random_seed: 42

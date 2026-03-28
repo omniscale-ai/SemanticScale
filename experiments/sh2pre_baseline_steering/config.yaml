@@ -1,0 +1,107 @@
+# SH2 Configuration: Activation Steering Along the SLoD Axis
+
+project: SH2
+title: "Activation Steering Along the SLoD Axis"
+
+# --- Paths ---
+data_dir: data
+reports_dir: reports
+figures_dir: reports/figures
+
+# --- Input Data ---
+sh0_spans: data/sh0/qasper_slod_length_matched.jsonl
+sh1_embeddings: data/sh1/embeddings/scibert_length_matched.npz
+sh1_splits: data/sh1/splits.json
+sh5_questions: data/sh5/selected_questions.jsonl
+sh5_answer_scores: data/sh5/answer_scores.jsonl
+sh5_cot_tags: data/sh5/cot_slod_tags.jsonl
+
+# --- Generative Model ---
+generative_model:
+  # Primary choice: Mistral-7B-Instruct (permissive license, good quality)
+  # Alternative: meta-llama/Meta-Llama-3-8B-Instruct (needs HF token)
+  name: mistralai/Mistral-7B-Instruct-v0.3
+  quantization: null          # Set to "4bit" if VRAM < 16GB
+  max_new_tokens: 512
+  temperature: 0.0            # Deterministic generation
+  batch_size: 1               # Increase if VRAM allows
+  torch_dtype: float16        # Use bfloat16 if supported
+
+# --- SciBERT (evaluation only) ---
+scibert_model: allenai/scibert_scivocab_uncased
+scibert_max_length: 512
+scibert_batch_size: 32
+
+# --- SLoD Axis (evaluation) ---
+slod_axis:
+  method: centroid            # centroid (primary) or lda (alternative)
+  macro_label: 0
+  meso_label: 1
+  micro_label: 2
+
+# --- Steering ---
+steering:
+  # Layer selection: try these fractions of total layers
+  layer_fractions: [0.25, 0.50, 0.75]
+  # Alpha (steering strength) sweep
+  alpha_values: [0.5, 1.0, 2.0, 4.0]
+  # Directions
+  directions: ["micro", "macro"]    # micro = +axis, macro = -axis
+  # Validation subset for layer/alpha selection
+  validation_n: 50
+  # Span batch size for computing steering vectors (memory-dependent)
+  span_batch_size: 16
+  # Use only train split for steering vector computation
+  use_train_split_only: true
+
+# --- Answer Generation ---
+generation:
+  n_questions: 500
+  prompt_template: |
+    You are a scientific research assistant. Answer the following question based on the provided context.
+
+    Context: {context}
+
+    Question: {question}
+
+    Answer concisely and accurately:
+  # Use gold_evidence from selected_questions.jsonl as context
+  context_source: gold_evidence
+
+# --- Evaluation ---
+evaluation:
+  # SLoD shift
+  shift_test: paired_t_test
+  shift_threshold_d: 0.5       # Cohen's d for significance
+  shift_threshold_p: 0.05
+  # Surface metrics
+  surface_metrics:
+    - entity_density             # Capitalized multi-word spans per token
+    - citation_density           # [N] or (Author, Year) patterns per token
+    - numeric_density            # Numbers per token
+    - mean_sentence_length       # Words per sentence
+  surface_threshold_p: 0.05
+  surface_min_significant: 2    # At least 2 of 4 must shift significantly
+  # Factuality
+  max_quality_drop: 0.05        # Max acceptable drop in token-F1 vs baseline
+
+# --- Analysis ---
+analysis:
+  alpha: 0.05
+  random_seed: 42
+
+# --- Prior Baselines (from SH5 family) ---
+baselines:
+  sh5d_slod_axis_mean_rho: 0.219
+  sh5d_slod_axis_auroc: 0.615
+  sh5a_best_attr_f1_rho: -0.197
+  sh1_probe_macro_f1: 0.72
+  sh5d_cohens_d: 2.65           # SLoD axis separation in SciBERT space
+
+# --- Exit Criteria ---
+thresholds:
+  h1_shift_d: 0.5              # Cohen's d for SLoD shift
+  h1_shift_p: 0.05             # p-value for paired t-test
+  h2_surface_p: 0.05           # p-value per surface metric
+  h2_min_metrics: 2            # Minimum significant surface metrics
+  h3_max_quality_drop: 0.05    # Max token-F1 drop vs baseline

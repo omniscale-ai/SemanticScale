@@ -1,0 +1,41 @@
+# SH0 Weak Label Bootstrap Configuration
+
+paths:
+  raw_data: data/qasper_raw.jsonl
+  labeled_spans: data/qasper_slod_spans.jsonl
+  length_matched: data/qasper_slod_length_matched.jsonl
+  validation_report: data/validation_report.json
+  label_distribution_plot: data/label_distribution.png
+
+dataset:
+  name: allenai/qasper
+  splits:
+    - train
+    - validation
+    - test
+
+heuristics:
+  # Micro score threshold: paragraphs scoring above this are labeled micro
+  micro_score_threshold: 0.35
+
+  # Position rules
+  intro_macro_paragraphs: 2        # first N paragraphs of Introduction → macro
+  section_lead_is_meso: true       # first paragraph of any section → meso
+
+  # Confidence levels
+  confidence:
+    high: 0.9    # section regex matches AND content signals agree
+    medium: 0.6  # section regex matches but content signals mixed
+    low: 0.3     # section name unrecognized, position/content only
+
+length_matching:
+  bucket_size: 10        # word count bucket width
+  tolerance: 0.2         # +/- 20% within bucket (unused in bucket approach)
+  min_bucket_count: 3    # minimum spans per class in a bucket to include it
+
+quality_checks:
+  min_class_fraction: 0.15          # no class below 15%
+  section_coverage_threshold: 0.70  # >70% sections matched by regex
+  abstract_macro_threshold: 1.0     # 100% abstracts labeled macro
+  conclusion_macro_threshold: 0.95  # >95% conclusion paragraphs labeled macro
+  methods_micro_threshold: 0.60     # >60% of methods/experiments sections have micro spans

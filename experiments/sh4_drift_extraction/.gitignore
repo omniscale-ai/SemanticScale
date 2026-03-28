@@ -1,0 +1,7 @@
+data
+data_sh0
+data_sh1
+__pycache__
+*.pyc
+.venv
+*.egg-info

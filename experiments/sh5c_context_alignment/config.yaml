@@ -1,0 +1,85 @@
+# SH5c Configuration
+# Per-Question SLoD Consistency: Retrieval-Aligned Reasoning Predicts Quality
+
+paths:
+  working_dir: .  # Relative to experiment root
+  python: python
+  sh5_data: data_sh5
+  sh3_data: data_sh3
+  output_data: data
+  results: data/results
+  reports: reports
+  figures: reports/figures
+
+data:
+  sh5_files:
+    cot_slod_tags: data_sh5/cot_slod_tags.jsonl
+    answer_scores: data_sh5/answer_scores.jsonl
+    jump_metrics: data_sh5/jump_metrics.jsonl
+    selected_questions: data_sh5/selected_questions.jsonl
+  sh3_files:
+    retrieval_results: data_sh3/results/retrieval_results.json
+  conditions:
+    - chunks_only
+    - naive_hybrid
+    - slod_weighted
+    - slod_weighted_parent
+  retrieval_k: "5"
+  n_questions: 500
+  n_sh3_questions: 2279
+
+slod:
+  level_map:
+    macro: 0
+    meso: 1
+    micro: 2
+  level_names:
+    - macro
+    - meso
+    - micro
+  epsilon: 1.0e-10  # Added to distributions before KL/JSD to avoid log(0)
+
+alignment:
+  features:
+    - mean_alignment_gap
+    - max_alignment_gap
+    - jsd
+    - dominant_level_match
+    - context_reasoning_correlation
+    - weighted_alignment_gap
+    - context_diversity
+    - reasoning_diversity
+    - diversity_ratio
+    - soft_mean_gap
+    - soft_jsd
+  diversity_ratio_cap: 100.0  # Cap for diversity_ratio when context_diversity ~0
+
+statistics:
+  alpha: 0.05
+  bonferroni_n_tests: 22  # 11 features x 2 quality metrics
+  quality_metrics:
+    - answer_token_f1
+    - attribution_f1
+  correlation_method: spearman
+  logistic:
+    cv_folds: 5
+    random_state: 42
+    max_iter: 1000
+  condition_pairs:
+    # (slod_routed, baseline)
+    - [slod_weighted, chunks_only]
+    - [slod_weighted, naive_hybrid]
+    - [slod_weighted_parent, chunks_only]
+    - [slod_weighted_parent, naive_hybrid]
+
+exit_criteria:
+  h1_min_abs_rho: 0.10
+  h1_max_p: 0.05  # after Bonferroni
+  h2_max_p: 0.05
+  h3_min_auroc: 0.60
+
+visualization:
+  figsize: [10, 6]
+  dpi: 150
+  style: seaborn-v0_8-whitegrid
+  palette: Set2

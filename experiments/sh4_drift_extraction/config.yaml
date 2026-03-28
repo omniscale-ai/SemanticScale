@@ -1,0 +1,143 @@
+# SH4 Configuration: Abstraction Drift Predicts TKH Extraction Quality
+
+# --- Paths ---
+data_dir: data
+sh0_data_dir: data_sh0
+sh1_data_dir: data_sh1
+reports_dir: reports
+primary_dataset: qasper_slod_length_matched.jsonl
+
+# --- Stage A: Data Acquisition ---
+data_acquisition:
+  # Papers with Code evaluation tables (silver labels)
+  pwc_eval_dataset: felixleungsc/paperswithcode-data-evaluation-tables
+  # Papers with Code paper metadata (abstracts)
+  pwc_papers_dataset: J0nasW/paperswithcode
+  # Minimum tuples per paper to include (lowered for iter 2 to maximize QASPER overlap)
+  min_tuples_per_paper: 1
+  # Number of papers to sample for extraction
+  n_papers: 300
+  # Random seed
+  seed: 42
+  # Output files (relative to data_dir)
+  output:
+    eval_tables: raw/pwc_eval_tables.parquet
+    papers: raw/pwc_papers.parquet
+    joined: raw/joined_papers.parquet
+
+# --- Stage B: LLM Extraction ---
+extraction:
+  model: claude-3-haiku-20240307
+  max_tokens: 4096
+  temperature: 0.0
+  # Rate limiting
+  requests_per_second: 5
+  max_retries: 3
+  retry_base_delay: 2.0
+  # Checkpoint every N papers
+  checkpoint_interval: 50
+  # Output
+  output: extractions/llm_extractions.jsonl
+
+# --- Stage C: Silver Labeling ---
+labeling:
+  # Fuzzy matching thresholds
+  dataset_match_ratio: 0.6       # Levenshtein ratio for dataset name (relaxed for abbreviated names)
+  metric_match_ratio: 0.6        # Levenshtein ratio for metric name (relaxed for metric variants)
+  value_tolerance: 0.02          # Relative tolerance for numeric values (2% — relaxed for rounding)
+  # Output
+  output: extractions/labeled_extractions.jsonl
+
+# --- Stage D: Feature Engineering ---
+features:
+  # SH1 probe configuration
+  slod_probe:
+    model_name: allenai/scibert_scivocab_uncased
+    model_type: transformers
+    batch_size: 32
+    max_length: 512
+    # LogReg hyperparameters from SH1 best result
+    logreg_C: 1.0
+    logreg_max_iter: 2000
+    logreg_solver: lbfgs
+  # Expected SLoD per extraction field (macro=0, meso=1, micro=2)
+  expected_slod:
+    method: 1       # meso
+    dataset: 1      # meso (primary); explore 1.5 in ablation for meso/micro
+    metric: 1       # meso
+    value: 2        # micro
+    year: 2         # micro
+  # Surface feature regex patterns
+  surface:
+    citation_pattern: '(\[\d+\]|\([^)]*\d{4}[^)]*\))'
+    temporal_pattern: '\b(19|20)\d{2}\b'
+    entity_min_words: 2  # Minimum words for a capitalized entity
+  # Output
+  output: features/feature_matrix.npz
+
+# --- Stage E: Model Training ---
+model:
+  # Train/val/test split ratios (paper-level)
+  split_ratios: [0.70, 0.15, 0.15]
+  seed: 42
+  # Logistic Regression
+  logreg:
+    C_search: [0.001, 0.01, 0.1, 1.0, 10.0]
+    max_iter: 2000
+    solver: lbfgs
+  # Gradient Boosted Trees (fallback)
+  gbt:
+    enabled: false   # Enable if LogReg AUROC < 0.65
+    n_estimators: 100
+    max_depth: 3
+    learning_rate: 0.1
+  # Ablation groups
+  ablation:
+    drift_only:
+      features:
+        - drift_mean
+        - drift_max
+        - drift_value
+        - drift_method
+        - realized_slod_raw
+        - realized_slod_prob_macro
+        - realized_slod_prob_meso
+        - realized_slod_prob_micro
+        - slod_entropy
+    surface_only:
+      features:
+        - word_count
+        - sentence_count
+        - entity_density
+        - citation_density
+        - temporal_density
+        - numeric_density
+        - has_table_context
+        - llm_confidence
+    combined:
+      features: all   # Use all features
+  # Output
+  output:
+    metrics: results/model_metrics.json
+    model: models/logreg_combined.pkl
+
+# --- Stage F: Analysis ---
+analysis:
+  # Precision@k thresholds
+  precision_at_k: [0.25, 0.50, 0.75]
+  # Output
+  figures_dir: reports/figures
+  report: reports/sh4_results.md
+
+# --- Exit Criteria ---
+thresholds:
+  auroc_confirmed: 0.65
+  auroc_partial: 0.60
+  drift_advantage: 0.03       # Drift-only AUROC must beat surface-only by this
+  precision_at_50: 0.70       # Precision when retaining top 50%
+
+# --- Stage A3 Fallback ---
+fulltext_fallback:
+  enabled: true                # Iter 2: use QASPER full text instead of abstract-only
+  match_rate_threshold: 0.40
+  n_papers: 100

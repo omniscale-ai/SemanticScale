@@ -1,0 +1,61 @@
+# SH1 Configuration
+python: python  # Use system/venv python
+data_dir: data
+sh0_data_dir: data_sh0
+reports_dir: reports
+
+# Data
+primary_dataset: qasper_slod_length_matched.jsonl
+full_dataset: qasper_slod_spans.jsonl
+split_ratios: [0.70, 0.15, 0.15]
+random_seed: 42
+
+# Embedding models
+models:
+  minilm:
+    name: sentence-transformers/all-MiniLM-L6-v2
+    type: sentence-transformer  # uses .encode()
+    dim: 384
+    batch_size: 128
+    max_length: 256
+    normalize: true
+  scibert:
+    name: allenai/scibert_scivocab_uncased
+    type: transformers  # uses AutoModel + [CLS]
+    dim: 768
+    batch_size: 64
+    max_length: 512
+    normalize: false  # scaler handles this
+  specter2:
+    name: allenai/specter2_base
+    type: transformers-adapter
+    adapter: allenai/specter2_classification
+    dim: 768
+    batch_size: 64
+    max_length: 512
+    normalize: false
+
+# Classifiers
+classifiers:
+  logreg:
+    type: LogisticRegression
+    params:
+      solver: lbfgs
+      max_iter: 2000
+      random_state: 42
+    C_search: [0.01, 0.1, 1.0, 10.0]
+  svm:
+    type: LinearSVC
+    params:
+      max_iter: 5000
+      random_state: 42
+    C_search: [0.01, 0.1, 1.0, 10.0]
+
+# Evaluation
+metrics:
+  primary: macro_f1
+  report: [accuracy, macro_f1, weighted_f1, per_class_f1, confusion_matrix]
+thresholds:
+  three_way_f1: 0.60
+  binary_f1: 0.75
+  baseline_gap: 0.15

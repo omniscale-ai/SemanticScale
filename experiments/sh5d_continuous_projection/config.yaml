@@ -1,0 +1,60 @@
+# SH5d Configuration
+project: SH5d
+title: "Probe-Free Embedding Distance as Behavioral Signature of Reasoning Quality"
+
+# Paths
+data_dir: data
+reports_dir: reports
+figures_dir: reports/figures
+
+# Input data
+sh5_cot_tags: data_sh5/cot_slod_tags.jsonl
+sh5_answer_scores: data_sh5/answer_scores.jsonl
+sh5_jump_metrics: data_sh5/jump_metrics.jsonl
+sh1_embeddings: data_sh1/embeddings/scibert_length_matched.npz
+sh1_splits: data_sh1/splits.json
+
+# Model
+scibert_model: allenai/scibert_scivocab_uncased
+max_length: 512
+batch_size: 32
+
+# SLoD axis
+slod_axis_method: centroid  # primary: centroid, alternative: lda
+# Labels: 0=macro, 1=meso, 2=micro
+macro_label: 0
+meso_label: 1
+micro_label: 2
+
+# Analysis
+alpha: 0.05
+n_bonferroni_tests: 30  # 15 features x 2 metrics
+cv_folds: 5
+random_seed: 42
+
+# Baselines (from prior SH5 family results)
+baselines:
+  sh5_jump_rate_token_f1_rho: 0.003
+  sh5a_best_attr_f1_rho: -0.197
+  sh5c_best_attr_f1_rho: -0.135
+
+# Feature groups for ablation
+feature_groups:
+  full_embedding:
+    - mean_cosine_dist
+    - max_cosine_dist
+    - embedding_path_length
+    - embedding_displacement
+    - path_efficiency
+  slod_axis:
+    - slod_axis_mean
+    - slod_axis_variance
+    - slod_axis_range
+    - slod_axis_drift_mean
+    - slod_axis_drift_max
+    - slod_axis_direction
+    - slod_axis_monotonicity
+  orthogonal:
+    - orthogonal_drift_mean
+    - orthogonal_variance
+    - slod_ratio
