@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic Level of Detail in LLM Representations</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6; color: #1a1a2e; background: #fafafa;
+  }
+
+  /* --- Nav --- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #1a1a2e; color: #e0e0e0;
+    display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+    padding: 0; border-bottom: 3px solid #4a6fa5;
+  }
+  nav a {
+    color: #c8d6e5; text-decoration: none; padding: 0.75rem 1.25rem;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover { background: #4a6fa5; color: #fff; }
+
+  /* --- Sections --- */
+  section { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem; }
+  section + section { padding-top: 1rem; }
+
+  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1a1a2e; border-bottom: 2px solid #4a6fa5; padding-bottom: 0.4rem; }
+  h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #2c3e50; }
+
+  .subtitle { color: #555; font-size: 1.05rem; margin-bottom: 1.5rem; }
+
+  blockquote.thesis {
+    background: #eef2f7; border-left: 4px solid #4a6fa5;
+    padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+    font-size: 0.95rem; color: #2c3e50; line-height: 1.7;
+  }
+
+  /* --- Badges --- */
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase;
+    letter-spacing: 0.04em; vertical-align: middle;
+  }
+  .badge-confirmed { background: #d4edda; color: #155724; }
+  .badge-strong    { background: #b8e6c8; color: #0d4a1a; }
+  .badge-partial   { background: #fff3cd; color: #856404; }
+  .badge-null      { background: #f8d7da; color: #721c24; }
+
+  /* --- Dependency graph --- */
+  .graph-wrap {
+    background: #1a1a2e; color: #a8d8a8; border-radius: 6px;
+    padding: 1.25rem 1.5rem; overflow-x: auto; margin: 1rem 0 1.5rem;
+  }
+  .graph-wrap pre { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.82rem; line-height: 1.5; }
+
+  .legend { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; color: #555; margin-bottom: 1rem; }
+  .legend span { display: flex; align-items: center; gap: 0.3rem; }
+
+  /* --- Experiment cards --- */
+  .layer-group { margin-bottom: 2rem; }
+  .layer-label {
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #4a6fa5; margin-bottom: 0.75rem;
+  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+
+  details.card {
+    background: #fff; border: 1px solid #ddd; border-radius: 6px;
+    transition: box-shadow 0.2s;
+  }
+  details.card[open] { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  details.card summary {
+    padding: 0.75rem 1rem; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  details.card summary::-webkit-details-marker { display: none; }
+  details.card summary::after {
+    content: "\25B6"; font-size: 0.6rem; color: #999; transition: transform 0.2s;
+  }
+  details.card[open] summary::after { transform: rotate(90deg); }
+
+  .card-title { font-weight: 600; font-size: 0.9rem; }
+  .card-body { padding: 0 1rem 1rem; font-size: 0.85rem; color: #444; }
+  .card-body p { margin-bottom: 0.5rem; }
+  .card-body .metric { font-family: "SF Mono", monospace; font-size: 0.82rem; color: #2c3e50; }
+  .card-body .negative { color: #856404; font-style: italic; font-size: 0.82rem; margin-top: 0.5rem; }
+
+  /* --- Table --- */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+  th { background: #1a1a2e; color: #e0e0e0; text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; font-size: 0.8rem; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e8e8e8; }
+  tr:hover td { background: #f5f7fa; }
+  .priority-high { color: #155724; font-weight: 600; }
+  .priority-medium { color: #856404; }
+  .priority-low { color: #999; }
+
+  /* --- Timeline --- */
+  .timeline { position: relative; padding-left: 2rem; margin: 1.5rem 0; }
+  .timeline::before {
+    content: ""; position: absolute; left: 0.45rem; top: 0.5rem; bottom: 0.5rem;
+    width: 2px; background: #4a6fa5;
+  }
+  .tl-entry { position: relative; margin-bottom: 1.5rem; }
+  .tl-entry::before {
+    content: ""; position: absolute; left: -1.75rem; top: 0.55rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #4a6fa5; border: 2px solid #fff; box-shadow: 0 0 0 2px #4a6fa5;
+  }
+  .tl-date { font-size: 0.8rem; font-weight: 700; color: #4a6fa5; }
+  .tl-body { font-size: 0.88rem; color: #333; margin-top: 0.2rem; }
+  .tl-cost { font-size: 0.78rem; color: #888; font-family: monospace; }
+
+  .tl-total {
+    margin-top: 1rem; padding: 0.75rem 1rem; background: #eef2f7;
+    border-radius: 6px; font-size: 0.88rem;
+  }
+
+  /* --- Footer --- */
+  footer {
+    max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem;
+    border-top: 1px solid #ddd; font-size: 0.82rem; color: #888;
+    display: flex; gap: 2rem; flex-wrap: wrap;
+  }
+  footer a { color: #4a6fa5; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    nav a { padding: 0.5rem 0.75rem; font-size: 0.78rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#thesis">Thesis</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#experiments">Experiments</a>
+  <a href="#open">Open Directions</a>
+  <a href="#timeline">Timeline</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="thesis">
+  <h1>Semantic Level of Detail in LLM Representations</h1>
+  <p class="subtitle">Investigating SLoD geometry in frozen embeddings &mdash; from linear probes to activation steering to reasoning dynamics.</p>
+
+  <blockquote class="thesis">
+    <strong>Core thesis:</strong> Frozen LLM representations encode a continuous Semantic Level of Detail (SLoD) axis that is linearly decodable without retraining. Exploiting this axis &mdash; to match retrieval granularity to query abstraction, to detect output drift, and to steer generation &mdash; measurably improves scientific QA attribution and knowledge extraction quality. Continuous embedding-space dynamics in reasoning chains provide supporting behavioral evidence.
+  </blockquote>
+
+  <p style="font-size:0.9rem; color:#555; margin-top:1rem;">
+    The project contributes across four layers: <strong>mechanistic</strong> (SLoD is in the embedding space), <strong>control</strong> (activation steering shifts generation), <strong>systems</strong> (SLoD-routed retrieval), and <strong>behavioral</strong> (embedding dynamics reveal reasoning quality). All 20 experiments complete &mdash; total API cost ~$1.30 + GPU compute.
+  </p>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap">
+  <h2>Research Roadmap</h2>
+
+  <div class="graph-wrap"><pre>
+SH0 <span style="color:#6bdf6b">&#10003;</span>  (weak labels: document structure)
+  &#x2514;&#x2500;&#x2192; SH1 <span style="color:#6bdf6b">&#10003;</span>  (linear probe: F1=0.72) &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+        &#x251C;&#x2500;&#x2192; SH2 <span style="color:#e06060">&#10007;</span> (QA) &#x2192; SH2b <span style="color:#e0c040">&#x25CF;</span> (QA) &#x2192; SH2-summ <span style="color:#6bdf6b">&#10003;</span>  (d=0.679)  &#x2502;
+        &#x251C;&#x2500;&#x2192; SH3 <span style="color:#e0c040">&#x25CF;</span>  (SLoD-routed RAG: soft boosting +0.031 F1)  &#x2502;
+        &#x2514;&#x2500;&#x2192; SH4 <span style="color:#e0c040">&#x25CF;</span>  (drift: combined AUROC=0.676) &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                                                            &#x2514;&#x2500;&#x2192; SH5 <span style="color:#e06060">&#10007;</span> &#x2192; SH5a <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5c <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5d <span style="color:#6bdf6b">&#10003;&#10003;</span></pre></div>
+
+  <div class="legend">
+    <span><span class="badge badge-confirmed">Confirmed</span> Hypothesis validated</span>
+    <span><span class="badge badge-strong">Strong</span> Robust across conditions</span>
+    <span><span class="badge badge-partial">Partial</span> Qualified success</span>
+    <span><span class="badge badge-null">Not confirmed</span> Null or failed</span>
+  </div>
+</section>
+
+<!-- ============ EXPERIMENTS ============ -->
+<section id="experiments">
+  <h2>Experiments</h2>
+
+  <!-- Mechanism -->
+  <div class="layer-group">
+    <div class="layer-label">Mechanism &mdash; SLoD is in the embedding space</div>
+    <div class="card-grid">
+
+      <details class="card">
+        <summary><span class="card-title">SH0 &mdash; Weak Label Bootstrap</span> <span class="badge badge-confirmed">Confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Document structure is a sufficient free proxy for SLoD labels (macro/meso/micro).</p>
+          <p class="metric">50 papers annotated. Labels validated for SH1 training.</p>
+          <p>Datasets: S2ORC, QASPER (HuggingFace). Macro = title/abstract/intro/conclusion, Meso = section leads, Micro = methods/tables/dense entities.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH1 &mdash; Linear Probe</span> <span class="badge badge-confirmed">Confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> A linear probe on frozen SciBERT embeddings classifies macro/meso/micro above chance.</p>
+          <p class="metric">Macro-F1 = 0.72 (per-class: macro 0.82, meso 0.62, micro 0.72)<br>37,278 length-matched spans, balanced 12,426/class</p>
+          <p><strong>SH1b</strong> (document-level split): grouped F1 = 0.718, delta &lt; 0.01. Leakage negligible.</p>
+          <p><strong>SH1c</strong> (section control): residualized probe F1 = 0.40; section-name baseline crushes at 0.963. Cross-section transfer fails (F1 = 0.003). But LLM-blind annotation &kappa; = 0.55 validates labels.</p>
+          <p><strong>SH1-LLM</strong>: Retrained on LLM labels &rarr; F1 = 0.754 (+0.076). Embeddings encode SLoD beyond section identity.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- Control -->
+  <div class="layer-group">
+    <div class="layer-label">Control &mdash; Activation steering shifts generation</div>
+    <div class="card-grid">
+
+      <details class="card">
+        <summary><span class="card-title">SH2 &mdash; QA Steering</span> <span class="badge badge-null">Not confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> An SLoD direction in a generative model's residual stream steers generation toward target abstraction.</p>
+          <p class="metric">Doc-span steering: d = 0.043 (Mistral-7B), d = 0.020 (Qwen2.5-14B)</p>
+          <p class="negative">Cross-space mismatch + layer selection bug (abs vs signed). SciBERT QA evaluation ceiling at d &approx; 0.121 (genre mismatch).</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH2b &mdash; QA-Context Steering</span> <span class="badge badge-partial">Partial</span></summary>
+        <div class="card-body">
+          <p class="metric">|d| = 0.546 but direction-inverted. 3/4 surface metrics significant, H3 fails (ROUGE drop = 0.244).</p>
+          <p class="negative">Direction inversion at &alpha;=2.0: micro steering produced macro-ward shift + quality collapse.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH2-summ &mdash; Summarization Steering</span> <span class="badge badge-confirmed">Confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Key result:</strong> Activation steering works when evaluation axis is in-distribution.</p>
+          <p class="metric">Cohen's d = 0.679 (layer 8, &alpha;=2.0, 851 papers)<br>H1 pass, H2: 3/4 surface metrics, H3: ROUGE-L improves by 0.011</p>
+          <p><strong>SH2-LLM</strong>: d &rarr; 0.701 with LLM axis (cosine sim 0.915). Robust to relabeling.</p>
+          <p>Design principle: <em>task-domain alignment between steering target and evaluation metric is necessary.</em></p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- Systems -->
+  <div class="layer-group">
+    <div class="layer-label">Systems &mdash; SLoD-routed retrieval</div>
+    <div class="card-grid">
+
+      <details class="card">
+        <summary><span class="card-title">SH3 &mdash; Hierarchical RAG</span> <span class="badge badge-partial">Partial</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Routing retrieval to query-matching granularity improves evidence attribution.</p>
+          <p class="metric">slod_weighted_parent: soft F1 = 0.422 vs baseline 0.391 (+0.031)<br>13 retrieval conditions tested at k=1,3,5,10,20</p>
+          <p>Soft SLoD score-boosting + parent expansion works. BM25 hybrid + cross-encoder rerank push to 0.458 (ceiling).</p>
+          <p><strong>SH3-LLM</strong>: Stable (max delta -0.007). Soft boosting absorbs probe changes.</p>
+          <p class="negative">Hard routing destroys multi-level diversity. Specter2 underperformed MiniLM. HyDE classification did not help.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- Application -->
+  <div class="layer-group">
+    <div class="layer-label">Application &mdash; Drift predicts extraction quality</div>
+    <div class="card-grid">
+
+      <details class="card">
+        <summary><span class="card-title">SH4 &mdash; Abstraction Drift</span> <span class="badge badge-partial">Partial</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Drift between expected and realized SLoD per extraction field predicts extraction correctness.</p>
+          <p class="metric">Combined AUROC = 0.676 (passes 0.65 threshold)<br>Drift-only: AUROC = 0.52 (near random)</p>
+          <p><strong>SH4-LLM</strong>: Drift-only &rarr; 0.62, combined &rarr; 0.75. Biggest relabeling beneficiary.</p>
+          <p class="negative">Drift alone is not diagnostic. Surface features (word count, entity density, LLM confidence) carry most signal.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- Behavioral -->
+  <div class="layer-group">
+    <div class="layer-label">Behavioral &mdash; Embedding dynamics reveal reasoning quality</div>
+    <div class="card-grid">
+
+      <details class="card">
+        <summary><span class="card-title">SH5 &mdash; Jump Rate</span> <span class="badge badge-null">Not confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Lower abstraction-level jump rate in CoT steps correlates with higher answer correctness.</p>
+          <p class="metric">2000 CoT traces, 6101 steps (Claude Haiku)<br>&rho; = 0.003, p = 0.90 (null)</p>
+          <p>Unexpected finding: jump rate &harr; attribution-F1: &rho; = +0.092 (more jumping = better evidence).</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH5a &mdash; Transition Matrix</span> <span class="badge badge-confirmed">Confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Specific transition patterns (not just overall jump rate) correlate with quality.</p>
+          <p class="metric">Macro&rarr;macro self-loop &harr; attr-F1: &rho; = -0.197 (p = 5e-19)<br>20/60 feature-target pairs Bonferroni-significant</p>
+          <p>K-means reveals 2 reasoning styles: "exploratory" (attr-F1 = 0.279) vs "macro-stuck" (0.218).</p>
+          <p><strong>SH5a-LLM</strong>: &rho; = -0.197 (identical). Robust to relabeling.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH5c &mdash; Context Alignment</span> <span class="badge badge-confirmed">Confirmed</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Alignment between retrieved context SLoD and reasoning step SLoD predicts quality.</p>
+          <p class="metric">Weighted alignment gap &harr; attr-F1: &rho; = -0.135 (p &lt; 0.0001)<br>SLoD-routed retrieval &rarr; significantly lower alignment gaps (Wilcoxon p &lt; 0.05)</p>
+          <p><strong>SH5c-LLM</strong>: &rho; &rarr; -0.231 (71% stronger). Second-biggest relabeling beneficiary.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary><span class="card-title">SH5d &mdash; Continuous Projection</span> <span class="badge badge-strong">Strong</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Continuous SciBERT embedding-space features predict quality without discrete probe classification.</p>
+          <p class="metric">slod_axis_mean &harr; attr-F1: &rho; = +0.219 (p &lt; 1e-21)<br>SLoD-axis AUROC = 0.615 vs orthogonal = 0.549 (3&times; correlation difference)</p>
+          <p>Strongest single predictor in the entire SH5 family. SLoD axis validated: Cohen's d = 2.65.</p>
+          <p><strong>SH5d-LLM</strong>: &rho; = +0.219 (identical). Robust to 24&deg; axis rotation.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPEN DIRECTIONS ============ -->
+<section id="open">
+  <h2>Open Directions</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Direction</th><th>Description</th><th>Effort</th><th>Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SH6</strong></td>
+          <td>SLoD-conditioned summarization quality &mdash; human/model preference for SH2-summ steered summaries at different abstraction levels</td>
+          <td>3&ndash;5 days</td>
+          <td class="priority-high">High</td>
+        </tr>
+        <tr>
+          <td><strong>SH7</strong></td>
+          <td>Cross-task SLoD generalization &mdash; apply SH2-summ steering vector to biomedical, legal, and news domains</td>
+          <td>3&ndash;5 days</td>
+          <td class="priority-high">High</td>
+        </tr>
+        <tr>
+          <td><strong>Cross-domain</strong></td>
+          <td>Test SH1 probe on bio/physics papers (currently CS-only); SH5d probe-free approach may generalize better</td>
+          <td>2&ndash;3 days</td>
+          <td class="priority-high">High</td>
+        </tr>
+        <tr>
+          <td><strong>SH2-QA-v2</strong></td>
+          <td>Build a QA-genre SLoD evaluation axis (labeled QA answer pairs), then re-run SH2b. Baseline: d = 0.121</td>
+          <td>3&ndash;5 days</td>
+          <td class="priority-medium">Medium</td>
+        </tr>
+        <tr>
+          <td><strong>SH8</strong></td>
+          <td>SLoD-adaptive retrieval + generation &mdash; combine SH3 soft retrieval with SH2-summ steering</td>
+          <td>5&ndash;7 days</td>
+          <td class="priority-medium">Medium</td>
+        </tr>
+        <tr>
+          <td><strong>Larger benchmark</strong></td>
+          <td>Validate SH3 on LoCoMo or S2ORC QA subsets for larger-scale effect size confirmation</td>
+          <td>3&ndash;5 days</td>
+          <td class="priority-medium">Medium</td>
+        </tr>
+        <tr>
+          <td><strong>ADAM-Bench</strong></td>
+          <td>SLoD typing on 27K papers, 7M evidence objects. Test whether SLoD-matched evidence improves claim verification</td>
+          <td>3&ndash;5 days</td>
+          <td class="priority-medium">Medium</td>
+        </tr>
+        <tr>
+          <td><strong>Combined SH5</strong></td>
+          <td>SH5a+SH5c+SH5d features (AUROC = 0.623). Feature selection + better model may push above 0.65</td>
+          <td>1&ndash;2 days</td>
+          <td class="priority-low">Low</td>
+        </tr>
+        <tr>
+          <td><strong>SH5b</strong></td>
+          <td>Probe confidence calibration &mdash; does the probe's own max probability on CoT steps predict quality?</td>
+          <td>1 day</td>
+          <td class="priority-low">Low</td>
+        </tr>
+        <tr>
+          <td><strong>SH5e</strong></td>
+          <td>Per-step embedding trajectory analysis &mdash; curvature, acceleration, attractors</td>
+          <td>2&ndash;3 days</td>
+          <td class="priority-low">Low</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="timeline">
+  <h2>Event Log</h2>
+
+  <div class="timeline">
+    <div class="tl-entry">
+      <div class="tl-date">Week 1 &mdash; Mar 8&ndash;10, 2026</div>
+      <div class="tl-body">
+        SH0 (weak label bootstrap) + SH1 (linear probe, F1=0.72) + SH3 (13 retrieval conditions, soft score-boosting, BM25 hybrid, cross-encoder ablation).
+      </div>
+      <div class="tl-cost">API cost: ~$0.30</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-date">Week 1&ndash;2 &mdash; Mar 10&ndash;14, 2026</div>
+      <div class="tl-body">
+        SH4 (2 iterations: abstract-only &rarr; full-text extraction from QASPER) + SH5 (2000 CoT traces across 500 questions &times; 4 retrieval conditions).
+      </div>
+      <div class="tl-cost">API cost: ~$1.00</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-date">Week 2 &mdash; Mar 15&ndash;16, 2026</div>
+      <div class="tl-body">
+        SH5a (transition matrix analysis) + SH5c (context-reasoning alignment) + SH5d (continuous embedding projection). Pure reanalysis of SH5 data, no new API calls.
+      </div>
+      <div class="tl-cost">API cost: $0.00</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-date">Week 2 &mdash; Mar 17&ndash;18, 2026</div>
+      <div class="tl-body">
+        SH2 activation steering &mdash; 6 experiments on remote GPU server: SH2 (doc-span), SH2-scale (Qwen2.5-14B), SH2b (QA-context), SH2c (flip+low-&alpha;), SH2a (prompt control), SH2-summ (confirmed, d=0.679).
+      </div>
+      <div class="tl-cost">GPU compute (Mistral-7B, Qwen2.5-14B)</div>
+    </div>
+  </div>
+
+  <div class="tl-total">
+    <strong>Total:</strong> 20 experiments, ~$1.30 API cost + GPU compute for SH2, 0 human-in-the-loop annotation hours.
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <span><a href="https://github.com/anaderi/SemanticScale">GitHub Repository</a></span>
+  <span><a href="https://huggingface.co/datasets/anaderi/semantic-scale-data">Data on HuggingFace</a></span>
+  <span>SemanticScale &mdash; SLoD Research, 2026</span>
+</footer>
+
+</body>
+</html>
