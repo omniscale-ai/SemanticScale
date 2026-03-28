@@ -124,4 +124,4 @@ SH0 ✅ (weak labels)
 
 ## License
 
-TBD
+Apache License 2.0 — see [LICENSE](LICENSE).
