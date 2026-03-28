@@ -18,12 +18,16 @@ experiments/sh{N}_{name}/    # Each experiment is self-contained
 
 Shared documentation lives in `docs/`. Data (~3.4 GB) is external on Hugging Face.
 
+## Migration History
+
+This repository was created by merging five individual experiment branches that were developed independently. Each branch originally had its own data layout — some used symlinks to an external directory, others had local `data/` folders with different naming conventions. During consolidation, all data paths were rewritten to point to a single `data/` directory at the repo root, but **there may still be stray references to old path conventions** (e.g., `data_sh0/`, `data_sh5/`, or bare `data/` meaning the experiment's own data). If you encounter a broken path, the fix is almost always to redirect it to `../../data/sh{N}` relative to the experiment directory.
+
 ## Data
 
-- Data is hosted at https://huggingface.co/datasets/anaderi/semantic-scale-data
+- All experiment data lives in `data/` at the repo root (gitignored, not committed)
+- Hosted at https://huggingface.co/datasets/anaderi/semantic-scale-data
 - Download via `python setup_data.py` (or `--experiments sh0 sh1` for partial)
-- Data lands in `data/` at repo root (gitignored)
-- Experiments reference data via relative paths in `config.yaml`
+- Experiments reference data via relative paths like `../../data/sh1` in `config.yaml`
 - Set `SLOD_DATA_ROOT` env var to override the default data location
 
 ## Running Experiments
