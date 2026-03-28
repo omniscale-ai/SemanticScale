@@ -58,7 +58,7 @@
     background: #1a1a2e; color: #a8d8a8; border-radius: 6px;
     padding: 1.25rem 1.5rem; overflow-x: auto; margin: 1rem 0 1.5rem;
   }
-  .graph-wrap pre { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.82rem; line-height: 1.5; }
+  .graph-wrap pre { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.78rem; line-height: 1.5; white-space: pre; word-break: keep-all; }
 
   .legend { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; color: #555; margin-bottom: 1rem; }
   .legend span { display: flex; align-items: center; gap: 0.3rem; }
@@ -167,13 +167,12 @@
 <section id="roadmap">
   <h2>Research Roadmap</h2>
 
-  <div class="graph-wrap"><pre>
-SH0 <span style="color:#6bdf6b">&#10003;</span>  (weak labels: document structure)
-  &#x2514;&#x2500;&#x2192; SH1 <span style="color:#6bdf6b">&#10003;</span>  (linear probe: F1=0.72) &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
-        &#x251C;&#x2500;&#x2192; SH2 <span style="color:#e06060">&#10007;</span> (QA) &#x2192; SH2b <span style="color:#e0c040">&#x25CF;</span> (QA) &#x2192; SH2-summ <span style="color:#6bdf6b">&#10003;</span>  (d=0.679)  &#x2502;
-        &#x251C;&#x2500;&#x2192; SH3 <span style="color:#e0c040">&#x25CF;</span>  (SLoD-routed RAG: soft boosting +0.031 F1)  &#x2502;
-        &#x2514;&#x2500;&#x2192; SH4 <span style="color:#e0c040">&#x25CF;</span>  (drift: combined AUROC=0.676) &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
-                                                            &#x2514;&#x2500;&#x2192; SH5 <span style="color:#e06060">&#10007;</span> &#x2192; SH5a <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5c <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5d <span style="color:#6bdf6b">&#10003;&#10003;</span></pre></div>
+  <div class="graph-wrap"><pre>SH0 <span style="color:#6bdf6b">&#10003;</span>  weak labels
+ &#x2514;&#x2500;&#x2192; SH1 <span style="color:#6bdf6b">&#10003;</span>  linear probe F1=0.72 &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+      &#x251C;&#x2500;&#x2192; SH2 <span style="color:#e06060">&#10007;</span> &#x2192; SH2b <span style="color:#e0c040">&#x25CF;</span> &#x2192; SH2-summ <span style="color:#6bdf6b">&#10003;</span>  &#x2502;
+      &#x251C;&#x2500;&#x2192; SH3 <span style="color:#e0c040">&#x25CF;</span>  soft RAG +0.031 F1    &#x2502;
+      &#x2514;&#x2500;&#x2192; SH4 <span style="color:#e0c040">&#x25CF;</span>  AUROC=0.676 &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+                                &#x2514;&#x2500;&#x2192; SH5 <span style="color:#e06060">&#10007;</span> &#x2192; SH5a <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5c <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5d <span style="color:#6bdf6b">&#10003;&#10003;</span></pre></div>
 
   <div class="legend">
     <span><span class="badge badge-confirmed">Confirmed</span> Hypothesis validated</span>
