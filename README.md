@@ -83,7 +83,7 @@ Each experiment directory contains:
 
 ## Data
 
-Experiment data (~3.4 GB) is hosted on [Hugging Face](https://huggingface.co/datasets/omniscale-ai/SemanticScale-data) and downloaded via `setup_data.py`. See [docs/data_dictionary.md](docs/data_dictionary.md) for detailed documentation of each data file.
+Experiment data (~3.4 GB) is hosted on [Hugging Face](https://huggingface.co/datasets/anaderi/semantic-scale-data) and downloaded via `setup_data.py`. See [docs/data_dictionary.md](docs/data_dictionary.md) for detailed documentation of each data file.
 
 | Dataset | Size | Contents |
 |---|---|---|

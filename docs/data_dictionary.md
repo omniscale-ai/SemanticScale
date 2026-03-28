@@ -1,6 +1,6 @@
 # Data Dictionary
 
-This document describes all data files used across SemanticScale experiments. Data is hosted on [Hugging Face](https://huggingface.co/datasets/omniscale-ai/SemanticScale-data) and downloaded via `setup_data.py`.
+This document describes all data files used across SemanticScale experiments. Data is hosted on [Hugging Face](https://huggingface.co/datasets/anaderi/semantic-scale-data) and downloaded via `setup_data.py`.
 
 ## SH0 — Weak Label Bootstrap (155 MB)
 

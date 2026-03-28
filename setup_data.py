@@ -11,7 +11,7 @@ import argparse
 import os
 import sys
 
-REPO_ID = "omniscale-ai/SemanticScale-data"
+REPO_ID = "anaderi/semantic-scale-data"
 DEFAULT_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
 EXPERIMENTS = {
