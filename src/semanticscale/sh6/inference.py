@@ -99,10 +99,8 @@ async def _call_one(
                 "correct_answer": item["correct_answer"],
                 "subject": item.get("subject", "unknown"),
                 "has_final_answer": item.get("has_final_answer", True),
-                "predicted_answer": "",
                 "reasoning_text": "",
                 "answer_text": "",
-                "is_correct": False,
                 "usage": None,
                 "error": str(exc),
                 "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
@@ -110,11 +108,9 @@ async def _call_one(
 
     reasoning_text, answer_text = extract_response_text(response)
     has_final_answer = item.get("has_final_answer", True)
-    predicted = _extract_predicted_answer(answer_text, has_final_answer)
-    correct = _is_correct(predicted, item["correct_answer"])
     usage = extract_usage(response)
 
-    return {
+    result = {
         "id": item["id"],
         "model": model,
         "reasoning_effort": reasoning_effort,
@@ -124,14 +120,17 @@ async def _call_one(
         "correct_answer": item["correct_answer"],
         "subject": item.get("subject", "unknown"),
         "has_final_answer": has_final_answer,
-        "predicted_answer": predicted,
         "reasoning_text": reasoning_text,
         "answer_text": answer_text,
-        "is_correct": correct,
         "usage": usage,
         "error": None,
         "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
     }
+    if has_final_answer:
+        predicted = _extract_predicted_answer(answer_text, has_final_answer)
+        result["predicted_answer"] = predicted
+        result["is_correct"] = _is_correct(predicted, item["correct_answer"])
+    return result
 
 
 async def _run_async(
@@ -171,7 +170,7 @@ async def _run_async(
         result = await coro
         results.append(result)
         if i % 50 == 0 or i == len(tasks):
-            n_correct = sum(r["is_correct"] for r in results)
+            n_correct = sum(r.get("is_correct", False) for r in results)
             n_errors = sum(1 for r in results if r.get("error"))
             logger.info(
                 "Progress %d/%d — accuracy so far: %.1f%% (%d errors)",

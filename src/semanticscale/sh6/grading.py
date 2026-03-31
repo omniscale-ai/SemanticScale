@@ -181,6 +181,12 @@ async def _grade_rubric(
             })
         total_max = sum(it["max_points"] for it in items)
         total_awarded = sum(it["awarded_points"] for it in items)
+        if total_max != 10.0:
+            logger.warning(
+                "Rubric total_max=%.1f for item %s (expected 10)",
+                total_max,
+                result.get("id"),
+            )
         return {
             "type": "rubric",
             "items": items,
@@ -218,7 +224,7 @@ def grade_results(results: list[dict], grader_model: str, config: dict) -> list[
 
     ``is_correct`` is updated to reflect the advanced grade:
     - FINAL ANSWER: ``grade["passed"]``
-    - Rubric: ``total_awarded / total_max >= 0.5`` (False when total_max == 0)
+    - Rubric: ``total_awarded >= 7.0`` (expects total_max == 10; warns if not)
 
     Returns a new list of result dicts with ``grade`` and updated ``is_correct``.
     """
@@ -266,6 +272,6 @@ async def _run_async(
                 elif grade["type"] == "rubric":
                     total_max = grade.get("total_max", 0.0)
                     total_awarded = grade.get("total_awarded", 0.0)
-                    r["is_correct"] = (total_awarded / total_max >= 0.5) if total_max > 0 else False
+                    r["is_correct"] = total_awarded >= 7.0 if total_max > 0 else False
         updated.append(r)
     return updated
