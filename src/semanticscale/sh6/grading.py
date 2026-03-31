@@ -98,6 +98,7 @@ async def _parse_response(
     semaphore: asyncio.Semaphore,
     api_type: str,
     service_tier: str | None = None,
+    extra_body: dict | None = None,
 ) -> object:
     """Call parse() with retry, returning the parsed Pydantic object."""
 
@@ -111,6 +112,9 @@ async def _parse_response(
         kwargs = {}
         if service_tier is not None:
             kwargs["service_tier"] = service_tier
+            
+        if extra_body:
+            kwargs["extra_body"] = extra_body
             
         if api_type == "completions":
             response = await client.beta.chat.completions.parse(
@@ -140,6 +144,7 @@ async def _grade_final_answer(
     semaphore: asyncio.Semaphore,
     api_type: str,
     service_tier: str | None = None,
+    extra_body: dict | None = None,
 ) -> dict:
     """Grade a FINAL ANSWER problem; returns a grade dict."""
     system_prompt = (
@@ -161,7 +166,7 @@ async def _grade_final_answer(
     ]
     try:
         grade: FinalAnswerGrade = await _parse_response(
-            client, messages, FinalAnswerGrade, grader_model, semaphore, api_type, service_tier
+            client, messages, FinalAnswerGrade, grader_model, semaphore, api_type, service_tier, extra_body
         )
         return {
             "type": "final_answer",
@@ -185,6 +190,7 @@ async def _grade_rubric(
     semaphore: asyncio.Semaphore,
     api_type: str,
     service_tier: str | None = None,
+    extra_body: dict | None = None,
 ) -> dict:
     """Grade an open-ended problem using a rubric; returns a grade dict."""
     rubric_items = _parse_rubric_items(result["correct_answer"])
@@ -209,7 +215,7 @@ async def _grade_rubric(
                 {"role": "user", "content": model_answer},
             ]
             return await _parse_response(
-                client, messages, GradeRubricItem, grader_model, semaphore, api_type, service_tier
+                client, messages, GradeRubricItem, grader_model, semaphore, api_type, service_tier, extra_body
             )
 
         raw = await asyncio.gather(
@@ -276,7 +282,7 @@ async def _grade_rubric(
     ]
     try:
         rubric: RubricGrade = await _parse_response(
-            client, messages, RubricGrade, grader_model, semaphore, api_type, service_tier
+            client, messages, RubricGrade, grader_model, semaphore, api_type, service_tier, extra_body
         )
         items = [
             {"awarded_points": max(0.0, float(item.awarded_points)), "explanation": item.explanation}
@@ -332,8 +338,9 @@ def grade_results(results: list[dict], grader_model: str, config: dict) -> list[
     api_type = grading_config.get("api_type", model_config.get("api_type", "responses"))
     base_url = grading_config.get("base_url", model_config.get("base_url"))
     api_key_env = grading_config.get("api_key_env", model_config.get("api_key_env"))
+    extra_body = grading_config.get("extra_body", model_config.get("extra_body"))
     
-    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier, api_type, base_url, api_key_env))
+    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier, api_type, base_url, api_key_env, extra_body))
 
 
 async def _run_async(
@@ -344,6 +351,7 @@ async def _run_async(
     api_type: str = "responses",
     base_url: str | None = None,
     api_key_env: str | None = None,
+    extra_body: dict | None = None,
 ) -> list[dict]:
     api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
     client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
@@ -353,9 +361,9 @@ async def _run_async(
         if result.get("error"):
             return idx, {}
         if result.get("has_final_answer", True):
-            grade = await _grade_final_answer(client, result, grader_model, semaphore, api_type, service_tier)
+            grade = await _grade_final_answer(client, result, grader_model, semaphore, api_type, service_tier, extra_body)
         else:
-            grade = await _grade_rubric(client, result, grader_model, semaphore, api_type, service_tier)
+            grade = await _grade_rubric(client, result, grader_model, semaphore, api_type, service_tier, extra_body)
         return idx, grade
 
     tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]

@@ -63,6 +63,7 @@ async def create_response(
     prompt: str,
     reasoning: dict,
     service_tier: str | None,
+    extra_body: dict | None = None,
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
@@ -76,11 +77,16 @@ async def create_response(
         reraise=True,
     )
     async def _call() -> Any:
+        kwargs = {}
+        if extra_body:
+            kwargs["extra_body"] = extra_body
+            
         return await client.responses.create(
             model=model,
             input=[{"role": "user", "content": prompt}],
             reasoning=reasoning,
             service_tier=service_tier,
+            **kwargs,
         )
 
     return await _call()
@@ -114,6 +120,7 @@ async def create_chat_completion(
     prompt: str,
     reasoning: dict | str | None,
     service_tier: str | None,
+    extra_body: dict | None = None,
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
@@ -131,15 +138,19 @@ async def create_chat_completion(
         if service_tier:
             kwargs["service_tier"] = service_tier
             
+        eb = dict(extra_body) if extra_body else {}
         if reasoning:
             if isinstance(reasoning, dict):
                 # Distinguish standard "effort" vs arbitrary dict (sent as extra_body for OpenRouter)
                 if "effort" in reasoning and not any(k in reasoning for k in ("enabled", "summary")):
                     kwargs["reasoning_effort"] = reasoning["effort"]
                 else:
-                    kwargs["extra_body"] = {"reasoning": reasoning}
+                    eb["reasoning"] = reasoning
             elif isinstance(reasoning, str):
                 kwargs["reasoning_effort"] = reasoning
+                
+        if eb:
+            kwargs["extra_body"] = eb
 
         return await client.chat.completions.create(
             model=model,

@@ -9,6 +9,9 @@ model:
   api_key_env: OPENROUTER_API_KEY
   reasoning:
     enabled: true
+  extra_body:
+    models:
+      - nvidia/nemotron-3-super-120b-a12b
 
 dataset:
   hf_path: openai/frontierscience
@@ -26,3 +29,6 @@ grading:
   api_type: completions
   base_url: https://openrouter.ai/api/v1
   api_key_env: OPENROUTER_API_KEY
+  extra_body:
+    models:
+      - nvidia/nemotron-3-super-120b-a12b
