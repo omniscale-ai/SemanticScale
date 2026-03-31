@@ -41,7 +41,7 @@ def load_frontierscience(
 
     items = [
         {
-            "id": str(row["id"]),
+            "id": str(row["task_group_id"]),
             "problem": str(row["problem"]),
             "correct_answer": str(row["answer"]),
             "subject": str(row["subject"]),

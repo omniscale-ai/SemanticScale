@@ -72,6 +72,7 @@ async def _parse_response(
     text_format: type,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    service_tier: str | None = None,
 ) -> object:
     """Call responses.parse() with retry, returning the parsed Pydantic object."""
 
@@ -82,10 +83,14 @@ async def _parse_response(
         reraise=True,
     )
     async def _call() -> object:
+        kwargs = {}
+        if service_tier is not None:
+            kwargs["service_tier"] = service_tier
         response = await client.responses.parse(
             model=grader_model,
             input=messages,
             text_format=text_format,
+            **kwargs,
         )
         return response.output_parsed
 
@@ -98,6 +103,7 @@ async def _grade_final_answer(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    service_tier: str | None = None,
 ) -> dict:
     """Grade a FINAL ANSWER problem; returns a grade dict."""
     system_prompt = (
@@ -119,7 +125,7 @@ async def _grade_final_answer(
     ]
     try:
         grade: FinalAnswerGrade = await _parse_response(
-            client, messages, FinalAnswerGrade, grader_model, semaphore
+            client, messages, FinalAnswerGrade, grader_model, semaphore, service_tier
         )
         return {
             "type": "final_answer",
@@ -141,6 +147,7 @@ async def _grade_rubric(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    service_tier: str | None = None,
 ) -> dict:
     """Grade an open-ended problem using a rubric; returns a grade dict."""
     system_prompt = (
@@ -155,14 +162,14 @@ async def _grade_rubric(
         "awarded_points (between 0 and max_points), "
         "and explanation (why those points were awarded)."
     )
-    model_answer = result.get("answer_text", "") or "(no answer provided)"
+    model_answer = result.get("answer_text", "(no answer provided)")
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": model_answer},
     ]
     try:
         rubric: RubricGrade = await _parse_response(
-            client, messages, RubricGrade, grader_model, semaphore
+            client, messages, RubricGrade, grader_model, semaphore, service_tier
         )
         items = []
         for item in rubric.items:
@@ -216,13 +223,15 @@ def grade_results(results: list[dict], grader_model: str, config: dict) -> list[
     Returns a new list of result dicts with ``grade`` and updated ``is_correct``.
     """
     max_concurrent = config.get("inference", {}).get("max_concurrent", 10)
-    return asyncio.run(_run_async(results, grader_model, max_concurrent))
+    service_tier = config.get("grading", {}).get("service_tier")
+    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier))
 
 
 async def _run_async(
     results: list[dict],
     grader_model: str,
     max_concurrent: int,
+    service_tier: str | None = None,
 ) -> list[dict]:
     client = openai.AsyncOpenAI()
     semaphore = asyncio.Semaphore(max_concurrent)
@@ -231,9 +240,9 @@ async def _run_async(
         if result.get("error"):
             return idx, {}
         if result.get("has_final_answer", True):
-            grade = await _grade_final_answer(client, result, grader_model, semaphore)
+            grade = await _grade_final_answer(client, result, grader_model, semaphore, service_tier)
         else:
-            grade = await _grade_rubric(client, result, grader_model, semaphore)
+            grade = await _grade_rubric(client, result, grader_model, semaphore, service_tier)
         return idx, grade
 
     tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]
