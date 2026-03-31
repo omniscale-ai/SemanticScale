@@ -8,6 +8,9 @@ Usage:
     --reasoning-effort EFFORT   Override reasoning effort (low/medium/high)
     --service-tier TIER         Override service_tier passed to the OpenAI client
     --max-samples N             Run on first N items only (default: all)
+    --question-types TYPE …     Only run on questions with matching origin field,
+                                e.g. --question-types olympiad  or  --question-types research
+                                (default: all question types)
     --config PATH               Path to config.yaml (default: ../config.yaml)
     --force                     Re-run even if output already exists
 
@@ -58,6 +61,14 @@ def parse_args() -> argparse.Namespace:
         help="Limit to first N samples (overrides config)",
     )
     parser.add_argument(
+        "--question-types",
+        nargs="+",
+        default=None,
+        dest="question_types",
+        metavar="TYPE",
+        help="Only run on questions whose origin matches TYPE (e.g. olympiad research)",
+    )
+    parser.add_argument(
         "--config",
         default=str(here / "config.yaml"),
         help="Path to config.yaml",
@@ -88,7 +99,8 @@ def main() -> None:
         else config["dataset"].get("max_samples")
     )
 
-    model_slug = make_model_slug(model, reasoning_effort)
+    question_types = args.question_types  # None means all types
+    model_slug = make_model_slug(model, reasoning_effort, question_types)
     data_dir = (project_root / config["paths"]["data_dir"]).resolve()
     out_dir = data_dir / model_slug
     results_path = out_dir / "results.jsonl"
@@ -113,6 +125,7 @@ def main() -> None:
         hf_path=config["dataset"]["hf_path"],
         split=config["dataset"]["split"],
         max_samples=max_samples,
+        question_types=question_types,
     )
 
     # Run inference

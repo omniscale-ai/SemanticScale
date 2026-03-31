@@ -17,9 +17,20 @@ from semanticscale.openai_utils import (
 logger = logging.getLogger(__name__)
 
 
-def make_model_slug(model: str, reasoning_effort: str) -> str:
-    """Return a filesystem-safe identifier for a model configuration."""
-    return f"{model}_reasoning-{reasoning_effort}"
+def make_model_slug(
+    model: str,
+    reasoning_effort: str,
+    question_types: list[str] | None = None,
+) -> str:
+    """Return a filesystem-safe identifier for a model configuration.
+
+    When *question_types* is given (e.g. ``["olympiad"]``), a suffix is appended
+    so filtered runs are stored in a separate output directory.
+    """
+    slug = f"{model}_reasoning-{reasoning_effort}"
+    if question_types:
+        slug += "_types-" + "+".join(sorted(qt.lower() for qt in question_types))
+    return slug
 
 
 _FINAL_ANSWER_RE = re.compile(
@@ -170,13 +181,11 @@ async def _run_async(
         result = await coro
         results.append(result)
         if i % 50 == 0 or i == len(tasks):
-            n_correct = sum(r.get("is_correct", False) for r in results)
             n_errors = sum(1 for r in results if r.get("error"))
             logger.info(
-                "Progress %d/%d — accuracy so far: %.1f%% (%d errors)",
+                "Progress %d/%d — %d errors so far",
                 i,
                 len(tasks),
-                100 * n_correct / max(len(results) - n_errors, 1),
                 n_errors,
             )
 

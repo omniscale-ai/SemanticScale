@@ -14,7 +14,7 @@ dataset:
   max_samples: null   # null = run on full dataset
 
 inference:
-  max_concurrent: 10
+  max_concurrent: 20
   max_retries: 5
   retry_min_wait: 1.0
   retry_max_wait: 60.0
