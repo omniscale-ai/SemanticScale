@@ -42,22 +42,9 @@ def make_model_slug(
 
 
 _FINAL_ANSWER_RE = re.compile(
-    r"FINAL ANSWER\b\s*[:\-]?\s*(.*?)(?=\n[A-Z][A-Z ]{2,}\b|\Z)",
+    r"FINAL ANSWER\b\s*[:\-]?\s*(.*)",
     re.IGNORECASE | re.DOTALL,
 )
-
-
-def _normalise_answer_text(text: str) -> str:
-    """Normalise short-form answers for comparison."""
-    cleaned = text.strip()
-    cleaned = re.sub(r"^\s*FINAL ANSWER\b\s*[:\-]?\s*", "", cleaned, flags=re.IGNORECASE)
-    cleaned = cleaned.strip().strip("`'\"").strip()
-    cleaned = re.sub(r"^\$\$(.*)\$\$$", r"\1", cleaned, flags=re.DOTALL)
-    cleaned = re.sub(r"^\\\[(.*)\\\]$", r"\1", cleaned, flags=re.DOTALL)
-    cleaned = re.sub(r"^\\\((.*)\\\)$", r"\1", cleaned, flags=re.DOTALL)
-    cleaned = cleaned.strip().strip("`'\"").strip()
-    cleaned = re.sub(r"\s+", " ", cleaned)
-    return cleaned.strip()
 
 
 def _extract_predicted_answer(answer_text: str, has_final_answer: bool) -> str:
@@ -67,14 +54,8 @@ def _extract_predicted_answer(answer_text: str, has_final_answer: bool) -> str:
     if has_final_answer:
         matches = list(_FINAL_ANSWER_RE.finditer(answer_text))
         if matches:
-            return _normalise_answer_text(matches[-1].group(1))
-    return _normalise_answer_text(answer_text.strip().split("\n")[0][:200])
-
-
-def _is_correct(predicted: str, correct: str) -> bool:
-    if not predicted or not correct:
-        return False
-    return _normalise_answer_text(predicted).lower() == _normalise_answer_text(correct).lower()
+            return matches[-1].group(1).strip()
+    return answer_text
 
 
 async def _call_one(
@@ -164,7 +145,6 @@ async def _call_one(
     if has_final_answer:
         predicted = _extract_predicted_answer(answer_text, has_final_answer)
         result["predicted_answer"] = predicted
-        result["is_correct"] = _is_correct(predicted, item["correct_answer"])
     return result
 
 

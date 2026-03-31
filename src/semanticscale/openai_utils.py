@@ -1,6 +1,7 @@
 """Shared helpers for OpenAI Responses API calls."""
 
 from typing import Any
+import json
 
 import openai
 import tenacity
@@ -8,6 +9,8 @@ import tenacity
 
 def should_retry_openai_exception(exc: BaseException) -> bool:
     """Return whether an OpenAI exception should be retried."""
+    if isinstance(exc, json.decoder.JSONDecodeError):
+        return True
     if isinstance(exc, openai.RateLimitError):
         return True
     if isinstance(exc, openai.APIStatusError) and exc.status_code >= 500:
