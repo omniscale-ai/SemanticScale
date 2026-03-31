@@ -31,12 +31,10 @@ This repository was created by merging five individual experiment branches that 
 - Set `SLOD_DATA_ROOT` env var to override the default data location
 
 ## Running Experiments
-
-Each experiment is run from its own directory:
+Use `uv` for running the code and managing dependencies:
 
 ```bash
-cd experiments/sh1_linear_probe
-python scripts/run_sh1.py
+uv run --env-file .env python experiments/sh1_linear_probe/scripts/run_sh1.py
 ```
 
 Pipeline scripts are numbered and should be run in order (01, 02, ..., 07). Some experiments have a single orchestrator script (`run_*.py`) that runs all steps.
