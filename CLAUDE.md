@@ -48,6 +48,12 @@ Pipeline scripts are numbered and should be run in order (01, 02, ..., 07). Some
 - **Experiments are independent**: Each has its own `src/` with no cross-imports between experiments (shared library extraction is planned but not yet done)
 - **Data dependencies**: SH1 depends on SH0 output, SH2/SH3/SH4 depend on SH1, SH5* depend on SH5. See `docs/roadmap.md` for the full dependency graph.
 
+## OpenAI API Usage
+
+- Use the **Responses API** exclusively (`client.responses.*`) — never Chat Completions (`client.chat.*`)
+- Structured outputs: `client.responses.parse(model=..., input=..., text_format=MyPydanticModel)`, result in `response.output_parsed`
+- Plain responses: `client.responses.create(...)`, text extracted via `extract_response_text()` in `semanticscale/openai_utils.py`
+
 ## When Modifying Code
 
 - Do not add hardcoded absolute paths — use `config.yaml` or `SLOD_DATA_ROOT`

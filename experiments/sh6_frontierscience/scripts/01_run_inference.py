@@ -22,6 +22,7 @@ import logging
 from pathlib import Path
 
 from semanticscale.sh6.dataset import load_frontierscience
+from semanticscale.sh6.grading import grade_results
 from semanticscale.sh6.inference import make_model_slug, run_inference
 from semanticscale.sh6.scoring import score_results
 from semanticscale.utils import load_config, save_jsonl, setup_logging
@@ -122,6 +123,11 @@ def main() -> None:
         service_tier=service_tier,
         config=config,
     )
+
+    # Advanced grading via grader model
+    grader_model = config.get("grading", {}).get("grader_model", "gpt-5.4")
+    logger.info("Running advanced grading with %s", grader_model)
+    results = grade_results(results, grader_model=grader_model, config=config)
 
     # Save results
     save_jsonl(results, results_path)

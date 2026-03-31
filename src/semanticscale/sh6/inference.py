@@ -41,40 +41,21 @@ def _normalise_answer_text(text: str) -> str:
     return cleaned.strip()
 
 
-def _extract_predicted_answer(
-    answer_text: str,
-    prompt_text: str,
-    choices: list[str] | None,
-) -> str:
-    """Best-effort extraction of the predicted answer letter or text."""
+def _extract_predicted_answer(answer_text: str, has_final_answer: bool) -> str:
+    """Best-effort extraction of the predicted answer text."""
     if not answer_text:
         return ""
-    if "FINAL ANSWER" in prompt_text:
+    if has_final_answer:
         matches = list(_FINAL_ANSWER_RE.finditer(answer_text))
         if matches:
             return _normalise_answer_text(matches[-1].group(1))
-    if choices:
-        # Look for a leading letter like "A", "A.", "A)" at the start of the response
-        m = re.match(r"^\s*([A-Za-z])[.):\s]", answer_text)
-        if m:
-            return m.group(1).upper()
-        # Scan for standalone letter mentions
-        m = re.search(r"\b([A-E])\b", answer_text[:200])
-        if m:
-            return m.group(1).upper()
     return _normalise_answer_text(answer_text.strip().split("\n")[0][:200])
 
 
-def _is_correct(predicted: str, correct: str, choices: list[str] | None) -> bool:
+def _is_correct(predicted: str, correct: str) -> bool:
     if not predicted or not correct:
         return False
-    # Multiple-choice: compare letters case-insensitively
-    if choices:
-        return predicted.upper() == correct.strip().upper()
-    # Free-form: exact match after normalisation
-    return _normalise_answer_text(predicted).lower() == _normalise_answer_text(
-        correct
-    ).lower()
+    return _normalise_answer_text(predicted).lower() == _normalise_answer_text(correct).lower()
 
 
 async def _call_one(
@@ -115,9 +96,9 @@ async def _call_one(
                 "service_tier": service_tier,
                 "model_slug": make_model_slug(model, reasoning_effort),
                 "problem": item["problem"],
-                "choices": item.get("choices"),
                 "correct_answer": item["correct_answer"],
                 "subject": item.get("subject", "unknown"),
+                "has_final_answer": item.get("has_final_answer", True),
                 "predicted_answer": "",
                 "reasoning_text": "",
                 "answer_text": "",
@@ -128,12 +109,9 @@ async def _call_one(
             }
 
     reasoning_text, answer_text = extract_response_text(response)
-    predicted = _extract_predicted_answer(
-        answer_text,
-        item["problem"],
-        item.get("choices"),
-    )
-    correct = _is_correct(predicted, item["correct_answer"], item.get("choices"))
+    has_final_answer = item.get("has_final_answer", True)
+    predicted = _extract_predicted_answer(answer_text, has_final_answer)
+    correct = _is_correct(predicted, item["correct_answer"])
     usage = extract_usage(response)
 
     return {
@@ -143,9 +121,9 @@ async def _call_one(
         "service_tier": service_tier,
         "model_slug": make_model_slug(model, reasoning_effort),
         "problem": item["problem"],
-        "choices": item.get("choices"),
         "correct_answer": item["correct_answer"],
         "subject": item.get("subject", "unknown"),
+        "has_final_answer": has_final_answer,
         "predicted_answer": predicted,
         "reasoning_text": reasoning_text,
         "answer_text": answer_text,
