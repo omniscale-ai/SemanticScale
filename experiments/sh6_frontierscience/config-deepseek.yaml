@@ -1,0 +1,28 @@
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+model:
+  name: deepseek/deepseek-v3.2
+  api_type: completions
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
+  reasoning:
+    enabled: true
+
+dataset:
+  hf_path: openai/frontierscience
+  split: test
+  max_samples: null   # null = run on full dataset
+
+inference:
+  max_concurrent: 20
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+grading:
+  grader_model: deepseek/deepseek-v3.2
+  api_type: completions
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY

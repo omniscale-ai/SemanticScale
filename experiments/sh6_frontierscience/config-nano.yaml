@@ -23,3 +23,13 @@ inference:
 grading:
   grader_model: gpt-5.4-nano
   service_tier: flex
+
+slod_rank:
+  model:
+    name: gpt-5.4-nano
+    api_type: responses
+    service_tier: flex
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+  cache_file: ../../data/sh6/comparison_cache.json
