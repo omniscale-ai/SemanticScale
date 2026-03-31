@@ -117,7 +117,20 @@ def extract_chat_completion_text(response: Any) -> tuple[str, str]:
         reasoning = message.reasoning_content
     elif isinstance(message, dict):
         reasoning = message.get("reasoning_details", message.get("reasoning", ""))
-        
+
+    if isinstance(reasoning, list):
+        reasoning_parts = []
+        for item in reasoning:
+            if isinstance(item, dict):
+                text = item.get("text", "") or item.get("content", "")
+                if text:
+                    reasoning_parts.append(text)
+            elif isinstance(item, str):
+                reasoning_parts.append(item)
+        reasoning = "\n\n".join(reasoning_parts)
+    elif isinstance(reasoning, dict):
+        reasoning = reasoning.get("text", "") or reasoning.get("content", "")
+
     return str(reasoning), answer
 
 
