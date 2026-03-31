@@ -12,7 +12,6 @@ Two grading modes are supported:
 """
 
 import asyncio
-import json
 import logging
 import re
 
@@ -175,32 +174,88 @@ async def _grade_rubric(
 ) -> dict:
     """Grade an open-ended problem using a rubric; returns a grade dict."""
     rubric_items = _parse_rubric_items(result["correct_answer"])
+    model_answer = result.get("answer_text", "(no answer provided)")
+
     if rubric_items:
-        rubric_content = json.dumps(rubric_items, ensure_ascii=False)
-        rubric_instruction = (
-            "The rubric is provided as a JSON array. "
-            "Each element has max_point_per_item (maximum total points for that criterion) "
-            "and item_description (what must be demonstrated to earn those points). "
-            "Item description may include multiple additive point awards - they must add up to max_point_per_item."
+        # One LLM call per rubric criterion.
+        async def _grade_one(rubric_item: dict) -> GradeRubricItem:
+            max_pts = rubric_item["max_point_per_item"]
+            item_desc = rubric_item["item_description"]
+            system_prompt = (
+                "You are an expert grader for science and mathematics problems.\n\n"
+                "Problem statement:\n"
+                f"{result['problem']}\n\n"
+                f"Grading criterion (max {max_pts} points):\n"
+                f"{item_desc}\n\n"
+                "Grade the student's response on this single criterion only. "
+                f"awarded_points must be between 0 and {max_pts}."
+            )
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": model_answer},
+            ]
+            return await _parse_response(
+                client, messages, GradeRubricItem, grader_model, semaphore, service_tier
+            )
+
+        raw = await asyncio.gather(
+            *[_grade_one(ri) for ri in rubric_items], return_exceptions=True
         )
-    else:
-        rubric_content = result["correct_answer"]
-        rubric_instruction = ""
+
+        items = []
+        for i, (rubric_item, graded) in enumerate(zip(rubric_items, raw)):
+            ref_max = float(rubric_item["max_point_per_item"])
+            if isinstance(graded, Exception):
+                logger.warning(
+                    "Grading failed for item %s criterion %d: %s",
+                    result.get("id"), i, graded,
+                )
+                items.append({
+                    "awarded_points": 0.0,
+                    "explanation": f"Grading error: {graded}",
+                    "max_points": ref_max,
+                    "error": str(graded),
+                })
+                continue
+            if float(graded.awarded_points) > ref_max:
+                logger.warning(
+                    "RubricGrade awarded_points %.1f exceeds max_points %.1f "
+                    "for item %s, criterion %d; clamping",
+                    float(graded.awarded_points), ref_max, result.get("id"), i,
+                )
+            awarded = max(0.0, min(float(graded.awarded_points), ref_max))
+            items.append({
+                "awarded_points": awarded,
+                "explanation": graded.explanation,
+                "max_points": ref_max,
+            })
+
+        total_max = sum(it["max_points"] for it in items)
+        total_awarded = sum(it["awarded_points"] for it in items)
+        if total_max != 10.0:
+            logger.warning(
+                "Rubric total_max=%.1f for item %s (expected 10)",
+                total_max, result.get("id"),
+            )
+        return {
+            "type": "rubric",
+            "items": items,
+            "total_max": total_max,
+            "total_awarded": total_awarded,
+        }
+
+    # No structured rubric items — single call with the raw correct_answer.
     system_prompt = (
         "You are an expert grader for science and mathematics problems.\n\n"
         "Problem statement:\n"
         f"{result['problem']}\n\n"
         "Grading rubric:\n"
-        f"{rubric_content}\n\n"
-        f"{rubric_instruction}"
+        f"{result['correct_answer']}\n\n"
         "Grade the student's response according to the rubric. "
         "Return a list of rubric items with one entry per rubric criterion. "
         "For each item specify: "
-        "max_points (the maximum points for that criterion), "
-        "awarded_points (between 0 and max_points), "
-        "and explanation (why those points were awarded)."
+        "awarded_points (the points awarded) and explanation (why those points were awarded)."
     )
-    model_answer = result.get("answer_text", "(no answer provided)")
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": model_answer},
@@ -209,51 +264,15 @@ async def _grade_rubric(
         rubric: RubricGrade = await _parse_response(
             client, messages, RubricGrade, grader_model, semaphore, service_tier
         )
-        if rubric_items and len(rubric.items) != len(rubric_items):
-            logger.warning(
-                "RubricGrade item count mismatch for item %s: "
-                "grader returned %d items, rubric has %d",
-                result.get("id"),
-                len(rubric.items),
-                len(rubric_items),
-            )
-        items = []
-        for i, item in enumerate(rubric.items):
-            ref_max = (
-                float(rubric_items[i]["max_point_per_item"])
-                if rubric_items and i < len(rubric_items)
-                else None
-            )
-            if ref_max is not None and float(item.awarded_points) > ref_max:
-                logger.warning(
-                    "RubricGrade awarded_points %.1f exceeds max_points %.1f "
-                    "for item %s, criterion %d; clamping",
-                    float(item.awarded_points),
-                    ref_max,
-                    result.get("id"),
-                    i,
-                )
-            awarded = (
-                max(0.0, min(float(item.awarded_points), ref_max))
-                if ref_max is not None
-                else max(0.0, float(item.awarded_points))
-            )
-            entry = {"awarded_points": awarded, "explanation": item.explanation}
-            if ref_max is not None:
-                entry["max_points"] = ref_max
-            items.append(entry)
-        total_max = sum(it["max_points"] for it in items if "max_points" in it)
+        items = [
+            {"awarded_points": max(0.0, float(item.awarded_points)), "explanation": item.explanation}
+            for item in rubric.items
+        ]
         total_awarded = sum(it["awarded_points"] for it in items)
-        if total_max != 10.0:
-            logger.warning(
-                "Rubric total_max=%.1f for item %s (expected 10)",
-                total_max,
-                result.get("id"),
-            )
         return {
             "type": "rubric",
             "items": items,
-            "total_max": total_max,
+            "total_max": 0.0,
             "total_awarded": total_awarded,
         }
     except Exception as exc:
