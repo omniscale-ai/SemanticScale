@@ -5,7 +5,6 @@ Usage:
     python scripts/01_run_inference.py [options]
 
     --model MODEL               Override default model from config.yaml
-    --reasoning-effort EFFORT   Override reasoning effort (low/medium/high)
     --service-tier TIER         Override service_tier passed to the OpenAI client
     --max-samples N             Run on first N items only (default: all)
     --question-types TYPE …     Only run on questions with matching origin field,
@@ -42,12 +41,6 @@ def parse_args() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--model", default=None, help="Model name (overrides config)")
-    parser.add_argument(
-        "--reasoning-effort",
-        default=None,
-        dest="reasoning_effort",
-        help="Reasoning effort: low, medium, high (overrides config)",
-    )
     parser.add_argument(
         "--service-tier",
         default=None,
@@ -98,8 +91,8 @@ def main() -> None:
 
     # Resolve effective parameters (CLI overrides config)
     model = args.model or config["model"]["name"]
-    reasoning_effort = args.reasoning_effort or config["model"]["reasoning_effort"]
-    service_tier = args.service_tier or config["model"]["service_tier"]
+    reasoning = config["model"].get("reasoning", {})
+    service_tier = args.service_tier or config["model"].get("service_tier")
     max_samples = (
         args.max_samples
         if args.max_samples is not None
@@ -107,16 +100,16 @@ def main() -> None:
     )
 
     question_types = args.question_types  # None means all types
-    model_slug = make_model_slug(model, reasoning_effort, question_types)
+    model_slug = make_model_slug(model, reasoning, question_types)
     data_dir = (project_root / config["paths"]["data_dir"]).resolve()
     out_dir = data_dir / model_slug
     results_path = out_dir / "results.jsonl"
     summary_path = out_dir / "summary.json"
 
     logger.info(
-        "Model: %s | reasoning_effort=%s | service_tier=%s",
+        "Model: %s | reasoning=%s | service_tier=%s",
         model,
-        reasoning_effort,
+        reasoning,
         service_tier,
     )
     logger.info("Output dir: %s", out_dir)
@@ -147,7 +140,6 @@ def main() -> None:
         results = run_inference(
             items=items,
             model=model,
-            reasoning_effort=reasoning_effort,
             service_tier=service_tier,
             config=config,
         )

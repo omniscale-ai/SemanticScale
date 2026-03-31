@@ -3,11 +3,12 @@ paths:
   reports_dir: reports
 
 model:
-  name: gpt-5.4-nano
-  service_tier: flex
+  name: nvidia/nemotron-3-super-120b-a12b:free
+  api_type: completions
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
   reasoning:
-    effort: medium
-    summary: auto
+    enabled: true
 
 dataset:
   hf_path: openai/frontierscience
@@ -22,5 +23,7 @@ inference:
   max_output_tokens: null
 
 grading:
-  grader_model: gpt-5.4-nano
-  service_tier: flex
+  grader_model: nvidia/nemotron-3-super-120b-a12b:free
+  api_type: completions
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY

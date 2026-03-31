@@ -13,6 +13,7 @@ Two grading modes are supported:
 
 import asyncio
 import logging
+import os
 import re
 
 import openai
@@ -95,9 +96,10 @@ async def _parse_response(
     text_format: type,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    api_type: str,
     service_tier: str | None = None,
 ) -> object:
-    """Call responses.parse() with retry, returning the parsed Pydantic object."""
+    """Call parse() with retry, returning the parsed Pydantic object."""
 
     @tenacity.retry(
         retry=tenacity.retry_if_exception(should_retry_openai_exception),
@@ -109,13 +111,23 @@ async def _parse_response(
         kwargs = {}
         if service_tier is not None:
             kwargs["service_tier"] = service_tier
-        response = await client.responses.parse(
-            model=grader_model,
-            input=messages,
-            text_format=text_format,
-            **kwargs,
-        )
-        return response.output_parsed
+            
+        if api_type == "completions":
+            response = await client.beta.chat.completions.parse(
+                model=grader_model,
+                messages=messages,
+                response_format=text_format,
+                **kwargs,
+            )
+            return response.choices[0].message.parsed
+        else:
+            response = await client.responses.parse(
+                model=grader_model,
+                input=messages,
+                text_format=text_format,
+                **kwargs,
+            )
+            return response.output_parsed
 
     async with semaphore:
         return await _call()
@@ -126,6 +138,7 @@ async def _grade_final_answer(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    api_type: str,
     service_tier: str | None = None,
 ) -> dict:
     """Grade a FINAL ANSWER problem; returns a grade dict."""
@@ -148,7 +161,7 @@ async def _grade_final_answer(
     ]
     try:
         grade: FinalAnswerGrade = await _parse_response(
-            client, messages, FinalAnswerGrade, grader_model, semaphore, service_tier
+            client, messages, FinalAnswerGrade, grader_model, semaphore, api_type, service_tier
         )
         return {
             "type": "final_answer",
@@ -170,6 +183,7 @@ async def _grade_rubric(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
+    api_type: str,
     service_tier: str | None = None,
 ) -> dict:
     """Grade an open-ended problem using a rubric; returns a grade dict."""
@@ -195,7 +209,7 @@ async def _grade_rubric(
                 {"role": "user", "content": model_answer},
             ]
             return await _parse_response(
-                client, messages, GradeRubricItem, grader_model, semaphore, service_tier
+                client, messages, GradeRubricItem, grader_model, semaphore, api_type, service_tier
             )
 
         raw = await asyncio.gather(
@@ -262,7 +276,7 @@ async def _grade_rubric(
     ]
     try:
         rubric: RubricGrade = await _parse_response(
-            client, messages, RubricGrade, grader_model, semaphore, service_tier
+            client, messages, RubricGrade, grader_model, semaphore, api_type, service_tier
         )
         items = [
             {"awarded_points": max(0.0, float(item.awarded_points)), "explanation": item.explanation}
@@ -310,9 +324,16 @@ def grade_results(results: list[dict], grader_model: str, config: dict) -> list[
 
     Returns a new list of result dicts with ``grade`` and updated ``is_correct``.
     """
+    grading_config = config.get("grading", {})
+    model_config = config.get("model", {})
     max_concurrent = config.get("inference", {}).get("max_concurrent", 10)
-    service_tier = config.get("grading", {}).get("service_tier")
-    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier))
+    service_tier = grading_config.get("service_tier")
+    
+    api_type = grading_config.get("api_type", model_config.get("api_type", "responses"))
+    base_url = grading_config.get("base_url", model_config.get("base_url"))
+    api_key_env = grading_config.get("api_key_env", model_config.get("api_key_env"))
+    
+    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier, api_type, base_url, api_key_env))
 
 
 async def _run_async(
@@ -320,17 +341,21 @@ async def _run_async(
     grader_model: str,
     max_concurrent: int,
     service_tier: str | None = None,
+    api_type: str = "responses",
+    base_url: str | None = None,
+    api_key_env: str | None = None,
 ) -> list[dict]:
-    client = openai.AsyncOpenAI()
+    api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
+    client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
     semaphore = asyncio.Semaphore(max_concurrent)
 
     async def _grade_indexed(idx: int, result: dict) -> tuple[int, dict]:
         if result.get("error"):
             return idx, {}
         if result.get("has_final_answer", True):
-            grade = await _grade_final_answer(client, result, grader_model, semaphore, service_tier)
+            grade = await _grade_final_answer(client, result, grader_model, semaphore, api_type, service_tier)
         else:
-            grade = await _grade_rubric(client, result, grader_model, semaphore, service_tier)
+            grade = await _grade_rubric(client, result, grader_model, semaphore, api_type, service_tier)
         return idx, grade
 
     tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]
