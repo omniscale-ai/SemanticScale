@@ -63,7 +63,6 @@ async def create_response(
     prompt: str,
     reasoning: dict,
     service_tier: str | None,
-    max_output_tokens: int,
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
@@ -82,7 +81,6 @@ async def create_response(
             input=[{"role": "user", "content": prompt}],
             reasoning=reasoning,
             service_tier=service_tier,
-            max_output_tokens=max_output_tokens,
         )
 
     return await _call()
@@ -116,7 +114,6 @@ async def create_chat_completion(
     prompt: str,
     reasoning: dict | str | None,
     service_tier: str | None,
-    max_output_tokens: int | None,
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
@@ -133,8 +130,6 @@ async def create_chat_completion(
         kwargs = {}
         if service_tier:
             kwargs["service_tier"] = service_tier
-        if max_output_tokens is not None:
-            kwargs["max_completion_tokens"] = max_output_tokens
             
         if reasoning:
             if isinstance(reasoning, dict):

@@ -20,7 +20,6 @@ inference:
   max_retries: 5
   retry_min_wait: 1.0
   retry_max_wait: 60.0
-  max_output_tokens: null
 
 grading:
   grader_model: nvidia/nemotron-3-super-120b-a12b:free
