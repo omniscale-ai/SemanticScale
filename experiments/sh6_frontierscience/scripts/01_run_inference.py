@@ -13,6 +13,7 @@ Usage:
                                 (default: all question types)
     --config PATH               Path to config.yaml (default: ../config.yaml)
     --force                     Re-run even if output already exists
+    --grade-only                Skip inference; re-grade an existing results.jsonl
 
 Output is written to:
     {data_dir}/{model_slug}/results.jsonl   — one JSON record per question
@@ -78,6 +79,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Re-run even if output already exists",
     )
+    parser.add_argument(
+        "--grade-only",
+        action="store_true",
+        dest="grade_only",
+        help="Skip inference; re-grade an existing results.jsonl in-place",
+    )
     return parser.parse_args()
 
 
@@ -114,28 +121,36 @@ def main() -> None:
     )
     logger.info("Output dir: %s", out_dir)
 
-    if results_path.exists() and not args.force:
-        logger.info(
-            "Output already exists at %s — use --force to re-run", results_path
+    if args.grade_only:
+        if not results_path.exists():
+            logger.error("--grade-only requires an existing %s", results_path)
+            raise SystemExit(1)
+        logger.info("--grade-only: loading existing results from %s", results_path)
+        with results_path.open(encoding="utf-8") as f:
+            results = [json.loads(line) for line in f if line.strip()]
+    else:
+        if results_path.exists() and not args.force:
+            logger.info(
+                "Output already exists at %s — use --force to re-run", results_path
+            )
+            return
+
+        # Load dataset
+        items = load_frontierscience(
+            hf_path=config["dataset"]["hf_path"],
+            split=config["dataset"]["split"],
+            max_samples=max_samples,
+            question_types=question_types,
         )
-        return
 
-    # Load dataset
-    items = load_frontierscience(
-        hf_path=config["dataset"]["hf_path"],
-        split=config["dataset"]["split"],
-        max_samples=max_samples,
-        question_types=question_types,
-    )
-
-    # Run inference
-    results = run_inference(
-        items=items,
-        model=model,
-        reasoning_effort=reasoning_effort,
-        service_tier=service_tier,
-        config=config,
-    )
+        # Run inference
+        results = run_inference(
+            items=items,
+            model=model,
+            reasoning_effort=reasoning_effort,
+            service_tier=service_tier,
+            config=config,
+        )
 
     # Advanced grading via grader model
     grader_model = config.get("grading", {}).get("grader_model", "gpt-5.4")
