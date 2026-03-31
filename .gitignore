@@ -34,3 +34,4 @@ Thumbs.db
 *.pkl
 *.pt
 *.bin
+.env
