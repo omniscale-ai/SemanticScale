@@ -4,12 +4,17 @@ from typing import Any
 import json
 
 import openai
+import pydantic_core
 import tenacity
 
 
 def should_retry_openai_exception(exc: BaseException) -> bool:
     """Return whether an OpenAI exception should be retried."""
     if isinstance(exc, json.decoder.JSONDecodeError):
+        return True
+    if isinstance(exc, pydantic_core.ValidationError):
+        return True
+    if isinstance(exc, ValueError):
         return True
     if isinstance(exc, openai.RateLimitError):
         return True

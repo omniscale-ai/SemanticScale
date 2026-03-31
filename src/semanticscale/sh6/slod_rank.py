@@ -146,6 +146,8 @@ async def _compare_once(
             text_format=AbstractionWinner,
             **kwargs,
         )
+        if response.output_parsed is None:
+            raise ValueError("LLM returned unparseable output (output_parsed is None)")
         return response.output_parsed.winner
 
     async with semaphore:

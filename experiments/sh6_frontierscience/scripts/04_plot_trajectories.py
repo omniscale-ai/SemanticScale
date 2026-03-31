@@ -125,6 +125,9 @@ def plot_example_trajectories(
     all_samples = correct_sample + wrong_sample
 
     n_plots = len(all_samples)
+    if n_plots == 0:
+        logger.warning("No items with >= %d reasoning chunks; skipping example trajectories plot", MIN_CHUNKS)
+        return
     n_rows = (n_plots + GRID_COLS - 1) // GRID_COLS
     fig, axes = plt.subplots(n_rows, GRID_COLS, figsize=(GRID_COLS * 4, n_rows * 3))
     axes_flat = np.array(axes).flatten()
