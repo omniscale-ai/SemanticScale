@@ -20,6 +20,12 @@ traces:
   retry_min_wait: 1.0
   retry_max_wait: 60.0
 
+grader:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+
 pairwise_slod:
   model:
     name: deepseek/deepseek-v3.2

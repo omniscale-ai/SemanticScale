@@ -298,7 +298,8 @@ async def _grade_rubric(
 def grade_results(results: list[dict], config: dict) -> list[dict]:
     """Call the grader model on each result and attach a ``grade`` field.
 
-    The grader is ``config["pairwise_slod"]["model"]``.
+    The grader model is taken from ``config["grader"]["model"]`` when present,
+    falling back to ``config["pairwise_slod"]["model"]``.
 
     For FINAL ANSWER problems the grade is::
 
@@ -314,14 +315,19 @@ def grade_results(results: list[dict], config: dict) -> list[dict]:
     - FINAL ANSWER: ``grade["passed"]``
     - Rubric: ``total_awarded >= 7.0`` (expects total_max == 10; warns if not)
     """
-    ps = config.get("pairwise_slod", {})
-    model_cfg = ps.get("model", {})
+    grader_cfg = config.get("grader")
+    if grader_cfg is not None:
+        model_cfg = grader_cfg.get("model", {})
+        max_concurrent = grader_cfg.get("max_concurrent", config.get("pairwise_slod", {}).get("max_concurrent", 10))
+    else:
+        ps = config.get("pairwise_slod", {})
+        model_cfg = ps.get("model", {})
+        max_concurrent = ps.get("max_concurrent", 10)
     grader_model = model_cfg["name"]
     service_tier = model_cfg.get("service_tier")
     base_url = model_cfg.get("base_url")
     api_key_env = model_cfg.get("api_key_env")
     extra_body = model_cfg.get("extra_body")
-    max_concurrent = ps.get("max_concurrent", 10)
 
     return asyncio.run(
         _run_async(
