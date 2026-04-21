@@ -10,9 +10,7 @@ import re
 import openai
 
 from semanticscale.openai_utils import (
-    create_chat_completion,
     create_response,
-    extract_chat_completion_text,
     extract_response_text,
     extract_usage,
 )
@@ -34,7 +32,7 @@ def make_model_slug(
         effort = "none"
     else:
         effort = reasoning.get("effort", "auto") if reasoning else "none"
-        
+
     slug = f"{model}_reasoning-{effort}"
     if question_types:
         slug += "_types-" + "+".join(sorted(qt.lower() for qt in question_types))
@@ -63,7 +61,6 @@ async def _call_one(
     item: dict,
     model: str,
     reasoning: dict,
-    api_type: str,
     service_tier: str | None,
     extra_body: dict | None,
     semaphore: asyncio.Semaphore,
@@ -71,34 +68,21 @@ async def _call_one(
     retry_min_wait: float,
     retry_max_wait: float,
 ) -> dict:
-    """Call the chosen API for a single item, with tenacity retry."""
+    """Call the Responses API for a single item, with tenacity retry."""
 
     async with semaphore:
         try:
-            if api_type == "completions":
-                response = await create_chat_completion(
-                    client=client,
-                    model=model,
-                    prompt=item["problem"],
-                    reasoning=reasoning,
-                    service_tier=service_tier,
-                    extra_body=extra_body,
-                    max_retries=max_retries,
-                    retry_min_wait=retry_min_wait,
-                    retry_max_wait=retry_max_wait,
-                )
-            else:
-                response = await create_response(
-                    client=client,
-                    model=model,
-                    prompt=item["problem"],
-                    reasoning=reasoning,
-                    service_tier=service_tier,
-                    extra_body=extra_body,
-                    max_retries=max_retries,
-                    retry_min_wait=retry_min_wait,
-                    retry_max_wait=retry_max_wait,
-                )
+            response = await create_response(
+                client=client,
+                model=model,
+                prompt=item["problem"],
+                reasoning=reasoning,
+                service_tier=service_tier,
+                extra_body=extra_body,
+                max_retries=max_retries,
+                retry_min_wait=retry_min_wait,
+                retry_max_wait=retry_max_wait,
+            )
         except Exception as exc:
             logger.exception("Failed item %s: %s", item["id"], exc)
             return {
@@ -118,11 +102,7 @@ async def _call_one(
                 "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
             }
 
-    if api_type == "completions":
-        reasoning_text, answer_text = extract_chat_completion_text(response)
-    else:
-        reasoning_text, answer_text = extract_response_text(response)
-        
+    reasoning_text, answer_text = extract_response_text(response)
     has_final_answer = item.get("has_final_answer", True)
     usage = extract_usage(response)
 
@@ -152,7 +132,6 @@ async def _run_async(
     items: list[dict],
     model: str,
     reasoning: dict,
-    api_type: str,
     base_url: str | None,
     api_key_env: str | None,
     service_tier: str | None,
@@ -172,7 +151,6 @@ async def _run_async(
             item=item,
             model=model,
             reasoning=reasoning,
-            api_type=api_type,
             service_tier=service_tier,
             extra_body=extra_body,
             semaphore=semaphore,
@@ -201,29 +179,28 @@ async def _run_async(
 
 def run_inference(
     items: list[dict],
-    model: str,
-    service_tier: str | None,
     config: dict,
+    model_override: str | None = None,
+    service_tier_override: str | None = None,
 ) -> list[dict]:
-    """Run async batch inference on items.
+    """Run async batch inference on items using the ``traces`` config section."""
+    traces_cfg = config.get("traces", {})
+    model_cfg = traces_cfg.get("model", {})
+    model = model_override or model_cfg["name"]
+    service_tier = service_tier_override or model_cfg.get("service_tier")
 
-    Returns a list of result records (one per item).
-    """
-    inf = config.get("inference", {})
-    model_config = config.get("model", {})
     return asyncio.run(
         _run_async(
             items=items,
             model=model,
-            reasoning=model_config.get("reasoning", {}),
-            api_type=model_config.get("api_type", "responses"),
-            base_url=model_config.get("base_url"),
-            api_key_env=model_config.get("api_key_env"),
+            reasoning=model_cfg.get("reasoning", {}),
+            base_url=model_cfg.get("base_url"),
+            api_key_env=model_cfg.get("api_key_env"),
             service_tier=service_tier,
-            extra_body=model_config.get("extra_body"),
-            max_concurrent=inf.get("max_concurrent", 10),
-            max_retries=inf.get("max_retries", 5),
-            retry_min_wait=inf.get("retry_min_wait", 1.0),
-            retry_max_wait=inf.get("retry_max_wait", 60.0),
+            extra_body=model_cfg.get("extra_body"),
+            max_concurrent=traces_cfg.get("max_concurrent", 10),
+            max_retries=traces_cfg.get("max_retries", 5),
+            retry_min_wait=traces_cfg.get("retry_min_wait", 1.0),
+            retry_max_wait=traces_cfg.get("retry_max_wait", 60.0),
         )
     )

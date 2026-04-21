@@ -43,13 +43,17 @@ def score_results(results: list[dict]) -> dict:
         total_input_tokens += usage.get("input_tokens") or 0
         total_output_tokens += usage.get("output_tokens") or 0
 
-    model_slug = results[0]["model_slug"] if results else ""
+    first = results[0] if results else {}
+    # Prefer the new dataset-agnostic run_slug; fall back to model_slug for
+    # frontierscience records written before the rename.
+    run_slug = first.get("run_slug") or first.get("model_slug") or ""
 
     return {
-        "model_slug": model_slug,
-        "model": results[0]["model"] if results else "",
-        "reasoning_effort": results[0]["reasoning_effort"] if results else "",
-        "service_tier": results[0]["service_tier"] if results else "",
+        "run_slug": run_slug,
+        "dataset": first.get("dataset", "frontierscience"),
+        "model": first.get("model", ""),
+        "reasoning_effort": first.get("reasoning_effort", ""),
+        "service_tier": first.get("service_tier", ""),
         "total": total,
         "answered": answered,
         "errors": errors,

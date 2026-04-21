@@ -1,0 +1,31 @@
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+dataset:
+  name: frontierscience
+  hf_path: openai/frontierscience
+  split: test
+  max_samples: null   # null = run on full dataset
+  # question_types: [olympiad, research]  # optional filter
+
+traces:
+  model:
+    name: gpt-5.4-nano
+    service_tier: flex
+    reasoning:
+      effort: medium
+      summary: auto
+  max_concurrent: 20
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+pairwise_slod:
+  model:
+    name: gpt-5.4-nano
+    service_tier: flex
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+  cache_file: ../../data/sh6/comparison_cache.json

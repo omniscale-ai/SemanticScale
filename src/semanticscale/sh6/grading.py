@@ -1,14 +1,18 @@
 """LLM-based advanced grading for SH6 results.
 
+The grader model is configured as ``pairwise_slod.model`` — the same
+auxiliary model that drives pairwise SLoD comparison also judges
+correctness of each trace's final answer.
+
 Two grading modes are supported:
 
-* FINAL ANSWER problems — the grader receives the problem, the reference answer,
-  and the model's extracted final answer.  It returns a pass/fail decision with
-  a textual explanation.
+* FINAL ANSWER problems — the grader receives the problem, the reference
+  answer, and the model's extracted final answer. It returns a pass/fail
+  decision with a textual explanation.
 
-* Open-ended (no FINAL ANSWER) problems — the grader receives the problem, the
-  reference answer / grading rubric, and the full model response.  It returns a
-  list of GradeRubricItem(max_points, awarded_points, explanation).
+* Open-ended (no FINAL ANSWER) problems — the grader receives the problem,
+  the reference answer / grading rubric, and the full model response. It
+  returns a list of GradeRubricItem(max_points, awarded_points, explanation).
 """
 
 import asyncio
@@ -23,6 +27,7 @@ from pydantic import BaseModel, Field
 from semanticscale.openai_utils import should_retry_openai_exception
 
 logger = logging.getLogger(__name__)
+
 
 # ---------------------------------------------------------------------------
 # Structured-output schemas
@@ -51,13 +56,7 @@ _RUBRIC_ITEM_RE = re.compile(r"Points:\s*([\d.]+)\s*,\s*Item:\s*", re.IGNORECASE
 
 
 def _parse_rubric_items(correct_answer: str) -> list[dict]:
-    """Split correct_answer into structured rubric items.
-
-    Each item starts with 'Points: <float>, Item:' and extends to the next
-    such marker or end of string.  Returns a list of
-    ``{"max_point_per_item": float, "item_description": str}`` dicts.
-    Returns an empty list when no markers are found.
-    """
+    """Split correct_answer into structured rubric items."""
     matches = list(_RUBRIC_ITEM_RE.finditer(correct_answer))
     if not matches:
         return []
@@ -96,11 +95,10 @@ async def _parse_response(
     text_format: type,
     grader_model: str,
     semaphore: asyncio.Semaphore,
-    api_type: str,
     service_tier: str | None = None,
     extra_body: dict | None = None,
 ) -> object:
-    """Call parse() with retry, returning the parsed Pydantic object."""
+    """Call Responses.parse() with retry, returning the parsed Pydantic object."""
 
     @tenacity.retry(
         retry=tenacity.retry_if_exception(should_retry_openai_exception),
@@ -109,29 +107,19 @@ async def _parse_response(
         reraise=True,
     )
     async def _call() -> object:
-        kwargs = {}
+        kwargs: dict = {}
         if service_tier is not None:
             kwargs["service_tier"] = service_tier
-            
         if extra_body:
             kwargs["extra_body"] = extra_body
-            
-        if api_type == "completions":
-            response = await client.beta.chat.completions.parse(
-                model=grader_model,
-                messages=messages,
-                response_format=text_format,
-                **kwargs,
-            )
-            return response.choices[0].message.parsed
-        else:
-            response = await client.responses.parse(
-                model=grader_model,
-                input=messages,
-                text_format=text_format,
-                **kwargs,
-            )
-            return response.output_parsed
+
+        response = await client.responses.parse(
+            model=grader_model,
+            input=messages,
+            text_format=text_format,
+            **kwargs,
+        )
+        return response.output_parsed
 
     async with semaphore:
         return await _call()
@@ -142,7 +130,6 @@ async def _grade_final_answer(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
-    api_type: str,
     service_tier: str | None = None,
     extra_body: dict | None = None,
 ) -> dict:
@@ -166,7 +153,7 @@ async def _grade_final_answer(
     ]
     try:
         grade: FinalAnswerGrade = await _parse_response(
-            client, messages, FinalAnswerGrade, grader_model, semaphore, api_type, service_tier, extra_body
+            client, messages, FinalAnswerGrade, grader_model, semaphore, service_tier, extra_body
         )
         return {
             "type": "final_answer",
@@ -188,7 +175,6 @@ async def _grade_rubric(
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
-    api_type: str,
     service_tier: str | None = None,
     extra_body: dict | None = None,
 ) -> dict:
@@ -197,7 +183,6 @@ async def _grade_rubric(
     model_answer = result.get("answer_text", "(no answer provided)")
 
     if rubric_items:
-        # One LLM call per rubric criterion.
         async def _grade_one(rubric_item: dict) -> GradeRubricItem:
             max_pts = rubric_item["max_point_per_item"]
             item_desc = rubric_item["item_description"]
@@ -215,7 +200,7 @@ async def _grade_rubric(
                 {"role": "user", "content": model_answer},
             ]
             return await _parse_response(
-                client, messages, GradeRubricItem, grader_model, semaphore, api_type, service_tier, extra_body
+                client, messages, GradeRubricItem, grader_model, semaphore, service_tier, extra_body
             )
 
         raw = await asyncio.gather(
@@ -264,7 +249,6 @@ async def _grade_rubric(
             "total_awarded": total_awarded,
         }
 
-    # No structured rubric items — single call with the raw correct_answer.
     system_prompt = (
         "You are an expert grader for science and mathematics problems.\n\n"
         "Problem statement:\n"
@@ -282,7 +266,7 @@ async def _grade_rubric(
     ]
     try:
         rubric: RubricGrade = await _parse_response(
-            client, messages, RubricGrade, grader_model, semaphore, api_type, service_tier, extra_body
+            client, messages, RubricGrade, grader_model, semaphore, service_tier, extra_body
         )
         items = [
             {"awarded_points": max(0.0, float(item.awarded_points)), "explanation": item.explanation}
@@ -311,8 +295,10 @@ async def _grade_rubric(
 # ---------------------------------------------------------------------------
 
 
-def grade_results(results: list[dict], grader_model: str, config: dict) -> list[dict]:
+def grade_results(results: list[dict], config: dict) -> list[dict]:
     """Call the grader model on each result and attach a ``grade`` field.
+
+    The grader is ``config["pairwise_slod"]["model"]``.
 
     For FINAL ANSWER problems the grade is::
 
@@ -327,20 +313,27 @@ def grade_results(results: list[dict], grader_model: str, config: dict) -> list[
     ``is_correct`` is updated to reflect the advanced grade:
     - FINAL ANSWER: ``grade["passed"]``
     - Rubric: ``total_awarded >= 7.0`` (expects total_max == 10; warns if not)
-
-    Returns a new list of result dicts with ``grade`` and updated ``is_correct``.
     """
-    grading_config = config.get("grading", {})
-    model_config = config.get("model", {})
-    max_concurrent = config.get("inference", {}).get("max_concurrent", 10)
-    service_tier = grading_config.get("service_tier")
-    
-    api_type = grading_config.get("api_type", model_config.get("api_type", "responses"))
-    base_url = grading_config.get("base_url", model_config.get("base_url"))
-    api_key_env = grading_config.get("api_key_env", model_config.get("api_key_env"))
-    extra_body = grading_config.get("extra_body", model_config.get("extra_body"))
-    
-    return asyncio.run(_run_async(results, grader_model, max_concurrent, service_tier, api_type, base_url, api_key_env, extra_body))
+    ps = config.get("pairwise_slod", {})
+    model_cfg = ps.get("model", {})
+    grader_model = model_cfg["name"]
+    service_tier = model_cfg.get("service_tier")
+    base_url = model_cfg.get("base_url")
+    api_key_env = model_cfg.get("api_key_env")
+    extra_body = model_cfg.get("extra_body")
+    max_concurrent = ps.get("max_concurrent", 10)
+
+    return asyncio.run(
+        _run_async(
+            results=results,
+            grader_model=grader_model,
+            max_concurrent=max_concurrent,
+            service_tier=service_tier,
+            base_url=base_url,
+            api_key_env=api_key_env,
+            extra_body=extra_body,
+        )
+    )
 
 
 async def _run_async(
@@ -348,7 +341,6 @@ async def _run_async(
     grader_model: str,
     max_concurrent: int,
     service_tier: str | None = None,
-    api_type: str = "responses",
     base_url: str | None = None,
     api_key_env: str | None = None,
     extra_body: dict | None = None,
@@ -361,9 +353,9 @@ async def _run_async(
         if result.get("error"):
             return idx, {}
         if result.get("has_final_answer", True):
-            grade = await _grade_final_answer(client, result, grader_model, semaphore, api_type, service_tier, extra_body)
+            grade = await _grade_final_answer(client, result, grader_model, semaphore, service_tier, extra_body)
         else:
-            grade = await _grade_rubric(client, result, grader_model, semaphore, api_type, service_tier, extra_body)
+            grade = await _grade_rubric(client, result, grader_model, semaphore, service_tier, extra_body)
         return idx, grade
 
     tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]

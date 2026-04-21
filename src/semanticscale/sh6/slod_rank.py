@@ -336,9 +336,9 @@ async def rank_all(
       reasoning_params, answer_params,
       reasoning_comparisons, answer_comparisons
     """
-    sr = config.get("slod_rank", {})
-    sr_model = sr.get("model", {})
-    model = sr_model.get("name", config["model"]["name"])
+    sr = config["pairwise_slod"]
+    sr_model = sr["model"]
+    model = sr_model["name"]
     service_tier = sr_model.get("service_tier")
     max_concurrent = sr.get("max_concurrent", 20)
     extra = sr.get("extra_comparisons_per_problem", 10)
@@ -348,8 +348,8 @@ async def rank_all(
     cache = ComparisonCache(cache_path)
     cache.load()
 
-    api_key_env = sr_model.get("api_key_env", config.get("model", {}).get("api_key_env"))
-    base_url = sr_model.get("base_url", config.get("model", {}).get("base_url"))
+    api_key_env = sr_model.get("api_key_env")
+    base_url = sr_model.get("base_url")
     api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
     client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
     semaphore = asyncio.Semaphore(max_concurrent)
@@ -358,8 +358,12 @@ async def rank_all(
         if item.get("error"):
             return None
         iid = item["id"]
-        r_chunks = chunk_text(item.get("reasoning_text") or "")
-        a_chunks = chunk_text(item.get("answer_text") or "")
+        # Prefer pre-chunked traces (e.g. ProcessBench steps); fall back to
+        # splitting free-form text by \n\n.
+        pre_r = item.get("reasoning_chunks")
+        pre_a = item.get("answer_chunks")
+        r_chunks = list(pre_r) if pre_r else chunk_text(item.get("reasoning_text") or "")
+        a_chunks = list(pre_a) if pre_a else chunk_text(item.get("answer_text") or "")
 
         if len(r_chunks) < min_chunks and len(a_chunks) < min_chunks:
             logger.debug("Skipping %s: insufficient chunks", iid)

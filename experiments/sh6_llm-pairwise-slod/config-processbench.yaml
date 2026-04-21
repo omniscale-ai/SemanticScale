@@ -1,0 +1,29 @@
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+dataset:
+  name: processbench
+  hf_path: Qwen/ProcessBench
+  # Which splits to load. Any subset of:
+  #   gsm8k, math, olympiadbench, omnimath
+  # Or "all" to load everything.
+  subsets: [gsm8k]
+  # Restrict to specific generator models (the LLM that produced the trace).
+  # "all" or null loads every generator that appears in the subsets.
+  generators: all
+  max_samples: null
+
+# No `traces` section: ProcessBench already ships traces with a `steps`
+# field and a `label` marking where the first error occurs, so Stage 1
+# just loads and normalises — no inference is run.
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+  cache_file: ../../data/sh6/comparison_cache.json

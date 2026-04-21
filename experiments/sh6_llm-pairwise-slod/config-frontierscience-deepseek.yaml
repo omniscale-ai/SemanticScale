@@ -2,33 +2,29 @@ paths:
   data_dir: ../../data/sh6
   reports_dir: reports
 
-model:
-  name: gpt-5.4-nano
-  service_tier: flex
-  reasoning:
-    effort: medium
-    summary: auto
-
 dataset:
+  name: frontierscience
   hf_path: openai/frontierscience
   split: test
   max_samples: null   # null = run on full dataset
 
-inference:
+traces:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: true
   max_concurrent: 20
   max_retries: 5
   retry_min_wait: 1.0
   retry_max_wait: 60.0
 
-grading:
-  grader_model: gpt-5.4-nano
-  service_tier: flex
-
-slod_rank:
+pairwise_slod:
   model:
-    name: gpt-5.4-nano
-    api_type: responses
-    service_tier: flex
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
   max_concurrent: 20
   extra_comparisons_per_problem: 10
   min_chunks: 2

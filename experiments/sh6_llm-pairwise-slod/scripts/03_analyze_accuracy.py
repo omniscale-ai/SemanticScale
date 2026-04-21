@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""SH6 — Stage 2: Aggregate results across model configurations and produce reports.
+"""SH6 — Stage 3a: Accuracy analysis across runs of a dataset.
 
-Scans {data_dir}/*/summary.json for all completed runs and generates:
-    reports/accuracy_comparison.png  — bar chart comparing models
-    reports/summary.md               — markdown table with accuracy breakdown
+Scans {data_dir}/{dataset}/*/summary.json and produces:
+    reports/{dataset}/accuracy_comparison.png
+    reports/{dataset}/summary.md
 
 Usage:
-    python scripts/02_analyze.py [--config PATH]
+    python scripts/03_analyze_accuracy.py --config config-frontierscience-nano.yaml
 """
 
 import argparse
@@ -14,23 +14,28 @@ import json
 import logging
 from pathlib import Path
 
+from semanticscale.sh6 import datasets as ds
 from semanticscale.utils import load_config, setup_logging
 
 logger = logging.getLogger(__name__)
 
 
-def load_all_summaries(data_dir: Path) -> list[dict]:
+def load_all_summaries(dataset_dir: Path) -> list[dict]:
     summaries = []
-    for path in sorted(data_dir.glob("*/summary.json")):
+    for path in sorted(dataset_dir.glob("*/summary.json")):
         with open(path) as f:
             summaries.append(json.load(f))
     return summaries
 
 
-def plot_accuracy_comparison(summaries: list[dict], out_path: Path) -> None:
+def _slug(s: dict) -> str:
+    return s.get("run_slug") or s.get("model_slug") or "unknown"
+
+
+def plot_accuracy_comparison(summaries: list[dict], out_path: Path, dataset: str) -> None:
     import matplotlib.pyplot as plt
 
-    slugs = [s["model_slug"] for s in summaries]
+    slugs = [_slug(s) for s in summaries]
     accuracies = [100 * s["accuracy"] for s in summaries]
 
     fig, ax = plt.subplots(figsize=(max(6, len(slugs) * 1.5), 5))
@@ -38,7 +43,7 @@ def plot_accuracy_comparison(summaries: list[dict], out_path: Path) -> None:
     ax.set_xticks(range(len(slugs)))
     ax.set_xticklabels(slugs, rotation=25, ha="right", fontsize=9)
     ax.set_ylabel("Accuracy (%)")
-    ax.set_title("FrontierScience — Accuracy by Model Configuration")
+    ax.set_title(f"{dataset} — Accuracy by Run")
     ax.set_ylim(0, 105)
     for bar, acc in zip(bars, accuracies):
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
@@ -50,32 +55,31 @@ def plot_accuracy_comparison(summaries: list[dict], out_path: Path) -> None:
     logger.info("Saved accuracy comparison to %s", out_path)
 
 
-def write_summary_md(summaries: list[dict], out_path: Path) -> None:
+def write_summary_md(summaries: list[dict], out_path: Path, dataset: str) -> None:
     lines = [
-        "# SH6 FrontierScience — Results Summary",
+        f"# SH6 {dataset} — Results Summary",
         "",
         "## Overall Accuracy",
         "",
-        "| Model slug | Accuracy | Correct | Answered | Errors |",
+        "| Run slug | Accuracy | Correct | Answered | Errors |",
         "|---|---|---|---|---|",
     ]
     for s in summaries:
         lines.append(
-            f"| {s['model_slug']} "
+            f"| {_slug(s)} "
             f"| {100 * s['accuracy']:.1f}% "
             f"| {s['correct']} "
             f"| {s['answered']} "
             f"| {s['errors']} |"
         )
 
-    # Per-subject breakdown for each run
     for s in summaries:
         by_subj = s.get("by_subject", {})
         if not by_subj:
             continue
         lines += [
             "",
-            f"## {s['model_slug']} — Per-Subject Accuracy",
+            f"## {_slug(s)} — Per-Subject Accuracy",
             "",
             "| Subject | Accuracy | Correct | Total | Errors |",
             "|---|---|---|---|---|",
@@ -98,7 +102,7 @@ def write_summary_md(summaries: list[dict], out_path: Path) -> None:
 def parse_args() -> argparse.Namespace:
     here = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--config", default=str(here / "config.yaml"), help="Path to config.yaml")
+    parser.add_argument("--config", default=str(here / "config.yaml"))
     return parser.parse_args()
 
 
@@ -108,18 +112,23 @@ def main() -> None:
 
     config = load_config(args.config)
     project_root = Path(config["_project_root"])
-    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
-    reports_dir = (project_root / config["paths"]["reports_dir"]).resolve()
 
-    summaries = load_all_summaries(data_dir)
+    dataset_name = ds.dataset_name(config)
+    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
+    reports_dir = (project_root / config["paths"]["reports_dir"]).resolve() / dataset_name
+
+    dataset_dir = data_dir / dataset_name
+    summaries = load_all_summaries(dataset_dir)
     if not summaries:
-        logger.warning("No summary.json files found under %s — run 01_run_inference.py first", data_dir)
+        logger.warning(
+            "No summary.json files under %s — run 01_traces.py first", dataset_dir
+        )
         return
 
-    logger.info("Found %d run(s): %s", len(summaries), [s["model_slug"] for s in summaries])
+    logger.info("Found %d run(s): %s", len(summaries), [_slug(s) for s in summaries])
 
-    plot_accuracy_comparison(summaries, reports_dir / "accuracy_comparison.png")
-    write_summary_md(summaries, reports_dir / "summary.md")
+    plot_accuracy_comparison(summaries, reports_dir / "accuracy_comparison.png", dataset_name)
+    write_summary_md(summaries, reports_dir / "summary.md", dataset_name)
 
 
 if __name__ == "__main__":
