@@ -26,4 +26,4 @@ pairwise_slod:
   max_concurrent: 20
   extra_comparisons_per_problem: 10
   min_chunks: 2
-  cache_file: ../../data/sh6/comparison_cache.json
+  cache_file: ../../data/sh6/processbench/gsm8k/comparison_cache.json

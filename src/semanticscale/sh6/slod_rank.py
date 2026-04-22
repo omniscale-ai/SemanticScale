@@ -386,8 +386,9 @@ async def rank_all(
                 rankings.append(rec)
             if completed % 20 == 0 or completed == len(tasks):
                 logger.info("Tournament progress: %d/%d items processed", completed, len(tasks))
+                cache.save()
     finally:
+        cache.save()
         await backend.aclose()
 
-    cache.save()
     return rankings
