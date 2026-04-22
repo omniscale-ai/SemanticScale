@@ -1,19 +1,18 @@
-"""Async OpenAI Responses API inference for SH6."""
+"""Async LLM inference for SH6.
+
+Dispatches between the OpenAI Responses API and the OpenRouter Python SDK
+via :mod:`semanticscale.llm_backend`. OpenRouter is selected when the
+config's ``traces.model.base_url`` points at ``openrouter.ai`` or when
+``api_key_env`` is ``OPENROUTER_API_KEY``.
+"""
 
 import asyncio
 import datetime
 from datetime import timezone
 import logging
-import os
 import re
 
-import openai
-
-from semanticscale.openai_utils import (
-    create_response,
-    extract_response_text,
-    extract_usage,
-)
+from semanticscale.llm_backend import Backend, make_backend
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +56,7 @@ def _extract_predicted_answer(answer_text: str, has_final_answer: bool) -> str:
 
 
 async def _call_one(
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     item: dict,
     model: str,
     reasoning: dict,
@@ -68,12 +67,11 @@ async def _call_one(
     retry_min_wait: float,
     retry_max_wait: float,
 ) -> dict:
-    """Call the Responses API for a single item, with tenacity retry."""
+    """Call the backend for a single item, with retry."""
 
     async with semaphore:
         try:
-            response = await create_response(
-                client=client,
+            out = await backend.create(
                 model=model,
                 prompt=item["problem"],
                 reasoning=reasoning,
@@ -102,9 +100,9 @@ async def _call_one(
                 "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
             }
 
-    reasoning_text, answer_text = extract_response_text(response)
     has_final_answer = item.get("has_final_answer", True)
-    usage = extract_usage(response)
+    reasoning_text = out["reasoning_text"]
+    answer_text = out["answer_text"]
 
     result = {
         "id": item["id"],
@@ -118,22 +116,20 @@ async def _call_one(
         "has_final_answer": has_final_answer,
         "reasoning_text": reasoning_text,
         "answer_text": answer_text,
-        "usage": usage,
+        "usage": out["usage"],
         "error": None,
         "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
     }
     if has_final_answer:
-        predicted = _extract_predicted_answer(answer_text, has_final_answer)
-        result["predicted_answer"] = predicted
+        result["predicted_answer"] = _extract_predicted_answer(answer_text, has_final_answer)
     return result
 
 
 async def _run_async(
     items: list[dict],
+    model_cfg: dict,
     model: str,
     reasoning: dict,
-    base_url: str | None,
-    api_key_env: str | None,
     service_tier: str | None,
     extra_body: dict | None,
     max_concurrent: int,
@@ -141,13 +137,12 @@ async def _run_async(
     retry_min_wait: float,
     retry_max_wait: float,
 ) -> list[dict]:
-    api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
-    client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
+    backend = make_backend(model_cfg)
     semaphore = asyncio.Semaphore(max_concurrent)
 
     tasks = [
         _call_one(
-            client=client,
+            backend=backend,
             item=item,
             model=model,
             reasoning=reasoning,
@@ -161,20 +156,22 @@ async def _run_async(
         for item in items
     ]
 
-    results = []
-    for i, coro in enumerate(asyncio.as_completed(tasks), 1):
-        result = await coro
-        results.append(result)
-        if i % 50 == 0 or i == len(tasks):
-            n_errors = sum(1 for r in results if r.get("error"))
-            logger.info(
-                "Progress %d/%d — %d errors so far",
-                i,
-                len(tasks),
-                n_errors,
-            )
-
-    return results
+    try:
+        results = []
+        for i, coro in enumerate(asyncio.as_completed(tasks), 1):
+            result = await coro
+            results.append(result)
+            if i % 50 == 0 or i == len(tasks):
+                n_errors = sum(1 for r in results if r.get("error"))
+                logger.info(
+                    "Progress %d/%d — %d errors so far",
+                    i,
+                    len(tasks),
+                    n_errors,
+                )
+        return results
+    finally:
+        await backend.aclose()
 
 
 def run_inference(
@@ -192,10 +189,9 @@ def run_inference(
     return asyncio.run(
         _run_async(
             items=items,
+            model_cfg=model_cfg,
             model=model,
             reasoning=model_cfg.get("reasoning", {}),
-            base_url=model_cfg.get("base_url"),
-            api_key_env=model_cfg.get("api_key_env"),
             service_tier=service_tier,
             extra_body=model_cfg.get("extra_body"),
             max_concurrent=traces_cfg.get("max_concurrent", 10),

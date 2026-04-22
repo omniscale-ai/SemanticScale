@@ -1,8 +1,8 @@
 """LLM-based advanced grading for SH6 results.
 
-The grader model is configured as ``pairwise_slod.model`` — the same
-auxiliary model that drives pairwise SLoD comparison also judges
-correctness of each trace's final answer.
+The grader model is configured as ``grader.model`` (falling back to
+``pairwise_slod.model``). Dispatch between OpenAI Responses API and
+OpenRouter Chat Completions is handled by :mod:`semanticscale.llm_backend`.
 
 Two grading modes are supported:
 
@@ -17,14 +17,11 @@ Two grading modes are supported:
 
 import asyncio
 import logging
-import os
 import re
 
-import openai
-import tenacity
 from pydantic import BaseModel, Field
 
-from semanticscale.openai_utils import should_retry_openai_exception
+from semanticscale.llm_backend import Backend, make_backend
 
 logger = logging.getLogger(__name__)
 
@@ -89,8 +86,8 @@ def _extract_after_final_answer(answer_text: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-async def _parse_response(
-    client: openai.AsyncOpenAI,
+async def _parse_with_backend(
+    backend: Backend,
     messages: list[dict],
     text_format: type,
     grader_model: str,
@@ -98,35 +95,19 @@ async def _parse_response(
     service_tier: str | None = None,
     extra_body: dict | None = None,
 ) -> object:
-    """Call Responses.parse() with retry, returning the parsed Pydantic object."""
-
-    @tenacity.retry(
-        retry=tenacity.retry_if_exception(should_retry_openai_exception),
-        wait=tenacity.wait_exponential(min=1.0, max=60.0),
-        stop=tenacity.stop_after_attempt(5),
-        reraise=True,
-    )
-    async def _call() -> object:
-        kwargs: dict = {}
-        if service_tier is not None:
-            kwargs["service_tier"] = service_tier
-        if extra_body:
-            kwargs["extra_body"] = extra_body
-
-        response = await client.responses.parse(
-            model=grader_model,
-            input=messages,
-            text_format=text_format,
-            **kwargs,
-        )
-        return response.output_parsed
-
+    """Call backend.parse() under a concurrency semaphore."""
     async with semaphore:
-        return await _call()
+        return await backend.parse(
+            model=grader_model,
+            messages=messages,
+            text_format=text_format,
+            service_tier=service_tier,
+            extra_body=extra_body,
+        )
 
 
 async def _grade_final_answer(
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
@@ -152,8 +133,8 @@ async def _grade_final_answer(
         {"role": "user", "content": model_answer or "(no answer provided)"},
     ]
     try:
-        grade: FinalAnswerGrade = await _parse_response(
-            client, messages, FinalAnswerGrade, grader_model, semaphore, service_tier, extra_body
+        grade: FinalAnswerGrade = await _parse_with_backend(
+            backend, messages, FinalAnswerGrade, grader_model, semaphore, service_tier, extra_body
         )
         return {
             "type": "final_answer",
@@ -171,7 +152,7 @@ async def _grade_final_answer(
 
 
 async def _grade_rubric(
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     result: dict,
     grader_model: str,
     semaphore: asyncio.Semaphore,
@@ -199,8 +180,8 @@ async def _grade_rubric(
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": model_answer},
             ]
-            return await _parse_response(
-                client, messages, GradeRubricItem, grader_model, semaphore, service_tier, extra_body
+            return await _parse_with_backend(
+                backend, messages, GradeRubricItem, grader_model, semaphore, service_tier, extra_body
             )
 
         raw = await asyncio.gather(
@@ -265,8 +246,8 @@ async def _grade_rubric(
         {"role": "user", "content": model_answer},
     ]
     try:
-        rubric: RubricGrade = await _parse_response(
-            client, messages, RubricGrade, grader_model, semaphore, service_tier, extra_body
+        rubric: RubricGrade = await _parse_with_backend(
+            backend, messages, RubricGrade, grader_model, semaphore, service_tier, extra_body
         )
         items = [
             {"awarded_points": max(0.0, float(item.awarded_points)), "explanation": item.explanation}
@@ -325,18 +306,15 @@ def grade_results(results: list[dict], config: dict) -> list[dict]:
         max_concurrent = ps.get("max_concurrent", 10)
     grader_model = model_cfg["name"]
     service_tier = model_cfg.get("service_tier")
-    base_url = model_cfg.get("base_url")
-    api_key_env = model_cfg.get("api_key_env")
     extra_body = model_cfg.get("extra_body")
 
     return asyncio.run(
         _run_async(
             results=results,
+            model_cfg=model_cfg,
             grader_model=grader_model,
             max_concurrent=max_concurrent,
             service_tier=service_tier,
-            base_url=base_url,
-            api_key_env=api_key_env,
             extra_body=extra_body,
         )
     )
@@ -344,35 +322,36 @@ def grade_results(results: list[dict], config: dict) -> list[dict]:
 
 async def _run_async(
     results: list[dict],
+    model_cfg: dict,
     grader_model: str,
     max_concurrent: int,
     service_tier: str | None = None,
-    base_url: str | None = None,
-    api_key_env: str | None = None,
     extra_body: dict | None = None,
 ) -> list[dict]:
-    api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
-    client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
+    backend = make_backend(model_cfg)
     semaphore = asyncio.Semaphore(max_concurrent)
 
     async def _grade_indexed(idx: int, result: dict) -> tuple[int, dict]:
         if result.get("error"):
             return idx, {}
         if result.get("has_final_answer", True):
-            grade = await _grade_final_answer(client, result, grader_model, semaphore, service_tier, extra_body)
+            grade = await _grade_final_answer(backend, result, grader_model, semaphore, service_tier, extra_body)
         else:
-            grade = await _grade_rubric(client, result, grader_model, semaphore, service_tier, extra_body)
+            grade = await _grade_rubric(backend, result, grader_model, semaphore, service_tier, extra_body)
         return idx, grade
 
-    tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]
-    ordered_grades: list[dict] = [{}] * len(results)
-    completed = 0
-    for coro in asyncio.as_completed(tasks):
-        idx, grade = await coro
-        ordered_grades[idx] = grade
-        completed += 1
-        if completed % 50 == 0 or completed == len(tasks):
-            logger.info("Grading progress: %d/%d", completed, len(tasks))
+    try:
+        tasks = [_grade_indexed(i, r) for i, r in enumerate(results)]
+        ordered_grades: list[dict] = [{}] * len(results)
+        completed = 0
+        for coro in asyncio.as_completed(tasks):
+            idx, grade = await coro
+            ordered_grades[idx] = grade
+            completed += 1
+            if completed % 50 == 0 or completed == len(tasks):
+                logger.info("Grading progress: %d/%d", completed, len(tasks))
+    finally:
+        await backend.aclose()
 
     updated = []
     for result, grade in zip(results, ordered_grades):

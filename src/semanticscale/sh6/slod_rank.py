@@ -3,23 +3,23 @@
 Chunks texts by \\n\\n, runs double LLM comparisons (a→b, b→a) for
 consensus, caches results to disk, and uses choix to compute
 Bradley-Terry parameters (higher = more abstract).
+
+Dispatches between OpenAI Responses API and OpenRouter Chat Completions
+via :mod:`semanticscale.llm_backend`.
 """
 
 import asyncio
 import hashlib
 import json
 import logging
-import os
 from pathlib import Path
 from typing import Literal
 
 import choix
 import numpy as np
-import openai
-import tenacity
 from pydantic import BaseModel
 
-from semanticscale.openai_utils import should_retry_openai_exception
+from semanticscale.llm_backend import Backend, make_backend
 
 logger = logging.getLogger(__name__)
 
@@ -102,7 +102,7 @@ class ComparisonCache:
 
 
 async def _compare_once(
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     model: str,
     service_tier: str | None,
     chunk_a: str,
@@ -130,29 +130,15 @@ async def _compare_once(
         },
     ]
 
-    @tenacity.retry(
-        retry=tenacity.retry_if_exception(should_retry_openai_exception),
-        wait=tenacity.wait_exponential(min=1.0, max=60.0),
-        stop=tenacity.stop_after_attempt(5),
-        reraise=True,
-    )
-    async def _call() -> str:
-        kwargs: dict = {}
-        if service_tier is not None:
-            kwargs["service_tier"] = service_tier
-        response = await client.responses.parse(
-            model=model,
-            input=messages,
-            text_format=AbstractionWinner,
-            **kwargs,
-        )
-        if response.output_parsed is None:
-            raise ValueError("LLM returned unparseable output (output_parsed is None)")
-        return response.output_parsed.winner
-
     async with semaphore:
-        result = await _call()
+        parsed: AbstractionWinner = await backend.parse(
+            model=model,
+            messages=messages,
+            text_format=AbstractionWinner,
+            service_tier=service_tier,
+        )
 
+    result = parsed.winner
     cache.set(chunk_a, chunk_b, result)
     return result
 
@@ -163,7 +149,7 @@ async def _compare_once(
 
 
 async def compare_scale(
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     model: str,
     service_tier: str | None,
     chunk_a: str,
@@ -177,8 +163,8 @@ async def compare_scale(
     if the two calls disagree.
     """
     r1, r2 = await asyncio.gather(
-        _compare_once(client, model, service_tier, chunk_a, chunk_b, cache, semaphore),
-        _compare_once(client, model, service_tier, chunk_b, chunk_a, cache, semaphore),
+        _compare_once(backend, model, service_tier, chunk_a, chunk_b, cache, semaphore),
+        _compare_once(backend, model, service_tier, chunk_b, chunk_a, cache, semaphore),
     )
     # r1: 'A'→chunk_a wins, 'B'→chunk_b wins
     # r2 was called with (b, a): 'A'→chunk_b wins (b was presented as A), 'B'→chunk_a wins
@@ -251,7 +237,7 @@ async def run_problem_tournament(
     problem_id: str,
     field: str,
     chunks: list[str],
-    client: openai.AsyncOpenAI,
+    backend: Backend,
     model: str,
     service_tier: str | None,
     semaphore: asyncio.Semaphore,
@@ -276,7 +262,7 @@ async def run_problem_tournament(
     # Phase 1: consecutive pairs, all in parallel
     consecutive = [(i, i + 1) for i in range(n - 1)]
     results = await asyncio.gather(*[
-        compare_scale(client, model, service_tier, chunks[i], chunks[j], cache, semaphore)
+        compare_scale(backend, model, service_tier, chunks[i], chunks[j], cache, semaphore)
         for i, j in consecutive
     ])
     for (i, j), res in zip(consecutive, results):
@@ -302,7 +288,7 @@ async def run_problem_tournament(
             break
 
         batch_results = await asyncio.gather(*[
-            compare_scale(client, model, service_tier, chunks[i], chunks[j], cache, semaphore)
+            compare_scale(backend, model, service_tier, chunks[i], chunks[j], cache, semaphore)
             for i, j in batch
         ])
         for (i, j), res in zip(batch, batch_results):
@@ -348,10 +334,7 @@ async def rank_all(
     cache = ComparisonCache(cache_path)
     cache.load()
 
-    api_key_env = sr_model.get("api_key_env")
-    base_url = sr_model.get("base_url")
-    api_key = os.environ.get(api_key_env) if api_key_env else os.environ.get("OPENAI_API_KEY")
-    client = openai.AsyncOpenAI(base_url=base_url, api_key=api_key)
+    backend = make_backend(sr_model)
     semaphore = asyncio.Semaphore(max_concurrent)
 
     async def _rank_item(item: dict) -> dict | None:
@@ -365,17 +348,22 @@ async def rank_all(
         r_chunks = list(pre_r) if pre_r else chunk_text(item.get("reasoning_text") or "")
         a_chunks = list(pre_a) if pre_a else chunk_text(item.get("answer_text") or "")
 
-        if len(r_chunks) < min_chunks and len(a_chunks) < min_chunks:
-            logger.debug("Skipping %s: insufficient chunks", iid)
+        n_r = len(r_chunks)
+        n_a = len(a_chunks)
+        if n_r + n_a < min_chunks:
+            logger.debug("Skipping %s: insufficient chunks (%d)", iid, n_r + n_a)
             return None
 
-        r_data, a_data = await asyncio.gather(
-            run_problem_tournament(iid, "reasoning", r_chunks, client, model, service_tier, semaphore, cache, extra),
-            run_problem_tournament(iid, "answer", a_chunks, client, model, service_tier, semaphore, cache, extra),
+        # Joint tournament so reasoning and answer share a common SLoD scale.
+        combined = r_chunks + a_chunks
+        combined_data = await run_problem_tournament(
+            iid, "combined", combined, backend, model, service_tier, semaphore, cache, extra,
         )
-
-        r_params = compute_choix_params(len(r_chunks), r_data).tolist()
-        a_params = compute_choix_params(len(a_chunks), a_data).tolist()
+        joint_params = compute_choix_params(len(combined), combined_data).tolist()
+        r_params = joint_params[:n_r]
+        a_params = joint_params[n_r:]
+        r_data = [(i, j) for i, j in combined_data if i < n_r and j < n_r]
+        a_data = [(i - n_r, j - n_r) for i, j in combined_data if i >= n_r and j >= n_r]
 
         return {
             "id": iid,
@@ -387,16 +375,19 @@ async def rank_all(
             "answer_comparisons": [list(pair) for pair in a_data],
         }
 
-    tasks = [_rank_item(item) for item in results]
-    rankings: list[dict] = []
-    completed = 0
-    for coro in asyncio.as_completed(tasks):
-        rec = await coro
-        completed += 1
-        if rec is not None:
-            rankings.append(rec)
-        if completed % 20 == 0 or completed == len(tasks):
-            logger.info("Tournament progress: %d/%d items processed", completed, len(tasks))
+    try:
+        tasks = [_rank_item(item) for item in results]
+        rankings: list[dict] = []
+        completed = 0
+        for coro in asyncio.as_completed(tasks):
+            rec = await coro
+            completed += 1
+            if rec is not None:
+                rankings.append(rec)
+            if completed % 20 == 0 or completed == len(tasks):
+                logger.info("Tournament progress: %d/%d items processed", completed, len(tasks))
+    finally:
+        await backend.aclose()
 
     cache.save()
     return rankings
