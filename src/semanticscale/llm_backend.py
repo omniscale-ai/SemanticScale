@@ -282,7 +282,7 @@ class OpenRouterBackend:
             stop=tenacity.stop_after_attempt(max_retries),
             reraise=True,
         )
-        async def _call() -> Any:
+        async def _call() -> BaseModel:
             kwargs: dict[str, Any] = {
                 "messages": messages,
                 "model": model,
@@ -291,16 +291,16 @@ class OpenRouterBackend:
             }
             if service_tier is not None:
                 kwargs["service_tier"] = service_tier
-            return await self._client.chat.send_async(**kwargs)
+            response = await self._client.chat.send_async(**kwargs)
+            try:
+                content = response.choices[0].message.content
+            except (AttributeError, IndexError) as exc:
+                raise ValueError(f"OpenRouter response missing choices/message: {exc}") from exc
+            if not content or not isinstance(content, str):
+                raise ValueError("OpenRouter response has empty content for structured output")
+            return text_format.model_validate_json(content)
 
-        response = await _call()
-        try:
-            content = response.choices[0].message.content
-        except (AttributeError, IndexError) as exc:
-            raise ValueError(f"OpenRouter response missing choices/message: {exc}") from exc
-        if not content or not isinstance(content, str):
-            raise ValueError("OpenRouter response has empty content for structured output")
-        return text_format.model_validate_json(content)
+        return await _call()
 
 
 Backend = OpenAIBackend | OpenRouterBackend
