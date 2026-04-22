@@ -1,0 +1,28 @@
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+dataset:
+  name: swe-agent-trajectories
+  hf_path: nebius/SWE-agent-trajectories
+  split: train
+  # Restrict to specific generator models. "all" or null loads every model.
+  models: all
+  # Optional outcome filter: "all", "success", "fail", or a list of bools.
+  targets: all
+  # Cap the number of AI reasoning steps per trajectory (some have 800+).
+  max_steps: 50
+  max_samples: 200
+
+# No `traces` section: trajectories already ship with the agent's full
+# reasoning, so Stage 1 just loads and normalises — no inference is run.
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+  cache_file: ../../data/sh6/swe-agent-trajectories/comparison_cache.json
