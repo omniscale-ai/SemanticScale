@@ -1,8 +1,8 @@
 """SLoD pairwise ranking for SH6 reasoning trajectories.
 
 Chunks texts by \\n\\n, runs double LLM comparisons (a→b, b→a) for
-consensus, caches results to disk, and uses choix to compute
-Bradley-Terry parameters (higher = more abstract).
+consensus, caches directional results to disk, and uses OpenSkill's
+Plackett-Luce model to compute abstraction scores (higher = more abstract).
 
 Dispatches between OpenAI Responses API and OpenRouter Chat Completions
 via :mod:`semanticscale.llm_backend`.
@@ -12,11 +12,12 @@ import asyncio
 import hashlib
 import json
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-import choix
 import numpy as np
+from openskill.models import PlackettLuce
 from pydantic import BaseModel
 
 from semanticscale.llm_backend import Backend, make_backend
@@ -38,6 +39,24 @@ _SYSTEM_PROMPT = (
 
 class AbstractionWinner(BaseModel):
     winner: Literal["A", "B"]
+
+
+@dataclass(frozen=True)
+class PairMatch:
+    """One observed pairwise outcome on the local SLoD scale."""
+
+    left: int
+    right: int
+    outcome: Literal["a", "b", "tie"]
+
+
+@dataclass(frozen=True)
+class RankingState:
+    """Current OpenSkill fit used for scoring and active pair selection."""
+
+    model: PlackettLuce
+    ratings: list[list[object]]
+    params: np.ndarray
 
 
 # ---------------------------------------------------------------------------
@@ -183,12 +202,13 @@ async def compare_scale(
 def _select_next_pair(
     n_items: int,
     compared: set[frozenset],
-    params: np.ndarray | None,
+    state: RankingState | None,
 ) -> tuple[int, int] | None:
     """Return the most informative (most uncertain) uncompared pair.
 
-    Uses choix.probabilities to find the pair closest to P=0.5.
-    Falls back to the first uncompared pair if params are unavailable.
+    Uses the current OpenSkill fit to score the entropy of win / loss / tie
+    outcomes for each remaining pair.
+    Falls back to the first uncompared pair if no fit is available yet.
     """
     candidates = [
         (i, j)
@@ -198,14 +218,25 @@ def _select_next_pair(
     ]
     if not candidates:
         return None
-    if params is None:
+    if state is None:
         return candidates[0]
 
     best_pair = candidates[0]
     best_uncertainty = -1.0
     for i, j in candidates:
-        p = choix.probabilities([i, j], params)[0]
-        uncertainty = 1.0 - abs(2 * p - 1)  # 1.0 when p=0.5
+        teams = [state.ratings[i], state.ratings[j]]
+        draw_prob = float(state.model.predict_draw(teams))
+        win_probs = np.asarray(state.model.predict_win(teams), dtype=float)
+        probs = np.array(
+            [
+                (1.0 - draw_prob) * win_probs[0],
+                (1.0 - draw_prob) * win_probs[1],
+                draw_prob,
+            ],
+            dtype=float,
+        )
+        probs /= max(float(probs.sum()), 1e-12)
+        uncertainty = float(-(probs * np.log(np.clip(probs, 1e-12, 1.0))).sum() / np.log(3.0))
         if uncertainty > best_uncertainty:
             best_uncertainty = uncertainty
             best_pair = (i, j)
@@ -213,19 +244,70 @@ def _select_next_pair(
 
 
 # ---------------------------------------------------------------------------
-# Choix ranking
+# OpenSkill ranking
 # ---------------------------------------------------------------------------
 
 
-def compute_choix_params(n_items: int, data: list[tuple[int, int]]) -> np.ndarray:
-    """Compute Bradley-Terry params via LSR. Higher = more abstract."""
-    if not data or n_items < 2:
-        return np.zeros(n_items)
+def _match_ranks(match: PairMatch) -> list[int]:
+    if match.outcome == "a":
+        return [0, 1]
+    if match.outcome == "b":
+        return [1, 0]
+    return [0, 0]
+
+
+def _fit_openskill_order(n_items: int, matches: list[PairMatch]) -> tuple[PlackettLuce, list[list[object]]]:
+    model = PlackettLuce()
+    ratings = [[model.rating(name=str(i))] for i in range(n_items)]
+    for match in matches:
+        left = ratings[match.left]
+        right = ratings[match.right]
+        updated = model.rate([left, right], ranks=_match_ranks(match))
+        ratings[match.left], ratings[match.right] = updated
+    return model, ratings
+
+
+def _average_ratings(
+    model: PlackettLuce,
+    forward: list[list[object]],
+    reverse: list[list[object]],
+) -> list[list[object]]:
+    averaged: list[list[object]] = []
+    for idx, (left_team, right_team) in enumerate(zip(forward, reverse, strict=True)):
+        left = left_team[0]
+        right = right_team[0]
+        averaged.append([
+            model.rating(
+                mu=float((left.mu + right.mu) / 2.0),
+                sigma=float((left.sigma + right.sigma) / 2.0),
+                name=str(idx),
+            )
+        ])
+    return averaged
+
+
+def compute_ranking_state(n_items: int, matches: list[PairMatch]) -> RankingState | None:
+    """Fit OpenSkill scores from pairwise wins/losses/ties."""
+    if not matches or n_items < 2:
+        return None
     try:
-        return choix.lsr_pairwise(n_items, data, alpha=0.1)
+        _, forward = _fit_openskill_order(n_items, matches)
+        model, reverse = _fit_openskill_order(n_items, list(reversed(matches)))
+        ratings = _average_ratings(model, forward, reverse)
+        params = np.array([float(team[0].mu) for team in ratings], dtype=float)
+        params -= float(params.mean())
+        return RankingState(model=model, ratings=ratings, params=params)
     except Exception:
-        logger.warning("choix.lsr_pairwise failed for n=%d, data=%d", n_items, len(data))
+        logger.warning("OpenSkill fit failed for n=%d, matches=%d", n_items, len(matches))
+        return None
+
+
+def compute_openskill_params(n_items: int, matches: list[PairMatch]) -> np.ndarray:
+    """Compute mean-centered OpenSkill scores. Higher = more abstract."""
+    state = compute_ranking_state(n_items, matches)
+    if state is None:
         return np.zeros(n_items)
+    return state.params
 
 
 # ---------------------------------------------------------------------------
@@ -243,20 +325,18 @@ async def run_problem_tournament(
     semaphore: asyncio.Semaphore,
     cache: ComparisonCache,
     extra_comparisons: int,
-) -> list[tuple[int, int]]:
+) -> list[PairMatch]:
     """Run a pairwise comparison tournament for a single problem-field.
 
     Phase 1: compare all consecutive pairs (i, i+1) in parallel.
-    Phase 2: use choix active learning to pick the most informative
+    Phase 2: use OpenSkill active learning to pick the most informative
              remaining pairs, in batches of 5.
-
-    Returns list of (winner_idx, loser_idx) for choix.
     """
     n = len(chunks)
     if n < 2:
         return []
 
-    data: list[tuple[int, int]] = []
+    matches: list[PairMatch] = []
     compared: set[frozenset] = set()
 
     # Phase 1: consecutive pairs, all in parallel
@@ -267,19 +347,16 @@ async def run_problem_tournament(
     ])
     for (i, j), res in zip(consecutive, results):
         compared.add(frozenset([i, j]))
-        if res == "a":
-            data.append((i, j))
-        elif res == "b":
-            data.append((j, i))
+        matches.append(PairMatch(i, j, res))
 
     # Phase 2: active learning in batches of 5
     budget = extra_comparisons
     batch_size = 5
     while budget > 0:
-        params = compute_choix_params(n, data) if data else None
+        state = compute_ranking_state(n, matches)
         batch: list[tuple[int, int]] = []
         for _ in range(min(batch_size, budget)):
-            pair = _select_next_pair(n, compared, params)
+            pair = _select_next_pair(n, compared, state)
             if pair is None:
                 break
             compared.add(frozenset(pair))
@@ -292,17 +369,16 @@ async def run_problem_tournament(
             for i, j in batch
         ])
         for (i, j), res in zip(batch, batch_results):
-            if res == "a":
-                data.append((i, j))
-            elif res == "b":
-                data.append((j, i))
+            matches.append(PairMatch(i, j, res))
         budget -= len(batch)
 
+    n_wins = sum(1 for match in matches if match.outcome != "tie")
+    n_ties = len(matches) - n_wins
     logger.debug(
-        "%s [%s]: %d chunks, %d comparisons → %d wins recorded",
-        problem_id, field, n, len(compared), len(data),
+        "%s [%s]: %d chunks, %d comparisons → %d decisive, %d ties",
+        problem_id, field, n, len(compared), n_wins, n_ties,
     )
-    return data
+    return matches
 
 
 # ---------------------------------------------------------------------------
@@ -322,7 +398,8 @@ async def rank_all(
     Each record:
       id, reasoning_chunks, answer_chunks,
       reasoning_params, answer_params,
-      reasoning_comparisons, answer_comparisons
+      reasoning_comparisons, answer_comparisons,
+      reasoning_ties, answer_ties
     """
     sr = config["pairwise_slod"]
     sr_model = sr["model"]
@@ -358,14 +435,36 @@ async def rank_all(
 
         # Joint tournament so reasoning and answer share a common SLoD scale.
         combined = r_chunks + a_chunks
-        combined_data = await run_problem_tournament(
+        combined_matches = await run_problem_tournament(
             iid, "combined", combined, backend, model, service_tier, semaphore, cache, extra,
         )
-        joint_params = compute_choix_params(len(combined), combined_data).tolist()
+        joint_params = compute_openskill_params(len(combined), combined_matches).tolist()
         r_params = joint_params[:n_r]
         a_params = joint_params[n_r:]
-        r_data = [(i, j) for i, j in combined_data if i < n_r and j < n_r]
-        a_data = [(i - n_r, j - n_r) for i, j in combined_data if i >= n_r and j >= n_r]
+        r_data = [
+            [match.left, match.right]
+            if match.outcome == "a"
+            else [match.right, match.left]
+            for match in combined_matches
+            if match.outcome != "tie" and match.left < n_r and match.right < n_r
+        ]
+        a_data = [
+            [match.left - n_r, match.right - n_r]
+            if match.outcome == "a"
+            else [match.right - n_r, match.left - n_r]
+            for match in combined_matches
+            if match.outcome != "tie" and match.left >= n_r and match.right >= n_r
+        ]
+        r_ties = [
+            [match.left, match.right]
+            for match in combined_matches
+            if match.outcome == "tie" and match.left < n_r and match.right < n_r
+        ]
+        a_ties = [
+            [match.left - n_r, match.right - n_r]
+            for match in combined_matches
+            if match.outcome == "tie" and match.left >= n_r and match.right >= n_r
+        ]
 
         return {
             "id": iid,
@@ -373,8 +472,10 @@ async def rank_all(
             "answer_chunks": a_chunks,
             "reasoning_params": r_params,
             "answer_params": a_params,
-            "reasoning_comparisons": [list(pair) for pair in r_data],
-            "answer_comparisons": [list(pair) for pair in a_data],
+            "reasoning_comparisons": r_data,
+            "answer_comparisons": a_data,
+            "reasoning_ties": r_ties,
+            "answer_ties": a_ties,
         }
 
     try:

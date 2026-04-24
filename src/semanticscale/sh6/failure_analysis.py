@@ -313,12 +313,26 @@ def _cross_features(reasoning_params: list[float], answer_params: list[float]) -
     }
 
 
-def _comparison_density(comparisons: list[list[int]], n_chunks: int) -> float:
+def _comparison_density(
+    comparisons: list[list[int]],
+    n_chunks: int,
+    ties: list[list[int]] | None = None,
+) -> float:
     """Compute how much of the possible pairwise tournament was actually observed."""
     if n_chunks < 2:
         return np.nan
     possible = n_chunks * (n_chunks - 1) / 2
-    return float(len(comparisons or []) / max(possible, 1.0))
+    seen_pairs = {
+        frozenset(pair)
+        for pair in (comparisons or [])
+        if len(pair) == 2
+    }
+    seen_pairs.update(
+        frozenset(pair)
+        for pair in (ties or [])
+        if len(pair) == 2
+    )
+    return float(len(seen_pairs) / max(possible, 1.0))
 
 
 def _resolve_target_label(merged: list[dict], requested: str) -> str:
@@ -385,10 +399,14 @@ def build_feature_table(
 
         row["total_n_chunks"] = row["reasoning_n_chunks"] + row["answer_n_chunks"]
         row["reasoning_pair_density"] = _comparison_density(
-            item.get("reasoning_comparisons") or [], row["reasoning_n_chunks"]
+            item.get("reasoning_comparisons") or [],
+            row["reasoning_n_chunks"],
+            item.get("reasoning_ties") or [],
         )
         row["answer_pair_density"] = _comparison_density(
-            item.get("answer_comparisons") or [], row["answer_n_chunks"]
+            item.get("answer_comparisons") or [],
+            row["answer_n_chunks"],
+            item.get("answer_ties") or [],
         )
         rows.append(row)
 

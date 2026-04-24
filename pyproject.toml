@@ -21,6 +21,7 @@ dependencies = [
     "numpy>=1.24.0",
     "openai>=1.0.0",
     "openrouter>=0.9.1",
+    "openskill>=6.2.0",
     "pandas>=2.1.0",
     "pyyaml>=6.0",
     "safetensors>=0.4.0",
