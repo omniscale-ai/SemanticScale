@@ -1,0 +1,41 @@
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+dataset:
+  name: agenthallu
+  # On first run the loader clones this repo into
+  # {data_dir}/_sources/agenthallu-{repo_ref}. Set `local_path` to point at
+  # an existing checkout (directory containing AgentHallu/<framework>/*.json)
+  # to skip the clone.
+  repo_url: https://github.com/liuxuannan/AgentHallu.git
+  repo_ref: main
+  local_path: null
+  # Restrict to specific agent frameworks. "all" or null loads every framework.
+  # Known: BFCL, Camel, Magentic_One, Octotools, OpenDeepSearch, OpenManus, SmolAgents
+  frameworks: all
+  # Optional filter on question_domain. "all" or null keeps every domain.
+  # Known: "Math", "Science", "Tool Use", "World Knowledge", "General Assistant"
+  domains: all
+  # Optional filter on backbone model_id.
+  models: all
+  max_samples: null
+
+# No `traces` section: trajectories already ship fully annotated, so Stage 1
+# just loads and normalises — no inference is run.
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

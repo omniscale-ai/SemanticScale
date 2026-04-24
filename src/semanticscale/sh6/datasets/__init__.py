@@ -39,12 +39,13 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from . import frontierscience, processbench, swe_agent_trajectories
+from . import agenthallu, frontierscience, processbench, swe_agent_trajectories
 
 _REGISTRY: dict[str, object] = {
     "frontierscience": frontierscience,
     "processbench": processbench,
     "swe-agent-trajectories": swe_agent_trajectories,
+    "agenthallu": agenthallu,
 }
 
 
