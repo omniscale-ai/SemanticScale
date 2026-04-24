@@ -17,7 +17,11 @@ Source row schema:
     generated_patch  str|None   final diff
     eval_logs        str|None   test logs
 
-We treat each ``role == "ai"`` content as one reasoning chunk.
+We treat each ``role == "ai"`` ``text`` field as one reasoning chunk.
+The trajectory schema per entry is
+``{cutoff_date, mask, role, system_prompt, text}`` — system entries
+carry the prompt in ``system_prompt`` and a null ``text``; ai/user
+entries carry their content in ``text``.
 """
 
 from __future__ import annotations
@@ -91,17 +95,17 @@ def run_slug(config: dict, overrides: dict) -> str:
 
 
 def _extract_ai_chunks(trajectory: list, max_steps: int | None) -> list[str]:
-    """Pull the content of every ``role == "ai"`` entry from the trajectory."""
+    """Pull the ``text`` of every ``role == "ai"`` entry from the trajectory."""
     chunks: list[str] = []
     for entry in trajectory or []:
         if not isinstance(entry, dict):
             continue
         if entry.get("role") != "ai":
             continue
-        content = entry.get("content")
-        if content is None:
+        text = entry.get("text")
+        if text is None:
             continue
-        text = str(content).strip()
+        text = str(text).strip()
         if text:
             chunks.append(text)
     if max_steps is not None:

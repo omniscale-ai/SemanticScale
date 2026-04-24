@@ -313,9 +313,11 @@ async def run_problem_tournament(
 async def rank_all(
     results: list[dict],
     config: dict,
-    project_root: Path,
+    run_dir: Path,
 ) -> list[dict]:
     """Run tournaments for all items and return chunk_ranking records.
+
+    The comparison cache is stored at ``run_dir / "comparison_cache.json"``.
 
     Each record:
       id, reasoning_chunks, answer_chunks,
@@ -330,7 +332,7 @@ async def rank_all(
     extra = sr.get("extra_comparisons_per_problem", 10)
     min_chunks = sr.get("min_chunks", 2)
 
-    cache_path = (project_root / sr.get("cache_file", "../../data/sh6/comparison_cache.json")).resolve()
+    cache_path = run_dir / "comparison_cache.json"
     cache = ComparisonCache(cache_path)
     cache.load()
 

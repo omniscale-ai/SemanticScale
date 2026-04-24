@@ -28,4 +28,10 @@ pairwise_slod:
   max_concurrent: 20
   extra_comparisons_per_problem: 10
   min_chunks: 2
-  cache_file: ../../data/sh6/comparison_cache.json
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

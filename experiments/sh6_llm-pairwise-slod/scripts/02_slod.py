@@ -43,6 +43,21 @@ def parse_args() -> argparse.Namespace:
         help="Override the auto-derived run slug",
     )
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limit the number of traces to process",
+    )
+    parser.add_argument(
+        "--balanced",
+        action="store_true",
+        help=(
+            "With --limit N, sample N/2 successful and N/2 failed traces "
+            "(by is_correct). If either class has fewer available, warn "
+            "and take what's available."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -72,7 +87,37 @@ def main() -> None:
     traces = load_jsonl(traces_path)
     logger.info("Loaded %d traces from %s", len(traces), traces_path)
 
-    rankings = asyncio.run(rank_all(traces, config, project_root))
+    if args.balanced and args.limit is None:
+        logger.error("--balanced requires --limit")
+        raise SystemExit(1)
+
+    if args.limit is not None:
+        if args.balanced:
+            successes = [t for t in traces if t.get("is_correct") is True]
+            failures = [t for t in traces if t.get("is_correct") is False]
+            per_class = args.limit // 2
+            if len(successes) < per_class:
+                logger.warning(
+                    "Only %d successful traces available (wanted %d)",
+                    len(successes), per_class,
+                )
+            if len(failures) < per_class:
+                logger.warning(
+                    "Only %d failed traces available (wanted %d)",
+                    len(failures), per_class,
+                )
+            traces = successes[:per_class] + failures[:per_class]
+            logger.info(
+                "Balanced sampling: %d successful + %d failed = %d traces",
+                min(len(successes), per_class),
+                min(len(failures), per_class),
+                len(traces),
+            )
+        else:
+            traces = traces[: args.limit]
+            logger.info("Limiting to %d traces", len(traces))
+
+    rankings = asyncio.run(rank_all(traces, config, run_dir))
 
     save_jsonl(rankings, out_path)
     logger.info("Saved %d chunk rankings to %s", len(rankings), out_path)

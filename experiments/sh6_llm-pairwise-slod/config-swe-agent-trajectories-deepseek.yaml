@@ -11,8 +11,8 @@ dataset:
   # Optional outcome filter: "all", "success", "fail", or a list of bools.
   targets: all
   # Cap the number of AI reasoning steps per trajectory (some have 800+).
-  max_steps: 50
-  max_samples: 200
+  max_steps: null
+  max_samples: null
 
 # No `traces` section: trajectories already ship with the agent's full
 # reasoning, so Stage 1 just loads and normalises — no inference is run.
@@ -25,4 +25,10 @@ pairwise_slod:
   max_concurrent: 20
   extra_comparisons_per_problem: 10
   min_chunks: 2
-  cache_file: ../../data/sh6/swe-agent-trajectories/comparison_cache.json
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12
