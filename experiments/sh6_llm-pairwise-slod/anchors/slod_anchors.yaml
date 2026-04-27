@@ -1,0 +1,109 @@
+# Fixed anchor chunks for global SLoD calibration (SH6 Phase A).
+#
+# Tiers encode hand-assigned abstraction rank:
+#   3 = MACRO: meta-strategic framing, goals, overall approach
+#   2 = MESO:  sub-goal decomposition, method choice, plan steps
+#   1 = MICRO: concrete computation, tool call, literal value
+#
+# Higher SLoD μ should correlate with higher tier. Phase A verifies this
+# before using anchors to score real chunks.
+#
+# Anchors are phrased in a domain-neutral style — a mix of scientific,
+# software-engineering, and mathematical framing — so the same set can
+# calibrate all four SH6 datasets without bias.
+#
+# Version: v1  (if the anchor set is revised, bump this tag and flush the
+# cache entries keyed on each anchor's MD5 hash.)
+
+version: v1
+
+anchors:
+  # ── MACRO (tier 3) ──────────────────────────────────────────────────────
+  - id: macro_01
+    tier: 3
+    text: >-
+      The goal of this work is to develop a general framework for understanding
+      how neural networks acquire compositional reasoning abilities across
+      diverse problem domains.
+
+  - id: macro_02
+    tier: 3
+    text: >-
+      To solve this problem, we need to understand the overall structure of the
+      question and identify the key relationships between the given quantities
+      before committing to any concrete calculation.
+
+  - id: macro_03
+    tier: 3
+    text: >-
+      This task requires deciding between two broad strategies: iterative
+      refinement of a partial solution, versus one-shot end-to-end prediction.
+      The trade-offs hinge on how noisy the feedback signal is.
+
+  - id: macro_04
+    tier: 3
+    text: >-
+      The central challenge is handling the trade-off between latency and
+      accuracy as workload patterns shift. Any viable design must degrade
+      gracefully under load rather than failing catastrophically.
+
+  - id: macro_05
+    tier: 3
+    text: >-
+      We aim to characterise the relationship between model scale and the
+      emergence of reasoning capabilities, asking whether the observed
+      transitions are genuinely discontinuous or an artefact of evaluation.
+
+  # ── MESO (tier 2) ───────────────────────────────────────────────────────
+  - id: meso_01
+    tier: 2
+    text: >-
+      First, I need to locate the function that parses incoming requests, then
+      modify it to validate the new header field and reject malformed values.
+
+  - id: meso_02
+    tier: 2
+    text: >-
+      Let me search for the file that defines the schema, then check how it is
+      referenced elsewhere in the codebase so I understand the blast radius of
+      the change.
+
+  - id: meso_03
+    tier: 2
+    text: >-
+      We compute the per-day usage, then multiply by the number of days to get
+      the total. That gives us the quantity needed for the final step.
+
+  - id: meso_04
+    tier: 2
+    text: >-
+      Set up a loop that iterates through each record, accumulates the relevant
+      counts, and stores intermediate sums in a dictionary keyed by category.
+
+  - id: meso_05
+    tier: 2
+    text: >-
+      Apply integration by parts, taking u equal to the logarithm term and dv
+      equal to the polynomial factor, so that the resulting integral is
+      tractable.
+
+  # ── MICRO (tier 1) ──────────────────────────────────────────────────────
+  - id: micro_01
+    tier: 1
+    text: "x = 3 * 4 = 12"
+
+  - id: micro_02
+    tier: 1
+    text: "Call function `read_file('/etc/config.yaml')` and store the result in `cfg`."
+
+  - id: micro_03
+    tier: 1
+    text: "The result is 42."
+
+  - id: micro_04
+    tier: 1
+    text: "Line 27 reads: `return self._cache.get(key, None)`"
+
+  - id: micro_05
+    tier: 1
+    text: "Set batch_size=32, learning_rate=0.0001, and epochs=50."

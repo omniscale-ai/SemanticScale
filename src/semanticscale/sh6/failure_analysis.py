@@ -66,6 +66,7 @@ META_COLUMNS = {
     "error_step_index",
     "error_step_position",
     "has_answer_chunks",
+    "exit_status",
 }
 
 MEASUREMENT_COLUMNS = {
@@ -386,6 +387,7 @@ def build_feature_table(
             "has_answer_chunks": bool(answer_params),
             "error_step_index": item.get("error_step_index"),
             "error_step_position": np.nan,
+            "exit_status": item.get("exit_status"),
         }
 
         if item.get("error_step_index") is not None and len(reasoning_params) > 1:
@@ -414,13 +416,21 @@ def build_feature_table(
     return df, resolved_target
 
 
-def choose_feature_sets(df: pd.DataFrame) -> dict[str, list[str]]:
+def choose_feature_sets(
+    df: pd.DataFrame,
+    extra_meta_columns: list[str] | None = None,
+) -> dict[str, list[str]]:
     """Build model-ready feature sets.
 
     The split between ``length_only`` and ``trajectory_shape`` is deliberate:
     it lets us test whether trajectory-derived features carry signal beyond
     simple structural cues such as answer length or number of reasoning steps.
+
+    ``extra_meta_columns`` lets the caller mark detector-score columns as
+    meta — they should not leak into ``trajectory_shape`` / ``trajectory_full``
+    because the caller will register them as their own ``mode_stack`` set.
     """
+    extra_meta = set(extra_meta_columns or [])
 
     def dedupe(cols: list[str]) -> list[str]:
         unique: list[str] = []
@@ -433,7 +443,12 @@ def choose_feature_sets(df: pd.DataFrame) -> dict[str, list[str]]:
     def usable(cols: list[str]) -> list[str]:
         good = []
         for col in cols:
-            if col not in df.columns or col in META_COLUMNS or col in MEASUREMENT_COLUMNS:
+            if (
+                col not in df.columns
+                or col in META_COLUMNS
+                or col in MEASUREMENT_COLUMNS
+                or col in extra_meta
+            ):
                 continue
             series = df[col]
             nonnull = series.dropna()
@@ -451,7 +466,12 @@ def choose_feature_sets(df: pd.DataFrame) -> dict[str, list[str]]:
             "total_n_chunks",
         ]
     )
-    shape = usable([col for col in df.columns if col not in META_COLUMNS and col not in length])
+    shape_candidates = [
+        col
+        for col in df.columns
+        if col not in META_COLUMNS and col not in extra_meta and col not in length
+    ]
+    shape = usable(shape_candidates)
 
     return {
         "length_only": length,
@@ -702,6 +722,7 @@ def plot_roc_curves(
         ("length_only", "#8c8c8c"),
         ("trajectory_shape", "#2166ac"),
         ("trajectory_full", "#b2182b"),
+        ("mode_stack", "#1b7837"),
     ]:
         result = model_results.get(name)
         if result is None:
@@ -749,6 +770,92 @@ def plot_top_coefficients(coefficients: list[dict], out_path: Path, top_k: int =
     logger.info("Saved coefficient figure to %s", out_path)
 
 
+def plot_mode_detector_summary(mode_rows: list[dict], out_path: Path) -> None:
+    """Render a one-panel bar chart of detector score AUC with 95% bootstrap CIs.
+
+    Bars are colour-coded by verdict so a reader sees at a glance which
+    detectors were confirmed, inverted, or inconclusive on this run. The
+    dashed line at 0.5 marks the null; a CI error bar that does not cross it
+    corresponds to a confirmed or inverted verdict.
+    """
+    from .failure_modes import (
+        VERDICT_CONFIRMED,
+        VERDICT_INCONCLUSIVE,
+        VERDICT_INSUFFICIENT,
+        VERDICT_INVERTED,
+    )
+
+    usable = [row for row in mode_rows if row.get("n_scored") and not row.get("reason_skipped")]
+    if not usable:
+        logger.warning("No scored detectors available; skipping mode-detector plot")
+        return
+
+    colour_map = {
+        VERDICT_CONFIRMED: "#2166ac",
+        VERDICT_INVERTED: "#b2182b",
+        VERDICT_INCONCLUSIVE: "#bdbdbd",
+        VERDICT_INSUFFICIENT: "#d9d9d9",
+    }
+
+    names = [row["mode"] for row in usable]
+    y_pos = np.arange(len(names))
+    aucs = np.array(
+        [row["roc_auc"] if row["roc_auc"] == row["roc_auc"] else 0.5 for row in usable]
+    )
+    lo = np.array(
+        [
+            row["roc_auc_ci_lo"]
+            if row["roc_auc_ci_lo"] == row["roc_auc_ci_lo"]
+            else row["roc_auc"] if row["roc_auc"] == row["roc_auc"] else 0.5
+            for row in usable
+        ]
+    )
+    hi = np.array(
+        [
+            row["roc_auc_ci_hi"]
+            if row["roc_auc_ci_hi"] == row["roc_auc_ci_hi"]
+            else row["roc_auc"] if row["roc_auc"] == row["roc_auc"] else 0.5
+            for row in usable
+        ]
+    )
+    colors = [colour_map.get(row.get("verdict", VERDICT_INSUFFICIENT), "#d9d9d9") for row in usable]
+    err_low = np.clip(aucs - lo, 0.0, None)
+    err_high = np.clip(hi - aucs, 0.0, None)
+
+    fig_height = max(3.5, 0.55 * len(usable) + 1.5)
+    fig, ax = plt.subplots(figsize=(8, fig_height))
+    ax.barh(y_pos, aucs, color=colors, edgecolor="white")
+    ax.errorbar(
+        aucs,
+        y_pos,
+        xerr=[err_low, err_high],
+        fmt="none",
+        ecolor="#404040",
+        elinewidth=1.2,
+        capsize=3,
+    )
+    ax.axvline(0.5, color="gray", linestyle="--", linewidth=1, label="null (AUC=0.5)")
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(names, fontsize=9)
+    ax.set_xlim(0, 1.0)
+    ax.set_xlabel("Failure-score ROC-AUC with 95% bootstrap CI")
+    ax.set_title("Falsifiable failure-mode detectors")
+    ax.invert_yaxis()
+
+    legend_handles = [
+        plt.Rectangle((0, 0), 1, 1, color=colour_map[VERDICT_CONFIRMED], label="confirmed"),
+        plt.Rectangle((0, 0), 1, 1, color=colour_map[VERDICT_INVERTED], label="inverted"),
+        plt.Rectangle((0, 0), 1, 1, color=colour_map[VERDICT_INCONCLUSIVE], label="inconclusive"),
+    ]
+    ax.legend(handles=legend_handles, fontsize=8, loc="lower right")
+
+    fig.tight_layout()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    logger.info("Saved mode-detector figure to %s", out_path)
+
+
 def _metric_line(name: str, result: dict) -> str:
     """Format one markdown table row of cross-validated metrics."""
     metrics = result["metrics"]
@@ -761,6 +868,99 @@ def _metric_line(name: str, result: dict) -> str:
         f"| {metrics['accuracy']['mean']:.3f} +/- {metrics['accuracy']['std']:.3f} "
         f"| {metrics['f1']['mean']:.3f} +/- {metrics['f1']['std']:.3f} |"
     )
+
+
+def compute_mode_coverage(
+    df: pd.DataFrame,
+    mode_scores: pd.DataFrame,
+    mode_rows: list[dict] | None,
+) -> dict:
+    """Coverage = fraction of failures flagged by at least one detector.
+
+    Two variants are reported:
+
+    - ``any``: union of every detector's flag, ignoring whether the directional
+      claim was confirmed on this run.
+    - ``confirmed``: union restricted to detectors whose verdict was
+      ``confirmed`` — the principled coverage number, since flags from
+      inverted/inconclusive detectors carry no validated meaning.
+
+    Each variant reports recall (the fraction of failures covered),
+    precision (of items flagged, what fraction are real failures), and the
+    raw counts.
+    """
+    if "target" not in df.columns:
+        raise ValueError("df must contain a 'target' column")
+
+    fail = (df["target"].to_numpy() == 0)
+    n_fail = int(fail.sum())
+    if n_fail == 0:
+        return {"any": None, "confirmed": None, "n_failures": 0}
+
+    flag_cols = [c for c in mode_scores.columns if c.endswith("_flag")]
+    confirmed_modes = {
+        row["mode"] for row in (mode_rows or []) if row.get("verdict") == "confirmed"
+    }
+    confirmed_flag_cols = [f"{m}_flag" for m in confirmed_modes if f"{m}_flag" in mode_scores.columns]
+
+    def _coverage(cols: list[str]) -> dict | None:
+        if not cols:
+            return None
+        matrix = mode_scores[cols].fillna(0).to_numpy().astype(bool)
+        any_flag = matrix.any(axis=1)
+        n_flagged = int(any_flag.sum())
+        n_caught = int(np.logical_and(any_flag, fail).sum())
+        return {
+            "n_modes": len(cols),
+            "modes": [c.removesuffix("_flag") for c in cols],
+            "n_flagged": n_flagged,
+            "n_caught": n_caught,
+            "n_failures": n_fail,
+            "recall": float(n_caught / n_fail) if n_fail else float("nan"),
+            "precision": float(n_caught / n_flagged) if n_flagged else float("nan"),
+        }
+
+    return {
+        "any": _coverage(flag_cols),
+        "confirmed": _coverage(confirmed_flag_cols),
+        "n_failures": n_fail,
+    }
+
+
+def compute_capture_ratio(model_results: dict[str, dict]) -> dict | None:
+    """Compare the mode-stack LR's AUC against the full-feature LR.
+
+    Returns the raw ROC-AUCs for ``mode_stack`` and ``trajectory_full`` plus
+    the captured-fraction ``(AUC_modes - 0.5) / (AUC_full - 0.5)``. Useful
+    interpretation: 1.0 means the named modes carry as much above-chance
+    discrimination as the full feature set; 0.5 means they capture roughly
+    half. Returns ``None`` when either model is missing.
+
+    Caveat: on FrontierScience the captured-fraction is **inflated** because
+    the answer-side detectors were selected for predictive power on FS. The
+    SWE-agent number is unbiased because the reasoning-side detectors were
+    pre-registered. See ``failure_modes`` module docstring for the full
+    methodological note.
+    """
+    modes_result = model_results.get("mode_stack")
+    full_result = model_results.get("trajectory_full") or model_results.get("trajectory_shape")
+    if modes_result is None or full_result is None:
+        return None
+    auc_modes = float(modes_result["metrics"]["roc_auc"]["mean"])
+    auc_full = float(full_result["metrics"]["roc_auc"]["mean"])
+    above_chance_full = auc_full - 0.5
+    if above_chance_full <= 0:
+        captured = float("nan")
+    else:
+        captured = float((auc_modes - 0.5) / above_chance_full)
+    return {
+        "mode_stack_auc": auc_modes,
+        "full_auc": auc_full,
+        "captured_fraction": captured,
+        "comparison_set": "trajectory_full"
+        if "trajectory_full" in model_results
+        else "trajectory_shape",
+    }
 
 
 def _label_alignment(df: pd.DataFrame) -> dict | None:
@@ -795,6 +995,9 @@ def write_markdown_report(
     dataset_name: str,
     run_slug: str,
     analysis_note: str | None = None,
+    mode_rows: list[dict] | None = None,
+    coverage: dict | None = None,
+    capture: dict | None = None,
 ) -> None:
     """Write the human-readable experiment report.
 
@@ -839,7 +1042,7 @@ def write_markdown_report(
         ]
     )
     wrote_model_row = False
-    for name in ("length_only", "trajectory_shape", "trajectory_full"):
+    for name in ("length_only", "trajectory_shape", "trajectory_full", "mode_stack"):
         result = model_results.get(name)
         if result is not None:
             lines.append(_metric_line(name, result))
@@ -879,6 +1082,139 @@ def write_markdown_report(
     if not coefficient_rows:
         lines.append("| Not available | - | - | - |")
 
+    if mode_rows:
+        from .failure_modes import (
+            VERDICT_CONFIRMED,
+            VERDICT_INCONCLUSIVE,
+            VERDICT_INVERTED,
+            render_mode_descriptions_markdown,
+            render_mode_table_markdown,
+        )
+
+        lines.extend(
+            [
+                "",
+                "## Interpretable Failure-Mode Detectors",
+                "",
+                "Each detector encodes a pre-registered hypothesis: *higher detector score implies a higher probability of failure*.",
+                "For every run we compute a 95% percentile-bootstrap CI on the score's failure-AUC and assign one of four verdicts:",
+                "",
+                "- `confirmed` — CI lower bound above 0.5; the directional claim holds.",
+                "- `inverted` — CI upper bound below 0.5; on this run the score actually predicts *success*. The hypothesis is falsified in the opposite direction.",
+                "- `inconclusive` — CI straddles 0.5; there is no evidence either way on this run.",
+                "- `insufficient_data` — too few scored rows or only one class present.",
+                "",
+                "Flag-level metrics (precision / recall / F1 / lift) are reported only when the verdict is `confirmed`. When the hypothesis is falsified or unclear, those numbers would be actively misleading, so they render as `-`. The raw AUC and CI are always reported so the call can be audited.",
+                "",
+                "### What each detector catches",
+                "",
+            ]
+        )
+        lines.extend(render_mode_descriptions_markdown(mode_rows))
+        lines.extend(
+            [
+                "",
+                "### Detector performance",
+                "",
+            ]
+        )
+        lines.extend(render_mode_table_markdown(mode_rows))
+
+        inverted = [row["mode"] for row in mode_rows if row.get("verdict") == VERDICT_INVERTED]
+        inconclusive = [
+            row["mode"] for row in mode_rows if row.get("verdict") == VERDICT_INCONCLUSIVE
+        ]
+        confirmed = [row["mode"] for row in mode_rows if row.get("verdict") == VERDICT_CONFIRMED]
+        callouts: list[str] = []
+        if confirmed:
+            callouts.append(f"- **Confirmed on this run**: {', '.join(confirmed)}.")
+        if inverted:
+            callouts.append(
+                f"- **Hypothesis falsified (inverted)**: {', '.join(inverted)}. "
+                "The score direction flipped — higher values predict success, not failure, on this dataset. "
+                "This is a real negative result, not a detector failure."
+            )
+        if inconclusive:
+            callouts.append(
+                f"- **Inconclusive**: {', '.join(inconclusive)}. "
+                "The bootstrap CI spans 0.5, so we cannot reject the null on this run."
+            )
+        if callouts:
+            lines.append("")
+            lines.append("### Verdict summary")
+            lines.append("")
+            lines.extend(callouts)
+
+        if capture:
+            lines.append("")
+            lines.append("### Signal capture")
+            lines.append("")
+            lines.append(
+                "How much of the failure-prediction signal does the named-mode "
+                "taxonomy actually carry? The `mode_stack` model is a logistic "
+                "regression on the detector scores only; the comparison set is the "
+                f"`{capture['comparison_set']}` model fit on all trajectory features."
+            )
+            lines.append("")
+            lines.append(
+                f"- `mode_stack` ROC-AUC: **{capture['mode_stack_auc']:.3f}**"
+            )
+            lines.append(
+                f"- `{capture['comparison_set']}` ROC-AUC: **{capture['full_auc']:.3f}**"
+            )
+            captured = capture["captured_fraction"]
+            captured_txt = (
+                f"{captured:.1%}"
+                if captured == captured and not np.isinf(captured)
+                else "n/a"
+            )
+            lines.append(
+                f"- Above-chance discrimination preserved by the mode stack: "
+                f"**{captured_txt}** "
+                f"((AUC_modes − 0.5) ÷ (AUC_full − 0.5))"
+            )
+            if dataset_name == "frontierscience":
+                lines.append("")
+                lines.append(
+                    "> Caveat: the FrontierScience capture number is **inflated** "
+                    "because the answer-side detectors (`answer_meandering`, "
+                    "`answer_volatility`, `answer_uncommitted`, `answer_overrange`) "
+                    "were selected post-hoc by ranking univariate AUCs on this "
+                    "dataset. Treat this number as a descriptive upper bound. "
+                    "The SWE-agent capture number, where the reasoning-side "
+                    "detectors were pre-registered, is the unbiased estimate."
+                )
+
+        if coverage and coverage.get("n_failures"):
+            lines.append("")
+            lines.append("### Failure coverage")
+            lines.append("")
+            lines.append(
+                "What fraction of failures get flagged by at least one detector? "
+                "`any` uses the union of every detector's flag; `confirmed` "
+                "restricts to detectors whose directional hypothesis was confirmed "
+                "on this run, which is the principled coverage number."
+            )
+            lines.append("")
+            lines.append(
+                "| Variant | # Modes | Failures caught | Items flagged | Recall | Precision |"
+            )
+            lines.append("|---|---|---|---|---|---|")
+            for variant_name in ("confirmed", "any"):
+                row = coverage.get(variant_name)
+                if not row:
+                    lines.append(
+                        f"| {variant_name} | 0 | 0 / {coverage.get('n_failures', 0)} | 0 | - | - |"
+                    )
+                    continue
+                lines.append(
+                    f"| {variant_name} | {row['n_modes']} "
+                    f"| {row['n_caught']} / {row['n_failures']} "
+                    f"| {row['n_flagged']} "
+                    f"| {row['recall']:.3f} "
+                    f"| {row['precision']:.3f} |"
+                )
+
     lines.extend(
         [
             "",
@@ -888,6 +1224,7 @@ def write_markdown_report(
             "- Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.",
             "- Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.",
             "- `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.",
+            "- Failure-mode detectors are calibrated against the success distribution (90th percentile by default), and their directional claim is tested with a bootstrap AUC CI against 0.5. Precision/recall are only shown for `confirmed` detectors; `inverted` detectors are reported as honest negative results.",
         ]
     )
 
@@ -906,6 +1243,9 @@ def build_summary_payload(
     univariate_rows: list[dict],
     coefficient_rows: list[dict],
     analysis_note: str | None = None,
+    mode_rows: list[dict] | None = None,
+    coverage: dict | None = None,
+    capture: dict | None = None,
 ) -> dict:
     """Build the machine-readable summary that backs the markdown report."""
     stats = target_stats(df)
@@ -921,4 +1261,7 @@ def build_summary_payload(
         "model_results": model_results,
         "top_univariate_features": univariate_rows[:20],
         "top_coefficients": coefficient_rows[:20],
+        "mode_detectors": mode_rows or [],
+        "mode_coverage": coverage,
+        "mode_stack_capture": capture,
     }

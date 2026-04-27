@@ -1,0 +1,40 @@
+{
+  "dataset": "frontierscience",
+  "run_slug": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto",
+  "target_label": "is_correct",
+  "n_items": 20,
+  "n_positive": 1,
+  "n_negative": 19,
+  "analysis_note": "Prediction is not identifiable because there are too few examples per class for cross-validation.",
+  "label_alignment": null,
+  "model_results": {},
+  "top_univariate_features": [],
+  "top_coefficients": [],
+  "mode_detectors": [],
+  "mode_coverage": {
+    "any": {
+      "n_modes": 11,
+      "modes": [
+        "premature_exit",
+        "rambling_overlong",
+        "thrashing",
+        "no_commitment",
+        "derailment_late",
+        "answer_drift",
+        "answer_meandering",
+        "answer_volatility",
+        "answer_uncommitted",
+        "answer_overrange",
+        "truncation_abort"
+      ],
+      "n_flagged": 9,
+      "n_caught": 8,
+      "n_failures": 19,
+      "recall": 0.42105263157894735,
+      "precision": 0.8888888888888888
+    },
+    "confirmed": null,
+    "n_failures": 19
+  },
+  "mode_stack_capture": null
+}

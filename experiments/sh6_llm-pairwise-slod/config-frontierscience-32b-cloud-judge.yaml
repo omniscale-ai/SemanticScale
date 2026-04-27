@@ -1,0 +1,55 @@
+# SH7 hail-mary: take the locally-generated R1-Distill-32B traces, but use
+# the cloud DeepSeek-V3.2 (via OpenRouter) for grading and pairwise SLoD.
+# Isolates whether the weak local-judge signal is a *trace* problem or a
+# *judge* problem. No new traces are generated under this config — stage 1
+# is skipped; the existing traces.jsonl is copied into the run dir below.
+#
+# The traces.model.name field is synthetic: it controls the run_slug only,
+# so artifacts under this config go to a directory parallel to the
+# all-local run instead of overwriting it.
+
+paths:
+  data_dir: ../../data/sh6
+  reports_dir: reports
+
+dataset:
+  name: frontierscience
+  hf_path: openai/frontierscience
+  split: test
+  max_samples: null
+
+traces:
+  model:
+    # Synthetic name for run-slug isolation. Actual traces came from
+    # deepseek-ai/DeepSeek-R1-Distill-Qwen-32B run locally.
+    name: R1-Distill-32B-cloudjudge
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: true
+  max_concurrent: 20
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+grader:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+  max_concurrent: 20
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

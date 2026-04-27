@@ -28,21 +28,32 @@ import argparse
 import logging
 from pathlib import Path
 
+import pandas as pd
+
 from semanticscale.sh6 import datasets as ds
 from semanticscale.sh6.failure_analysis import (
     build_feature_table,
     prediction_feasibility,
     build_summary_payload,
     choose_feature_sets,
+    compute_capture_ratio,
+    compute_mode_coverage,
     evaluate_prediction_models,
     fit_full_model_coefficients,
     merge_traces_and_rankings,
+    plot_mode_detector_summary,
     plot_roc_curves,
     plot_top_coefficients,
     score_univariate_features,
     write_feature_table,
     write_markdown_report,
     write_summary_json,
+)
+from semanticscale.sh6.failure_modes import (
+    MODES,
+    compute_mode_scores,
+    evaluate_mode_detectors,
+    write_mode_table,
 )
 from semanticscale.utils import load_config, load_jsonl, setup_logging
 
@@ -109,7 +120,20 @@ def main() -> None:
         logger.error("No rows available for failure analysis")
         raise SystemExit(1)
 
-    feature_sets = choose_feature_sets(df)
+    mode_scores_df = compute_mode_scores(df, modes=MODES)
+    score_cols = [c for c in mode_scores_df.columns if c.endswith("_score")]
+    df_with_scores = pd.concat(
+        [df.reset_index(drop=True), mode_scores_df[score_cols].reset_index(drop=True)],
+        axis=1,
+    )
+    feature_sets = choose_feature_sets(df_with_scores, extra_meta_columns=score_cols)
+    mode_stack = [
+        col
+        for col in score_cols
+        if df_with_scores[col].notna().any() and df_with_scores[col].dropna().nunique() >= 2
+    ]
+    if mode_stack:
+        feature_sets["mode_stack"] = mode_stack
     can_predict, effective_cv_folds, feasibility_note = prediction_feasibility(df, cv_folds)
     model_results: dict[str, dict] = {}
     univariate_rows: list[dict] = []
@@ -123,7 +147,7 @@ def main() -> None:
         if feasibility_note:
             logger.info(feasibility_note)
         model_results = evaluate_prediction_models(
-            df,
+            df_with_scores,
             feature_sets,
             random_state=random_state,
             cv_folds=effective_cv_folds,
@@ -142,8 +166,18 @@ def main() -> None:
     else:
         logger.warning(feasibility_note or "Prediction is not feasible for this run")
 
+    mode_rows: list[dict] = []
+    if can_predict:
+        mode_rows = evaluate_mode_detectors(df, mode_scores_df, modes=MODES)
+    else:
+        logger.warning("Skipping failure-mode detector evaluation: prediction infeasible")
+
+    coverage = compute_mode_coverage(df, mode_scores_df, mode_rows)
+    capture = compute_capture_ratio(model_results)
+
     reports_dir.mkdir(parents=True, exist_ok=True)
     write_feature_table(df, reports_dir / "trajectory_features.csv")
+    write_mode_table(df, mode_scores_df, reports_dir / "failure_modes.csv")
     if model_results:
         plot_roc_curves(df["target"].to_numpy(), model_results, reports_dir / "failure_prediction_roc.png")
         plot_top_coefficients(
@@ -151,6 +185,8 @@ def main() -> None:
             reports_dir / "failure_feature_coefficients.png",
             top_k=top_k,
         )
+    if mode_rows:
+        plot_mode_detector_summary(mode_rows, reports_dir / "failure_mode_detectors.png")
     write_markdown_report(
         df,
         target_label=resolved_target,
@@ -161,6 +197,9 @@ def main() -> None:
         dataset_name=dataset_name,
         run_slug=run_slug,
         analysis_note=feasibility_note,
+        mode_rows=mode_rows,
+        coverage=coverage,
+        capture=capture,
     )
     summary = build_summary_payload(
         df,
@@ -171,6 +210,9 @@ def main() -> None:
         univariate_rows=univariate_rows,
         coefficient_rows=coefficient_rows,
         analysis_note=feasibility_note,
+        mode_rows=mode_rows,
+        coverage=coverage,
+        capture=capture,
     )
     write_summary_json(summary, reports_dir / "failure_prediction_summary.json")
 

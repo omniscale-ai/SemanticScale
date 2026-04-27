@@ -89,12 +89,13 @@ async def create_response(
         kwargs: dict = {}
         if extra_body:
             kwargs["extra_body"] = extra_body
+        if service_tier is not None:
+            kwargs["service_tier"] = service_tier
 
         return await client.responses.create(
             model=model,
             input=[{"role": "user", "content": prompt}],
             reasoning=reasoning,
-            service_tier=service_tier,
             **kwargs,
         )
 

@@ -1,0 +1,99 @@
+{
+  "n_anchors": 15,
+  "n_pairs": 105,
+  "n_ties": 13,
+  "spearman_rho": 0.9449111825230679,
+  "spearman_p": 1.1286993948503091e-07,
+  "anchors": [
+    {
+      "id": "macro_01",
+      "tier": 3,
+      "mu": 43.014792157395775,
+      "text_preview": "The goal of this work is to develop a general framework for understanding how neural networks acquir"
+    },
+    {
+      "id": "macro_02",
+      "tier": 3,
+      "mu": 36.209099046757856,
+      "text_preview": "To solve this problem, we need to understand the overall structure of the question and identify the "
+    },
+    {
+      "id": "macro_03",
+      "tier": 3,
+      "mu": 37.157884488429005,
+      "text_preview": "This task requires deciding between two broad strategies: iterative refinement of a partial solution"
+    },
+    {
+      "id": "macro_04",
+      "tier": 3,
+      "mu": 38.28880757206231,
+      "text_preview": "The central challenge is handling the trade-off between latency and accuracy as workload patterns sh"
+    },
+    {
+      "id": "macro_05",
+      "tier": 3,
+      "mu": 38.154678219958534,
+      "text_preview": "We aim to characterise the relationship between model scale and the emergence of reasoning capabilit"
+    },
+    {
+      "id": "meso_01",
+      "tier": 2,
+      "mu": 23.13138441985695,
+      "text_preview": "First, I need to locate the function that parses incoming requests, then modify it to validate the n"
+    },
+    {
+      "id": "meso_02",
+      "tier": 2,
+      "mu": 27.648911188426027,
+      "text_preview": "Let me search for the file that defines the schema, then check how it is referenced elsewhere in the"
+    },
+    {
+      "id": "meso_03",
+      "tier": 2,
+      "mu": 22.614284205097615,
+      "text_preview": "We compute the per-day usage, then multiply by the number of days to get the total. That gives us th"
+    },
+    {
+      "id": "meso_04",
+      "tier": 2,
+      "mu": 24.7302557013947,
+      "text_preview": "Set up a loop that iterates through each record, accumulates the relevant counts, and stores interme"
+    },
+    {
+      "id": "meso_05",
+      "tier": 2,
+      "mu": 26.843736495386818,
+      "text_preview": "Apply integration by parts, taking u equal to the logarithm term and dv equal to the polynomial fact"
+    },
+    {
+      "id": "micro_01",
+      "tier": 1,
+      "mu": 10.493737103814766,
+      "text_preview": "x = 3 * 4 = 12"
+    },
+    {
+      "id": "micro_02",
+      "tier": 1,
+      "mu": 13.021435280391334,
+      "text_preview": "Call function `read_file('/etc/config.yaml')` and store the result in `cfg`."
+    },
+    {
+      "id": "micro_03",
+      "tier": 1,
+      "mu": 14.07559016662682,
+      "text_preview": "The result is 42."
+    },
+    {
+      "id": "micro_04",
+      "tier": 1,
+      "mu": 11.260898376029033,
+      "text_preview": "Line 27 reads: `return self._cache.get(key, None)`"
+    },
+    {
+      "id": "micro_05",
+      "tier": 1,
+      "mu": 8.352111882453022,
+      "text_preview": "Set batch_size=32, learning_rate=0.0001, and epochs=50."
+    }
+  ]
+}

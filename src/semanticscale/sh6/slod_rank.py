@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Literal
 
 import numpy as np
+import openai
 from openskill.models import PlackettLuce
 from pydantic import BaseModel
 
@@ -167,6 +168,14 @@ async def _compare_once(
 # ---------------------------------------------------------------------------
 
 
+def _is_context_overflow(exc: BaseException) -> bool:
+    """True when the judge rejected a pair as exceeding its context window."""
+    if not isinstance(exc, openai.BadRequestError):
+        return False
+    msg = str(getattr(exc, "message", "") or exc)
+    return "maximum context length" in msg or "context length" in msg.lower()
+
+
 async def compare_scale(
     backend: Backend,
     model: str,
@@ -179,12 +188,20 @@ async def compare_scale(
     """Compare two chunks twice (a,b) and (b,a) for consensus.
 
     Returns 'a' if chunk_a is more abstract, 'b' if chunk_b is, or 'tie'
-    if the two calls disagree.
+    if the two calls disagree. If either direction overflows the judge's
+    context window, the pair is reported as a tie so a single oversize
+    chunk doesn't kill the whole tournament.
     """
-    r1, r2 = await asyncio.gather(
-        _compare_once(backend, model, service_tier, chunk_a, chunk_b, cache, semaphore),
-        _compare_once(backend, model, service_tier, chunk_b, chunk_a, cache, semaphore),
-    )
+    try:
+        r1, r2 = await asyncio.gather(
+            _compare_once(backend, model, service_tier, chunk_a, chunk_b, cache, semaphore),
+            _compare_once(backend, model, service_tier, chunk_b, chunk_a, cache, semaphore),
+        )
+    except openai.BadRequestError as exc:
+        if _is_context_overflow(exc):
+            logger.warning("Pair exceeds judge context; reporting tie. (%s)", exc)
+            return "tie"
+        raise
     # r1: 'A'→chunk_a wins, 'B'→chunk_b wins
     # r2 was called with (b, a): 'A'→chunk_b wins (b was presented as A), 'B'→chunk_a wins
     winner1 = "a" if r1 == "A" else "b"
@@ -483,7 +500,14 @@ async def rank_all(
         rankings: list[dict] = []
         completed = 0
         for coro in asyncio.as_completed(tasks):
-            rec = await coro
+            try:
+                rec = await coro
+            except Exception:
+                # One item's tournament blew up. Log and move on so the
+                # remaining 100+ in-flight tournaments aren't taken down
+                # by aclose() in the finally block.
+                logger.exception("Item ranking failed; skipping")
+                rec = None
             completed += 1
             if rec is not None:
                 rankings.append(rec)

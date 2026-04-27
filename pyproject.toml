@@ -10,7 +10,7 @@ name = "semanticscale"
 version = "0.1.0"
 description = "Experiments for Semantic Level of Detail in LLMs"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
     "accelerate>=0.25.0",
     "choix>=0.4.1",
@@ -32,9 +32,10 @@ dependencies = [
     "sentencepiece>=0.1.99",
     "spacy>=3.7.0",
     "tenacity>=8.0.0",
-    "torch>=2.1.0",
+    "torch==2.10.0",
     "tqdm>=4.66.0",
     "transformers>=4.36.0",
+    "vllm",
 ]
 
 [tool.ruff.lint]
@@ -51,9 +52,5 @@ ignore = [
 "experiments/*/scripts/*.py" = ["TRY400"]  # scripts use logger.error deliberately
 
 [tool.uv.sources]
-torch = { index = "pytorch-cpu" }
+vllm = { path = "../../../mnt/hdd/torch_wheels/vllm-0.19.1+cu132-cp312-cp312-linux_x86_64.whl" }
 
-[[tool.uv.index]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-explicit = true

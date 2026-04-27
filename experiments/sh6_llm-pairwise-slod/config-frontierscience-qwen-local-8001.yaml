@@ -1,0 +1,56 @@
+# SH7 real run: FrontierScience via locally-served DeepSeek-R1-Distill-Qwen-32B.
+#
+# Launch the server first (single-node, two GPUs):
+#   vllm serve deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
+#     --reasoning-parser deepseek_r1 \
+#     --tensor-parallel-size 2 \
+#     --port 8000 --max-model-len 16384
+#
+# Then run scripts/01_traces.py … 05_analyze_failure_modes.py with
+# --config pointing at this file.
+
+paths:
+  data_dir: ../../data/sh6_cpu
+  reports_dir: reports_cpu
+
+dataset:
+  name: frontierscience
+  hf_path: openai/frontierscience
+  split: test
+  max_samples: null
+
+traces:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8001/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+  max_retries: 3
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+grader:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8001/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+
+pairwise_slod:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8001/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+  extra_comparisons_per_problem: 10
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12
