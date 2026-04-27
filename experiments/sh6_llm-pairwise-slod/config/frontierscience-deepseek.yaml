@@ -1,6 +1,6 @@
 paths:
   data_dir: ../../../data/sh6
-  reports_dir: reports
+  reports_dir: ../reports
 
 dataset:
   name: frontierscience
@@ -36,6 +36,9 @@ pairwise_slod:
     reasoning:
       enabled: false
   max_concurrent: 40
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
   extra_comparisons_per_problem: 20
   min_chunks: 2
 

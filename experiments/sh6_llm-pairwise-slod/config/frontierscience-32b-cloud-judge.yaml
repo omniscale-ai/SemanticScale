@@ -9,8 +9,8 @@
 # all-local run instead of overwriting it.
 
 paths:
-  data_dir: ../../data/sh6
-  reports_dir: reports
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
 
 dataset:
   name: frontierscience

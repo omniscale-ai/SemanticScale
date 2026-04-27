@@ -9,8 +9,8 @@
 # problems; promote to the 32B config for the real run.
 
 paths:
-  data_dir: ../../data/sh6
-  reports_dir: reports
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
 
 dataset:
   name: frontierscience

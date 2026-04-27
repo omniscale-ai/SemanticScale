@@ -11,24 +11,22 @@ dataset:
 
 traces:
   model:
-    name: deepseek/deepseek-v3.2
-    base_url: https://openrouter.ai/api/v1
-    api_key_env: OPENROUTER_API_KEY
-    reasoning:
-      enabled: true
-  max_concurrent: 40
-  max_retries: 5
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8000/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+  max_retries: 3
   retry_min_wait: 1.0
   retry_max_wait: 60.0
 
 pairwise_slod:
   model:
-    name: deepseek/deepseek-v3.2
-    base_url: https://openrouter.ai/api/v1
-    api_key_env: OPENROUTER_API_KEY
-    reasoning:
-      enabled: false
-  max_concurrent: 40
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8000/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
   extra_comparisons_per_problem: 20
   min_chunks: 2
 

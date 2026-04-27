@@ -1,6 +1,6 @@
 paths:
-  data_dir: ../../data/sh6
-  reports_dir: reports
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
 
 dataset:
   name: swe-agent-trajectories
