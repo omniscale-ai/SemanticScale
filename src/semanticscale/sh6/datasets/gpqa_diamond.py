@@ -13,9 +13,9 @@ from __future__ import annotations
 
 import logging
 import random
+import re
 from pathlib import Path
 
-from semanticscale.sh6.grading import grade_results
 from semanticscale.sh6.inference import make_model_slug, run_inference
 
 logger = logging.getLogger(__name__)
@@ -27,6 +27,47 @@ _DEFAULT_CONFIG = "gpqa_diamond"
 _DEFAULT_SPLIT = "train"
 
 _LETTERS = ("A", "B", "C", "D")
+
+_LETTER_RE = re.compile(r"\b([ABCDabcd])\b")
+
+
+def _extract_letter(text: str) -> str | None:
+    """Return the first standalone A/B/C/D found in *text*, uppercased."""
+    if not text:
+        return None
+    match = _LETTER_RE.search(text)
+    return match.group(1).upper() if match else None
+
+
+def _grade_deterministic(results: list[dict]) -> list[dict]:
+    """MCQ grading: compare extracted letter against ``correct_letter``."""
+    graded = []
+    for result in results:
+        record = dict(result)
+        if record.get("error"):
+            graded.append(record)
+            continue
+        candidate = record.get("predicted_answer") or record.get("answer_text", "")
+        predicted_letter = _extract_letter(candidate)
+        correct_letter = record.get("correct_letter")
+        if predicted_letter is None:
+            record["grade"] = {
+                "type": "final_answer",
+                "passed": False,
+                "explanation": "No A/B/C/D letter found in the model's final answer.",
+            }
+            record["is_correct"] = False
+        else:
+            passed = predicted_letter == correct_letter
+            record["grade"] = {
+                "type": "final_answer",
+                "passed": passed,
+                "explanation": f"Predicted {predicted_letter}; correct {correct_letter}.",
+            }
+            record["is_correct"] = passed
+            record["predicted_letter"] = predicted_letter
+        graded.append(record)
+    return graded
 
 _PROMPT_TEMPLATE = """{question}
 
@@ -152,9 +193,8 @@ def produce_traces(
         r["subdomain"] = extra.get("subdomain")
         r["origin"] = extra.get("origin", "gpqa-diamond")
 
-    grader_model = config["pairwise_slod"]["model"]["name"]
-    logger.info("Running advanced grading with %s", grader_model)
-    results = grade_results(results, config=config)
+    logger.info("Grading %d GPQA-Diamond results deterministically (MCQ letter match)", len(results))
+    results = _grade_deterministic(results)
 
     slug = run_slug(config, overrides)
     for r in results:

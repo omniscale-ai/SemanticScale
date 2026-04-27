@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 def load_all_summaries(dataset_dir: Path) -> list[dict]:
     summaries = []
-    for path in sorted(dataset_dir.glob("*/summary.json")):
+    for path in sorted(dataset_dir.glob("**/summary.json")):
         with open(path) as f:
             summaries.append(json.load(f))
     return summaries

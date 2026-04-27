@@ -1,5 +1,5 @@
 paths:
-  data_dir: ../../data/sh6
+  data_dir: ../../../data/sh6
   reports_dir: reports
 
 dataset:
@@ -25,14 +25,18 @@ grader:
     name: deepseek/deepseek-v3.2
     base_url: https://openrouter.ai/api/v1
     api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: true
 
 pairwise_slod:
   model:
     name: deepseek/deepseek-v3.2
     base_url: https://openrouter.ai/api/v1
     api_key_env: OPENROUTER_API_KEY
-  max_concurrent: 20
-  extra_comparisons_per_problem: 10
+    reasoning:
+      enabled: false
+  max_concurrent: 40
+  extra_comparisons_per_problem: 20
   min_chunks: 2
 
 failure_analysis:

@@ -26,45 +26,27 @@ traces:
     backend: local
     reasoning:
       enabled: true
-    extra_body:
-      temperature: 0.6
-      top_p: 0.95
-      max_tokens: 8192
   max_concurrent: 8
   max_retries: 3
   retry_min_wait: 1.0
   retry_max_wait: 30.0
 
 grader:
-  # Non-reasoning judge served on port 8001. Reasoning distills can't
-  # reliably close <think> in budget, so they're a poor fit for deterministic
-  # JSON-schema grading. Qwen3-30B-A3B-Instruct-2507 is non-thinking SOTA
-  # (MoE, 3B active) — fast, deterministic, strong at JSON output.
   model:
     name: Qwen/Qwen3-30B-A3B-Instruct-2507
-    base_url: http://localhost:8001/v1
+    base_url: http://localhost:8000/v1
     api_key_env: LOCAL_LLM_API_KEY
     backend: local
-    reasoning:
-      enabled: false
-    extra_body:
-      temperature: 0.0
-      max_tokens: 1024
   max_concurrent: 8
 
 pairwise_slod:
   model:
     name: Qwen/Qwen3-30B-A3B-Instruct-2507
-    base_url: http://localhost:8001/v1
+    base_url: http://localhost:8000/v1
     api_key_env: LOCAL_LLM_API_KEY
     backend: local
-    reasoning:
-      enabled: false
-    extra_body:
-      temperature: 0.0
-      max_tokens: 256
   max_concurrent: 8
-  extra_comparisons_per_problem: 10
+  extra_comparisons_per_problem: 20
   min_chunks: 2
 
 failure_analysis:

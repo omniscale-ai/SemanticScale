@@ -30,12 +30,11 @@ logger = logging.getLogger(__name__)
 
 
 def parse_args() -> argparse.Namespace:
-    here = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--config", default=str(here / "config.yaml"))
+    parser.add_argument("--config", required=True)
     parser.add_argument(
         "--run-slug",
         default=None,
