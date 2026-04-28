@@ -1,0 +1,646 @@
+umap_x,umap_y,target,id,subject,exit_status,final_answer_correct,is_correct
+28.168478,18.060707,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted (exit_context),False,False
+28.231735,17.997381,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted (exit_context),False,False
+28.23482,17.994276,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted (exit_context),False,False
+28.177866,18.051142,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.229239,17.999838,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.289328,17.939816,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.255379,17.973694,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted (exit_context),False,False
+28.204582,18.024612,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.185555,18.043583,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.200598,18.028547,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted,False,False
+28.174397,18.054638,0,AnalogJ__lexicon-336,swe-agent-llama-70b,submitted (exit_context),False,False
+24.136032,13.817591,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.116325,13.7979,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.153322,13.83489,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.225473,13.907041,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.16651,13.848071,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.15809,13.83963,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.142006,13.823572,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.123697,13.805361,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.176075,13.857629,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.134329,13.815884,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.190252,13.871798,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.154724,13.836269,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.18428,13.8658285,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+23.994884,13.67644,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+24.15646,13.838002,0,Azure__azure-functions-python-worker-890,swe-agent-llama-70b,submitted,False,False
+-17.344507,14.325916,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.350864,14.193811,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.522434,14.087919,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.357956,14.214586,0,Melevir__cognitive_complexity-15,swe-agent-llama-8b,submitted,False,False
+-17.526232,14.288645,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.481642,14.249575,1,Melevir__cognitive_complexity-15,swe-agent-llama-8b,submitted,True,True
+-17.343828,14.131303,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),True,True
+-17.438715,14.217783,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.29731,14.178172,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.460047,14.228095,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.440527,14.195219,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.332039,14.089872,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.425205,14.151628,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.460194,14.291047,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.38286,14.099986,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.40431,14.187182,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.615131,14.060114,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.547329,14.428724,0,Melevir__cognitive_complexity-15,swe-agent-llama-8b,submitted,False,False
+-17.139889,14.261692,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.45901,14.134817,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.225216,14.1789255,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.574856,14.35747,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.24395,14.108775,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.187138,13.909514,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),True,True
+-17.296497,13.939206,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.393236,14.199417,0,Melevir__cognitive_complexity-15,swe-agent-llama-8b,submitted (exit_context),False,False
+-17.31577,14.457983,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.443363,14.232006,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.648735,14.310772,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.475887,13.897216,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.505735,14.116082,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.172348,14.334922,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.471931,14.18954,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.3959,14.313712,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.125101,14.35995,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.422201,14.206717,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.524117,14.240324,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.212584,14.441334,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.413624,14.032162,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.458048,14.105546,0,Melevir__cognitive_complexity-15,swe-agent-llama-8b,submitted,False,False
+-17.626558,13.946285,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.14716,14.124543,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.49918,14.220321,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+-17.240171,14.363345,1,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,True,True
+-17.609941,14.329715,0,Melevir__cognitive_complexity-15,swe-agent-llama-70b,submitted,False,False
+4.1479673,-15.210034,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.175747,-15.234214,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.159519,-15.240691,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.1086636,-15.2908945,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.1815267,-15.241847,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.2052584,-15.188445,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted,False,False
+4.169317,-15.224945,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted,False,False
+4.168465,-15.189718,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.255829,-15.145421,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted,False,False
+4.2405734,-15.1624565,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+4.2503953,-15.149935,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted,False,False
+4.155645,-15.237306,0,PyCQA__pyflakes-761,swe-agent-llama-70b,submitted (exit_context),False,False
+11.383749,5.4244156,0,RDFLib__rdflib-1130,swe-agent-llama-70b,submitted,False,False
+11.340653,5.4147468,0,RDFLib__rdflib-1130,swe-agent-llama-70b,submitted,False,False
+11.366754,5.4379315,0,RDFLib__rdflib-1130,swe-agent-llama-70b,submitted,False,False
+11.278187,5.5006075,0,RDFLib__rdflib-1130,swe-agent-llama-70b,submitted,False,False
+11.274146,5.4960756,0,RDFLib__rdflib-1130,swe-agent-llama-70b,submitted,False,False
+28.291382,17.93795,0,ReproNim__reproman-518,swe-agent-llama-70b,submitted,False,False
+28.13731,18.09183,0,ReproNim__reproman-518,swe-agent-llama-70b,submitted (exit_context),False,False
+28.15932,18.069883,0,ReproNim__reproman-518,swe-agent-llama-70b,submitted,False,False
+28.106976,18.122192,0,ReproNim__reproman-518,swe-agent-llama-70b,exit_context,False,False
+28.185202,18.044008,0,ReproNim__reproman-518,swe-agent-llama-70b,submitted,False,False
+28.223896,18.005247,0,ReproNim__reproman-518,swe-agent-llama-70b,exit_context,False,False
+28.219786,18.009497,0,ReproNim__reproman-518,swe-agent-llama-70b,submitted,False,False
+3.935193,-15.624974,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.01477,-15.661242,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted (exit_context),False,False
+3.9346242,-15.588188,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted (exit_context),False,False
+4.1132307,-15.702987,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+3.9994986,-15.640569,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.055823,-15.681624,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.0567684,-15.677175,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted (exit_context),False,False
+4.0304294,-15.735955,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.0503893,-15.710116,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.0277557,-15.781184,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted,False,False
+4.138733,-15.686449,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted (exit_context),False,False
+3.9985886,-15.750053,0,ShawHahnLab__igseq-2,swe-agent-llama-70b,submitted (exit_context),False,False
+9.734986,21.102987,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.723482,21.077902,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.789043,21.039787,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.73288,21.08585,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.764421,21.11142,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.742406,21.090363,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.760561,21.07111,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.741303,21.09898,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.820013,21.095797,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.829649,21.166864,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.748956,21.11595,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+9.78286,21.070562,0,TACC__agavepy-62,swe-agent-llama-70b,submitted (exit_context),False,False
+9.761796,21.067923,0,TACC__agavepy-62,swe-agent-llama-70b,submitted,False,False
+18.482796,-12.429721,0,TheFriendlyCoder__pyjen-113,swe-agent-llama-70b,submitted,False,False
+18.431324,-12.565363,0,TheFriendlyCoder__pyjen-113,swe-agent-llama-70b,submitted,False,False
+18.526957,-12.426042,0,TheFriendlyCoder__pyjen-113,swe-agent-llama-70b,submitted,False,False
+3.955228,-15.880211,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted_no_patch,False,False
+3.8674054,-15.790457,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.8313115,-15.871122,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted,False,False
+3.868277,-15.832594,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.8094025,-15.901457,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted,False,False
+3.8414402,-15.902616,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.8676252,-15.805794,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted,False,False
+3.898576,-15.830288,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.7383134,-15.9406185,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.8132267,-15.96856,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.7634828,-15.875727,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted (exit_context),False,False
+3.7989564,-15.902569,0,absent1706__sqlalchemy-mixins-108,swe-agent-llama-70b,submitted_no_patch,False,False
+9.357303,21.070328,0,ahawker__ulid-59,swe-agent-llama-70b,submitted (exit_context),False,False
+9.510819,21.129873,0,ahawker__ulid-59,swe-agent-llama-8b,submitted,False,False
+9.133894,21.123022,0,ahawker__ulid-59,swe-agent-llama-8b,submitted (exit_context),False,False
+9.145632,21.105463,0,ahawker__ulid-59,swe-agent-llama-8b,submitted (exit_context),False,False
+9.163544,21.134317,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.19737,21.169981,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.049545,21.016417,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.176199,21.170822,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.065074,21.022718,0,ahawker__ulid-59,swe-agent-llama-70b,submitted (exit_context),False,False
+9.058114,21.058153,0,ahawker__ulid-59,swe-agent-llama-70b,submitted (exit_context),False,False
+9.19463,21.1879,0,ahawker__ulid-59,swe-agent-llama-8b,submitted,False,False
+9.086627,21.117851,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.106608,21.04967,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.040616,21.057817,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.1025715,21.084368,0,ahawker__ulid-59,swe-agent-llama-8b,submitted,False,False
+9.032382,21.032991,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.173316,21.15552,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+9.099675,21.138865,0,ahawker__ulid-59,swe-agent-llama-70b,submitted,False,False
+2.0552945,11.921342,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted (exit_context),False,False
+1.9401501,11.806214,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted (exit_context),False,False
+1.9369226,11.8027935,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+2.0089898,11.875012,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted_no_patch,False,False
+1.9834163,11.849479,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+1.9588338,11.824885,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted (exit_context),False,False
+2.010632,11.876669,0,airspeed-velocity__asv-702,swe-agent-llama-70b,exit_context,False,False
+1.9737067,11.839753,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted (exit_context),False,False
+1.9775652,11.843624,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+2.0452378,11.911303,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+1.9701498,11.836161,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+2.0181837,11.884178,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+1.9338664,11.799906,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted,False,False
+1.9131305,11.779123,0,airspeed-velocity__asv-702,swe-agent-llama-70b,exit_context,False,False
+1.9586818,11.824693,0,airspeed-velocity__asv-702,swe-agent-llama-70b,submitted (exit_context),False,False
+1.9804097,11.846467,0,airspeed-velocity__asv-702,swe-agent-llama-70b,exit_context,False,False
+-17.945908,-7.942632,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.90691,-8.035815,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.104282,-7.818586,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.13199,-8.074761,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.04682,-7.991073,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.021017,-7.820069,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.886978,-7.81392,0,asottile__pyupgrade-142,swe-agent-llama-70b,early_exit,False,False
+-17.922451,-7.8544855,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.003284,-7.9549146,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.994513,-7.8745756,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.168276,-7.86465,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-18.21667,-7.9258056,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.057432,-7.8840513,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-18.001411,-7.989199,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.087708,-8.084261,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-17.686811,-7.8903794,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.965082,-7.4776673,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.18122,-7.9981713,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.963024,-8.182015,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.813675,-7.683349,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.288717,-7.932739,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.041706,-7.585582,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.894266,-8.252952,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.244574,-7.789577,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.187057,-7.910622,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-17.741962,-8.17586,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.725595,-8.012194,0,asottile__pyupgrade-142,swe-agent-llama-70b,early_exit,False,False
+-17.834755,-7.859911,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.359379,-7.7919607,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.702314,-7.801345,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.72398,-7.8566613,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.21802,-7.819683,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.855558,-8.078562,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.210619,-8.1682,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.051785,-7.9073033,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.234678,-7.760496,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.861593,-7.5811467,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.152449,-7.6508822,0,asottile__pyupgrade-142,swe-agent-llama-70b,early_exit,False,False
+-18.007639,-7.697796,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.357798,-8.118609,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.20871,-8.136768,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.341274,-8.039695,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.261362,-7.7129145,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.117306,-8.037439,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.091671,-8.137283,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.83162,-7.9439564,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.885202,-8.118624,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.019842,-8.125273,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.361141,-8.15252,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.050964,-7.785862,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-18.120247,-7.815824,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-18.122004,-7.9342303,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.06395,-7.840628,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.733763,-8.037368,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-17.971262,-7.9200964,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.802992,-8.037975,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-18.214167,-7.624652,0,asottile__pyupgrade-142,swe-agent-llama-70b,early_exit,False,False
+-17.958673,-7.957852,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-17.701633,-7.8714166,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.902807,-7.4625263,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-17.827463,-8.18316,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted_no_patch,False,False
+-18.187902,-7.723683,0,asottile__pyupgrade-142,swe-agent-llama-70b,exit_context,False,False
+-18.10428,-7.685371,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-17.997173,-8.201343,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted (exit_context),False,False
+-17.872597,-8.177865,0,asottile__pyupgrade-142,swe-agent-llama-70b,submitted,False,False
+-1.8259798,-23.924818,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,True,True
+-1.9016743,-23.815699,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7413598,-23.895275,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8235073,-23.94179,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8076603,-23.928328,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9618005,-23.876528,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9130837,-23.879084,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7039719,-23.74905,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7642031,-23.842224,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,True,True
+-1.7949356,-23.806892,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8564614,-23.762579,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8083402,-23.948668,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7746984,-23.84804,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7908288,-23.850645,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,True,True
+-1.8510014,-23.877998,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9425038,-23.738798,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7293326,-23.77326,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9137774,-23.726355,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7811818,-23.88101,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8828542,-23.896503,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted (exit_context),True,True
+-2.0432148,-24.058384,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-2.011546,-24.004997,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.8841785,-23.869318,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9844002,-24.14697,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.6748993,-23.743326,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.9034159,-23.942844,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.6340724,-23.992098,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.866593,-23.992723,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.6495763,-24.020775,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.5998394,-23.785177,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-1.7574191,-23.782711,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,True,True
+-1.8320396,-23.857773,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-2.0075803,-24.065819,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted (exit_context),False,False
+-1.6616678,-23.827055,1,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted (exit_context),True,True
+-1.9355595,-24.111065,0,bihealth__biomedsheets-23,swe-agent-llama-70b,submitted,False,False
+-3.363156,2.6874895,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.2883904,2.591662,0,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,False,False
+-3.2998955,2.634928,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.389824,2.7078707,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.3696868,2.643864,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.3373845,2.6168272,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.383148,2.6980002,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.31141,2.6255705,0,geopandas__geopandas-3240,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.317342,2.6294394,0,geopandas__geopandas-3240,swe-agent-llama-8b,submitted,False,False
+-3.3512254,2.6657755,0,geopandas__geopandas-3240,swe-agent-llama-8b,submitted,False,False
+-3.2945576,2.6103742,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.392303,2.6948287,0,geopandas__geopandas-3240,swe-agent-llama-8b,submitted,False,False
+-3.2629764,2.577578,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.3509765,2.664709,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+-3.3090432,2.6244855,0,geopandas__geopandas-3240,swe-agent-llama-8b,submitted,False,False
+-3.275568,2.5994606,1,geopandas__geopandas-3240,swe-agent-llama-70b,submitted,True,True
+18.611488,-12.322918,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.444748,-12.27202,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.639143,-12.355201,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.604448,-12.323331,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.495373,-12.389987,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted (exit_context),False,False
+18.478401,-12.399522,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.595108,-12.362215,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.444008,-12.466862,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.51371,-12.417416,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.587505,-12.492166,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted (exit_context),False,False
+18.41897,-12.354405,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.614326,-12.462645,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.682482,-12.445939,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.477533,-12.233059,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.645998,-12.216929,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.751148,-12.618354,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.468689,-12.451211,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.515656,-12.287958,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.3394,-12.2577,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.758654,-12.286443,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.570509,-12.489944,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.581152,-12.278007,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.298363,-12.243021,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.576546,-12.212112,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.626135,-12.513514,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.759481,-12.3954,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.70776,-12.543167,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.456783,-12.262366,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.549152,-12.534431,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.33909,-12.585996,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.384682,-12.290371,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.436691,-12.38179,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.559105,-12.176764,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.752972,-12.36665,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.509584,-12.551048,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.711685,-12.119386,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+18.711737,-12.3320465,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.370914,-12.329928,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted (exit_context),False,False
+18.644825,-12.3346195,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.706083,-12.498586,0,hugovk__pypistats-41,swe-agent-llama-70b,submitted,False,False
+18.67553,-12.369632,1,hugovk__pypistats-41,swe-agent-llama-70b,submitted,True,True
+16.048069,-1.4599148,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.0725,-1.5086226,0,iterative__dvc-5785,swe-agent-llama-70b,exit_context,False,False
+16.094736,-1.5249783,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+15.985735,-1.5387262,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.930692,-1.4356599,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.147808,-1.3913237,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+16.008434,-1.508862,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.10601,-1.4842055,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.896578,-1.36646,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.11682,-1.3879883,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.182001,-1.387378,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.927153,-1.4165254,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.027004,-1.416435,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.973505,-1.5533723,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.020063,-1.455833,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.776827,-1.3634309,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+16.010857,-1.7616371,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+15.837439,-1.4012749,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.809087,-1.6024568,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+15.797983,-1.5703342,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+16.08695,-1.7419591,0,iterative__dvc-5785,swe-agent-llama-70b,submitted (exit_context),False,False
+16.278873,-1.4782215,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+16.107344,-1.3264382,0,iterative__dvc-5785,swe-agent-llama-70b,submitted (exit_context),False,False
+16.029295,-1.2046089,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.270216,-1.6313338,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.10958,-1.1465112,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.27098,-1.4594492,0,iterative__dvc-5785,swe-agent-llama-70b,exit_context,False,False
+16.080084,-1.5132418,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.097704,-1.3658202,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.934686,-1.4345071,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.049261,-1.6803004,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.750615,-1.4520687,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.232676,-1.4582028,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.877712,-1.5580437,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.902349,-1.4430118,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.097326,-1.2715917,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.912931,-1.4559058,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.19459,-1.3563251,0,iterative__dvc-5785,swe-agent-llama-70b,exit_context,False,False
+16.19309,-1.3789574,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.889175,-1.571351,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.06647,-1.2591045,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.172522,-1.5242482,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+16.07971,-1.228779,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+15.962907,-1.542409,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.786708,-1.5223736,0,iterative__dvc-5785,swe-agent-llama-70b,submitted,False,False
+15.883637,-1.7396786,1,iterative__dvc-5785,swe-agent-llama-70b,submitted,True,True
+11.077867,6.0540733,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.125833,5.9464273,0,joke2k__django-environ-358,swe-agent-llama-70b,early_exit,False,False
+11.201212,6.008978,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.133704,5.9796224,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.165751,6.0327687,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.116131,5.9899135,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.145734,5.9249644,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.152791,6.044765,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.179919,6.046749,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.122674,5.999333,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.143212,5.9811273,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+11.129123,6.059418,1,joke2k__django-environ-358,swe-agent-llama-70b,submitted,True,True
+-12.657633,4.7729387,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.678965,4.6267366,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.720953,4.703355,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.788006,4.804615,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.6645,4.698396,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.733747,4.6402144,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.742449,4.777244,0,just-work__fffw-100,swe-agent-llama-8b,submitted (exit_context),False,False
+-12.627989,4.822921,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.703982,4.7425346,1,just-work__fffw-100,swe-agent-llama-70b,submitted,True,True
+-12.724885,4.614529,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.756284,4.7045135,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.7932415,4.574697,0,just-work__fffw-100,swe-agent-llama-8b,submitted (exit_context),False,False
+-12.713794,4.691422,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.894287,4.5953045,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.911092,4.803128,1,just-work__fffw-100,swe-agent-llama-70b,submitted,True,True
+-12.511096,4.5835915,1,just-work__fffw-100,swe-agent-llama-70b,submitted,True,True
+-12.862,4.8115687,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.740862,4.763595,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.884549,4.565404,1,just-work__fffw-100,swe-agent-llama-70b,submitted,True,True
+-12.543921,4.9044867,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.689021,4.629479,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.864261,4.7557697,1,just-work__fffw-100,swe-agent-llama-70b,submitted,True,True
+-12.498307,4.608163,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.522338,4.64873,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.915029,4.8750076,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.535443,4.7339206,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.7457285,4.5996823,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.589014,4.6837792,0,just-work__fffw-100,swe-agent-llama-70b,submitted (exit_context),False,False
+-12.730153,4.934116,0,just-work__fffw-100,swe-agent-llama-8b,submitted (exit_context),False,False
+-12.852285,4.887618,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.893845,4.4358416,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.966805,4.6697364,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.766355,4.8033466,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.958299,4.547227,0,just-work__fffw-100,swe-agent-llama-8b,submitted,False,False
+-12.833279,4.558067,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.571984,4.546454,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.804329,4.727852,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.655654,4.9319296,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.788031,4.873001,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.982115,4.662189,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.711988,4.7774944,1,just-work__fffw-100,swe-agent-llama-8b,submitted (exit_context),True,True
+-12.659655,4.8824368,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.57025,4.7163115,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.632966,4.6003995,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.869336,4.8581157,0,just-work__fffw-100,swe-agent-llama-70b,submitted (exit_context),False,False
+-12.777143,4.5836973,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-12.706418,4.4078765,0,just-work__fffw-100,swe-agent-llama-70b,submitted,False,False
+-3.8458629,22.122938,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.9691155,22.078524,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.0968676,22.23284,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.926326,21.91635,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.898458,22.053875,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.8183932,22.065012,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.9454348,21.91102,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.8780324,22.099335,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.9794862,21.951138,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.213918,22.1012,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.036596,22.118416,0,networkx__networkx-7024,swe-agent-llama-8b,submitted,False,False
+-4.119635,22.166,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.1188383,21.927673,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.128098,22.216587,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.0169196,21.93896,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.6454027,21.723793,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.94652,21.801323,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.848533,22.142883,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.275471,21.898058,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.0761905,22.064163,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.8488612,21.997396,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.5365298,22.106619,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.6881711,21.804066,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.9011507,22.275427,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.421882,22.074205,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.9531052,22.31951,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.7952201,21.957817,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.685316,21.990747,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.1164403,21.682415,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.6182432,21.831104,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.571125,22.12258,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.8426666,21.710012,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.6799376,22.171629,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.0234714,21.82961,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.6515121,22.25937,0,networkx__networkx-7024,swe-agent-llama-405b,submitted,False,False
+-3.7208114,22.21978,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.9584665,22.492243,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.6889415,22.09608,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.1500897,22.141262,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.0834427,22.178545,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-4.1314473,21.84907,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.764037,22.382225,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.7527478,22.326397,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.1827435,22.145487,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.918965,21.723524,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.8236275,22.543362,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.0731635,22.214418,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.488352,22.105362,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.6572905,22.289913,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.641459,22.01617,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.7694008,21.860834,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.341961,22.18349,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.5791163,22.208618,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-4.2355046,22.461199,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.7779868,22.384491,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.0839663,22.358702,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.187265,22.273258,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.2949266,22.063984,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-4.206159,22.11884,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-3.79094,22.234398,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.857874,22.089268,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.053988,22.355316,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.4093704,21.974697,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.7846675,22.30892,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-3.9091964,22.395514,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.8771102,21.820473,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-3.9059827,22.267548,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.3846526,21.910706,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.024308,22.344723,0,networkx__networkx-7024,swe-agent-llama-8b,submitted,False,False
+-4.0453634,21.728943,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.42369,22.246828,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.196777,22.241331,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.9761372,21.778011,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.9740918,21.973324,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.382755,21.956856,0,networkx__networkx-7024,swe-agent-llama-405b,submitted,False,False
+-3.906494,21.738514,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.9492257,21.624691,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.3452415,21.953627,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.083742,21.945625,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-4.205495,21.798826,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.0850396,21.722876,1,networkx__networkx-7024,swe-agent-llama-405b,submitted,True,True
+-4.102681,22.156084,0,networkx__networkx-7024,swe-agent-llama-8b,submitted_no_patch,False,False
+-4.3434715,22.213625,0,networkx__networkx-7024,swe-agent-llama-8b,submitted (exit_context),False,False
+-4.0465407,22.526186,1,networkx__networkx-7024,swe-agent-llama-8b,submitted,True,True
+-4.1639867,22.00169,1,networkx__networkx-7024,swe-agent-llama-70b,submitted,True,True
+-3.8301044,22.191479,0,networkx__networkx-7024,swe-agent-llama-8b,submitted,False,False
+-4.2198544,22.054178,0,networkx__networkx-7024,swe-agent-llama-8b,submitted,False,False
+-1.9900646,-3.4835732,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.9414066,-3.5170155,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.9507271,-3.6087205,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-2.0326247,-3.4091058,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.2049654,-3.5357249,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted_no_patch,False,False
+-1.7894404,-3.4599366,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.0683675,-3.669819,1,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),True,True
+-1.9669224,-3.5526745,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.832773,-3.496367,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.0869653,-3.3905468,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.182584,-3.5854657,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.1742258,-3.547776,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.9446677,-3.5604527,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.0962193,-3.4352777,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.1200085,-3.3886523,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.0590131,-3.9375587,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.1709476,-3.8503366,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,early_exit,False,False
+-1.9414088,-3.8453114,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-1.8173538,-3.7111423,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-1.654077,-3.4893525,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.3070223,-3.687391,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3525095,-3.6320794,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7637672,-3.8614936,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.6905171,-3.7993605,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-1.977605,-3.7961357,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.949594,-3.5944657,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.8482534,-3.9383297,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.0467086,-3.826113,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,True,True
+-2.128393,-3.6718075,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3672915,-3.4204102,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7616861,-3.6013079,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7138894,-3.6262205,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.8353395,-3.4955318,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.8468996,-3.4906414,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,True,True
+-1.6461574,-3.6483421,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.9209698,-3.339893,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),True,True
+-2.140144,-3.4122443,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-1.9259051,-3.7933173,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,False,False
+-1.8810679,-3.7126286,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7445432,-3.2266908,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.0031044,-3.5753107,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-1.8147225,-3.15457,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7089893,-3.5824711,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7064663,-3.3747797,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.9195482,-3.348318,1,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted,True,True
+-1.9571778,-3.1368392,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,True,True
+-1.709906,-3.287726,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.214424,-3.2748446,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),True,True
+-2.1145964,-3.1066144,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,False,False
+-1.9532378,-3.583876,1,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),True,True
+-2.0334496,-3.7916834,1,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),True,True
+-2.184841,-3.6328504,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.4567454,-3.4190044,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-2.0138943,-3.2965944,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.0787215,-3.2052267,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.1432252,-3.452883,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-1.8465499,-3.1650615,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.8643737,-3.461092,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-1.7815222,-3.409454,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.025692,-3.2275734,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.0489006,-3.2314165,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-2.1661158,-3.079949,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.23678,-3.7884607,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.4734054,-3.349499,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),True,True
+-2.280904,-3.5431335,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-2.2831802,-3.746107,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3758497,-3.6124787,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.2521293,-3.8342059,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-1.7197549,-3.7563446,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3252432,-3.6484797,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-1.8628042,-3.9650643,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3535416,-3.5718985,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-1.7834668,-3.410345,0,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted (exit_context),False,False
+-2.3049674,-3.4909804,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+-2.4298193,-3.4566967,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-2.1161883,-3.4529872,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-2.3107736,-3.4945772,1,ppizarror__pygame-menu-357,swe-agent-llama-8b,submitted,True,True
+-2.1030297,-3.7181342,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-2.270752,-3.6695566,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-1.9334378,-3.6914718,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,False,False
+-2.106528,-3.3374593,0,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted (exit_context),False,False
+-2.2671533,-3.6079867,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.8602997,-3.2139933,1,ppizarror__pygame-menu-357,swe-agent-llama-70b,submitted,True,True
+-1.901211,-3.8716497,0,ppizarror__pygame-menu-357,swe-agent-llama-405b,submitted (exit_context),False,False
+11.14727,5.5204697,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.217778,5.455988,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.294459,5.556592,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+11.398142,5.3581495,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.26845,5.291148,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.33952,5.1673355,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.3989525,5.2966475,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.183694,5.4069896,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.437715,5.3496943,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted (exit_context),False,False
+11.261443,5.207407,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.237403,5.339447,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.309265,5.225596,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+11.124131,5.206246,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted (exit_context),False,False
+11.310706,5.3205085,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.29095,5.211805,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.5296955,5.178926,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+11.233229,5.529575,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.18277,5.163216,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+10.998695,5.3466425,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted (exit_context),False,False
+11.397303,5.2686434,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.515281,5.4302897,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.305327,5.2113814,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.482175,5.207981,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.256074,5.2710285,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.390173,5.364556,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.132223,5.4341164,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.428666,5.2627373,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.278356,5.060106,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.560279,5.457931,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted (exit_context),False,False
+11.174203,5.1429386,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.262461,5.3481264,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+11.390017,5.4164505,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.043344,5.347073,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted (exit_context),False,False
+11.242159,5.189719,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.395884,5.3366833,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.5145035,5.5265584,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.060516,5.3092694,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.158906,5.0965834,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.167397,5.026108,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.23677,5.079191,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.112181,5.3904724,0,python-visualization__folium-1633,swe-agent-llama-70b,submitted,False,False
+11.348257,5.0930333,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True
+11.548834,5.427998,1,python-visualization__folium-1633,swe-agent-llama-70b,submitted,True,True

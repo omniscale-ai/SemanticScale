@@ -1,0 +1,12 @@
+{
+  "features_csv": "/home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/swe-agent-trajectories/model-all/trajectory_features.csv",
+  "n_items": 645,
+  "n_features_used": 29,
+  "feature_set": "trajectory_full",
+  "target_pos_rate": 0.31317829457364343,
+  "umap_neighbors": 15,
+  "umap_min_dist": 0.1,
+  "knn_purity": 0.7215503875968992,
+  "base_rate_purity": 0.6868217054263566,
+  "knn_purity_lift": 0.03472868217054259
+}

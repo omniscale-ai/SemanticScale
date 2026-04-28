@@ -1,0 +1,7 @@
+{
+  "n_runs": 10,
+  "n_in_protocol": 5,
+  "n_wins_protocol": 0,
+  "n_regress_protocol": 2,
+  "carry": false
+}

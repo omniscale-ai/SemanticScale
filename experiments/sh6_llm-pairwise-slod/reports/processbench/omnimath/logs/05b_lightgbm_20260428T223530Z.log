@@ -1,0 +1,8 @@
+2026-04-29 06:35:30,433 INFO __main__ Run dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/processbench/omnimath
+2026-04-29 06:35:30,433 INFO __main__ Features CSV: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/processbench/omnimath/trajectory_features.csv
+2026-04-29 06:35:30,433 INFO __main__ Artifacts dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/processbench/omnimath/artifacts
+2026-04-29 06:35:30,433 INFO __main__ Models: ['logreg', 'lightgbm']
+2026-04-29 06:35:30,576 INFO semanticscale.sh6.failure_analysis_runner Fitting logreg on 29 features (400 items)
+2026-04-29 06:35:30,923 INFO semanticscale.sh6.failure_analysis_runner Fitting lightgbm on 29 features (400 items)
+2026-04-29 06:35:34,035 INFO __main__ logreg — AUC 0.6324 ± 0.0564 (0.31s)
+2026-04-29 06:35:34,035 INFO __main__ lightgbm — AUC 0.5593 ± 0.0659 (3.11s)

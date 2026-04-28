@@ -1,0 +1,8 @@
+2026-04-29 06:35:40,905 INFO __main__ Run dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/swe-agent-trajectories/model-all_steps-50
+2026-04-29 06:35:40,905 INFO __main__ Features CSV: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/swe-agent-trajectories/model-all_steps-50/trajectory_features.csv
+2026-04-29 06:35:40,905 INFO __main__ Artifacts dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/swe-agent-trajectories/model-all_steps-50/artifacts
+2026-04-29 06:35:40,905 INFO __main__ Models: ['logreg', 'lightgbm']
+2026-04-29 06:35:41,043 INFO semanticscale.sh6.failure_analysis_runner Fitting logreg on 29 features (200 items)
+2026-04-29 06:35:41,318 INFO semanticscale.sh6.failure_analysis_runner Fitting lightgbm on 29 features (200 items)
+2026-04-29 06:35:41,781 INFO __main__ logreg — AUC 0.9236 ± 0.0204 (0.24s)
+2026-04-29 06:35:41,781 INFO __main__ lightgbm — AUC 0.9236 ± 0.0204 (0.46s)

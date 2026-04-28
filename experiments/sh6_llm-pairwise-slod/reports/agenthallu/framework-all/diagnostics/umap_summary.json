@@ -1,0 +1,12 @@
+{
+  "features_csv": "/home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/agenthallu/framework-all/trajectory_features.csv",
+  "n_items": 693,
+  "n_features_used": 63,
+  "feature_set": "trajectory_full",
+  "target_pos_rate": 0.36075036075036077,
+  "umap_neighbors": 15,
+  "umap_min_dist": 0.1,
+  "knn_purity": 0.5434343434343435,
+  "base_rate_purity": 0.6392496392496393,
+  "knn_purity_lift": -0.0958152958152958
+}
