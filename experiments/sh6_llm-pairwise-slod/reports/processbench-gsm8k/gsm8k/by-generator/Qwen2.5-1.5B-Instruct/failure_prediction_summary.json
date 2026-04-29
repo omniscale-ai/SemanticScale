@@ -1,5 +1,5 @@
 {
-  "dataset": "processbench",
+  "dataset": "processbench-gsm8k",
   "run_slug": "gsm8k/by-generator/Qwen2.5-1.5B-Instruct",
   "target_label": "final_answer_correct",
   "n_items": 42,

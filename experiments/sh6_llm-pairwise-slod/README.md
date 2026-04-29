@@ -42,6 +42,11 @@ success and failure.
    and gradient-boosted models with subject as a feature.
 
 Other scripts:
+- `08_score_regression.py`: FrontierScience-only numeric-score regression on the
+  rubric subset, using the existing SLoD feature table.
+- `09_frontierscience_bestof5.py`: strict Olympiad-only best-of-5 reranking
+  across the five DeepSeek FrontierScience runs, using out-of-fold SLoD-based
+  confidence scores.
 - `05b_lightgbm_comparison.py`: Tests interaction signal using LightGBM.
 - `05z_aggregate_models.py`: Aggregates model results across datasets.
 - `05d/e/f/g`: UMAP diagnostics and categorical analyses for specific datasets.
@@ -249,17 +254,17 @@ Examples:
 
 ```bash
 uv run python experiments/sh6_llm-pairwise-slod/scripts/05_analyze_failure_modes.py \
-  --config experiments/sh6_llm-pairwise-slod/config-processbench.yaml
+  --config experiments/sh6_llm-pairwise-slod/config/processbench-gsm8k.yaml
 
 uv run python experiments/sh6_llm-pairwise-slod/scripts/05_analyze_failure_modes.py \
-  --config experiments/sh6_llm-pairwise-slod/config-frontierscience-deepseek.yaml
+  --config experiments/sh6_llm-pairwise-slod/config/frontierscience-deepseek.yaml
 ```
 
 You can override the target label manually:
 
 ```bash
 uv run python experiments/sh6_llm-pairwise-slod/scripts/05_analyze_failure_modes.py \
-  --config experiments/sh6_llm-pairwise-slod/config-frontierscience-deepseek.yaml \
+  --config experiments/sh6_llm-pairwise-slod/config/frontierscience-deepseek.yaml \
   --target is_correct
 ```
 

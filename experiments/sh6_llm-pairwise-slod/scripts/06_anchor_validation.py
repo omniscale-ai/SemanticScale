@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """SH6 — Phase A: anchor-based absolute SLoD validation.
 
-Diagnostic for the hypothesis that processbench/agenthallu fail SLoD-based
+Diagnostic for the hypothesis that processbench-gsm8k/agenthallu fail SLoD-based
 failure prediction (ROC-AUC ~0.50) because their traces genuinely lack
 absolute variance on the macro↔micro axis. SH6's current per-trace
 mean-centred OpenSkill ratings cannot distinguish a homogeneous trace from
@@ -22,7 +22,7 @@ Approach (no pipeline changes yet):
 
   Step 3 — distribution summary: per-dataset histogram of absolute μ,
            per-trace std distribution. The hypothesis predicts that
-           processbench/agenthallu have narrower absolute-μ spreads and
+           processbench-gsm8k/agenthallu have narrower absolute-μ spreads and
            smaller per-trace stds than swe-agent/frontierscience.
 
 Outputs → experiments/sh6_llm-pairwise-slod/reports/anchor_validation/:
@@ -82,7 +82,7 @@ OUT_DIR = HERE / "reports" / "anchor_validation"
 # that currently have chunk_rankings.jsonl and for which failure_prediction
 # has been reported.
 DATASETS = [
-    ("processbench", "gsm8k"),
+    ("processbench-gsm8k", "gsm8k"),
     ("agenthallu", "framework-all"),
     ("swe-agent-trajectories", "model-all"),
     ("frontierscience", "deepseek/deepseek-v3.2_reasoning-auto"),
@@ -452,7 +452,7 @@ def write_summary_md(
             "",
             "### Interpretation",
             "",
-            "Hypothesis: processbench/agenthallu per-trace std should be "
+            "Hypothesis: processbench-gsm8k/agenthallu per-trace std should be "
             "meaningfully smaller (≥40%) than swe-agent/frontierscience if "
             "their traces genuinely lack absolute SLoD variance.",
             "",
@@ -577,7 +577,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--llm-config",
-        default=str(HERE / "config" / "processbench.yaml"),
+        default=str(HERE / "config" / "processbench-gsm8k.yaml"),
         help=(
             "SH6 config to read `pairwise_slod.model` + `max_concurrent` from. "
             "Dataset settings inside the config are ignored."

@@ -1,4 +1,4 @@
-# SH6 processbench/gsm8k/by-generator/Qwen2-7B-Instruct — Failure Prediction
+# SH6 processbench-gsm8k/gsm8k/by-generator/Qwen2-7B-Instruct — Failure Prediction
 
 ## Setup
 

@@ -3246,10 +3246,10 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "answer_uncommitted",
         "answer_volatility",
-        "answer_meandering",
-        "answer_overrange"
+        "answer_uncommitted",
+        "answer_overrange",
+        "answer_meandering"
       ],
       "n_flagged": 72,
       "n_caught": 60,

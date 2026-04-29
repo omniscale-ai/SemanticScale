@@ -1,4 +1,4 @@
-# SH6 processbench/gsm8k — Failure Prediction
+# SH6 processbench-gsm8k/gsm8k — Failure Prediction
 
 ## Setup
 

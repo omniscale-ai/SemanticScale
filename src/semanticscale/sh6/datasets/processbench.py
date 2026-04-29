@@ -83,6 +83,7 @@ def produce_traces(
     slug = run_slug(config, overrides)
     ts = datetime.datetime.now(tz=timezone.utc).isoformat()
 
+    name = config.get("dataset", {}).get("name", DATASET_NAME)
     traces: list[dict] = []
     for subset in subsets:
         logger.info("Loading %s split=%s", hf_path, subset)
@@ -96,7 +97,7 @@ def produce_traces(
             traces.append(
                 {
                     "id": str(row["id"]),
-                    "dataset": DATASET_NAME,
+                    "dataset": name,
                     "run_slug": slug,
                     "problem": str(row["problem"]),
                     "subject": subset,

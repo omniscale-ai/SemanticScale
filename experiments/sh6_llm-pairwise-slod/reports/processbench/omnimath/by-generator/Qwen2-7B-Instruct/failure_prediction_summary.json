@@ -1611,8 +1611,8 @@
     "confirmed": {
       "n_modes": 2,
       "modes": [
-        "rambling_overlong",
-        "thrashing"
+        "thrashing",
+        "rambling_overlong"
       ],
       "n_flagged": 10,
       "n_caught": 5,

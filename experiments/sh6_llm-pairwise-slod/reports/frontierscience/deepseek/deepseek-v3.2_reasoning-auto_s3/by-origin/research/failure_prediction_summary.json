@@ -1,0 +1,40 @@
+{
+  "dataset": "frontierscience",
+  "run_slug": "deepseek/deepseek-v3.2_reasoning-auto_s3/by-origin/research",
+  "target_label": "is_correct",
+  "n_items": 54,
+  "n_positive": 0,
+  "n_negative": 54,
+  "analysis_note": "Prediction is not identifiable because the run contains only one target class.",
+  "label_alignment": null,
+  "model_results": {},
+  "top_univariate_features": [],
+  "top_coefficients": [],
+  "mode_detectors": [],
+  "mode_coverage": {
+    "any": {
+      "n_modes": 11,
+      "modes": [
+        "premature_exit",
+        "rambling_overlong",
+        "thrashing",
+        "no_commitment",
+        "derailment_late",
+        "answer_drift",
+        "answer_meandering",
+        "answer_volatility",
+        "answer_uncommitted",
+        "answer_overrange",
+        "truncation_abort"
+      ],
+      "n_flagged": 35,
+      "n_caught": 35,
+      "n_failures": 54,
+      "recall": 0.6481481481481481,
+      "precision": 1.0
+    },
+    "confirmed": null,
+    "n_failures": 54
+  },
+  "mode_stack_capture": null
+}

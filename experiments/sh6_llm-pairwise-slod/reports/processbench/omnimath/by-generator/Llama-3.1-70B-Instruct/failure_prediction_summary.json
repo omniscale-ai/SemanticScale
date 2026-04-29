@@ -1563,8 +1563,8 @@
     "confirmed": {
       "n_modes": 3,
       "modes": [
-        "rambling_overlong",
         "thrashing",
+        "rambling_overlong",
         "no_commitment"
       ],
       "n_flagged": 18,

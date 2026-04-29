@@ -1,0 +1,45 @@
+{
+  "dataset": "agenterrorbench",
+  "run_slug": "env-all_provider-all_model-all/by-environment/alfworld",
+  "target_label": "final_answer_correct",
+  "n_items": 100,
+  "n_positive": 0,
+  "n_negative": 100,
+  "analysis_note": "Prediction is not identifiable because the run contains only one target class.",
+  "label_alignment": {
+    "n_items": 100,
+    "agreement": 1.0,
+    "final_correct_but_reasoning_wrong": 0,
+    "final_wrong_but_reasoning_clean": 0
+  },
+  "model_results": {},
+  "top_univariate_features": [],
+  "top_coefficients": [],
+  "mode_detectors": [],
+  "mode_coverage": {
+    "any": {
+      "n_modes": 11,
+      "modes": [
+        "premature_exit",
+        "rambling_overlong",
+        "thrashing",
+        "no_commitment",
+        "derailment_late",
+        "answer_drift",
+        "answer_meandering",
+        "answer_volatility",
+        "answer_uncommitted",
+        "answer_overrange",
+        "truncation_abort"
+      ],
+      "n_flagged": 43,
+      "n_caught": 43,
+      "n_failures": 100,
+      "recall": 0.43,
+      "precision": 1.0
+    },
+    "confirmed": null,
+    "n_failures": 100
+  },
+  "mode_stack_capture": null
+}

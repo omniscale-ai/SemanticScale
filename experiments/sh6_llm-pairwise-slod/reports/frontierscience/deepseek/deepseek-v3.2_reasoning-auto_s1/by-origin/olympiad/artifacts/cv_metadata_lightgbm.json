@@ -1,0 +1,117 @@
+{
+  "model_name": "lightgbm",
+  "feature_set": "trajectory_full",
+  "n_features": 63,
+  "feature_cols": [
+    "reasoning_n_chunks",
+    "answer_n_chunks",
+    "total_n_chunks",
+    "reasoning_start",
+    "reasoning_end",
+    "reasoning_end_minus_start",
+    "reasoning_std",
+    "reasoning_range",
+    "reasoning_min",
+    "reasoning_max",
+    "reasoning_early_mean",
+    "reasoning_mid_mean",
+    "reasoning_late_mean",
+    "reasoning_late_minus_early",
+    "reasoning_total_variation",
+    "reasoning_monotonicity",
+    "reasoning_direction_changes",
+    "reasoning_zero_crossings",
+    "reasoning_peak_pos",
+    "reasoning_trough_pos",
+    "reasoning_rebound_from_trough",
+    "reasoning_fall_from_peak",
+    "reasoning_max_rise",
+    "reasoning_max_drop",
+    "reasoning_max_rise_pos",
+    "reasoning_max_drop_pos",
+    "reasoning_curvature_abs_mean",
+    "reasoning_positive_mass",
+    "reasoning_negative_mass",
+    "reasoning_time_positive",
+    "reasoning_time_negative",
+    "answer_start",
+    "answer_end",
+    "answer_end_minus_start",
+    "answer_std",
+    "answer_range",
+    "answer_min",
+    "answer_max",
+    "answer_early_mean",
+    "answer_mid_mean",
+    "answer_late_mean",
+    "answer_late_minus_early",
+    "answer_total_variation",
+    "answer_monotonicity",
+    "answer_direction_changes",
+    "answer_zero_crossings",
+    "answer_peak_pos",
+    "answer_trough_pos",
+    "answer_rebound_from_trough",
+    "answer_fall_from_peak",
+    "answer_max_rise",
+    "answer_max_drop",
+    "answer_max_rise_pos",
+    "answer_max_drop_pos",
+    "answer_curvature_abs_mean",
+    "answer_positive_mass",
+    "answer_negative_mass",
+    "answer_time_positive",
+    "answer_time_negative",
+    "answer_minus_reasoning_mean",
+    "answer_start_minus_reasoning_end",
+    "answer_end_minus_reasoning_end",
+    "answer_range_minus_reasoning_range"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "is_correct",
+  "target_counts": {
+    "n_items": 96,
+    "n_positive": 56,
+    "n_negative": 40
+  },
+  "fold_metrics": {
+    "roc_auc": {
+      "mean": 0.5348484848484849,
+      "std": 0.14392743171984013
+    },
+    "average_precision": {
+      "mean": 0.6430004421363835,
+      "std": 0.10622342802725117
+    },
+    "accuracy": {
+      "mean": 0.561578947368421,
+      "std": 0.1635445333981914
+    },
+    "balanced_accuracy": {
+      "mean": 0.5412878787878788,
+      "std": 0.16751420180189497
+    },
+    "f1": {
+      "mean": 0.6323968132892618,
+      "std": 0.1386332836239789
+    }
+  },
+  "confusion_matrix": {
+    "tn": 17,
+    "fp": 23,
+    "fn": 19,
+    "tp": 37
+  },
+  "duration_seconds": 0.4824509210011456,
+  "timestamp_utc": "2026-04-29T10:59:34+00:00",
+  "git_sha": "461ab22",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.7.2",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1"
+  }
+}

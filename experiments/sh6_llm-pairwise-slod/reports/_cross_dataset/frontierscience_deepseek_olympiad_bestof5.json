@@ -1,0 +1,87 @@
+{
+  "subset": "olympiad",
+  "runs": [
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4"
+  ],
+  "feature_set": "trajectory_full",
+  "target_label": "is_correct",
+  "baseline_pass1_avg_per_attempt": 0.582,
+  "pass5": 0.83,
+  "primary_model": "lightgbm",
+  "primary_selected_pass1": 0.68,
+  "run_rows": [
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto",
+      "answered": 95,
+      "errors": 5,
+      "pass1": 0.61,
+      "oof_auc_logreg": 0.6837029893924783,
+      "oof_auc_lightgbm": 0.7405978784956605
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "answered": 96,
+      "errors": 4,
+      "pass1": 0.56,
+      "oof_auc_logreg": 0.4723214285714286,
+      "oof_auc_lightgbm": 0.5455357142857142
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "answered": 96,
+      "errors": 4,
+      "pass1": 0.58,
+      "oof_auc_logreg": 0.6152450090744103,
+      "oof_auc_lightgbm": 0.720508166969147
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "answered": 99,
+      "errors": 1,
+      "pass1": 0.58,
+      "oof_auc_logreg": 0.5975609756097561,
+      "oof_auc_lightgbm": 0.6084945332211943
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "answered": 97,
+      "errors": 3,
+      "pass1": 0.58,
+      "oof_auc_logreg": 0.5072944297082228,
+      "oof_auc_lightgbm": 0.7091069849690539
+    }
+  ],
+  "selection_rows": [
+    {
+      "model": "logreg",
+      "selected_pass1": 0.6,
+      "delta_vs_avg_pass1": 0.018000000000000016,
+      "oracle_gap_recovered": 0.07258064516129038,
+      "n_scored_attempts": 483,
+      "n_all_scored_problems": 83,
+      "n_partially_scored_problems": 17,
+      "n_zero_scored_problems": 0
+    },
+    {
+      "model": "lightgbm",
+      "selected_pass1": 0.68,
+      "delta_vs_avg_pass1": 0.09800000000000009,
+      "oracle_gap_recovered": 0.395161290322581,
+      "n_scored_attempts": 483,
+      "n_all_scored_problems": 83,
+      "n_partially_scored_problems": 17,
+      "n_zero_scored_problems": 0
+    }
+  ],
+  "attempts_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_bestof5_attempts.csv",
+  "selected_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_bestof5_selected.csv"
+}

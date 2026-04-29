@@ -103,9 +103,9 @@
     "fn": 15,
     "tp": 43
   },
-  "duration_seconds": 0.08844069400220178,
-  "timestamp_utc": "2026-04-29T09:19:21+00:00",
-  "git_sha": "f43bbe9",
+  "duration_seconds": 0.11874296300811693,
+  "timestamp_utc": "2026-04-29T10:41:04+00:00",
+  "git_sha": "461ab22",
   "python_version": "3.12.3",
   "library_versions": {
     "sklearn": "1.7.2",
