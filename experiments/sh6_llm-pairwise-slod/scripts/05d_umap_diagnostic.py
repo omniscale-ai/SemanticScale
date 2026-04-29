@@ -2,7 +2,7 @@
 """SH6 Stage-5d: UMAP diagnostic on Stage-5 trajectory features.
 
 Diagnostic tool for runs where both logreg and LightGBM hover near
-chance (e.g. agenthallu, processbench-gsm8k/gsm8k). The question this answers:
+chance (e.g. agenthallu, processbench/gsm8k). The question this answers:
 "in the trajectory feature space, do correct and wrong items live in
 different regions at all?"
 

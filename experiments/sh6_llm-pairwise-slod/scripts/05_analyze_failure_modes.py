@@ -74,7 +74,7 @@ PROTOCOL_RUN_PATTERNS = [
     "swe-agent-trajectories/model-all",
     "agenthallu/framework-all",
     "gpqa-diamond/deepseek/deepseek-v3.2_reasoning-auto",
-    "processbench-gsm8k/gsm8k",
+    "processbench/gsm8k",
 ]
 
 

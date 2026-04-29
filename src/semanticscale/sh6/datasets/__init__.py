@@ -52,9 +52,6 @@ from .. import scoring as generic_scoring
 _REGISTRY: dict[str, object] = {
     "frontierscience": frontierscience,
     "processbench": processbench,
-    "processbench-gsm8k": processbench,
-    "processbench-olympiadbench": processbench,
-    "processbench-omnimath": processbench,
     "swe-agent-trajectories": swe_agent_trajectories,
     "agenterrorbench": agenterrorbench,
     "agenthallu": agenthallu,

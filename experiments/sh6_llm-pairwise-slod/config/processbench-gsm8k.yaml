@@ -3,7 +3,7 @@ paths:
   reports_dir: ../reports
 
 dataset:
-  name: processbench-gsm8k
+  name: processbench
   hf_path: Qwen/ProcessBench
   # Which splits to load. Any subset of:
   #   gsm8k, math, olympiadbench, omnimath
