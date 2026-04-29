@@ -2013,9 +2013,9 @@
       "modes": [
         "answer_uncommitted",
         "premature_exit",
-        "no_commitment",
         "answer_meandering",
-        "answer_volatility"
+        "answer_volatility",
+        "no_commitment"
       ],
       "n_flagged": 98,
       "n_caught": 88,

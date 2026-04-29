@@ -44,12 +44,18 @@ Victorian London (221B Baker Street) and a remote Finnish laboratory connected b
 **Beat 6: Resolution / Revisiting the Null**
 - **Research events:** SH5a (transition matrix, ρ=−0.197), SH5c (alignment, ρ=−0.135), SH5d (continuous projection, ρ=+0.219)
 - **Narrative:** Holmes returns to Watson's "dead" SH5 data. The scalar jump rate was too coarse. Transition matrices reveal two reasoning styles. The final analysis — projecting reasoning traces onto the continuous SLoD axis — yields the strongest result: ρ = +0.219, three times stronger on the SLoD axis than any orthogonal direction.
-- **Conclusion:** Five layers of proof now stand: mechanism (SH1), control (SH2-summ), systems (SH3), application (SH4 combined), and behavioural (SH5d). The hidden geometry is real, steerable, useful, and observable in the wild.
+- **Conclusion:** SLoD is not just a document property, it is a reasoning property.
 
-**Beat 7: Denouement / The Open Case File**
-- **Open directions:** Human preference for steered summaries, cross-domain portability, QA-genre axis, combined retrieval + steering
+**Beat 7: The Grand Tournament / The Pairwise Proof**
+- **Research events:** SH6 (LLM pairwise SLoD trajectories, AUROC = 0.81)
+- **Narrative:** Lestrade remains skeptical: "Embeddings are just shadows. How do we know the model *knows* what level it's at?" Holmes organizes a grand tournament. He asks an LLM judge to compare chunks of reasoning side-by-side. The resulting trajectories are not just elegant; they are predictive. A model's trajectory shape predicts its own success with AUROC = 0.81.
+- **Final Note:** The hidden geometry is no longer a shadow; it is a judgment the machines can make themselves.
+
+**Beat 8: Denouement / The Open Case File**
+- **Open directions:** Cross-domain portability, absolute SLoD calibration, combined retrieval + steering
 - **Final note:** "The geometry is proven, Watson. Now we must learn to speak all its dialects."
 
 ## Narrative Arc
 
-Tension builds through a three-act structure: early mechanistic success (Beats 1–2) gives way to mixed and null results (Beat 3), then concentrates into five consecutive failures (Beat 4). The climax pivots on a single conceptual insight — task-domain alignment — that reframes every prior failure as a measurement problem (Beat 5). Resolution comes when "dead" data yields its strongest signal under finer analysis (Beat 6), completing a five-layer proof that transforms a geometric curiosity into a controllable, observable property of language.
+Tension builds through a three-act structure: early mechanistic success (Beats 1–2) gives way to mixed and null results (Beat 3), then concentrates into five consecutive failures (Beat 4). The climax pivots on a single conceptual insight — task-domain alignment — that reframes every prior failure as a measurement problem (Beat 5). Resolution comes when "dead" data yields its strongest signal under finer analysis (Beat 6), and the final proof (Beat 7) demonstrates that the SLoD axis is observable even without embeddings, through the eyes of the models themselves.
+

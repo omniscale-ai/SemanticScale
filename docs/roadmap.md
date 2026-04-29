@@ -28,6 +28,7 @@ Three contribution layers: **mechanistic** (SLoD is in the embedding space) + **
 | **SH5a** | DONE | **CONFIRMED** | Transition matrix: macro→macro self-loop ↔ attr-F1 ρ=-0.197; 2 reasoning styles | `experiments/sh5a_transition_matrix/` |
 | **SH5c** | DONE | **CONFIRMED** | Context-reasoning alignment ↔ attr-F1 ρ=-0.135; SLoD routing improves alignment | `experiments/sh5c_context_alignment/` |
 | **SH5d** | DONE | **STRONG** | Continuous SLoD-axis projection ↔ attr-F1 ρ=+0.219; SLoD-specific (3× > orthogonal) | `experiments/sh5d_continuous_projection/` |
+| **SH6** | DONE | **STRONG** | LLM Pairwise SLoD trajectory shape predicts failure (AUROC=0.81 on FrontierScience) | `experiments/sh6_llm-pairwise-slod/` |
 
 ---
 
@@ -64,7 +65,7 @@ SH0 (weak labels)
 
 4. **Application (SH4) — Weak on drift, useful combined.** SLoD drift alone does not predict extraction quality. Combined with surface features it adds marginal value.
 
-5. **Behavioral (SH5→SH5d) — Strong, revised.** Cross-level reasoning is beneficial, not harmful. "Macro-stuck" reasoning is the failure mode. Continuous SLoD-axis projection is the strongest single predictor (ρ=+0.219).
+5. **Behavioral (SH5→SH6) — Strong, revised.** Cross-level reasoning is beneficial, not harmful. "Macro-stuck" reasoning is the failure mode. Continuous SLoD-axis projection (SH5d) and pairwise LLM SLoD trajectories (SH6) are the strongest predictors of reasoning quality (AUROC up to 0.81).
 
 ---
 
@@ -79,6 +80,7 @@ SH0 (weak labels)
 | SH2 doc-span steering | Doc-span difference-of-means vectors do not produce usable steering directions. |
 | SH2 QA evaluation ceiling | SciBERT SLoD axis cannot discriminate QA answers above d≈0.121 — genre mismatch. |
 | SH2 abs() layer selection bug | Using `max(abs(shift))` chose anti-correlated layer. Signed selection is required. |
+| SH6 null on AgentHallu | Homogeneous traces lack absolute SLoD variance; relative ranking cannot capture "stuckness" without anchors. |
 
 ---
 
@@ -86,11 +88,10 @@ SH0 (weak labels)
 
 | Direction | Description | Effort | Priority |
 |---|---|---|---|
-| **SH6** | Human/model preference for SLoD-steered summaries | 3–5 days | High |
 | **SH7** | Cross-domain portability (biomedical, legal, news) | 3–5 days | High |
-| **SH2-QA-v2** | QA-genre SLoD evaluation axis | 3–5 days | Medium |
 | **SH8** | Combined retrieval + steering pipeline | 5–7 days | Medium |
+| **SH6b** | Absolute SLoD calibration for heterogeneous datasets | 3–5 days | High |
 | **Cross-domain validation** | SH1 probe on bio/physics papers | 2–3 days | High |
 | **Larger retrieval benchmark** | SH3 on LoCoMo or S2ORC QA | 3–5 days | Medium |
 | **ADAM-Bench SLoD analysis** | SLoD typing on 27K papers, 7M evidence objects | 3–5 days | Medium |
-| **Combined SH5 predictor** | Feature selection on SH5a+SH5c+SH5d features | 1–2 days | Low |
+| **Combined SH5/SH6 predictor** | Joint model using embedding dynamics and LLM judgments | 2–3 days | Low |

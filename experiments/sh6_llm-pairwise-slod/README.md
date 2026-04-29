@@ -26,6 +26,20 @@ success and failure.
    Converts trajectories into a tabular feature matrix and tests whether those
    features predict success or failure out of sample.
 
+6. `06_anchor_validation.py`
+   Performs absolute SLoD calibration using hand-tiered anchors to determine if
+   datasets lack absolute variance on the SLoD axis.
+
+7. `07_advanced_failure_analysis.py`
+   Advanced failure-prediction analyses including length-residualized features
+   and gradient-boosted models with subject as a feature.
+
+Other scripts:
+- `05b_lightgbm_comparison.py`: Tests interaction signal using LightGBM.
+- `05z_aggregate_models.py`: Aggregates model results across datasets.
+- `05d/e/f/g`: UMAP diagnostics and categorical analyses for specific datasets.
+- `run_sh6.py`: Orchestrator for the full pipeline.
+
 ## Stage 5: Failure Analysis
 
 The failure-analysis stage lives in:

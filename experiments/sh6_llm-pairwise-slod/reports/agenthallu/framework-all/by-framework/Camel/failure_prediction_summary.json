@@ -1584,8 +1584,8 @@
     "confirmed": {
       "n_modes": 2,
       "modes": [
-        "answer_meandering",
-        "answer_drift"
+        "answer_drift",
+        "answer_meandering"
       ],
       "n_flagged": 22,
       "n_caught": 15,

@@ -95,6 +95,7 @@ Full reproduction order: `docs/reproduction.md`
 | SH5a | Transition matrices reveal reasoning patterns | CONFIRMED | rho=-0.197 |
 | SH5c | Context-reasoning SLoD alignment | CONFIRMED | rho=-0.135 |
 | SH5d | Continuous SLoD-axis projection | STRONG | rho=+0.219 (strongest predictor) |
+| SH6 | LLM Pairwise SLoD over reasoning traces | STRONG | AUROC=0.81 (FrontierScience) |
 
 ## Negative Results and Pitfalls
 
@@ -108,6 +109,7 @@ These are critical context for anyone extending the project:
 | SH3 Specter2 underperformed MiniLM | Domain-specific embeddings worse at paragraph-level retrieval | Don't assume domain-specific is always better |
 | SH4 drift-only AUROC=0.521 | Granularity mismatch: probe trained on short spans, applied to long paragraphs | **Match probe granularity to input granularity** |
 | SH5 scalar jump rate rho=0.003 | Too coarse a metric | Scalar aggregation destroys structure; need matrix decomposition (SH5a) |
+| SH6 null on AgentHallu | Homogeneous traces lack absolute SLoD variance | **Absolute SLoD anchor validation** is needed to confirm axis coverage |
 
 **Pattern:** Most failures stem from domain or granularity mismatch. The SLoD axis is real but has a specific domain of validity.
 
@@ -176,8 +178,7 @@ No formal test suite. Verify changes by:
 
 | Direction | Description | Priority |
 |-----------|------------|----------|
-| SH6 | Human/model preference evaluation for steered summaries | High |
 | SH7 | Cross-domain portability (biomedical, legal, news) | High |
-| SH2-QA-v2 | QA-genre SLoD evaluation axis (fix the genre mismatch) | Medium |
 | SH8 | Combined retrieval + steering pipeline | Medium |
+| SH6b | Absolute SLoD calibration for heterogeneous datasets | High |
 | `slod/` package | Extract shared utilities from experiments into reusable library | Planned |

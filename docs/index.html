@@ -172,7 +172,8 @@
       &#x251C;&#x2500;&#x2192; SH2 <span style="color:#e06060">&#10007;</span> &#x2192; SH2b <span style="color:#e0c040">&#x25CF;</span> &#x2192; SH2-summ <span style="color:#6bdf6b">&#10003;</span>  &#x2502;
       &#x251C;&#x2500;&#x2192; SH3 <span style="color:#e0c040">&#x25CF;</span>  soft RAG +0.031 F1    &#x2502;
       &#x2514;&#x2500;&#x2192; SH4 <span style="color:#e0c040">&#x25CF;</span>  AUROC=0.676 &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
-                                &#x2514;&#x2500;&#x2192; SH5 <span style="color:#e06060">&#10007;</span> &#x2192; SH5a <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5c <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5d <span style="color:#6bdf6b">&#10003;&#10003;</span></pre></div>
+                                &#x2514;&#x2500;&#x2192; SH5 <span style="color:#e06060">&#10007;</span> &#x2192; SH5a <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5c <span style="color:#6bdf6b">&#10003;</span> &#x2192; SH5d <span style="color:#6bdf6b">&#10003;&#10003;</span>
+                                                                 &#x2514;&#x2500;&#x2192; SH6 <span style="color:#6bdf6b">&#10003;</span> AUROC=0.81</pre></div>
 
   <div class="legend">
     <span><span class="badge badge-confirmed">Confirmed</span> Hypothesis validated</span>
@@ -329,6 +330,16 @@
         </div>
       </details>
 
+      <details class="card">
+        <summary><span class="card-title">SH6 &mdash; LLM Pairwise SLoD</span> <span class="badge badge-strong">Strong</span></summary>
+        <div class="card-body">
+          <p><strong>Claim:</strong> Pairwise LLM judgments of SLoD over reasoning traces predict problem-solving success.</p>
+          <p class="metric">Trajectory shape AUROC = 0.81 (FrontierScience)<br>Tests whether trajectory shape predicts failure out of sample.</p>
+          <p>Reveals "macro-stuck" and "meandering" failure modes. Validates that SLoD is a judgment models can make themselves.</p>
+          <p class="negative">SH6 null on AgentHallu: homogeneous traces lack absolute SLoD variance, requiring absolute anchors for calibration.</p>
+        </div>
+      </details>
+
     </div>
   </div>
 </section>
@@ -343,14 +354,14 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>SH6</strong></td>
-          <td>SLoD-conditioned summarization quality &mdash; human/model preference for SH2-summ steered summaries at different abstraction levels</td>
+          <td><strong>SH7</strong></td>
+          <td>Cross-task SLoD generalization &mdash; apply SH2-summ steering vector to biomedical, legal, and news domains</td>
           <td>3&ndash;5 days</td>
           <td class="priority-high">High</td>
         </tr>
         <tr>
-          <td><strong>SH7</strong></td>
-          <td>Cross-task SLoD generalization &mdash; apply SH2-summ steering vector to biomedical, legal, and news domains</td>
+          <td><strong>SH6b</strong></td>
+          <td>Absolute SLoD calibration for heterogeneous datasets &mdash; use hand-tiered anchors to calibrate ranking-based trajectories</td>
           <td>3&ndash;5 days</td>
           <td class="priority-high">High</td>
         </tr>
@@ -359,12 +370,6 @@
           <td>Test SH1 probe on bio/physics papers (currently CS-only); SH5d probe-free approach may generalize better</td>
           <td>2&ndash;3 days</td>
           <td class="priority-high">High</td>
-        </tr>
-        <tr>
-          <td><strong>SH2-QA-v2</strong></td>
-          <td>Build a QA-genre SLoD evaluation axis (labeled QA answer pairs), then re-run SH2b. Baseline: d = 0.121</td>
-          <td>3&ndash;5 days</td>
-          <td class="priority-medium">Medium</td>
         </tr>
         <tr>
           <td><strong>SH8</strong></td>
@@ -443,10 +448,18 @@
       </div>
       <div class="tl-cost">GPU compute (Mistral-7B, Qwen2.5-14B)</div>
     </div>
+
+    <div class="tl-entry">
+      <div class="tl-date">Week 3&ndash;7 &mdash; Mar 19&ndash;Apr 29, 2026</div>
+      <div class="tl-body">
+        SH6 LLM Pairwise SLoD &mdash; Large-scale tournament analysis across 7 datasets (FrontierScience, SWE-agent, ProcessBench, AgentHallu). Development of trajectory failure-mode detectors.
+      </div>
+      <div class="tl-cost">API cost: ~$2.50 (Claude-3.5-Sonnet judgments)</div>
+    </div>
   </div>
 
   <div class="tl-total">
-    <strong>Total:</strong> 20 experiments, ~$1.30 API cost + GPU compute for SH2, 0 human-in-the-loop annotation hours.
+    <strong>Total:</strong> 21 experiments, ~$3.80 API cost + GPU compute for SH2, 0 human-in-the-loop annotation hours.
   </div>
 </section>
 

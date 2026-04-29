@@ -577,7 +577,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--llm-config",
-        default=str(HERE / "config-processbench.yaml"),
+        default=str(HERE / "config" / "processbench.yaml"),
         help=(
             "SH6 config to read `pairwise_slod.model` + `max_concurrent` from. "
             "Dataset settings inside the config are ignored."

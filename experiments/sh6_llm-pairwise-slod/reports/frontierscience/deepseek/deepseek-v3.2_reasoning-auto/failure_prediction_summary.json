@@ -2061,8 +2061,8 @@
       "modes": [
         "answer_uncommitted",
         "answer_volatility",
-        "answer_overrange",
-        "answer_meandering"
+        "answer_meandering",
+        "answer_overrange"
       ],
       "n_flagged": 68,
       "n_caught": 58,

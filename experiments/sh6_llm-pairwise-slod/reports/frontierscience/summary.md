@@ -11,6 +11,7 @@
 | deepseek/deepseek-v3.2_reasoning-auto_s2 | 37.2% | 58 | 156 | 4 |
 | deepseek/deepseek-v3.2_reasoning-auto_s3 | 37.7% | 58 | 154 | 6 |
 | deepseek/deepseek-v3.2_reasoning-auto_s4 | 38.6% | 59 | 153 | 7 |
+| deepseek/deepseek-v3.2_reasoning-auto_types-research | 0.0% | 0 | 57 | 3 |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto | 5.0% | 1 | 20 | 0 |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-32B_reasoning-auto | 20.9% | 31 | 148 | 12 |
 | deepseek-deepseek-v3.2_reasoning-medium | 100.0% | 1 | 1 | 0 |
@@ -71,6 +72,14 @@
 | physics | 45.5% | 30 | 70 | 4 |
 | chemistry | 43.1% | 25 | 60 | 2 |
 | biology | 13.8% | 4 | 30 | 1 |
+
+## deepseek/deepseek-v3.2_reasoning-auto_types-research — Per-Subject Accuracy
+
+| Subject | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| biology | 0.0% | 0 | 20 | 1 |
+| chemistry | 0.0% | 0 | 20 | 0 |
+| physics | 0.0% | 0 | 20 | 2 |
 
 ## deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto — Per-Subject Accuracy
 
@@ -145,6 +154,12 @@
 |---|---|---|---|---|
 | olympiad | 59.8% | 58 | 100 | 3 |
 | research | 1.8% | 1 | 60 | 4 |
+
+## deepseek/deepseek-v3.2_reasoning-auto_types-research — Per-Origin Accuracy
+
+| Origin | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| research | 0.0% | 0 | 60 | 3 |
 
 ## deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto — Per-Origin Accuracy
 

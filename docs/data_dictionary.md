@@ -99,6 +99,17 @@ These contain intermediate and final results from reanalysis of SH5 data:
 
 **Provenance:** Derived from SH5 data by respective experiment scripts. No additional API calls needed.
 
+## SH6 — LLM Pairwise SLoD
+
+| File/Dir | Format | Size | Description |
+|---|---|---|---|
+| `{dataset}/{slug}/traces.jsonl` | JSONL | ~4 MB | Reasoning traces with outcome labels |
+| `{dataset}/{slug}/chunk_rankings.jsonl` | JSONL | ~3.6 MB | Pairwise SLoD comparisons and Bradley-Terry ranks |
+| `{dataset}/{slug}/trajectory_features.csv` | CSV | ~100 KB | Shape and structural features from SLoD trajectories |
+| `anchor_validation/` | Dir | ~500 KB | Absolute SLoD calibration results |
+
+**Provenance:** Traces generated via LLM inference or loaded from benchmarks (FrontierScience, ProcessBench, etc.). Pairwise judgments by Claude-3.5-Sonnet judge. Features computed via `05_analyze_failure_modes.py`.
+
 ## Cross-Experiment Data Dependencies
 
 ```
@@ -109,4 +120,5 @@ SH5 (CoT traces) ──→ SH5a (transition matrices)
                   ──→ SH5c (alignment features)
                   ──→ SH5d (embedding projections)
 SH3 (retrieval results) ──→ SH5c (context alignment)
+SH5 (CoT traces) ──→ SH6 (comparison dataset)
 ```

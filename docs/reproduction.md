@@ -147,6 +147,32 @@ python scripts/05_analysis.py
 python scripts/06_report.py
 ```
 
+### 10. SH6 — LLM Pairwise SLoD
+
+```bash
+cd experiments/sh6_llm-pairwise-slod
+# 1. Prepare traces (inference + grading)
+python scripts/01_traces.py --config config/frontierscience-nano.yaml
+
+# 2. Compute pairwise SLoD rankings
+python scripts/02_slod.py --config config/frontierscience-nano.yaml
+
+# 3. Analyze trajectory accuracy
+python scripts/03_analyze_accuracy.py --config config/frontierscience-nano.yaml
+
+# 4. Plot trajectories
+python scripts/04_plot_trajectories.py --config config/frontierscience-nano.yaml
+
+# 5. Predict failure from trajectory shape
+python scripts/05_analyze_failure_modes.py --config config/frontierscience-nano.yaml
+
+# 6. Optional: advanced analyses
+python scripts/06_anchor_validation.py --config config/frontierscience-nano.yaml
+python scripts/07_advanced_failure_analysis.py --config config/frontierscience-nano.yaml
+```
+
+**Output:** Trajectory plots in `reports/`, failure prediction AUROCs in `reports/`.
+
 ## Verification
 
 After running all experiments, check that key results match:
@@ -159,5 +185,6 @@ After running all experiments, check that key results match:
 | SH5 | Jump rate ↔ token-F1 | ρ ≈ 0.003 (null) |
 | SH5a | Macro self-loop ↔ attr-F1 | ρ ≈ −0.197 |
 | SH5d | SLoD axis mean ↔ attr-F1 | ρ ≈ +0.219 |
+| SH6 | Trajectory failure prediction (FrontierScience) | AUROC ≈ 0.81 |
 
 Note: exact values may vary slightly due to random seeds and API model versions.
