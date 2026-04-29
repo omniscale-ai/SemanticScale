@@ -1,0 +1,164 @@
+{
+  "n_items": 84,
+  "classes": [
+    "Human-Interaction Hallucination",
+    "Reasoning Hallucination",
+    "Retrieval Hallucination"
+  ],
+  "class_counts": {
+    "Human-Interaction Hallucination": 42,
+    "Reasoning Hallucination": 20,
+    "Retrieval Hallucination": 22
+  },
+  "feature_set": "trajectory_full",
+  "cv_folds": 5,
+  "random_state": 42,
+  "chance_macro_auc": 0.5,
+  "models": {
+    "length_reasoning_only": {
+      "classes": [
+        "0",
+        "1",
+        "2"
+      ],
+      "macro_auc_ovr": 0.520085713191272,
+      "per_class_auc": {
+        "0": 0.39512471655328796,
+        "1": 0.66953125,
+        "2": 0.49560117302052786
+      },
+      "balanced_accuracy": 0.33896103896103896,
+      "accuracy": 0.27380952380952384,
+      "confusion_matrix": [
+        [
+          3,
+          13,
+          26
+        ],
+        [
+          1,
+          8,
+          11
+        ],
+        [
+          3,
+          7,
+          12
+        ]
+      ]
+    },
+    "length_only": {
+      "classes": [
+        "0",
+        "1",
+        "2"
+      ],
+      "macro_auc_ovr": 0.6707993224986312,
+      "per_class_auc": {
+        "0": 0.48441043083900226,
+        "1": 0.79375,
+        "2": 0.7342375366568915
+      },
+      "balanced_accuracy": 0.5600288600288601,
+      "accuracy": 0.4880952380952381,
+      "confusion_matrix": [
+        [
+          11,
+          10,
+          21
+        ],
+        [
+          6,
+          12,
+          2
+        ],
+        [
+          2,
+          2,
+          18
+        ]
+      ]
+    },
+    "logreg": {
+      "classes": [
+        "0",
+        "1",
+        "2"
+      ],
+      "macro_auc_ovr": 0.6816627831280769,
+      "per_class_auc": {
+        "0": 0.5589569160997733,
+        "1": 0.68984375,
+        "2": 0.7961876832844575
+      },
+      "balanced_accuracy": 0.458008658008658,
+      "accuracy": 0.4523809523809524,
+      "confusion_matrix": [
+        [
+          18,
+          12,
+          12
+        ],
+        [
+          9,
+          8,
+          3
+        ],
+        [
+          9,
+          1,
+          12
+        ]
+      ]
+    },
+    "lightgbm": {
+      "classes": [
+        "0",
+        "1",
+        "2"
+      ],
+      "macro_auc_ovr": 0.7118377082626793,
+      "per_class_auc": {
+        "0": 0.5748299319727891,
+        "1": 0.77109375,
+        "2": 0.7895894428152492
+      },
+      "balanced_accuracy": 0.5158730158730159,
+      "accuracy": 0.5238095238095238,
+      "confusion_matrix": [
+        [
+          23,
+          9,
+          10
+        ],
+        [
+          9,
+          10,
+          1
+        ],
+        [
+          11,
+          0,
+          11
+        ]
+      ]
+    }
+  },
+  "delta_macro_auc": {
+    "lightgbm_minus_logreg": {
+      "mean": 0.030852656798608536,
+      "ci_low": -0.04425809987868479,
+      "ci_high": 0.11338971122475833
+    },
+    "logreg_minus_length_only": {
+      "mean": 0.16066984804297096,
+      "ci_low": 0.05087302577358572,
+      "ci_high": 0.26573524326003745
+    },
+    "lightgbm_minus_length_only": {
+      "mean": 0.19426612128697776,
+      "ci_low": 0.0806865629468626,
+      "ci_high": 0.2994815015100609
+    }
+  }
+}

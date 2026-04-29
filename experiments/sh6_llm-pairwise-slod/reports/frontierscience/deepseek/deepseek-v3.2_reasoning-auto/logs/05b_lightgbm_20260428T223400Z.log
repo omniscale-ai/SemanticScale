@@ -1,0 +1,8 @@
+2026-04-29 06:34:00,699 INFO __main__ Run dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek/deepseek-v3.2_reasoning-auto
+2026-04-29 06:34:00,699 INFO __main__ Features CSV: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek/deepseek-v3.2_reasoning-auto/trajectory_features.csv
+2026-04-29 06:34:00,699 INFO __main__ Artifacts dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek/deepseek-v3.2_reasoning-auto/artifacts
+2026-04-29 06:34:00,699 INFO __main__ Models: ['logreg', 'lightgbm']
+2026-04-29 06:34:01,207 INFO semanticscale.sh6.failure_analysis_runner Fitting logreg on 63 features (153 items)
+2026-04-29 06:34:01,550 INFO semanticscale.sh6.failure_analysis_runner Fitting lightgbm on 63 features (153 items)
+2026-04-29 06:34:03,214 INFO __main__ logreg — AUC 0.8348 ± 0.0847 (0.31s)
+2026-04-29 06:34:03,214 INFO __main__ lightgbm — AUC 0.8735 ± 0.0601 (1.66s)

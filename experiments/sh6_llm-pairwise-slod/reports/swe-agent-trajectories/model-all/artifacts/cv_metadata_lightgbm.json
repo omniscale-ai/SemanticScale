@@ -1,0 +1,83 @@
+{
+  "model_name": "lightgbm",
+  "feature_set": "trajectory_full",
+  "n_features": 29,
+  "feature_cols": [
+    "reasoning_n_chunks",
+    "reasoning_start",
+    "reasoning_end",
+    "reasoning_end_minus_start",
+    "reasoning_std",
+    "reasoning_range",
+    "reasoning_min",
+    "reasoning_max",
+    "reasoning_early_mean",
+    "reasoning_mid_mean",
+    "reasoning_late_mean",
+    "reasoning_late_minus_early",
+    "reasoning_total_variation",
+    "reasoning_monotonicity",
+    "reasoning_direction_changes",
+    "reasoning_zero_crossings",
+    "reasoning_peak_pos",
+    "reasoning_trough_pos",
+    "reasoning_rebound_from_trough",
+    "reasoning_fall_from_peak",
+    "reasoning_max_rise",
+    "reasoning_max_drop",
+    "reasoning_max_rise_pos",
+    "reasoning_max_drop_pos",
+    "reasoning_curvature_abs_mean",
+    "reasoning_positive_mass",
+    "reasoning_negative_mass",
+    "reasoning_time_positive",
+    "reasoning_time_negative"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "auto-resolved",
+  "target_counts": {
+    "n_items": 645,
+    "n_positive": 202,
+    "n_negative": 443
+  },
+  "fold_metrics": {
+    "roc_auc": {
+      "mean": 0.8686843219811156,
+      "std": 0.026702706779878294
+    },
+    "average_precision": {
+      "mean": 0.6991793603298215,
+      "std": 0.03616578961730474
+    },
+    "accuracy": {
+      "mean": 0.7643410852713177,
+      "std": 0.03199963944271364
+    },
+    "balanced_accuracy": {
+      "mean": 0.7733137970552331,
+      "std": 0.031563932526686135
+    },
+    "f1": {
+      "mean": 0.678682505362372,
+      "std": 0.035705255957041174
+    }
+  },
+  "confusion_matrix": {
+    "tn": 332,
+    "fp": 111,
+    "fn": 41,
+    "tp": 161
+  },
+  "duration_seconds": 1.3126787394285202,
+  "timestamp_utc": "2026-04-28T22:35:38+00:00",
+  "git_sha": "380a6ec",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.8.0",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  }
+}

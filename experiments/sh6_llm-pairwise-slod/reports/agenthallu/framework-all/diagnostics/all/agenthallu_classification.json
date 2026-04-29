@@ -1,0 +1,347 @@
+{
+  "n_items": 443,
+  "classes": [
+    "Human-Interaction Hallucination",
+    "Planning Hallucination",
+    "Reasoning Hallucination",
+    "Retrieval Hallucination",
+    "Tool-Use Hallucination"
+  ],
+  "class_counts": {
+    "Reasoning Hallucination": 118,
+    "Tool-Use Hallucination": 103,
+    "Retrieval Hallucination": 82,
+    "Human-Interaction Hallucination": 73,
+    "Planning Hallucination": 67
+  },
+  "feature_set": "trajectory_full",
+  "cv_folds": 5,
+  "random_state": 42,
+  "chance_macro_auc": 0.5,
+  "framework_x_category": {
+    "Human-Interaction Hallucination": {
+      "BFCL": 0,
+      "Camel": 31,
+      "Magentic_One": 0,
+      "Octotools": 0,
+      "OpenDeepSearch": 0,
+      "OpenManus": 42,
+      "SmolAgents": 0
+    },
+    "Planning Hallucination": {
+      "BFCL": 0,
+      "Camel": 5,
+      "Magentic_One": 20,
+      "Octotools": 1,
+      "OpenDeepSearch": 16,
+      "OpenManus": 0,
+      "SmolAgents": 25
+    },
+    "Reasoning Hallucination": {
+      "BFCL": 0,
+      "Camel": 14,
+      "Magentic_One": 26,
+      "Octotools": 25,
+      "OpenDeepSearch": 17,
+      "OpenManus": 20,
+      "SmolAgents": 16
+    },
+    "Retrieval Hallucination": {
+      "BFCL": 0,
+      "Camel": 7,
+      "Magentic_One": 8,
+      "Octotools": 4,
+      "OpenDeepSearch": 25,
+      "OpenManus": 22,
+      "SmolAgents": 16
+    },
+    "Tool-Use Hallucination": {
+      "BFCL": 103,
+      "Camel": 0,
+      "Magentic_One": 0,
+      "Octotools": 0,
+      "OpenDeepSearch": 0,
+      "OpenManus": 0,
+      "SmolAgents": 0
+    }
+  },
+  "models": {
+    "length_reasoning_only": {
+      "macro_auc_ovr": 0.5866267043174281,
+      "per_class_auc": {
+        "0": 0.5308959644576083,
+        "1": 0.5975706573515401,
+        "2": 0.42580182529335076,
+        "3": 0.600010134450375,
+        "4": 0.7788549400342663
+      },
+      "balanced_accuracy": 0.31035981187899064,
+      "accuracy": 0.3160270880361174,
+      "confusion_matrix": [
+        [
+          9,
+          7,
+          2,
+          36,
+          19
+        ],
+        [
+          2,
+          10,
+          4,
+          37,
+          14
+        ],
+        [
+          4,
+          16,
+          8,
+          61,
+          29
+        ],
+        [
+          8,
+          10,
+          4,
+          46,
+          14
+        ],
+        [
+          4,
+          3,
+          14,
+          15,
+          67
+        ]
+      ]
+    },
+    "length_only": {
+      "macro_auc_ovr": 0.7781729389462294,
+      "per_class_auc": {
+        "0": 0.7114402073306182,
+        "1": 0.7225309622102254,
+        "2": 0.7160365058670144,
+        "3": 0.7485811769475037,
+        "4": 0.9922758423757853
+      },
+      "balanced_accuracy": 0.43802192467135354,
+      "accuracy": 0.4672686230248307,
+      "confusion_matrix": [
+        [
+          12,
+          9,
+          26,
+          23,
+          3
+        ],
+        [
+          7,
+          7,
+          10,
+          40,
+          3
+        ],
+        [
+          31,
+          10,
+          31,
+          30,
+          16
+        ],
+        [
+          4,
+          9,
+          9,
+          54,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          103
+        ]
+      ]
+    },
+    "logreg": {
+      "macro_auc_ovr": 0.7729383630811106,
+      "per_class_auc": {
+        "0": 0.6873380229544612,
+        "1": 0.7359479199745951,
+        "2": 0.7123859191655801,
+        "3": 0.7311330315519222,
+        "4": 0.9978869217589948
+      },
+      "balanced_accuracy": 0.46624686732355014,
+      "accuracy": 0.48306997742663654,
+      "confusion_matrix": [
+        [
+          21,
+          14,
+          21,
+          17,
+          0
+        ],
+        [
+          11,
+          27,
+          12,
+          16,
+          1
+        ],
+        [
+          29,
+          31,
+          37,
+          18,
+          3
+        ],
+        [
+          14,
+          28,
+          9,
+          30,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2,
+          99
+        ]
+      ]
+    },
+    "lightgbm": {
+      "macro_auc_ovr": 0.7576190882959704,
+      "per_class_auc": {
+        "0": 0.6817845242502776,
+        "1": 0.7063353445538266,
+        "2": 0.6595567144719687,
+        "3": 0.7415039524356463,
+        "4": 0.9989149057681326
+      },
+      "balanced_accuracy": 0.4554297270317818,
+      "accuracy": 0.4853273137697517,
+      "confusion_matrix": [
+        [
+          19,
+          9,
+          32,
+          13,
+          0
+        ],
+        [
+          10,
+          17,
+          23,
+          17,
+          0
+        ],
+        [
+          26,
+          22,
+          46,
+          22,
+          2
+        ],
+        [
+          13,
+          10,
+          24,
+          33,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          100
+        ]
+      ]
+    },
+    "framework_only": {
+      "macro_auc_ovr": 0.8381009375482315,
+      "per_class_auc": {
+        "0": 0.8901517956312477,
+        "1": 0.8348682121308352,
+        "2": 0.7463102998696218,
+        "3": 0.719174380109452,
+        "4": 1.0
+      },
+      "balanced_accuracy": 0.6376768493209849,
+      "accuracy": 0.6117381489841986,
+      "confusion_matrix": [
+        [
+          73,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          45,
+          1,
+          16,
+          0
+        ],
+        [
+          34,
+          42,
+          25,
+          17,
+          0
+        ],
+        [
+          29,
+          24,
+          4,
+          25,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          103
+        ]
+      ]
+    }
+  },
+  "delta_macro_auc": {
+    "lightgbm_minus_logreg": {
+      "mean": -0.015145354086983271,
+      "ci_low": -0.03477971176639991,
+      "ci_high": 0.005434754004532928
+    },
+    "lightgbm_minus_framework_only": {
+      "mean": -0.0810387520518026,
+      "ci_low": -0.10785945480489888,
+      "ci_high": -0.052852578316789
+    },
+    "logreg_minus_framework_only": {
+      "mean": -0.06563771448616403,
+      "ci_low": -0.09480749041769213,
+      "ci_high": -0.03561385957705409
+    },
+    "logreg_minus_length_reasoning_only": {
+      "mean": 0.18506813051693474,
+      "ci_low": 0.1474883271421169,
+      "ci_high": 0.22100013662615905
+    },
+    "lightgbm_minus_length_reasoning_only": {
+      "mean": 0.17124306896442215,
+      "ci_low": 0.13282593652764257,
+      "ci_high": 0.20730922004835325
+    },
+    "length_only_minus_length_reasoning_only": {
+      "mean": 0.1921639562007644,
+      "ci_low": 0.16032811251027784,
+      "ci_high": 0.22342871648872226
+    }
+  }
+}

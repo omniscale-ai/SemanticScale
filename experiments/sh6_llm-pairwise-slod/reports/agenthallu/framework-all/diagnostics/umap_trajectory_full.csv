@@ -1,0 +1,694 @@
+umap_x,umap_y,target,id,subject,final_answer_correct,is_correct
+9.321436,11.183699,0,BFCL/000,Tool Use,False,False
+7.8234262,7.633026,1,BFCL/001,Tool Use,True,True
+8.320035,12.1011915,0,BFCL/002,Tool Use,False,False
+10.286324,10.055522,0,BFCL/003,Tool Use,False,False
+9.815656,10.025469,0,BFCL/004,Tool Use,False,False
+11.63907,11.453504,0,BFCL/005,Tool Use,False,False
+9.6705675,12.0546055,0,BFCL/006,Tool Use,False,False
+11.148025,11.082334,1,BFCL/007,Tool Use,True,True
+11.760594,11.4843,0,BFCL/008,Tool Use,False,False
+10.370122,10.681832,1,BFCL/009,Tool Use,True,True
+9.752424,9.411242,1,BFCL/010,Tool Use,True,True
+10.138024,10.844603,1,BFCL/011,Tool Use,True,True
+9.443908,12.085055,1,BFCL/012,Tool Use,True,True
+9.728126,10.731693,1,BFCL/013,Tool Use,True,True
+11.534004,11.308722,0,BFCL/014,Tool Use,False,False
+11.231529,10.981118,0,BFCL/015,Tool Use,False,False
+12.081644,11.401486,0,BFCL/016,Tool Use,False,False
+11.635275,11.537175,0,BFCL/017,Tool Use,False,False
+10.10515,11.207277,1,BFCL/018,Tool Use,True,True
+9.994688,11.837428,1,BFCL/019,Tool Use,True,True
+9.885789,10.740188,1,BFCL/020,Tool Use,True,True
+9.91349,11.449704,0,BFCL/021,Tool Use,False,False
+9.664959,10.653633,1,BFCL/022,Tool Use,True,True
+12.10418,11.397905,0,BFCL/023,Tool Use,False,False
+11.181964,11.244641,0,BFCL/024,Tool Use,False,False
+10.121164,9.041321,0,BFCL/025,Tool Use,False,False
+9.1077,12.337315,1,BFCL/026,Tool Use,True,True
+11.950237,9.913218,0,BFCL/027,Tool Use,False,False
+11.019473,11.237144,0,BFCL/028,Tool Use,False,False
+10.415867,11.441807,1,BFCL/029,Tool Use,True,True
+9.166339,11.881013,0,BFCL/030,Tool Use,False,False
+8.91508,7.0005364,0,BFCL/031,Tool Use,False,False
+9.952576,10.457176,0,BFCL/032,Tool Use,False,False
+10.0191965,11.663894,1,BFCL/033,Tool Use,True,True
+10.056912,11.708239,0,BFCL/034,Tool Use,False,False
+12.057275,11.421781,0,BFCL/035,Tool Use,False,False
+10.059285,8.339828,1,BFCL/036,Tool Use,True,True
+11.917155,9.917854,0,BFCL/037,Tool Use,False,False
+9.487817,10.641441,1,BFCL/038,Tool Use,True,True
+9.070565,12.186907,0,BFCL/039,Tool Use,False,False
+10.226198,11.435339,0,BFCL/040,Tool Use,False,False
+11.89914,11.25555,0,BFCL/041,Tool Use,False,False
+10.551528,11.412126,0,BFCL/042,Tool Use,False,False
+8.823569,11.380473,0,BFCL/043,Tool Use,False,False
+10.799559,11.86721,0,BFCL/044,Tool Use,False,False
+11.051144,11.309545,1,BFCL/045,Tool Use,True,True
+9.635708,12.010958,0,BFCL/046,Tool Use,False,False
+9.195111,12.014874,0,BFCL/047,Tool Use,False,False
+9.924541,12.403991,0,BFCL/048,Tool Use,False,False
+9.072649,11.359525,0,BFCL/049,Tool Use,False,False
+9.673329,11.39238,1,BFCL/050,Tool Use,True,True
+11.493427,10.3071995,0,BFCL/051,Tool Use,False,False
+8.2948885,8.457092,0,BFCL/052,Tool Use,False,False
+10.191565,9.15282,1,BFCL/053,Tool Use,True,True
+9.766811,12.3751955,0,BFCL/054,Tool Use,False,False
+8.672005,11.550152,1,BFCL/055,Tool Use,True,True
+9.641132,12.094253,0,BFCL/056,Tool Use,False,False
+10.777691,11.89403,0,BFCL/057,Tool Use,False,False
+10.822467,10.809153,0,BFCL/058,Tool Use,False,False
+10.217086,11.662142,0,BFCL/059,Tool Use,False,False
+8.732383,11.936005,0,BFCL/060,Tool Use,False,False
+9.329377,12.095869,0,BFCL/061,Tool Use,False,False
+11.770469,10.050633,0,BFCL/062,Tool Use,False,False
+9.962134,11.691401,0,BFCL/063,Tool Use,False,False
+10.70977,10.955004,0,BFCL/064,Tool Use,False,False
+11.278398,11.015711,1,BFCL/065,Tool Use,True,True
+8.782421,8.616376,0,BFCL/066,Tool Use,False,False
+10.748543,10.6664,0,BFCL/067,Tool Use,False,False
+8.126429,12.295604,1,BFCL/068,Tool Use,True,True
+9.753525,10.461052,0,BFCL/069,Tool Use,False,False
+8.5949745,11.610326,0,BFCL/070,Tool Use,False,False
+11.247392,10.850124,0,BFCL/071,Tool Use,False,False
+10.94385,9.240104,0,BFCL/072,Tool Use,False,False
+8.894396,11.278425,1,BFCL/073,Tool Use,True,True
+11.284068,10.6958685,0,BFCL/074,Tool Use,False,False
+9.999563,11.613868,0,BFCL/075,Tool Use,False,False
+10.387191,11.341116,0,BFCL/076,Tool Use,False,False
+9.898629,11.451174,0,BFCL/077,Tool Use,False,False
+10.3798,11.2815895,0,BFCL/078,Tool Use,False,False
+10.548432,10.47593,1,BFCL/079,Tool Use,True,True
+9.160409,12.350824,0,BFCL/080,Tool Use,False,False
+9.55448,12.036215,0,BFCL/081,Tool Use,False,False
+8.9886265,11.153474,0,BFCL/082,Tool Use,False,False
+11.357965,10.122149,0,BFCL/083,Tool Use,False,False
+8.087982,12.250534,1,BFCL/084,Tool Use,True,True
+10.098856,11.916468,0,BFCL/085,Tool Use,False,False
+9.430464,12.282803,0,BFCL/086,Tool Use,False,False
+8.943425,12.078323,0,BFCL/087,Tool Use,False,False
+11.785549,9.663574,1,BFCL/088,Tool Use,True,True
+11.242349,10.435743,0,BFCL/089,Tool Use,False,False
+11.927805,9.98229,1,BFCL/090,Tool Use,True,True
+8.167663,12.260296,0,BFCL/091,Tool Use,False,False
+9.187225,10.0279455,1,BFCL/092,Tool Use,True,True
+9.432647,12.41168,0,BFCL/093,Tool Use,False,False
+11.097674,11.78508,0,BFCL/094,Tool Use,False,False
+9.601675,11.58578,1,BFCL/095,Tool Use,True,True
+9.687137,12.234467,1,BFCL/096,Tool Use,True,True
+9.011888,12.458236,0,BFCL/097,Tool Use,False,False
+9.277428,12.530534,0,BFCL/098,Tool Use,False,False
+9.752866,12.29874,1,BFCL/099,Tool Use,True,True
+9.655545,10.638534,1,BFCL/100,Tool Use,True,True
+9.8823395,12.3305435,0,BFCL/101,Tool Use,False,False
+11.958615,11.376693,1,BFCL/102,Tool Use,True,True
+10.899279,11.255691,0,BFCL/103,Tool Use,False,False
+10.030834,10.932783,0,BFCL/104,Tool Use,False,False
+8.533142,11.998626,1,BFCL/105,Tool Use,True,True
+10.433683,11.281691,1,BFCL/106,Tool Use,True,True
+10.826251,11.758899,1,BFCL/107,Tool Use,True,True
+8.690159,9.135997,0,BFCL/108,Tool Use,False,False
+9.069422,11.605851,1,BFCL/109,Tool Use,True,True
+8.7886095,9.0921755,0,BFCL/110,Tool Use,False,False
+9.082244,12.198259,0,BFCL/111,Tool Use,False,False
+9.03715,10.679002,0,BFCL/112,Tool Use,False,False
+9.379873,11.861592,1,BFCL/113,Tool Use,True,True
+9.109667,11.559353,1,BFCL/114,Tool Use,True,True
+9.282085,9.196795,0,BFCL/115,Tool Use,False,False
+10.353643,11.218606,1,BFCL/116,Tool Use,True,True
+9.449173,11.645943,0,BFCL/117,Tool Use,False,False
+11.518967,10.228615,0,BFCL/118,Tool Use,False,False
+10.578289,11.530238,1,BFCL/119,Tool Use,True,True
+9.840605,10.466648,1,BFCL/120,Tool Use,True,True
+10.2166195,9.092355,1,BFCL/121,Tool Use,True,True
+11.270218,11.235633,0,BFCL/122,Tool Use,False,False
+11.331838,10.4639435,0,BFCL/123,Tool Use,False,False
+9.393442,11.990693,1,BFCL/124,Tool Use,True,True
+8.955996,12.388468,1,BFCL/125,Tool Use,True,True
+9.950535,11.916408,0,BFCL/126,Tool Use,False,False
+10.434036,11.0383835,1,BFCL/127,Tool Use,True,True
+9.95,10.296578,1,BFCL/128,Tool Use,True,True
+10.976603,11.838647,0,BFCL/129,Tool Use,False,False
+8.963212,11.825388,0,BFCL/130,Tool Use,False,False
+11.796392,11.486079,0,BFCL/131,Tool Use,False,False
+9.050967,11.453659,1,BFCL/132,Tool Use,True,True
+9.370987,11.637746,0,BFCL/133,Tool Use,False,False
+8.992861,12.353878,1,BFCL/134,Tool Use,True,True
+9.571803,10.891578,1,BFCL/135,Tool Use,True,True
+9.903151,12.316345,0,BFCL/136,Tool Use,False,False
+11.157685,10.699521,1,BFCL/137,Tool Use,True,True
+9.514451,11.693658,0,BFCL/138,Tool Use,False,False
+9.749265,12.262826,0,BFCL/139,Tool Use,False,False
+10.603555,12.04661,0,BFCL/140,Tool Use,False,False
+10.973399,11.351562,0,BFCL/141,Tool Use,False,False
+9.105387,12.059018,1,BFCL/142,Tool Use,True,True
+11.887061,9.858309,1,BFCL/143,Tool Use,True,True
+12.041444,10.122976,0,BFCL/144,Tool Use,False,False
+10.341568,9.964312,1,BFCL/145,Tool Use,True,True
+10.576552,11.113798,0,BFCL/146,Tool Use,False,False
+10.998766,10.665994,1,BFCL/147,Tool Use,True,True
+8.7058735,11.488252,0,BFCL/148,Tool Use,False,False
+9.771661,12.301448,1,BFCL/149,Tool Use,True,True
+11.941135,9.904676,1,BFCL/150,Tool Use,True,True
+9.535576,11.959517,0,BFCL/151,Tool Use,False,False
+9.316792,12.58321,1,BFCL/152,Tool Use,True,True
+9.076765,12.40261,0,BFCL/153,Tool Use,False,False
+8.62337,11.890777,1,BFCL/154,Tool Use,True,True
+9.117887,12.435414,0,BFCL/155,Tool Use,False,False
+9.714669,11.956273,0,BFCL/156,Tool Use,False,False
+10.88945,10.850342,1,BFCL/157,Tool Use,True,True
+9.103389,12.118932,0,BFCL/158,Tool Use,False,False
+9.473222,9.237305,0,BFCL/159,Tool Use,False,False
+9.085243,12.431241,0,BFCL/160,Tool Use,False,False
+11.603285,10.195086,0,BFCL/161,Tool Use,False,False
+9.363393,7.606931,0,BFCL/162,Tool Use,False,False
+10.113397,11.438529,1,BFCL/163,Tool Use,True,True
+2.0423765,10.723967,0,Camel/000,Math,False,False
+2.542336,7.747601,1,Camel/001,Science,True,True
+9.147465,9.2499,1,Camel/002,General Assistant,True,True
+1.7578472,9.796289,0,Camel/003,Math,False,False
+2.2183466,9.906664,0,Camel/004,Science,False,False
+8.567905,11.844243,0,Camel/005,General Assistant,False,False
+0.98899597,9.193015,0,Camel/006,Science,False,False
+1.4955032,8.139833,1,Camel/007,Science,True,True
+10.279891,9.823794,0,Camel/008,Math,False,False
+8.872028,12.040279,0,Camel/009,Math,False,False
+1.7457222,10.254869,1,Camel/010,General Assistant,True,True
+0.8155027,8.788273,0,Camel/011,Science,False,False
+8.234407,12.02873,0,Camel/012,General Assistant,False,False
+1.6926043,10.4472685,1,Camel/013,General Assistant,True,True
+2.6996377,8.984557,0,Camel/014,Science,False,False
+9.169228,11.727771,1,Camel/015,General Assistant,True,True
+9.288296,10.636494,0,Camel/016,World Knowledge,False,False
+1.3677694,9.496524,1,Camel/017,Science,True,True
+0.9569493,9.609948,0,Camel/018,Science,False,False
+10.535143,7.814108,0,Camel/019,General Assistant,False,False
+3.1579316,10.253009,0,Camel/020,World Knowledge,False,False
+2.1429832,8.571854,0,Camel/021,Science,False,False
+8.836429,9.697073,0,Camel/022,General Assistant,False,False
+10.147137,9.338456,1,Camel/023,General Assistant,True,True
+9.879481,10.049893,0,Camel/024,General Assistant,False,False
+0.8260959,9.203377,1,Camel/025,Math,True,True
+2.8805568,9.969654,0,Camel/026,Math,False,False
+7.786902,7.779578,0,Camel/027,Math,False,False
+10.447836,6.209086,1,Camel/028,World Knowledge,True,True
+8.613024,8.586596,0,Camel/029,World Knowledge,False,False
+0.6467235,9.288673,0,Camel/030,Science,False,False
+1.507189,8.73126,0,Camel/031,Science,False,False
+2.568696,10.513528,0,Camel/032,Science,False,False
+10.093262,8.291333,1,Camel/033,Science,True,True
+8.461081,11.78099,0,Camel/034,General Assistant,False,False
+2.3353016,8.961869,1,Camel/035,General Assistant,True,True
+9.894883,11.051672,1,Camel/036,General Assistant,True,True
+8.718419,11.816562,0,Camel/037,General Assistant,False,False
+3.2738988,8.31094,0,Camel/038,General Assistant,False,False
+11.099564,8.826355,0,Camel/039,World Knowledge,False,False
+10.8849945,8.812709,1,Camel/040,World Knowledge,True,True
+2.4570599,9.533688,1,Camel/041,World Knowledge,True,True
+9.526512,10.352705,1,Camel/042,World Knowledge,True,True
+2.3763456,10.330541,1,Camel/043,World Knowledge,True,True
+10.087562,11.049442,0,Camel/044,World Knowledge,False,False
+9.380552,10.913451,0,Camel/045,World Knowledge,False,False
+1.8164306,8.881346,0,Camel/046,World Knowledge,False,False
+2.4102943,10.467222,1,Camel/047,World Knowledge,True,True
+2.0051975,10.726357,1,Camel/048,World Knowledge,True,True
+1.9108882,10.214422,0,Camel/049,World Knowledge,False,False
+11.243198,10.479845,1,Camel/050,World Knowledge,True,True
+1.4146022,10.271,0,Camel/051,World Knowledge,False,False
+1.7870568,9.277543,0,Camel/052,Science,False,False
+2.1312058,8.054256,0,Camel/053,Science,False,False
+11.878986,9.822173,0,Camel/054,Science,False,False
+1.2377099,10.06144,0,Camel/055,Science,False,False
+1.7698913,9.983737,0,Camel/056,Science,False,False
+3.1936145,10.285658,0,Camel/057,Science,False,False
+0.11045015,9.689043,0,Camel/058,Science,False,False
+1.4050856,9.711885,0,Camel/059,Science,False,False
+2.911529,8.83937,0,Camel/060,Science,False,False
+1.7874975,9.009857,1,Camel/061,Science,True,True
+0.1577922,9.670822,1,Camel/062,Science,True,True
+2.129997,8.394784,0,Camel/063,Science,False,False
+1.6549637,9.443252,1,Camel/064,Science,True,True
+1.6166881,9.81309,0,Camel/065,Science,False,False
+1.549132,10.433941,0,Camel/066,Science,False,False
+3.3558261,10.173607,0,Camel/067,Science,False,False
+11.537192,9.3772955,1,Camel/068,Science,True,True
+8.44216,8.443152,1,Camel/069,Science,True,True
+1.9428201,8.459606,0,Camel/070,Science,False,False
+1.2458463,9.262294,0,Camel/071,Science,False,False
+2.2344286,7.867934,0,Camel/072,Science,False,False
+-0.0825846,9.665629,0,Camel/073,Science,False,False
+2.048108,9.177048,0,Camel/074,Science,False,False
+10.995229,6.4254475,0,Camel/075,Science,False,False
+11.454678,7.790935,1,Camel/076,Math,True,True
+11.388253,7.851382,1,Camel/077,Math,True,True
+10.006466,8.247725,1,Camel/078,Math,True,True
+9.16595,11.57006,1,Camel/079,Math,True,True
+9.632359,9.812599,1,Camel/080,Math,True,True
+8.399472,6.7079186,1,Camel/081,Math,True,True
+11.485096,11.179784,1,Camel/082,Math,True,True
+2.016623,9.306985,1,Camel/083,Math,True,True
+10.290987,8.052411,1,Camel/084,Math,True,True
+12.189845,11.41429,1,Camel/085,Math,True,True
+8.335574,7.1025224,1,Camel/086,Math,True,True
+2.1560676,10.327014,0,Camel/087,Math,False,False
+2.2526755,10.451852,0,Camel/088,Math,False,False
+1.0738482,8.359332,0,Camel/089,Math,False,False
+8.900922,11.97046,0,Camel/090,Math,False,False
+2.055949,9.776937,0,Camel/091,Math,False,False
+2.4473598,10.460873,0,Camel/092,Math,False,False
+3.186945,8.046281,1,Magentic_One/000,World Knowledge,True,True
+1.1664468,10.098681,0,Magentic_One/001,Science,False,False
+9.122675,11.028812,0,Magentic_One/002,Science,False,False
+10.383124,6.5739,1,Magentic_One/003,World Knowledge,True,True
+8.905456,9.012875,1,Magentic_One/004,General Assistant,True,True
+9.7635145,9.92634,0,Magentic_One/005,World Knowledge,False,False
+8.417019,8.179515,1,Magentic_One/006,World Knowledge,True,True
+2.3422024,7.6919465,0,Magentic_One/007,Science,False,False
+8.860915,8.206243,0,Magentic_One/008,General Assistant,False,False
+9.945428,9.888037,1,Magentic_One/009,General Assistant,True,True
+2.4475427,9.57968,0,Magentic_One/010,Science,False,False
+3.8411047,8.143201,0,Magentic_One/011,Science,False,False
+1.8675162,10.382943,0,Magentic_One/012,Math,False,False
+9.418383,10.739314,0,Magentic_One/013,General Assistant,False,False
+10.692008,10.741723,1,Magentic_One/014,Science,True,True
+3.4016404,8.116113,1,Magentic_One/015,Science,True,True
+11.440743,7.705916,0,Magentic_One/016,World Knowledge,False,False
+2.323413,7.74929,0,Magentic_One/017,General Assistant,False,False
+3.2009363,10.213862,0,Magentic_One/018,Math,False,False
+9.4007015,6.3830647,0,Magentic_One/019,World Knowledge,False,False
+8.557663,8.577502,0,Magentic_One/020,General Assistant,False,False
+11.516763,7.6319475,0,Magentic_One/021,World Knowledge,False,False
+11.739466,9.604922,0,Magentic_One/022,World Knowledge,False,False
+12.161814,11.367891,0,Magentic_One/023,Math,False,False
+8.847833,10.93336,0,Magentic_One/024,World Knowledge,False,False
+11.566086,8.33506,0,Magentic_One/025,World Knowledge,False,False
+1.9130468,10.613848,1,Magentic_One/026,General Assistant,True,True
+8.277614,12.047174,1,Magentic_One/027,Science,True,True
+2.4902885,10.35143,0,Magentic_One/028,Science,False,False
+1.735662,10.410034,1,Magentic_One/029,Math,True,True
+2.282929,10.374877,1,Magentic_One/030,Math,True,True
+8.561385,11.686677,0,Magentic_One/031,Math,False,False
+3.3769329,8.244456,0,Magentic_One/032,Math,False,False
+2.405756,10.195724,1,Magentic_One/033,Math,True,True
+9.43948,9.842056,0,Magentic_One/034,World Knowledge,False,False
+11.372422,8.44692,0,Magentic_One/035,World Knowledge,False,False
+10.353972,6.921791,1,Magentic_One/036,World Knowledge,True,True
+11.22438,8.019804,0,Magentic_One/037,World Knowledge,False,False
+8.201848,12.192718,0,Magentic_One/038,World Knowledge,False,False
+10.831128,10.552325,1,Magentic_One/039,World Knowledge,True,True
+11.142107,10.495844,1,Magentic_One/040,World Knowledge,True,True
+2.4706416,7.8515625,0,Magentic_One/041,World Knowledge,False,False
+11.587732,8.604142,0,Magentic_One/042,World Knowledge,False,False
+8.19746,12.129369,0,Magentic_One/043,Math,False,False
+1.4170581,8.458382,1,Magentic_One/044,Science,True,True
+3.042808,10.453457,0,Magentic_One/045,Science,False,False
+0.99751294,9.093497,0,Magentic_One/046,Science,False,False
+1.495991,10.179526,0,Magentic_One/047,Science,False,False
+8.819422,8.969776,1,Magentic_One/048,Science,True,True
+2.4395428,10.461692,1,Magentic_One/049,Science,True,True
+10.303717,5.4345894,1,Magentic_One/050,General Assistant,True,True
+2.3179417,10.443489,0,Magentic_One/051,General Assistant,False,False
+1.6183527,10.468051,0,Magentic_One/052,General Assistant,False,False
+8.134954,12.105082,1,Magentic_One/053,General Assistant,True,True
+7.8293915,12.131838,0,Magentic_One/054,General Assistant,False,False
+9.916464,7.416493,1,Magentic_One/055,General Assistant,True,True
+1.7198423,10.633178,1,Magentic_One/056,General Assistant,True,True
+10.65627,10.650466,1,Magentic_One/057,General Assistant,True,True
+9.556989,9.875339,0,Magentic_One/058,General Assistant,False,False
+9.52665,6.3768425,0,Magentic_One/059,General Assistant,False,False
+10.046116,9.785945,1,Magentic_One/060,General Assistant,True,True
+1.6720719,10.177646,0,Magentic_One/061,General Assistant,False,False
+3.2811055,10.352107,1,Magentic_One/062,General Assistant,True,True
+8.356105,8.226845,1,Magentic_One/063,World Knowledge,True,True
+8.173527,12.051233,1,Magentic_One/064,World Knowledge,True,True
+9.735778,9.124985,1,Magentic_One/065,World Knowledge,True,True
+7.828665,7.484951,1,Magentic_One/066,World Knowledge,True,True
+10.057569,10.916829,1,Magentic_One/067,World Knowledge,True,True
+8.418012,6.604724,1,Magentic_One/068,World Knowledge,True,True
+9.826327,11.072224,0,Magentic_One/069,World Knowledge,False,False
+10.421308,10.543168,1,Magentic_One/070,World Knowledge,True,True
+10.851121,6.755466,0,Magentic_One/071,World Knowledge,False,False
+10.11667,9.899269,1,Magentic_One/072,Science,True,True
+2.2329667,8.103256,0,Magentic_One/073,Science,False,False
+8.630142,11.425547,0,Magentic_One/074,Science,False,False
+2.521449,8.90237,0,Magentic_One/075,Science,False,False
+8.702467,8.742146,0,Magentic_One/076,Science,False,False
+2.4415588,9.641436,1,Magentic_One/077,Science,True,True
+2.5187361,10.392527,0,Magentic_One/078,Science,False,False
+2.5313566,7.703162,0,Magentic_One/079,Science,False,False
+2.2857854,7.866014,1,Magentic_One/080,Science,True,True
+8.380392,7.9592724,1,Magentic_One/081,Science,True,True
+0.7736983,9.212102,1,Magentic_One/082,Science,True,True
+2.4669402,7.7704473,1,Magentic_One/083,Science,True,True
+2.8162012,10.675372,0,Magentic_One/084,Science,False,False
+1.5568421,9.574166,1,Magentic_One/085,Math,True,True
+2.2485797,10.762957,1,Magentic_One/086,Math,True,True
+9.796986,9.9683275,0,Magentic_One/087,Math,False,False
+8.728711,7.5740623,0,Magentic_One/088,Math,False,False
+9.822798,10.834431,0,Magentic_One/089,Math,False,False
+9.331514,12.345585,0,Magentic_One/090,Math,False,False
+2.66092,10.7554245,0,Magentic_One/091,Math,False,False
+8.210194,6.966468,0,Magentic_One/092,Math,False,False
+8.233314,12.06338,0,Magentic_One/093,Math,False,False
+0.8002254,9.678289,1,Octotools/000,World Knowledge,True,True
+1.1922313,8.952857,1,Octotools/001,General Assistant,True,True
+-0.056219872,9.621448,0,Octotools/002,Math,False,False
+0.005843865,9.594363,1,Octotools/003,Math,True,True
+0.88366246,9.431049,1,Octotools/004,Math,True,True
+2.5512333,10.318617,0,Octotools/005,Science,False,False
+1.5774176,8.969982,0,Octotools/006,World Knowledge,False,False
+1.0024607,9.954675,1,Octotools/007,General Assistant,True,True
+0.49023637,9.84409,0,Octotools/008,General Assistant,False,False
+0.9596938,9.073875,0,Octotools/009,Science,False,False
+1.85628,8.363549,0,Octotools/010,Science,False,False
+1.7462908,8.2914505,0,Octotools/011,General Assistant,False,False
+0.99196994,9.638699,0,Octotools/012,Math,False,False
+1.8380817,8.260172,1,Octotools/013,World Knowledge,True,True
+1.5705607,8.108412,0,Octotools/014,Science,False,False
+1.8683827,8.951018,0,Octotools/015,World Knowledge,False,False
+1.6656246,9.094505,1,Octotools/016,General Assistant,True,True
+1.4912723,9.006679,0,Octotools/017,Math,False,False
+1.0322378,8.3867035,0,Octotools/018,General Assistant,False,False
+1.5219853,9.261814,0,Octotools/019,Science,False,False
+0.07948038,9.549829,1,Octotools/020,Math,True,True
+1.6942922,9.337139,0,Octotools/021,Science,False,False
+0.45339844,9.5931425,0,Octotools/022,Math,False,False
+0.8753965,8.566176,0,Octotools/023,World Knowledge,False,False
+1.9997864,8.444894,0,Octotools/024,World Knowledge,False,False
+2.133068,7.8408914,0,Octotools/025,World Knowledge,False,False
+1.4821002,9.044303,0,Octotools/026,World Knowledge,False,False
+2.5313706,8.169783,0,Octotools/027,World Knowledge,False,False
+2.5077891,9.776246,1,Octotools/028,World Knowledge,True,True
+0.6349307,9.299739,0,Octotools/029,Math,False,False
+0.015633097,9.680557,0,Octotools/030,Math,False,False
+0.5788648,8.641486,0,Octotools/031,Math,False,False
+1.6224451,8.854255,1,Octotools/032,Science,True,True
+0.7440561,9.319685,0,Octotools/033,Science,False,False
+-0.0012134031,9.600016,0,Octotools/034,Science,False,False
+1.8489574,8.420189,0,Octotools/035,Science,False,False
+1.1100948,8.297958,1,Octotools/036,Science,True,True
+1.6601351,9.313381,1,Octotools/037,Science,True,True
+2.1836002,9.218982,1,Octotools/038,World Knowledge,True,True
+1.08811,8.401681,0,Octotools/039,World Knowledge,False,False
+1.923334,8.720017,1,Octotools/040,World Knowledge,True,True
+0.9666328,8.513759,1,Octotools/041,World Knowledge,True,True
+-0.0014826761,9.632783,1,Octotools/042,Science,True,True
+1.0607592,8.294692,0,Octotools/043,Math,False,False
+1.3810824,8.495955,0,Octotools/044,Math,False,False
+1.057595,8.192729,1,Octotools/045,Math,True,True
+0.7832973,9.046353,0,Octotools/046,Math,False,False
+8.312532,8.325061,0,OpenDeepSearch/000,General Assistant,False,False
+3.143213,9.970857,0,OpenDeepSearch/001,Science,False,False
+8.6349325,6.068349,1,OpenDeepSearch/002,General Assistant,True,True
+9.44827,9.846677,0,OpenDeepSearch/003,World Knowledge,False,False
+9.430703,9.603949,0,OpenDeepSearch/004,World Knowledge,False,False
+2.3439229,8.313961,0,OpenDeepSearch/005,Science,False,False
+9.21372,8.145982,0,OpenDeepSearch/006,General Assistant,False,False
+9.599874,8.14964,0,OpenDeepSearch/007,Science,False,False
+10.234498,5.335536,1,OpenDeepSearch/008,World Knowledge,True,True
+10.8473015,6.001316,1,OpenDeepSearch/009,World Knowledge,True,True
+10.292693,5.88997,0,OpenDeepSearch/010,Science,False,False
+10.584798,5.9235682,0,OpenDeepSearch/011,Math,False,False
+10.866054,8.10496,0,OpenDeepSearch/012,Math,False,False
+8.916007,8.567941,0,OpenDeepSearch/013,General Assistant,False,False
+9.330644,7.6854568,1,OpenDeepSearch/014,General Assistant,True,True
+10.123991,5.948734,0,OpenDeepSearch/015,General Assistant,False,False
+10.435464,8.857598,0,OpenDeepSearch/016,Science,False,False
+8.694299,6.1955,0,OpenDeepSearch/017,General Assistant,False,False
+11.159202,7.6131825,0,OpenDeepSearch/018,Science,False,False
+10.493812,5.472002,0,OpenDeepSearch/019,General Assistant,False,False
+9.352351,12.077714,0,OpenDeepSearch/020,General Assistant,False,False
+10.223852,5.916108,0,OpenDeepSearch/021,Science,False,False
+11.072488,7.469551,1,OpenDeepSearch/022,General Assistant,True,True
+8.155851,6.567614,0,OpenDeepSearch/023,Math,False,False
+9.628303,10.350356,1,OpenDeepSearch/024,General Assistant,True,True
+3.058223,10.104346,0,OpenDeepSearch/025,Science,False,False
+10.105248,6.4576163,0,OpenDeepSearch/026,General Assistant,False,False
+2.3410523,10.356477,0,OpenDeepSearch/027,World Knowledge,False,False
+2.9430013,10.65127,1,OpenDeepSearch/028,Math,True,True
+10.841982,5.9861174,0,OpenDeepSearch/029,Math,False,False
+3.105846,10.412287,0,OpenDeepSearch/030,Math,False,False
+10.739953,8.9896555,0,OpenDeepSearch/031,Math,False,False
+9.751835,6.8349195,0,OpenDeepSearch/032,Math,False,False
+9.321895,7.681171,0,OpenDeepSearch/033,Math,False,False
+9.167415,10.554022,0,OpenDeepSearch/034,World Knowledge,False,False
+9.388803,8.1447,0,OpenDeepSearch/035,World Knowledge,False,False
+11.104098,8.358114,1,OpenDeepSearch/036,World Knowledge,True,True
+8.667648,7.389036,1,OpenDeepSearch/037,World Knowledge,True,True
+7.9966273,6.6931734,1,OpenDeepSearch/038,World Knowledge,True,True
+8.5162735,6.6487803,0,OpenDeepSearch/039,World Knowledge,False,False
+9.690519,7.2485323,1,OpenDeepSearch/040,World Knowledge,True,True
+11.374684,8.255425,0,OpenDeepSearch/041,World Knowledge,False,False
+10.931458,7.6320477,0,OpenDeepSearch/042,World Knowledge,False,False
+11.355998,7.8610725,0,OpenDeepSearch/043,World Knowledge,False,False
+10.469218,8.202075,1,OpenDeepSearch/044,World Knowledge,True,True
+9.729795,7.6437902,0,OpenDeepSearch/045,World Knowledge,False,False
+8.871214,6.291746,0,OpenDeepSearch/046,World Knowledge,False,False
+8.459965,8.352569,0,OpenDeepSearch/047,Math,False,False
+10.333469,5.799539,1,OpenDeepSearch/048,Math,True,True
+10.142538,5.391991,1,OpenDeepSearch/049,Math,True,True
+9.432193,7.620719,1,OpenDeepSearch/050,World Knowledge,True,True
+10.136328,7.567701,1,OpenDeepSearch/051,World Knowledge,True,True
+10.079334,7.9427447,1,OpenDeepSearch/052,World Knowledge,True,True
+2.6940522,8.275962,1,OpenDeepSearch/053,World Knowledge,True,True
+8.199236,6.9630666,1,OpenDeepSearch/054,World Knowledge,True,True
+10.152443,7.8208523,1,OpenDeepSearch/055,World Knowledge,True,True
+10.272696,6.2297945,1,OpenDeepSearch/056,World Knowledge,True,True
+9.7882395,5.486848,1,OpenDeepSearch/057,World Knowledge,True,True
+1.3280085,9.017743,1,OpenDeepSearch/058,World Knowledge,True,True
+10.099774,8.286641,1,OpenDeepSearch/059,World Knowledge,True,True
+9.953304,7.4285874,1,OpenDeepSearch/060,World Knowledge,True,True
+10.459088,5.7402368,0,OpenDeepSearch/061,World Knowledge,False,False
+11.422695,7.613748,1,OpenDeepSearch/062,World Knowledge,True,True
+9.240229,5.5959272,0,OpenDeepSearch/063,World Knowledge,False,False
+9.604465,5.4832664,1,OpenDeepSearch/064,World Knowledge,True,True
+9.377756,8.160236,1,OpenDeepSearch/065,World Knowledge,True,True
+10.1470785,5.971542,1,OpenDeepSearch/066,World Knowledge,True,True
+11.073875,8.863205,0,OpenDeepSearch/067,World Knowledge,False,False
+7.8084507,7.5949345,1,OpenDeepSearch/068,World Knowledge,True,True
+8.744086,5.9616394,0,OpenDeepSearch/069,World Knowledge,False,False
+8.743151,9.194785,0,OpenDeepSearch/070,World Knowledge,False,False
+8.949964,5.8346176,1,OpenDeepSearch/071,World Knowledge,True,True
+11.058135,7.8124166,1,OpenDeepSearch/072,World Knowledge,True,True
+10.065513,6.827108,1,OpenDeepSearch/073,World Knowledge,True,True
+10.226824,6.036422,0,OpenDeepSearch/074,World Knowledge,False,False
+8.700715,6.872208,1,OpenDeepSearch/075,World Knowledge,True,True
+10.074152,8.264046,0,OpenDeepSearch/076,World Knowledge,False,False
+8.732862,6.6437984,1,OpenDeepSearch/077,World Knowledge,True,True
+11.555593,8.368883,0,OpenDeepSearch/078,World Knowledge,False,False
+10.144943,7.8472877,0,OpenDeepSearch/079,World Knowledge,False,False
+11.293179,8.057218,0,OpenDeepSearch/080,World Knowledge,False,False
+10.357295,5.4604487,0,OpenDeepSearch/081,World Knowledge,False,False
+8.529719,6.0493665,0,OpenDeepSearch/082,World Knowledge,False,False
+8.366221,7.9404597,1,OpenDeepSearch/083,World Knowledge,True,True
+11.368206,7.7637143,1,OpenDeepSearch/084,World Knowledge,True,True
+8.191867,6.8973093,1,OpenDeepSearch/085,World Knowledge,True,True
+8.4797325,6.173965,0,OpenDeepSearch/086,World Knowledge,False,False
+8.369359,6.918497,0,OpenDeepSearch/087,World Knowledge,False,False
+11.748879,9.558701,0,OpenDeepSearch/088,Science,False,False
+11.708559,8.574509,0,OpenDeepSearch/089,Science,False,False
+1.1671714,9.349548,0,OpenDeepSearch/090,Science,False,False
+2.5744636,7.7114043,0,OpenDeepSearch/091,Science,False,False
+10.928358,8.494765,1,OpenDeepSearch/092,Math,True,True
+10.064728,6.014302,1,OpenDeepSearch/093,Math,True,True
+8.887333,8.494476,1,OpenDeepSearch/094,Math,True,True
+10.390167,7.7807827,0,OpenDeepSearch/095,Math,False,False
+11.536756,8.412391,0,OpenDeepSearch/096,Math,False,False
+9.355676,8.043805,0,OpenDeepSearch/097,Math,False,False
+9.336608,5.794033,0,OpenDeepSearch/098,Math,False,False
+10.104412,6.3829513,1,OpenDeepSearch/099,Math,True,True
+0.22469395,9.679125,1,OpenManus/000,Science,True,True
+1.0913229,8.956388,1,OpenManus/001,Science,True,True
+3.1809978,8.24575,0,OpenManus/002,General Assistant,False,False
+1.3722081,9.114562,0,OpenManus/003,Science,False,False
+0.6680184,9.823899,0,OpenManus/004,Math,False,False
+2.5914817,8.928972,0,OpenManus/005,World Knowledge,False,False
+2.0807612,9.742326,0,OpenManus/006,General Assistant,False,False
+12.183723,11.3646755,0,OpenManus/007,World Knowledge,False,False
+0.95842713,10.128288,1,OpenManus/008,General Assistant,True,True
+11.700666,11.524649,0,OpenManus/009,World Knowledge,False,False
+2.921703,8.851876,0,OpenManus/010,Math,False,False
+1.0575538,9.667277,0,OpenManus/011,Science,False,False
+1.5781386,10.155303,1,OpenManus/012,General Assistant,True,True
+2.6121728,9.944788,0,OpenManus/013,Science,False,False
+9.073107,12.5278,0,OpenManus/014,World Knowledge,False,False
+0.8923802,9.378284,0,OpenManus/015,World Knowledge,False,False
+1.7743857,10.047708,1,OpenManus/016,World Knowledge,True,True
+0.57235855,9.884339,0,OpenManus/017,Math,False,False
+1.324853,10.033272,0,OpenManus/018,Math,False,False
+1.0801605,9.505968,0,OpenManus/019,Math,False,False
+3.1493676,10.153594,0,OpenManus/020,Math,False,False
+0.71214586,9.233419,0,OpenManus/021,Math,False,False
+0.38813242,9.701216,0,OpenManus/022,Math,False,False
+2.226913,7.6381755,0,OpenManus/023,Math,False,False
+3.5336497,8.007502,1,OpenManus/024,Math,True,True
+8.532429,8.322709,0,OpenManus/025,World Knowledge,False,False
+10.110947,8.341352,0,OpenManus/026,World Knowledge,False,False
+9.325735,7.6817203,0,OpenManus/027,World Knowledge,False,False
+2.8263175,7.997406,1,OpenManus/028,World Knowledge,True,True
+3.2679305,8.240987,0,OpenManus/029,World Knowledge,False,False
+2.9699063,10.390311,0,OpenManus/030,World Knowledge,False,False
+9.287635,10.719321,0,OpenManus/031,World Knowledge,False,False
+2.998599,9.627661,0,OpenManus/032,World Knowledge,False,False
+11.978013,9.977266,0,OpenManus/033,World Knowledge,False,False
+1.2390994,8.794226,1,OpenManus/034,Math,True,True
+1.7616497,8.968068,1,OpenManus/035,Math,True,True
+1.2273037,10.164712,0,OpenManus/036,Science,False,False
+2.8827987,10.682291,1,OpenManus/037,Science,True,True
+0.96304375,9.626529,0,OpenManus/038,Science,False,False
+2.8826683,10.743217,0,OpenManus/039,Science,False,False
+3.7798991,8.101464,0,OpenManus/040,Science,False,False
+1.799673,8.719607,0,OpenManus/041,Science,False,False
+1.61103,8.753491,1,OpenManus/042,Science,True,True
+2.1522918,9.246049,0,OpenManus/043,Science,False,False
+1.0293609,10.009371,0,OpenManus/044,Science,False,False
+2.2878366,9.5739,0,OpenManus/045,Science,False,False
+2.7289846,10.833861,0,OpenManus/046,Science,False,False
+9.766859,8.03144,0,OpenManus/047,World Knowledge,False,False
+12.15282,11.473255,1,OpenManus/048,World Knowledge,True,True
+8.350072,8.426379,1,OpenManus/049,World Knowledge,True,True
+9.817806,8.058795,0,OpenManus/050,World Knowledge,False,False
+9.2304325,10.680334,1,OpenManus/051,World Knowledge,True,True
+11.181169,8.887257,0,OpenManus/052,World Knowledge,False,False
+3.1899412,8.274648,0,OpenManus/053,World Knowledge,False,False
+3.5050268,10.115088,0,OpenManus/054,World Knowledge,False,False
+12.161432,11.109439,0,OpenManus/055,World Knowledge,False,False
+1.4968102,10.5385065,0,OpenManus/056,World Knowledge,False,False
+8.958626,12.457074,0,OpenManus/057,World Knowledge,False,False
+2.627701,8.517813,0,OpenManus/058,World Knowledge,False,False
+12.170501,11.407907,0,OpenManus/059,World Knowledge,False,False
+9.269112,9.671414,0,OpenManus/060,World Knowledge,False,False
+1.500087,9.534584,1,OpenManus/061,World Knowledge,True,True
+9.152693,7.557358,1,OpenManus/062,World Knowledge,True,True
+8.708987,9.419907,0,OpenManus/063,World Knowledge,False,False
+10.742583,7.827595,0,OpenManus/064,World Knowledge,False,False
+8.503925,11.76835,0,OpenManus/065,World Knowledge,False,False
+1.9053353,8.875683,0,OpenManus/066,World Knowledge,False,False
+8.939883,8.616713,0,OpenManus/067,World Knowledge,False,False
+3.234712,8.263705,0,OpenManus/068,World Knowledge,False,False
+7.939975,7.268901,1,OpenManus/069,World Knowledge,True,True
+11.63324,9.38854,0,OpenManus/070,World Knowledge,False,False
+9.846806,7.7142863,0,OpenManus/071,World Knowledge,False,False
+8.0474205,7.4576106,0,OpenManus/072,World Knowledge,False,False
+8.181293,6.9419904,0,OpenManus/073,World Knowledge,False,False
+3.1968834,8.04518,0,OpenManus/074,Science,False,False
+0.6998407,8.995102,0,OpenManus/075,Science,False,False
+3.0585964,7.8591228,0,OpenManus/076,Science,False,False
+2.3061323,7.6495094,0,OpenManus/077,Science,False,False
+8.035963,6.79129,0,OpenManus/078,Science,False,False
+9.782744,8.025633,0,OpenManus/079,Science,False,False
+0.37559962,9.652946,1,OpenManus/080,Science,True,True
+2.3729882,8.647662,0,OpenManus/081,Science,False,False
+11.79699,8.991895,0,OpenManus/082,Science,False,False
+2.182954,8.43716,0,OpenManus/083,Science,False,False
+9.342946,8.113871,0,OpenManus/084,Science,False,False
+2.6056488,7.672778,0,OpenManus/085,Science,False,False
+-0.09031895,9.668603,0,OpenManus/086,Science,False,False
+2.7511559,10.680899,0,OpenManus/087,Science,False,False
+0.67893785,8.994411,0,OpenManus/088,Science,False,False
+2.5374653,7.7142525,0,OpenManus/089,Science,False,False
+0.72753197,9.18505,0,OpenManus/090,Science,False,False
+10.826006,6.0633063,0,OpenManus/091,Science,False,False
+1.9565535,8.675338,0,OpenManus/092,Science,False,False
+2.541924,8.917882,0,OpenManus/093,Science,False,False
+1.2999693,8.631291,0,OpenManus/094,Math,False,False
+0.78656745,9.623673,1,OpenManus/095,Math,True,True
+1.0584811,8.957119,0,OpenManus/096,Math,False,False
+9.644417,11.139588,0,OpenManus/097,Math,False,False
+11.622646,8.86105,0,OpenManus/098,Math,False,False
+8.340727,6.421541,1,OpenManus/099,Math,True,True
+10.759085,5.731232,0,OpenManus/100,Math,False,False
+8.497491,6.2870445,0,OpenManus/101,Math,False,False
+3.0772235,9.79009,0,OpenManus/102,Math,False,False
+3.6928375,10.008608,0,OpenManus/103,Math,False,False
+2.4156258,10.533741,1,SmolAgents/000,Science,True,True
+8.517515,6.122702,0,SmolAgents/001,Math,False,False
+1.9443014,9.563563,0,SmolAgents/002,Science,False,False
+9.562693,9.9106655,0,SmolAgents/003,Math,False,False
+9.422888,9.774604,1,SmolAgents/004,General Assistant,True,True
+11.17565,8.038571,1,SmolAgents/005,Science,True,True
+0.9659377,9.489573,0,SmolAgents/006,General Assistant,False,False
+9.280701,10.720318,1,SmolAgents/007,General Assistant,True,True
+8.83848,6.2695336,0,SmolAgents/008,Math,False,False
+2.1223865,9.804111,0,SmolAgents/009,General Assistant,False,False
+8.700879,9.421557,1,SmolAgents/010,World Knowledge,True,True
+9.889874,6.8190165,1,SmolAgents/011,General Assistant,True,True
+9.874187,6.7476673,0,SmolAgents/012,General Assistant,False,False
+8.532076,6.728915,1,SmolAgents/013,General Assistant,True,True
+10.7797785,7.738915,0,SmolAgents/014,World Knowledge,False,False
+9.211185,11.971341,0,SmolAgents/015,General Assistant,False,False
+8.108826,6.4941406,1,SmolAgents/016,Math,True,True
+8.975195,5.9304194,0,SmolAgents/017,Science,False,False
+10.914937,8.6654215,0,SmolAgents/018,Math,False,False
+1.719653,8.750463,1,SmolAgents/019,Science,True,True
+11.401372,8.803895,0,SmolAgents/020,General Assistant,False,False
+9.195852,8.192548,0,SmolAgents/021,Science,False,False
+10.860659,5.992963,0,SmolAgents/022,Science,False,False
+10.044572,6.0541143,0,SmolAgents/023,Math,False,False
+2.8521621,10.744651,0,SmolAgents/024,World Knowledge,False,False
+9.632266,6.612795,0,SmolAgents/025,General Assistant,False,False
+10.173211,6.0190043,0,SmolAgents/026,Science,False,False
+10.848693,5.9986396,0,SmolAgents/027,World Knowledge,False,False
+9.597804,5.6510787,0,SmolAgents/028,Math,False,False
+10.871176,6.0656276,1,SmolAgents/029,Math,True,True
+9.163477,8.92237,1,SmolAgents/030,General Assistant,True,True
+8.359117,6.9898148,0,SmolAgents/031,General Assistant,False,False
+8.762194,6.4885125,0,SmolAgents/032,General Assistant,False,False
+2.582475,7.770748,0,SmolAgents/033,Math,False,False
+10.929368,7.680801,0,SmolAgents/034,World Knowledge,False,False
+1.7675753,10.595283,1,SmolAgents/035,General Assistant,True,True
+3.3466153,10.111446,0,SmolAgents/036,Science,False,False
+3.0444577,7.9377728,0,SmolAgents/037,World Knowledge,False,False
+9.991605,6.7669096,1,SmolAgents/038,World Knowledge,True,True
+9.551612,5.657266,0,SmolAgents/039,Science,False,False
+10.997306,7.5947065,0,SmolAgents/040,Math,False,False
+8.920179,10.780449,1,SmolAgents/041,Math,True,True
+10.097678,9.126668,1,SmolAgents/042,Math,True,True
+10.245803,7.713803,0,SmolAgents/043,World Knowledge,False,False
+11.100747,8.079777,1,SmolAgents/044,World Knowledge,True,True
+10.751081,6.306995,0,SmolAgents/045,World Knowledge,False,False
+10.109713,6.585045,0,SmolAgents/046,Math,False,False
+11.031051,8.675182,0,SmolAgents/047,Math,False,False
+11.336775,8.314679,0,SmolAgents/048,Math,False,False
+10.649009,6.7319226,0,SmolAgents/049,Math,False,False
+8.725356,7.1824183,0,SmolAgents/050,Math,False,False
+8.342263,6.447499,0,SmolAgents/051,Math,False,False
+11.575649,8.374689,1,SmolAgents/052,Science,True,True
+8.004013,7.5608764,0,SmolAgents/053,Science,False,False
+9.787369,6.6900115,0,SmolAgents/054,World Knowledge,False,False
+10.192366,7.8657928,0,SmolAgents/055,World Knowledge,False,False
+10.865217,6.7819824,0,SmolAgents/056,World Knowledge,False,False
+9.478812,6.3764143,1,SmolAgents/057,World Knowledge,True,True
+9.505965,5.713393,0,SmolAgents/058,World Knowledge,False,False
+11.526952,8.39687,0,SmolAgents/059,World Knowledge,False,False
+9.542967,5.710649,0,SmolAgents/060,World Knowledge,False,False
+9.783091,7.4763074,0,SmolAgents/061,World Knowledge,False,False
+9.010002,5.9639835,1,SmolAgents/062,World Knowledge,True,True
+8.670534,6.0497627,1,SmolAgents/063,World Knowledge,True,True
+8.661992,6.208594,1,SmolAgents/064,World Knowledge,True,True
+8.954971,5.9493732,1,SmolAgents/065,World Knowledge,True,True
+8.36182,7.8618817,0,SmolAgents/066,World Knowledge,False,False
+9.486751,6.55555,1,SmolAgents/067,World Knowledge,True,True
+11.396773,8.157696,0,SmolAgents/068,World Knowledge,False,False
+10.290094,5.557481,1,SmolAgents/069,World Knowledge,True,True
+0.85931444,9.056936,1,SmolAgents/070,World Knowledge,True,True
+9.238028,9.434787,1,SmolAgents/071,Science,True,True
+9.357042,9.724013,0,SmolAgents/072,Science,False,False
+8.722489,5.98424,1,SmolAgents/073,Science,True,True
+2.6906505,10.738347,1,SmolAgents/074,Science,True,True
+10.232702,5.362263,1,SmolAgents/075,Science,True,True
+9.408296,10.29708,0,SmolAgents/076,Science,False,False
+9.911856,6.652387,0,SmolAgents/077,Science,False,False
+1.8962983,8.714599,0,SmolAgents/078,Science,False,False
+10.2189,8.98042,0,SmolAgents/079,Science,False,False
+10.192213,5.3753643,0,SmolAgents/080,Math,False,False
+3.347276,10.166013,0,SmolAgents/081,Math,False,False
+8.582284,6.142922,1,SmolAgents/082,Math,True,True
+10.014801,6.367481,0,SmolAgents/083,Math,False,False
+9.643021,6.534261,0,SmolAgents/084,Math,False,False
+8.543205,6.0976458,0,SmolAgents/085,Math,False,False
+0.7223198,8.840669,1,SmolAgents/086,Math,True,True
+8.6977,6.5361266,1,SmolAgents/087,Math,True,True
+10.185043,6.299232,1,SmolAgents/088,Math,True,True
+10.623704,8.172888,0,SmolAgents/089,Math,False,False
+0.7773254,9.075312,1,SmolAgents/090,Math,True,True

@@ -1,0 +1,6 @@
+2026-04-29 06:35:44,370 INFO __main__ Run dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto
+2026-04-29 06:35:44,370 INFO __main__ Features CSV: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto/trajectory_features.csv
+2026-04-29 06:35:44,371 INFO __main__ Artifacts dir: /home/anaderi/projects/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/frontierscience/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto/artifacts
+2026-04-29 06:35:44,371 INFO __main__ Models: ['logreg', 'lightgbm']
+2026-04-29 06:35:44,384 WARNING semanticscale.sh6.failure_analysis_runner Skipping prediction: Prediction is not identifiable because there are too few examples per class for cross-validation.
+2026-04-29 06:35:44,384 WARNING __main__ Run skipped: Prediction is not identifiable because there are too few examples per class for cross-validation.

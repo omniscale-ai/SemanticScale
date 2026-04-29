@@ -1,4 +1,7 @@
-[[index]]
-name = "zeus"
-url = "file:///mnt/hdd/torch_wheels/"
-format = "flat"
+# Local flat index for the SH7 host (zeus). Disabled while running the
+# Stage-5 analysis-only deps on a different machine. Restore before
+# re-running Stages 1-2 on zeus.
+# [[index]]
+# name = "zeus"
+# url = "file:///mnt/hdd/torch_wheels/"
+# format = "flat"

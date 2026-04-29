@@ -1,0 +1,12 @@
+{
+  "n_items": 693,
+  "n_hallucinated": 443,
+  "n_unmatched_to_repo": 0,
+  "category_counts": {
+    "Reasoning Hallucination": 118,
+    "Tool-Use Hallucination": 103,
+    "Retrieval Hallucination": 82,
+    "Human-Interaction Hallucination": 73,
+    "Planning Hallucination": 67
+  }
+}

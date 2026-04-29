@@ -1,0 +1,694 @@
+id,umap_x,umap_y,target,framework,hallucination_category,hallucination_subcategory,subject
+BFCL/000,9.321436,11.183699,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/001,7.8234262,7.633026,1,BFCL,,,Tool Use
+BFCL/002,8.320035,12.1011915,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/003,10.286324,10.055522,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/004,9.815656,10.025469,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/005,11.63907,11.453504,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/006,9.6705675,12.0546055,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/007,11.148025,11.082334,1,BFCL,,,Tool Use
+BFCL/008,11.760594,11.4843,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/009,10.370122,10.681832,1,BFCL,,,Tool Use
+BFCL/010,9.752424,9.411242,1,BFCL,,,Tool Use
+BFCL/011,10.138024,10.844603,1,BFCL,,,Tool Use
+BFCL/012,9.443908,12.085055,1,BFCL,,,Tool Use
+BFCL/013,9.728126,10.731693,1,BFCL,,,Tool Use
+BFCL/014,11.534004,11.308722,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/015,11.231529,10.981118,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/016,12.081644,11.401486,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/017,11.635275,11.537175,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/018,10.10515,11.207277,1,BFCL,,,Tool Use
+BFCL/019,9.994688,11.837428,1,BFCL,,,Tool Use
+BFCL/020,9.885789,10.740188,1,BFCL,,,Tool Use
+BFCL/021,9.91349,11.449704,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/022,9.664959,10.653633,1,BFCL,,,Tool Use
+BFCL/023,12.10418,11.397905,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/024,11.181964,11.244641,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/025,10.121164,9.041321,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/026,9.1077,12.337315,1,BFCL,,,Tool Use
+BFCL/027,11.950237,9.913218,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/028,11.019473,11.237144,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/029,10.415867,11.441807,1,BFCL,,,Tool Use
+BFCL/030,9.166339,11.881013,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/031,8.91508,7.0005364,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/032,9.952576,10.457176,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/033,10.0191965,11.663894,1,BFCL,,,Tool Use
+BFCL/034,10.056912,11.708239,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/035,12.057275,11.421781,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/036,10.059285,8.339828,1,BFCL,,,Tool Use
+BFCL/037,11.917155,9.917854,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/038,9.487817,10.641441,1,BFCL,,,Tool Use
+BFCL/039,9.070565,12.186907,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/040,10.226198,11.435339,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/041,11.89914,11.25555,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/042,10.551528,11.412126,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/043,8.823569,11.380473,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/044,10.799559,11.86721,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/045,11.051144,11.309545,1,BFCL,,,Tool Use
+BFCL/046,9.635708,12.010958,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/047,9.195111,12.014874,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/048,9.924541,12.403991,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/049,9.072649,11.359525,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/050,9.673329,11.39238,1,BFCL,,,Tool Use
+BFCL/051,11.493427,10.3071995,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/052,8.2948885,8.457092,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/053,10.191565,9.15282,1,BFCL,,,Tool Use
+BFCL/054,9.766811,12.3751955,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/055,8.672005,11.550152,1,BFCL,,,Tool Use
+BFCL/056,9.641132,12.094253,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/057,10.777691,11.89403,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/058,10.822467,10.809153,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/059,10.217086,11.662142,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/060,8.732383,11.936005,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/061,9.329377,12.095869,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/062,11.770469,10.050633,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/063,9.962134,11.691401,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/064,10.70977,10.955004,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/065,11.278398,11.015711,1,BFCL,,,Tool Use
+BFCL/066,8.782421,8.616376,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/067,10.748543,10.6664,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/068,8.126429,12.295604,1,BFCL,,,Tool Use
+BFCL/069,9.753525,10.461052,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/070,8.5949745,11.610326,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/071,11.247392,10.850124,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/072,10.94385,9.240104,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/073,8.894396,11.278425,1,BFCL,,,Tool Use
+BFCL/074,11.284068,10.6958685,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/075,9.999563,11.613868,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/076,10.387191,11.341116,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/077,9.898629,11.451174,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/078,10.3798,11.2815895,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/079,10.548432,10.47593,1,BFCL,,,Tool Use
+BFCL/080,9.160409,12.350824,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/081,9.55448,12.036215,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/082,8.9886265,11.153474,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/083,11.357965,10.122149,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/084,8.087982,12.250534,1,BFCL,,,Tool Use
+BFCL/085,10.098856,11.916468,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/086,9.430464,12.282803,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/087,8.943425,12.078323,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/088,11.785549,9.663574,1,BFCL,,,Tool Use
+BFCL/089,11.242349,10.435743,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/090,11.927805,9.98229,1,BFCL,,,Tool Use
+BFCL/091,8.167663,12.260296,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/092,9.187225,10.0279455,1,BFCL,,,Tool Use
+BFCL/093,9.432647,12.41168,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/094,11.097674,11.78508,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/095,9.601675,11.58578,1,BFCL,,,Tool Use
+BFCL/096,9.687137,12.234467,1,BFCL,,,Tool Use
+BFCL/097,9.011888,12.458236,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/098,9.277428,12.530534,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/099,9.752866,12.29874,1,BFCL,,,Tool Use
+BFCL/100,9.655545,10.638534,1,BFCL,,,Tool Use
+BFCL/101,9.8823395,12.3305435,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/102,11.958615,11.376693,1,BFCL,,,Tool Use
+BFCL/103,10.899279,11.255691,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/104,10.030834,10.932783,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/105,8.533142,11.998626,1,BFCL,,,Tool Use
+BFCL/106,10.433683,11.281691,1,BFCL,,,Tool Use
+BFCL/107,10.826251,11.758899,1,BFCL,,,Tool Use
+BFCL/108,8.690159,9.135997,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/109,9.069422,11.605851,1,BFCL,,,Tool Use
+BFCL/110,8.7886095,9.0921755,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/111,9.082244,12.198259,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/112,9.03715,10.679002,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/113,9.379873,11.861592,1,BFCL,,,Tool Use
+BFCL/114,9.109667,11.559353,1,BFCL,,,Tool Use
+BFCL/115,9.282085,9.196795,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/116,10.353643,11.218606,1,BFCL,,,Tool Use
+BFCL/117,9.449173,11.645943,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/118,11.518967,10.228615,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/119,10.578289,11.530238,1,BFCL,,,Tool Use
+BFCL/120,9.840605,10.466648,1,BFCL,,,Tool Use
+BFCL/121,10.2166195,9.092355,1,BFCL,,,Tool Use
+BFCL/122,11.270218,11.235633,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/123,11.331838,10.4639435,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/124,9.393442,11.990693,1,BFCL,,,Tool Use
+BFCL/125,8.955996,12.388468,1,BFCL,,,Tool Use
+BFCL/126,9.950535,11.916408,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/127,10.434036,11.0383835,1,BFCL,,,Tool Use
+BFCL/128,9.95,10.296578,1,BFCL,,,Tool Use
+BFCL/129,10.976603,11.838647,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/130,8.963212,11.825388,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/131,11.796392,11.486079,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/132,9.050967,11.453659,1,BFCL,,,Tool Use
+BFCL/133,9.370987,11.637746,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/134,8.992861,12.353878,1,BFCL,,,Tool Use
+BFCL/135,9.571803,10.891578,1,BFCL,,,Tool Use
+BFCL/136,9.903151,12.316345,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/137,11.157685,10.699521,1,BFCL,,,Tool Use
+BFCL/138,9.514451,11.693658,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/139,9.749265,12.262826,0,BFCL,Tool-Use Hallucination,Missing Required Call,Tool Use
+BFCL/140,10.603555,12.04661,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/141,10.973399,11.351562,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/142,9.105387,12.059018,1,BFCL,,,Tool Use
+BFCL/143,11.887061,9.858309,1,BFCL,,,Tool Use
+BFCL/144,12.041444,10.122976,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/145,10.341568,9.964312,1,BFCL,,,Tool Use
+BFCL/146,10.576552,11.113798,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/147,10.998766,10.665994,1,BFCL,,,Tool Use
+BFCL/148,8.7058735,11.488252,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/149,9.771661,12.301448,1,BFCL,,,Tool Use
+BFCL/150,11.941135,9.904676,1,BFCL,,,Tool Use
+BFCL/151,9.535576,11.959517,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/152,9.316792,12.58321,1,BFCL,,,Tool Use
+BFCL/153,9.076765,12.40261,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/154,8.62337,11.890777,1,BFCL,,,Tool Use
+BFCL/155,9.117887,12.435414,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/156,9.714669,11.956273,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/157,10.88945,10.850342,1,BFCL,,,Tool Use
+BFCL/158,9.103389,12.118932,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/159,9.473222,9.237305,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/160,9.085243,12.431241,0,BFCL,Tool-Use Hallucination,Unnecessary Tool Call,Tool Use
+BFCL/161,11.603285,10.195086,0,BFCL,Tool-Use Hallucination,Incorrect Tool Arguments,Tool Use
+BFCL/162,9.363393,7.606931,0,BFCL,Tool-Use Hallucination,Parallel Call Conflict,Tool Use
+BFCL/163,10.113397,11.438529,1,BFCL,,,Tool Use
+Camel/000,2.0423765,10.723967,0,Camel,Reasoning Hallucination,Math Reasoning,Math
+Camel/001,2.542336,7.747601,1,Camel,,,Science
+Camel/002,9.147465,9.2499,1,Camel,,,General Assistant
+Camel/003,1.7578472,9.796289,0,Camel,Reasoning Hallucination,Math Reasoning,Math
+Camel/004,2.2183466,9.906664,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/005,8.567905,11.844243,0,Camel,Reasoning Hallucination,General Reasoning,General Assistant
+Camel/006,0.98899597,9.193015,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/007,1.4955032,8.139833,1,Camel,,,Science
+Camel/008,10.279891,9.823794,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/009,8.872028,12.040279,0,Camel,Reasoning Hallucination,Math Reasoning,Math
+Camel/010,1.7457222,10.254869,1,Camel,,,General Assistant
+Camel/011,0.8155027,8.788273,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/012,8.234407,12.02873,0,Camel,Retrieval Hallucination,Summarize Misalign,General Assistant
+Camel/013,1.6926043,10.4472685,1,Camel,,,General Assistant
+Camel/014,2.6996377,8.984557,0,Camel,Retrieval Hallucination,Query Misalign,Science
+Camel/015,9.169228,11.727771,1,Camel,,,General Assistant
+Camel/016,9.288296,10.636494,0,Camel,Planning Hallucination,Task Decompose,World Knowledge
+Camel/017,1.3677694,9.496524,1,Camel,,,Science
+Camel/018,0.9569493,9.609948,0,Camel,Planning Hallucination,Task Decompose,Science
+Camel/019,10.535143,7.814108,0,Camel,Reasoning Hallucination,General Reasoning,General Assistant
+Camel/020,3.1579316,10.253009,0,Camel,Retrieval Hallucination,Summarize Misalign,World Knowledge
+Camel/021,2.1429832,8.571854,0,Camel,Retrieval Hallucination,Summarize Misalign,Science
+Camel/022,8.836429,9.697073,0,Camel,Retrieval Hallucination,Summarize Misalign,General Assistant
+Camel/023,10.147137,9.338456,1,Camel,,,General Assistant
+Camel/024,9.879481,10.049893,0,Camel,Planning Hallucination,Task Decompose,General Assistant
+Camel/025,0.8260959,9.203377,1,Camel,,,Math
+Camel/026,2.8805568,9.969654,0,Camel,Reasoning Hallucination,Math Reasoning,Math
+Camel/027,7.786902,7.779578,0,Camel,Reasoning Hallucination,Math Reasoning,Math
+Camel/028,10.447836,6.209086,1,Camel,,,World Knowledge
+Camel/029,8.613024,8.586596,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+Camel/030,0.6467235,9.288673,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/031,1.507189,8.73126,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/032,2.568696,10.513528,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/033,10.093262,8.291333,1,Camel,,,Science
+Camel/034,8.461081,11.78099,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,General Assistant
+Camel/035,2.3353016,8.961869,1,Camel,,,General Assistant
+Camel/036,9.894883,11.051672,1,Camel,,,General Assistant
+Camel/037,8.718419,11.816562,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,General Assistant
+Camel/038,3.2738988,8.31094,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,General Assistant
+Camel/039,11.099564,8.826355,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+Camel/040,10.8849945,8.812709,1,Camel,,,World Knowledge
+Camel/041,2.4570599,9.533688,1,Camel,,,World Knowledge
+Camel/042,9.526512,10.352705,1,Camel,,,World Knowledge
+Camel/043,2.3763456,10.330541,1,Camel,,,World Knowledge
+Camel/044,10.087562,11.049442,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+Camel/045,9.380552,10.913451,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+Camel/046,1.8164306,8.881346,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+Camel/047,2.4102943,10.467222,1,Camel,,,World Knowledge
+Camel/048,2.0051975,10.726357,1,Camel,,,World Knowledge
+Camel/049,1.9108882,10.214422,0,Camel,Retrieval Hallucination,Context Misalign,World Knowledge
+Camel/050,11.243198,10.479845,1,Camel,,,World Knowledge
+Camel/051,1.4146022,10.271,0,Camel,Retrieval Hallucination,Summarize Misalign,World Knowledge
+Camel/052,1.7870568,9.277543,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/053,2.1312058,8.054256,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/054,11.878986,9.822173,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/055,1.2377099,10.06144,0,Camel,Planning Hallucination,Task Decompose,Science
+Camel/056,1.7698913,9.983737,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/057,3.1936145,10.285658,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/058,0.11045015,9.689043,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/059,1.4050856,9.711885,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/060,2.911529,8.83937,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/061,1.7874975,9.009857,1,Camel,,,Science
+Camel/062,0.1577922,9.670822,1,Camel,,,Science
+Camel/063,2.129997,8.394784,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/064,1.6549637,9.443252,1,Camel,,,Science
+Camel/065,1.6166881,9.81309,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/066,1.549132,10.433941,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/067,3.3558261,10.173607,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/068,11.537192,9.3772955,1,Camel,,,Science
+Camel/069,8.44216,8.443152,1,Camel,,,Science
+Camel/070,1.9428201,8.459606,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/071,1.2458463,9.262294,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/072,2.2344286,7.867934,0,Camel,Reasoning Hallucination,Science Reasoning,Science
+Camel/073,-0.0825846,9.665629,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/074,2.048108,9.177048,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+Camel/075,10.995229,6.4254475,0,Camel,Planning Hallucination,Task Decompose,Science
+Camel/076,11.454678,7.790935,1,Camel,,,Math
+Camel/077,11.388253,7.851382,1,Camel,,,Math
+Camel/078,10.006466,8.247725,1,Camel,,,Math
+Camel/079,9.16595,11.57006,1,Camel,,,Math
+Camel/080,9.632359,9.812599,1,Camel,,,Math
+Camel/081,8.399472,6.7079186,1,Camel,,,Math
+Camel/082,11.485096,11.179784,1,Camel,,,Math
+Camel/083,2.016623,9.306985,1,Camel,,,Math
+Camel/084,10.290987,8.052411,1,Camel,,,Math
+Camel/085,12.189845,11.41429,1,Camel,,,Math
+Camel/086,8.335574,7.1025224,1,Camel,,,Math
+Camel/087,2.1560676,10.327014,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/088,2.2526755,10.451852,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/089,1.0738482,8.359332,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/090,8.900922,11.97046,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/091,2.055949,9.776937,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Camel/092,2.4473598,10.460873,0,Camel,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+Magentic_One/000,3.186945,8.046281,1,Magentic_One,,,World Knowledge
+Magentic_One/001,1.1664468,10.098681,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/002,9.122675,11.028812,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/003,10.383124,6.5739,1,Magentic_One,,,World Knowledge
+Magentic_One/004,8.905456,9.012875,1,Magentic_One,,,General Assistant
+Magentic_One/005,9.7635145,9.92634,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/006,8.417019,8.179515,1,Magentic_One,,,World Knowledge
+Magentic_One/007,2.3422024,7.6919465,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/008,8.860915,8.206243,0,Magentic_One,Retrieval Hallucination,Context Misalign,General Assistant
+Magentic_One/009,9.945428,9.888037,1,Magentic_One,,,General Assistant
+Magentic_One/010,2.4475427,9.57968,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/011,3.8411047,8.143201,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/012,1.8675162,10.382943,0,Magentic_One,Planning Hallucination,Task Decompose,Math
+Magentic_One/013,9.418383,10.739314,0,Magentic_One,Retrieval Hallucination,Context Misalign,General Assistant
+Magentic_One/014,10.692008,10.741723,1,Magentic_One,,,Science
+Magentic_One/015,3.4016404,8.116113,1,Magentic_One,,,Science
+Magentic_One/016,11.440743,7.705916,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/017,2.323413,7.74929,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/018,3.2009363,10.213862,0,Magentic_One,Reasoning Hallucination,Math Reasoning,Math
+Magentic_One/019,9.4007015,6.3830647,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/020,8.557663,8.577502,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/021,11.516763,7.6319475,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/022,11.739466,9.604922,0,Magentic_One,Planning Hallucination,Fact Derive,World Knowledge
+Magentic_One/023,12.161814,11.367891,0,Magentic_One,Reasoning Hallucination,Math Reasoning,Math
+Magentic_One/024,8.847833,10.93336,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/025,11.566086,8.33506,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/026,1.9130468,10.613848,1,Magentic_One,,,General Assistant
+Magentic_One/027,8.277614,12.047174,1,Magentic_One,,,Science
+Magentic_One/028,2.4902885,10.35143,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/029,1.735662,10.410034,1,Magentic_One,,,Math
+Magentic_One/030,2.282929,10.374877,1,Magentic_One,,,Math
+Magentic_One/031,8.561385,11.686677,0,Magentic_One,Reasoning Hallucination,Math Reasoning,Math
+Magentic_One/032,3.3769329,8.244456,0,Magentic_One,Planning Hallucination,Fact Derive,Math
+Magentic_One/033,2.405756,10.195724,1,Magentic_One,,,Math
+Magentic_One/034,9.43948,9.842056,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/035,11.372422,8.44692,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/036,10.353972,6.921791,1,Magentic_One,,,World Knowledge
+Magentic_One/037,11.22438,8.019804,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/038,8.201848,12.192718,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/039,10.831128,10.552325,1,Magentic_One,,,World Knowledge
+Magentic_One/040,11.142107,10.495844,1,Magentic_One,,,World Knowledge
+Magentic_One/041,2.4706416,7.8515625,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/042,11.587732,8.604142,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Magentic_One/043,8.19746,12.129369,0,Magentic_One,Reasoning Hallucination,Math Reasoning,Math
+Magentic_One/044,1.4170581,8.458382,1,Magentic_One,,,Science
+Magentic_One/045,3.042808,10.453457,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/046,0.99751294,9.093497,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/047,1.495991,10.179526,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/048,8.819422,8.969776,1,Magentic_One,,,Science
+Magentic_One/049,2.4395428,10.461692,1,Magentic_One,,,Science
+Magentic_One/050,10.303717,5.4345894,1,Magentic_One,,,General Assistant
+Magentic_One/051,2.3179417,10.443489,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/052,1.6183527,10.468051,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/053,8.134954,12.105082,1,Magentic_One,,,General Assistant
+Magentic_One/054,7.8293915,12.131838,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/055,9.916464,7.416493,1,Magentic_One,,,General Assistant
+Magentic_One/056,1.7198423,10.633178,1,Magentic_One,,,General Assistant
+Magentic_One/057,10.65627,10.650466,1,Magentic_One,,,General Assistant
+Magentic_One/058,9.556989,9.875339,0,Magentic_One,Planning Hallucination,Fact Derive,General Assistant
+Magentic_One/059,9.52665,6.3768425,0,Magentic_One,Reasoning Hallucination,General Reasoning,General Assistant
+Magentic_One/060,10.046116,9.785945,1,Magentic_One,,,General Assistant
+Magentic_One/061,1.6720719,10.177646,0,Magentic_One,Planning Hallucination,Fact Derive,General Assistant
+Magentic_One/062,3.2811055,10.352107,1,Magentic_One,,,General Assistant
+Magentic_One/063,8.356105,8.226845,1,Magentic_One,,,World Knowledge
+Magentic_One/064,8.173527,12.051233,1,Magentic_One,,,World Knowledge
+Magentic_One/065,9.735778,9.124985,1,Magentic_One,,,World Knowledge
+Magentic_One/066,7.828665,7.484951,1,Magentic_One,,,World Knowledge
+Magentic_One/067,10.057569,10.916829,1,Magentic_One,,,World Knowledge
+Magentic_One/068,8.418012,6.604724,1,Magentic_One,,,World Knowledge
+Magentic_One/069,9.826327,11.072224,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/070,10.421308,10.543168,1,Magentic_One,,,World Knowledge
+Magentic_One/071,10.851121,6.755466,0,Magentic_One,Retrieval Hallucination,Context Misalign,World Knowledge
+Magentic_One/072,10.11667,9.899269,1,Magentic_One,,,Science
+Magentic_One/073,2.2329667,8.103256,0,Magentic_One,Planning Hallucination,Task Decompose,Science
+Magentic_One/074,8.630142,11.425547,0,Magentic_One,Planning Hallucination,Task Decompose,Science
+Magentic_One/075,2.521449,8.90237,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/076,8.702467,8.742146,0,Magentic_One,Reasoning Hallucination,Science Reasoning,Science
+Magentic_One/077,2.4415588,9.641436,1,Magentic_One,,,Science
+Magentic_One/078,2.5187361,10.392527,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/079,2.5313566,7.703162,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/080,2.2857854,7.866014,1,Magentic_One,,,Science
+Magentic_One/081,8.380392,7.9592724,1,Magentic_One,,,Science
+Magentic_One/082,0.7736983,9.212102,1,Magentic_One,,,Science
+Magentic_One/083,2.4669402,7.7704473,1,Magentic_One,,,Science
+Magentic_One/084,2.8162012,10.675372,0,Magentic_One,Planning Hallucination,Fact Derive,Science
+Magentic_One/085,1.5568421,9.574166,1,Magentic_One,,,Math
+Magentic_One/086,2.2485797,10.762957,1,Magentic_One,,,Math
+Magentic_One/087,9.796986,9.9683275,0,Magentic_One,Planning Hallucination,Fact Derive,Math
+Magentic_One/088,8.728711,7.5740623,0,Magentic_One,Planning Hallucination,Fact Derive,Math
+Magentic_One/089,9.822798,10.834431,0,Magentic_One,Reasoning Hallucination,Math Reasoning,Math
+Magentic_One/090,9.331514,12.345585,0,Magentic_One,Planning Hallucination,Fact Derive,Math
+Magentic_One/091,2.66092,10.7554245,0,Magentic_One,Planning Hallucination,Task Decompose,Math
+Magentic_One/092,8.210194,6.966468,0,Magentic_One,Planning Hallucination,Fact Derive,Math
+Magentic_One/093,8.233314,12.06338,0,Magentic_One,Reasoning Hallucination,Factual Reasoning,Math
+Octotools/000,0.8002254,9.678289,1,Octotools,,,World Knowledge
+Octotools/001,1.1922313,8.952857,1,Octotools,,,General Assistant
+Octotools/002,-0.056219872,9.621448,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/003,0.005843865,9.594363,1,Octotools,,,Math
+Octotools/004,0.88366246,9.431049,1,Octotools,,,Math
+Octotools/005,2.5512333,10.318617,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/006,1.5774176,8.969982,0,Octotools,Retrieval Hallucination,Context Misalign,World Knowledge
+Octotools/007,1.0024607,9.954675,1,Octotools,,,General Assistant
+Octotools/008,0.49023637,9.84409,0,Octotools,Reasoning Hallucination,General Reasoning,General Assistant
+Octotools/009,0.9596938,9.073875,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/010,1.85628,8.363549,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/011,1.7462908,8.2914505,0,Octotools,Reasoning Hallucination,General Reasoning,General Assistant
+Octotools/012,0.99196994,9.638699,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/013,1.8380817,8.260172,1,Octotools,,,World Knowledge
+Octotools/014,1.5705607,8.108412,0,Octotools,Planning Hallucination,Fact Derive,Science
+Octotools/015,1.8683827,8.951018,0,Octotools,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Octotools/016,1.6656246,9.094505,1,Octotools,,,General Assistant
+Octotools/017,1.4912723,9.006679,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/018,1.0322378,8.3867035,0,Octotools,Reasoning Hallucination,General Reasoning,General Assistant
+Octotools/019,1.5219853,9.261814,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/020,0.07948038,9.549829,1,Octotools,,,Math
+Octotools/021,1.6942922,9.337139,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/022,0.45339844,9.5931425,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/023,0.8753965,8.566176,0,Octotools,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Octotools/024,1.9997864,8.444894,0,Octotools,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Octotools/025,2.133068,7.8408914,0,Octotools,Retrieval Hallucination,Context Misalign,World Knowledge
+Octotools/026,1.4821002,9.044303,0,Octotools,Retrieval Hallucination,Query Misalign,World Knowledge
+Octotools/027,2.5313706,8.169783,0,Octotools,Retrieval Hallucination,Context Misalign,World Knowledge
+Octotools/028,2.5077891,9.776246,1,Octotools,,,World Knowledge
+Octotools/029,0.6349307,9.299739,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/030,0.015633097,9.680557,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/031,0.5788648,8.641486,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/032,1.6224451,8.854255,1,Octotools,,,Science
+Octotools/033,0.7440561,9.319685,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/034,-0.0012134031,9.600016,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/035,1.8489574,8.420189,0,Octotools,Reasoning Hallucination,Science Reasoning,Science
+Octotools/036,1.1100948,8.297958,1,Octotools,,,Science
+Octotools/037,1.6601351,9.313381,1,Octotools,,,Science
+Octotools/038,2.1836002,9.218982,1,Octotools,,,World Knowledge
+Octotools/039,1.08811,8.401681,0,Octotools,Reasoning Hallucination,Factual Reasoning,World Knowledge
+Octotools/040,1.923334,8.720017,1,Octotools,,,World Knowledge
+Octotools/041,0.9666328,8.513759,1,Octotools,,,World Knowledge
+Octotools/042,-0.0014826761,9.632783,1,Octotools,,,Science
+Octotools/043,1.0607592,8.294692,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/044,1.3810824,8.495955,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+Octotools/045,1.057595,8.192729,1,Octotools,,,Math
+Octotools/046,0.7832973,9.046353,0,Octotools,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/000,8.312532,8.325061,0,OpenDeepSearch,Retrieval Hallucination,Query Misalign,General Assistant
+OpenDeepSearch/001,3.143213,9.970857,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/002,8.6349325,6.068349,1,OpenDeepSearch,,,General Assistant
+OpenDeepSearch/003,9.44827,9.846677,0,OpenDeepSearch,Reasoning Hallucination,Factual Reasoning,World Knowledge
+OpenDeepSearch/004,9.430703,9.603949,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/005,2.3439229,8.313961,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,Science
+OpenDeepSearch/006,9.21372,8.145982,0,OpenDeepSearch,Retrieval Hallucination,Query Misalign,General Assistant
+OpenDeepSearch/007,9.599874,8.14964,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,Science
+OpenDeepSearch/008,10.234498,5.335536,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/009,10.8473015,6.001316,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/010,10.292693,5.88997,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/011,10.584798,5.9235682,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,Math
+OpenDeepSearch/012,10.866054,8.10496,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/013,8.916007,8.567941,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,General Assistant
+OpenDeepSearch/014,9.330644,7.6854568,1,OpenDeepSearch,,,General Assistant
+OpenDeepSearch/015,10.123991,5.948734,0,OpenDeepSearch,Reasoning Hallucination,General Reasoning,General Assistant
+OpenDeepSearch/016,10.435464,8.857598,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/017,8.694299,6.1955,0,OpenDeepSearch,Planning Hallucination,Fact Derive,General Assistant
+OpenDeepSearch/018,11.159202,7.6131825,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/019,10.493812,5.472002,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,General Assistant
+OpenDeepSearch/020,9.352351,12.077714,0,OpenDeepSearch,Reasoning Hallucination,General Reasoning,General Assistant
+OpenDeepSearch/021,10.223852,5.916108,0,OpenDeepSearch,Reasoning Hallucination,Science Reasoning,Science
+OpenDeepSearch/022,11.072488,7.469551,1,OpenDeepSearch,,,General Assistant
+OpenDeepSearch/023,8.155851,6.567614,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/024,9.628303,10.350356,1,OpenDeepSearch,,,General Assistant
+OpenDeepSearch/025,3.058223,10.104346,0,OpenDeepSearch,Reasoning Hallucination,Science Reasoning,Science
+OpenDeepSearch/026,10.105248,6.4576163,0,OpenDeepSearch,Reasoning Hallucination,General Reasoning,General Assistant
+OpenDeepSearch/027,2.3410523,10.356477,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/028,2.9430013,10.65127,1,OpenDeepSearch,,,Math
+OpenDeepSearch/029,10.841982,5.9861174,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,Math
+OpenDeepSearch/030,3.105846,10.412287,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/031,10.739953,8.9896555,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/032,9.751835,6.8349195,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/033,9.321895,7.681171,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/034,9.167415,10.554022,0,OpenDeepSearch,Retrieval Hallucination,Query Misalign,World Knowledge
+OpenDeepSearch/035,9.388803,8.1447,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/036,11.104098,8.358114,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/037,8.667648,7.389036,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/038,7.9966273,6.6931734,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/039,8.5162735,6.6487803,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/040,9.690519,7.2485323,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/041,11.374684,8.255425,0,OpenDeepSearch,Reasoning Hallucination,Factual Reasoning,World Knowledge
+OpenDeepSearch/042,10.931458,7.6320477,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/043,11.355998,7.8610725,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/044,10.469218,8.202075,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/045,9.729795,7.6437902,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/046,8.871214,6.291746,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/047,8.459965,8.352569,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/048,10.333469,5.799539,1,OpenDeepSearch,,,Math
+OpenDeepSearch/049,10.142538,5.391991,1,OpenDeepSearch,,,Math
+OpenDeepSearch/050,9.432193,7.620719,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/051,10.136328,7.567701,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/052,10.079334,7.9427447,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/053,2.6940522,8.275962,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/054,8.199236,6.9630666,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/055,10.152443,7.8208523,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/056,10.272696,6.2297945,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/057,9.7882395,5.486848,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/058,1.3280085,9.017743,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/059,10.099774,8.286641,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/060,9.953304,7.4285874,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/061,10.459088,5.7402368,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/062,11.422695,7.613748,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/063,9.240229,5.5959272,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/064,9.604465,5.4832664,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/065,9.377756,8.160236,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/066,10.1470785,5.971542,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/067,11.073875,8.863205,0,OpenDeepSearch,Retrieval Hallucination,Query Misalign,World Knowledge
+OpenDeepSearch/068,7.8084507,7.5949345,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/069,8.744086,5.9616394,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/070,8.743151,9.194785,0,OpenDeepSearch,Retrieval Hallucination,Query Misalign,World Knowledge
+OpenDeepSearch/071,8.949964,5.8346176,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/072,11.058135,7.8124166,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/073,10.065513,6.827108,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/074,10.226824,6.036422,0,OpenDeepSearch,Reasoning Hallucination,Factual Reasoning,World Knowledge
+OpenDeepSearch/075,8.700715,6.872208,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/076,10.074152,8.264046,0,OpenDeepSearch,Planning Hallucination,Task Decompose,World Knowledge
+OpenDeepSearch/077,8.732862,6.6437984,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/078,11.555593,8.368883,0,OpenDeepSearch,Planning Hallucination,Task Decompose,World Knowledge
+OpenDeepSearch/079,10.144943,7.8472877,0,OpenDeepSearch,Planning Hallucination,Task Decompose,World Knowledge
+OpenDeepSearch/080,11.293179,8.057218,0,OpenDeepSearch,Planning Hallucination,Task Decompose,World Knowledge
+OpenDeepSearch/081,10.357295,5.4604487,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/082,8.529719,6.0493665,0,OpenDeepSearch,Reasoning Hallucination,Factual Reasoning,World Knowledge
+OpenDeepSearch/083,8.366221,7.9404597,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/084,11.368206,7.7637143,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/085,8.191867,6.8973093,1,OpenDeepSearch,,,World Knowledge
+OpenDeepSearch/086,8.4797325,6.173965,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/087,8.369359,6.918497,0,OpenDeepSearch,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenDeepSearch/088,11.748879,9.558701,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/089,11.708559,8.574509,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Science
+OpenDeepSearch/090,1.1671714,9.349548,0,OpenDeepSearch,Planning Hallucination,Task Decompose,Science
+OpenDeepSearch/091,2.5744636,7.7114043,0,OpenDeepSearch,Planning Hallucination,Task Decompose,Science
+OpenDeepSearch/092,10.928358,8.494765,1,OpenDeepSearch,,,Math
+OpenDeepSearch/093,10.064728,6.014302,1,OpenDeepSearch,,,Math
+OpenDeepSearch/094,8.887333,8.494476,1,OpenDeepSearch,,,Math
+OpenDeepSearch/095,10.390167,7.7807827,0,OpenDeepSearch,Reasoning Hallucination,Math Reasoning,Math
+OpenDeepSearch/096,11.536756,8.412391,0,OpenDeepSearch,Planning Hallucination,Fact Derive,Math
+OpenDeepSearch/097,9.355676,8.043805,0,OpenDeepSearch,Planning Hallucination,Task Decompose,Math
+OpenDeepSearch/098,9.336608,5.794033,0,OpenDeepSearch,Planning Hallucination,Task Decompose,Math
+OpenDeepSearch/099,10.104412,6.3829513,1,OpenDeepSearch,,,Math
+OpenManus/000,0.22469395,9.679125,1,OpenManus,,,Science
+OpenManus/001,1.0913229,8.956388,1,OpenManus,,,Science
+OpenManus/002,3.1809978,8.24575,0,OpenManus,Retrieval Hallucination,Summarize Misalign,General Assistant
+OpenManus/003,1.3722081,9.114562,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/004,0.6680184,9.823899,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/005,2.5914817,8.928972,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/006,2.0807612,9.742326,0,OpenManus,Reasoning Hallucination,General Reasoning,General Assistant
+OpenManus/007,12.183723,11.3646755,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/008,0.95842713,10.128288,1,OpenManus,,,General Assistant
+OpenManus/009,11.700666,11.524649,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/010,2.921703,8.851876,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/011,1.0575538,9.667277,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/012,1.5781386,10.155303,1,OpenManus,,,General Assistant
+OpenManus/013,2.6121728,9.944788,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/014,9.073107,12.5278,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/015,0.8923802,9.378284,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/016,1.7743857,10.047708,1,OpenManus,,,World Knowledge
+OpenManus/017,0.57235855,9.884339,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/018,1.324853,10.033272,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/019,1.0801605,9.505968,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/020,3.1493676,10.153594,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/021,0.71214586,9.233419,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/022,0.38813242,9.701216,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/023,2.226913,7.6381755,0,OpenManus,Reasoning Hallucination,Math Reasoning,Math
+OpenManus/024,3.5336497,8.007502,1,OpenManus,,,Math
+OpenManus/025,8.532429,8.322709,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/026,10.110947,8.341352,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/027,9.325735,7.6817203,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/028,2.8263175,7.997406,1,OpenManus,,,World Knowledge
+OpenManus/029,3.2679305,8.240987,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/030,2.9699063,10.390311,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/031,9.287635,10.719321,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/032,2.998599,9.627661,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/033,11.978013,9.977266,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/034,1.2390994,8.794226,1,OpenManus,,,Math
+OpenManus/035,1.7616497,8.968068,1,OpenManus,,,Math
+OpenManus/036,1.2273037,10.164712,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/037,2.8827987,10.682291,1,OpenManus,,,Science
+OpenManus/038,0.96304375,9.626529,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/039,2.8826683,10.743217,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/040,3.7798991,8.101464,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/041,1.799673,8.719607,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/042,1.61103,8.753491,1,OpenManus,,,Science
+OpenManus/043,2.1522918,9.246049,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/044,1.0293609,10.009371,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/045,2.2878366,9.5739,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/046,2.7289846,10.833861,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/047,9.766859,8.03144,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/048,12.15282,11.473255,1,OpenManus,,,World Knowledge
+OpenManus/049,8.350072,8.426379,1,OpenManus,,,World Knowledge
+OpenManus/050,9.817806,8.058795,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/051,9.2304325,10.680334,1,OpenManus,,,World Knowledge
+OpenManus/052,11.181169,8.887257,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/053,3.1899412,8.274648,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/054,3.5050268,10.115088,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/055,12.161432,11.109439,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/056,1.4968102,10.5385065,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/057,8.958626,12.457074,0,OpenManus,Retrieval Hallucination,Query Misalign,World Knowledge
+OpenManus/058,2.627701,8.517813,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/059,12.170501,11.407907,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/060,9.269112,9.671414,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/061,1.500087,9.534584,1,OpenManus,,,World Knowledge
+OpenManus/062,9.152693,7.557358,1,OpenManus,,,World Knowledge
+OpenManus/063,8.708987,9.419907,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/064,10.742583,7.827595,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/065,8.503925,11.76835,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/066,1.9053353,8.875683,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/067,8.939883,8.616713,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,World Knowledge
+OpenManus/068,3.234712,8.263705,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/069,7.939975,7.268901,1,OpenManus,,,World Knowledge
+OpenManus/070,11.63324,9.38854,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/071,9.846806,7.7142863,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/072,8.0474205,7.4576106,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/073,8.181293,6.9419904,0,OpenManus,Retrieval Hallucination,Summarize Misalign,World Knowledge
+OpenManus/074,3.1968834,8.04518,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/075,0.6998407,8.995102,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/076,3.0585964,7.8591228,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/077,2.3061323,7.6495094,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/078,8.035963,6.79129,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/079,9.782744,8.025633,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/080,0.37559962,9.652946,1,OpenManus,,,Science
+OpenManus/081,2.3729882,8.647662,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/082,11.79699,8.991895,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/083,2.182954,8.43716,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/084,9.342946,8.113871,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/085,2.6056488,7.672778,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/086,-0.09031895,9.668603,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/087,2.7511559,10.680899,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/088,0.67893785,8.994411,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/089,2.5374653,7.7142525,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/090,0.72753197,9.18505,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/091,10.826006,6.0633063,0,OpenManus,Reasoning Hallucination,Science Reasoning,Science
+OpenManus/092,1.9565535,8.675338,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/093,2.541924,8.917882,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Science
+OpenManus/094,1.2999693,8.631291,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/095,0.78656745,9.623673,1,OpenManus,,,Math
+OpenManus/096,1.0584811,8.957119,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/097,9.644417,11.139588,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/098,11.622646,8.86105,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/099,8.340727,6.421541,1,OpenManus,,,Math
+OpenManus/100,10.759085,5.731232,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/101,8.497491,6.2870445,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/102,3.0772235,9.79009,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+OpenManus/103,3.6928375,10.008608,0,OpenManus,Human-Interaction Hallucination,Human-Interaction Hallucination,Math
+SmolAgents/000,2.4156258,10.533741,1,SmolAgents,,,Science
+SmolAgents/001,8.517515,6.122702,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/002,1.9443014,9.563563,0,SmolAgents,Reasoning Hallucination,Science Reasoning,Science
+SmolAgents/003,9.562693,9.9106655,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/004,9.422888,9.774604,1,SmolAgents,,,General Assistant
+SmolAgents/005,11.17565,8.038571,1,SmolAgents,,,Science
+SmolAgents/006,0.9659377,9.489573,0,SmolAgents,Retrieval Hallucination,Query Misalign,General Assistant
+SmolAgents/007,9.280701,10.720318,1,SmolAgents,,,General Assistant
+SmolAgents/008,8.83848,6.2695336,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/009,2.1223865,9.804111,0,SmolAgents,Reasoning Hallucination,General Reasoning,General Assistant
+SmolAgents/010,8.700879,9.421557,1,SmolAgents,,,World Knowledge
+SmolAgents/011,9.889874,6.8190165,1,SmolAgents,,,General Assistant
+SmolAgents/012,9.874187,6.7476673,0,SmolAgents,Planning Hallucination,Task Decompose,General Assistant
+SmolAgents/013,8.532076,6.728915,1,SmolAgents,,,General Assistant
+SmolAgents/014,10.7797785,7.738915,0,SmolAgents,Planning Hallucination,Fact Derive,World Knowledge
+SmolAgents/015,9.211185,11.971341,0,SmolAgents,Retrieval Hallucination,Query Misalign,General Assistant
+SmolAgents/016,8.108826,6.4941406,1,SmolAgents,,,Math
+SmolAgents/017,8.975195,5.9304194,0,SmolAgents,Retrieval Hallucination,Context Misalign,Science
+SmolAgents/018,10.914937,8.6654215,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/019,1.719653,8.750463,1,SmolAgents,,,Science
+SmolAgents/020,11.401372,8.803895,0,SmolAgents,Retrieval Hallucination,Query Misalign,General Assistant
+SmolAgents/021,9.195852,8.192548,0,SmolAgents,Planning Hallucination,Task Decompose,Science
+SmolAgents/022,10.860659,5.992963,0,SmolAgents,Planning Hallucination,Fact Derive,Science
+SmolAgents/023,10.044572,6.0541143,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/024,2.8521621,10.744651,0,SmolAgents,Retrieval Hallucination,Context Misalign,World Knowledge
+SmolAgents/025,9.632266,6.612795,0,SmolAgents,Reasoning Hallucination,General Reasoning,General Assistant
+SmolAgents/026,10.173211,6.0190043,0,SmolAgents,Retrieval Hallucination,Context Misalign,Science
+SmolAgents/027,10.848693,5.9986396,0,SmolAgents,Reasoning Hallucination,Factual Reasoning,World Knowledge
+SmolAgents/028,9.597804,5.6510787,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/029,10.871176,6.0656276,1,SmolAgents,,,Math
+SmolAgents/030,9.163477,8.92237,1,SmolAgents,,,General Assistant
+SmolAgents/031,8.359117,6.9898148,0,SmolAgents,Retrieval Hallucination,Context Misalign,General Assistant
+SmolAgents/032,8.762194,6.4885125,0,SmolAgents,Reasoning Hallucination,General Reasoning,General Assistant
+SmolAgents/033,2.582475,7.770748,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/034,10.929368,7.680801,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/035,1.7675753,10.595283,1,SmolAgents,,,General Assistant
+SmolAgents/036,3.3466153,10.111446,0,SmolAgents,Retrieval Hallucination,Context Misalign,Science
+SmolAgents/037,3.0444577,7.9377728,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/038,9.991605,6.7669096,1,SmolAgents,,,World Knowledge
+SmolAgents/039,9.551612,5.657266,0,SmolAgents,Reasoning Hallucination,Science Reasoning,Science
+SmolAgents/040,10.997306,7.5947065,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/041,8.920179,10.780449,1,SmolAgents,,,Math
+SmolAgents/042,10.097678,9.126668,1,SmolAgents,,,Math
+SmolAgents/043,10.245803,7.713803,0,SmolAgents,Retrieval Hallucination,Context Misalign,World Knowledge
+SmolAgents/044,11.100747,8.079777,1,SmolAgents,,,World Knowledge
+SmolAgents/045,10.751081,6.306995,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/046,10.109713,6.585045,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/047,11.031051,8.675182,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/048,11.336775,8.314679,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/049,10.649009,6.7319226,0,SmolAgents,Planning Hallucination,Fact Derive,Math
+SmolAgents/050,8.725356,7.1824183,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/051,8.342263,6.447499,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/052,11.575649,8.374689,1,SmolAgents,,,Science
+SmolAgents/053,8.004013,7.5608764,0,SmolAgents,Retrieval Hallucination,Query Misalign,Science
+SmolAgents/054,9.787369,6.6900115,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/055,10.192366,7.8657928,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/056,10.865217,6.7819824,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/057,9.478812,6.3764143,1,SmolAgents,,,World Knowledge
+SmolAgents/058,9.505965,5.713393,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/059,11.526952,8.39687,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/060,9.542967,5.710649,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/061,9.783091,7.4763074,0,SmolAgents,Planning Hallucination,Task Decompose,World Knowledge
+SmolAgents/062,9.010002,5.9639835,1,SmolAgents,,,World Knowledge
+SmolAgents/063,8.670534,6.0497627,1,SmolAgents,,,World Knowledge
+SmolAgents/064,8.661992,6.208594,1,SmolAgents,,,World Knowledge
+SmolAgents/065,8.954971,5.9493732,1,SmolAgents,,,World Knowledge
+SmolAgents/066,8.36182,7.8618817,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/067,9.486751,6.55555,1,SmolAgents,,,World Knowledge
+SmolAgents/068,11.396773,8.157696,0,SmolAgents,Retrieval Hallucination,Query Misalign,World Knowledge
+SmolAgents/069,10.290094,5.557481,1,SmolAgents,,,World Knowledge
+SmolAgents/070,0.85931444,9.056936,1,SmolAgents,,,World Knowledge
+SmolAgents/071,9.238028,9.434787,1,SmolAgents,,,Science
+SmolAgents/072,9.357042,9.724013,0,SmolAgents,Planning Hallucination,Fact Derive,Science
+SmolAgents/073,8.722489,5.98424,1,SmolAgents,,,Science
+SmolAgents/074,2.6906505,10.738347,1,SmolAgents,,,Science
+SmolAgents/075,10.232702,5.362263,1,SmolAgents,,,Science
+SmolAgents/076,9.408296,10.29708,0,SmolAgents,Reasoning Hallucination,Science Reasoning,Science
+SmolAgents/077,9.911856,6.652387,0,SmolAgents,Planning Hallucination,Fact Derive,Science
+SmolAgents/078,1.8962983,8.714599,0,SmolAgents,Planning Hallucination,Fact Derive,Science
+SmolAgents/079,10.2189,8.98042,0,SmolAgents,Planning Hallucination,Task Decompose,Science
+SmolAgents/080,10.192213,5.3753643,0,SmolAgents,Planning Hallucination,Task Decompose,Math
+SmolAgents/081,3.347276,10.166013,0,SmolAgents,Planning Hallucination,Task Decompose,Math
+SmolAgents/082,8.582284,6.142922,1,SmolAgents,,,Math
+SmolAgents/083,10.014801,6.367481,0,SmolAgents,Planning Hallucination,Task Decompose,Math
+SmolAgents/084,9.643021,6.534261,0,SmolAgents,Planning Hallucination,Task Decompose,Math
+SmolAgents/085,8.543205,6.0976458,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/086,0.7223198,8.840669,1,SmolAgents,,,Math
+SmolAgents/087,8.6977,6.5361266,1,SmolAgents,,,Math
+SmolAgents/088,10.185043,6.299232,1,SmolAgents,,,Math
+SmolAgents/089,10.623704,8.172888,0,SmolAgents,Reasoning Hallucination,Math Reasoning,Math
+SmolAgents/090,0.7773254,9.075312,1,SmolAgents,,,Math
