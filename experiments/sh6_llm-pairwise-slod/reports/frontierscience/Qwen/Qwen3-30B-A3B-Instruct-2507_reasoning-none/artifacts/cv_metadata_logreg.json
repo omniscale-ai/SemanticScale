@@ -1,7 +1,7 @@
 {
   "model_name": "logreg",
   "feature_set": "trajectory_full",
-  "n_features": 29,
+  "n_features": 47,
   "feature_cols": [
     "answer_n_chunks",
     "answer_start",
@@ -31,7 +31,25 @@
     "answer_positive_mass",
     "answer_negative_mass",
     "answer_time_positive",
-    "answer_time_negative"
+    "answer_time_negative",
+    "answer_traj_t01",
+    "answer_traj_t02",
+    "answer_traj_t03",
+    "answer_traj_t04",
+    "answer_traj_t05",
+    "answer_traj_t06",
+    "answer_traj_t07",
+    "answer_traj_t08",
+    "answer_traj_t09",
+    "answer_traj_t10",
+    "answer_traj_t11",
+    "answer_traj_t12",
+    "answer_traj_t13",
+    "answer_traj_t14",
+    "answer_traj_t15",
+    "answer_traj_t16",
+    "answer_traj_t17",
+    "answer_traj_t18"
   ],
   "cv_folds": 5,
   "random_state": 42,
@@ -43,35 +61,35 @@
   },
   "fold_metrics": {
     "roc_auc": {
-      "mean": 0.5994883578431373,
-      "std": 0.07536675259512268
+      "mean": 0.5962377450980393,
+      "std": 0.07173471109882677
     },
     "average_precision": {
-      "mean": 0.5943870659439399,
-      "std": 0.06715437420268584
+      "mean": 0.6002310994757674,
+      "std": 0.05645335303481917
     },
     "accuracy": {
-      "mean": 0.6014112903225806,
-      "std": 0.0406268760072726
+      "mean": 0.6074596774193548,
+      "std": 0.04386459275313683
     },
     "balanced_accuracy": {
-      "mean": 0.6017156862745099,
-      "std": 0.041668468819158436
+      "mean": 0.6072303921568627,
+      "std": 0.04218556649349135
     },
     "f1": {
-      "mean": 0.6161851637206607,
-      "std": 0.04903786172596355
+      "mean": 0.6263738738738739,
+      "std": 0.06604471570110365
     }
   },
   "confusion_matrix": {
-    "tn": 44,
-    "fp": 32,
-    "fn": 31,
-    "tp": 51
+    "tn": 43,
+    "fp": 33,
+    "fn": 29,
+    "tp": 53
   },
-  "duration_seconds": 0.07839442300610244,
-  "timestamp_utc": "2026-04-29T10:42:02+00:00",
-  "git_sha": "461ab22",
+  "duration_seconds": 0.07558528499794193,
+  "timestamp_utc": "2026-04-29T14:25:33+00:00",
+  "git_sha": "a3d7e83",
   "python_version": "3.12.3",
   "library_versions": {
     "sklearn": "1.7.2",

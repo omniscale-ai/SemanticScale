@@ -12,9 +12,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 3 | 0.765 +/- 0.065 | 0.593 +/- 0.097 | 0.785 +/- 0.048 | 0.751 +/- 0.064 | 0.756 +/- 0.044 |
-| trajectory_shape (logreg) | 60 | 0.837 +/- 0.085 | 0.748 +/- 0.133 | 0.741 +/- 0.088 | 0.738 +/- 0.081 | 0.692 +/- 0.108 |
-| trajectory_full (logreg) | 63 | 0.834 +/- 0.085 | 0.740 +/- 0.122 | 0.754 +/- 0.086 | 0.751 +/- 0.073 | 0.704 +/- 0.109 |
-| trajectory_full (lightgbm) | 63 | 0.886 +/- 0.058 | 0.791 +/- 0.102 | 0.828 +/- 0.087 | 0.830 +/- 0.079 | 0.787 +/- 0.111 |
+| trajectory_shape (logreg) | 96 | 0.826 +/- 0.059 | 0.732 +/- 0.108 | 0.756 +/- 0.071 | 0.757 +/- 0.066 | 0.706 +/- 0.080 |
+| trajectory_full (logreg) | 99 | 0.851 +/- 0.041 | 0.762 +/- 0.099 | 0.778 +/- 0.045 | 0.778 +/- 0.048 | 0.734 +/- 0.053 |
+| reasoning_traj (MiniRocket) | 20 | 0.598 +/- 0.090 | 0.570 +/- 0.110 | 0.556 +/- 0.104 | 0.562 +/- 0.094 | 0.483 +/- 0.122 |
+| trajectory_full (lightgbm) | 99 | 0.848 +/- 0.072 | 0.735 +/- 0.127 | 0.784 +/- 0.098 | 0.791 +/- 0.087 | 0.734 +/- 0.129 |
 | mode_stack (logreg) | 13 | 0.866 +/- 0.049 | 0.794 +/- 0.091 | 0.754 +/- 0.059 | 0.738 +/- 0.063 | 0.717 +/- 0.064 |
 | mode_stack (lightgbm) | 13 | 0.867 +/- 0.055 | 0.783 +/- 0.090 | 0.793 +/- 0.091 | 0.790 +/- 0.087 | 0.752 +/- 0.103 |
 
@@ -39,18 +40,18 @@
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| answer_fall_from_peak | derailment | 1.589 | higher -> correct |
-| answer_monotonicity | commitment | 1.502 | higher -> correct |
-| answer_early_mean | shape | -0.999 | higher -> wrong |
-| answer_time_positive | shape | -0.909 | higher -> wrong |
-| answer_mid_mean | shape | -0.767 | higher -> wrong |
-| answer_start_minus_reasoning_end | landing | -0.693 | higher -> wrong |
-| answer_minus_reasoning_mean | answer_alignment | 0.685 | higher -> correct |
-| answer_direction_changes | thrashing | -0.676 | higher -> wrong |
-| answer_range_minus_reasoning_range | commitment | -0.670 | higher -> wrong |
-| answer_end | landing | -0.669 | higher -> wrong |
-| answer_late_minus_early | transition | 0.661 | higher -> correct |
-| reasoning_total_variation | thrashing | -0.660 | higher -> wrong |
+| answer_monotonicity | commitment | 1.717 | higher -> correct |
+| answer_time_positive | shape | -1.051 | higher -> wrong |
+| answer_fall_from_peak | derailment | 1.048 | higher -> correct |
+| answer_range_minus_reasoning_range | commitment | -0.851 | higher -> wrong |
+| reasoning_max_rise_pos | timing | -0.819 | higher -> wrong |
+| answer_traj_t04 | shape | -0.767 | higher -> wrong |
+| answer_traj_t05 | shape | -0.715 | higher -> wrong |
+| answer_minus_reasoning_mean | answer_alignment | 0.699 | higher -> correct |
+| reasoning_total_variation | thrashing | -0.670 | higher -> wrong |
+| answer_trough_pos | timing | 0.593 | higher -> correct |
+| reasoning_traj_t12 | shape | 0.593 | higher -> correct |
+| reasoning_monotonicity | commitment | -0.579 | higher -> wrong |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -106,8 +107,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.866**
-- `trajectory_full` ROC-AUC: **0.834**
-- Above-chance discrimination preserved by the mode stack: **109.6%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.851**
+- Above-chance discrimination preserved by the mode stack: **104.4%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 

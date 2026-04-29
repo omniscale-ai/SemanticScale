@@ -1,0 +1,221 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all",
+  "type_field": "hallucination_category",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 443,
+    "n_step_rows": 3315,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.23024830699774265,
+    "by_failure_type": {
+      "Human-Interaction Hallucination": {
+        "step_localization_accuracy": 0.3424657534246575,
+        "n_failed": 73
+      },
+      "Planning Hallucination": {
+        "step_localization_accuracy": 0.582089552238806,
+        "n_failed": 67
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.059322033898305086,
+        "n_failed": 118
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.13414634146341464,
+        "n_failed": 82
+      },
+      "Tool-Use Hallucination": {
+        "step_localization_accuracy": 0.1941747572815534,
+        "n_failed": 103
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.15384615384615385,
+        "n_failed": 39
+      },
+      "Math": {
+        "step_localization_accuracy": 0.2823529411764706,
+        "n_failed": 85
+      },
+      "Science": {
+        "step_localization_accuracy": 0.28440366972477066,
+        "n_failed": 109
+      },
+      "Tool Use": {
+        "step_localization_accuracy": 0.1941747572815534,
+        "n_failed": 103
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.19626168224299065,
+        "n_failed": 107
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "hallucination_category",
+    "n_items": 443,
+    "n_classes": 5,
+    "classes": [
+      "Human-Interaction Hallucination",
+      "Planning Hallucination",
+      "Reasoning Hallucination",
+      "Retrieval Hallucination",
+      "Tool-Use Hallucination"
+    ],
+    "class_counts": {
+      "Reasoning Hallucination": 118,
+      "Tool-Use Hallucination": 103,
+      "Retrieval Hallucination": 82,
+      "Human-Interaction Hallucination": 73,
+      "Planning Hallucination": 67
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.44704169440723796,
+      "macro_recall": 0.44466110511805895,
+      "macro_f1": 0.4438799993542144,
+      "accuracy": 0.4672686230248307
+    },
+    "per_class": {
+      "Human-Interaction Hallucination": {
+        "precision": 0.29333333333333333,
+        "recall": 0.3013698630136986,
+        "f1": 0.2972972972972973,
+        "support": 73
+      },
+      "Planning Hallucination": {
+        "precision": 0.22727272727272727,
+        "recall": 0.29850746268656714,
+        "f1": 0.25806451612903225,
+        "support": 67
+      },
+      "Reasoning Hallucination": {
+        "precision": 0.4148936170212766,
+        "recall": 0.3305084745762712,
+        "f1": 0.36792452830188677,
+        "support": 118
+      },
+      "Retrieval Hallucination": {
+        "precision": 0.32941176470588235,
+        "recall": 0.34146341463414637,
+        "f1": 0.33532934131736525,
+        "support": 82
+      },
+      "Tool-Use Hallucination": {
+        "precision": 0.9702970297029703,
+        "recall": 0.9514563106796117,
+        "f1": 0.9607843137254902,
+        "support": 103
+      }
+    },
+    "confusion_matrix": {
+      "Human-Interaction Hallucination": {
+        "Human-Interaction Hallucination": 22,
+        "Planning Hallucination": 15,
+        "Reasoning Hallucination": 22,
+        "Retrieval Hallucination": 14,
+        "Tool-Use Hallucination": 0
+      },
+      "Planning Hallucination": {
+        "Human-Interaction Hallucination": 9,
+        "Planning Hallucination": 20,
+        "Reasoning Hallucination": 18,
+        "Retrieval Hallucination": 20,
+        "Tool-Use Hallucination": 0
+      },
+      "Reasoning Hallucination": {
+        "Human-Interaction Hallucination": 27,
+        "Planning Hallucination": 28,
+        "Reasoning Hallucination": 39,
+        "Retrieval Hallucination": 21,
+        "Tool-Use Hallucination": 3
+      },
+      "Retrieval Hallucination": {
+        "Human-Interaction Hallucination": 16,
+        "Planning Hallucination": 24,
+        "Reasoning Hallucination": 14,
+        "Retrieval Hallucination": 28,
+        "Tool-Use Hallucination": 0
+      },
+      "Tool-Use Hallucination": {
+        "Human-Interaction Hallucination": 1,
+        "Planning Hallucination": 1,
+        "Reasoning Hallucination": 1,
+        "Retrieval Hallucination": 2,
+        "Tool-Use Hallucination": 98
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "macro_precision": 0.3018470418470418,
+        "macro_recall": 0.3635897435897436,
+        "macro_f1": 0.2845238095238095,
+        "accuracy": 0.3333333333333333,
+        "n_items": 39
+      },
+      "Math": {
+        "macro_precision": 0.2625757575757576,
+        "macro_recall": 0.20307971014492754,
+        "macro_f1": 0.2257699805068226,
+        "accuracy": 0.3411764705882353,
+        "n_items": 85
+      },
+      "Science": {
+        "macro_precision": 0.21883116883116882,
+        "macro_recall": 0.21575504075504073,
+        "macro_f1": 0.21511636917116367,
+        "accuracy": 0.3119266055045872,
+        "n_items": 109
+      },
+      "Tool Use": {
+        "macro_precision": 0.2,
+        "macro_recall": 0.19029126213592235,
+        "macro_f1": 0.19502487562189055,
+        "accuracy": 0.9514563106796117,
+        "n_items": 103
+      },
+      "World Knowledge": {
+        "macro_precision": 0.21247432306255837,
+        "macro_recall": 0.21716048435888916,
+        "macro_f1": 0.20538376683085544,
+        "accuracy": 0.308411214953271,
+        "n_items": 107
+      }
+    }
+  }
+}

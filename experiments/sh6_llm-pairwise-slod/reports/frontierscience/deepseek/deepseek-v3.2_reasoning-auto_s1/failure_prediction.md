@@ -12,9 +12,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 3 | 0.658 +/- 0.158 | 0.500 +/- 0.144 | 0.747 +/- 0.069 | 0.695 +/- 0.094 | 0.713 +/- 0.066 |
-| trajectory_shape (logreg) | 60 | 0.763 +/- 0.079 | 0.620 +/- 0.100 | 0.672 +/- 0.074 | 0.669 +/- 0.078 | 0.609 +/- 0.080 |
-| trajectory_full (logreg) | 63 | 0.763 +/- 0.079 | 0.618 +/- 0.103 | 0.699 +/- 0.058 | 0.689 +/- 0.070 | 0.643 +/- 0.058 |
-| trajectory_full (lightgbm) | 63 | 0.814 +/- 0.046 | 0.673 +/- 0.048 | 0.682 +/- 0.095 | 0.703 +/- 0.093 | 0.597 +/- 0.123 |
+| trajectory_shape (logreg) | 96 | 0.752 +/- 0.084 | 0.617 +/- 0.102 | 0.654 +/- 0.077 | 0.676 +/- 0.086 | 0.577 +/- 0.092 |
+| trajectory_full (logreg) | 99 | 0.745 +/- 0.081 | 0.611 +/- 0.102 | 0.637 +/- 0.069 | 0.662 +/- 0.081 | 0.551 +/- 0.076 |
+| reasoning_traj (MiniRocket) | 20 | 0.494 +/- 0.076 | 0.407 +/- 0.042 | 0.469 +/- 0.035 | 0.514 +/- 0.047 | 0.302 +/- 0.056 |
+| trajectory_full (lightgbm) | 99 | 0.812 +/- 0.058 | 0.680 +/- 0.089 | 0.676 +/- 0.083 | 0.696 +/- 0.077 | 0.593 +/- 0.108 |
 | mode_stack (logreg) | 13 | 0.786 +/- 0.081 | 0.647 +/- 0.111 | 0.715 +/- 0.078 | 0.682 +/- 0.087 | 0.669 +/- 0.081 |
 | mode_stack (lightgbm) | 13 | 0.829 +/- 0.025 | 0.719 +/- 0.048 | 0.698 +/- 0.071 | 0.723 +/- 0.042 | 0.597 +/- 0.128 |
 
@@ -39,18 +40,18 @@
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| answer_rebound_from_trough | shape | 0.930 | higher -> correct |
-| answer_range | commitment | -0.908 | higher -> wrong |
-| answer_start_minus_reasoning_end | landing | -0.859 | higher -> wrong |
-| reasoning_curvature_abs_mean | thrashing | -0.792 | higher -> wrong |
-| answer_end_minus_reasoning_end | landing | -0.737 | higher -> wrong |
-| answer_negative_mass | shape | 0.698 | higher -> correct |
-| answer_zero_crossings | thrashing | -0.694 | higher -> wrong |
-| answer_curvature_abs_mean | thrashing | -0.679 | higher -> wrong |
-| answer_max | shape | -0.641 | higher -> wrong |
-| reasoning_monotonicity | commitment | -0.633 | higher -> wrong |
-| answer_peak_pos | timing | 0.609 | higher -> correct |
-| answer_direction_changes | thrashing | -0.581 | higher -> wrong |
+| reasoning_traj_t01 | shape | 0.863 | higher -> correct |
+| reasoning_traj_t06 | shape | -0.858 | higher -> wrong |
+| answer_range_minus_reasoning_range | commitment | 0.822 | higher -> correct |
+| reasoning_traj_t03 | shape | -0.790 | higher -> wrong |
+| answer_start_minus_reasoning_end | landing | -0.762 | higher -> wrong |
+| reasoning_monotonicity | commitment | -0.756 | higher -> wrong |
+| answer_traj_t18 | shape | 0.725 | higher -> correct |
+| answer_range | commitment | -0.686 | higher -> wrong |
+| answer_peak_pos | timing | 0.681 | higher -> correct |
+| answer_late_mean | landing | -0.678 | higher -> wrong |
+| answer_traj_t16 | shape | -0.638 | higher -> wrong |
+| reasoning_curvature_abs_mean | thrashing | -0.619 | higher -> wrong |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -106,8 +107,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.786**
-- `trajectory_full` ROC-AUC: **0.763**
-- Above-chance discrimination preserved by the mode stack: **108.8%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.745**
+- Above-chance discrimination preserved by the mode stack: **117.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 

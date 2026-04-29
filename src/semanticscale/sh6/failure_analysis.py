@@ -11,7 +11,7 @@ problem. The intended workflow is:
    ``length_only`` for trivial structural baselines,
    ``trajectory_shape`` for actual trajectory-derived signals, and
    ``trajectory_full`` for both together.
-4. Run cross-validated logistic models and emit reports that are easy to
+4. Run cross-validated prediction models and emit reports that are easy to
    inspect in research notes.
 
 Two implementation details are worth calling out because they affect how
@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import json
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -36,7 +37,7 @@ import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import auc, roc_curve
+from sklearn.metrics import accuracy_score, auc, precision_recall_fscore_support, roc_curve
 from sklearn.model_selection import StratifiedKFold, cross_val_predict, cross_validate
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -71,6 +72,103 @@ META_COLUMNS = {
     "has_answer_chunks",
     "exit_status",
 }
+
+
+@dataclass(frozen=True)
+class RunPaths:
+    """Resolved on-disk paths for a single SH6 dataset/run.
+
+    ``run_dir`` is the per-run artifact directory under ``data_dir`` and
+    ``run_reports_dir`` is the per-run reports directory under ``reports_dir``.
+    ``run_slug`` may differ from the input slug when ``resolve_run_paths``
+    suffix-resolves a partial-run directory.
+    """
+
+    project_root: Path
+    data_dir: Path
+    reports_dir: Path
+    dataset_name: str
+    run_slug: str
+    run_dir: Path
+    run_reports_dir: Path
+
+
+def resolve_run_paths(
+    config: dict,
+    *,
+    run_slug: str | None = None,
+    required_files: tuple[str, ...] = (),
+) -> RunPaths:
+    """Build the standard set of paths used by Stage 5 / Stage 5h scripts.
+
+    Pass ``required_files`` (e.g. ``("traces.jsonl", "chunk_rankings.jsonl")``)
+    to opt into the suffix-matching behaviour of ``datasets.resolve_run_dir``
+    for partial-run directories. With an empty tuple the function returns the
+    base ``<data_dir>/<dataset>/<slug>`` path even if it does not yet exist —
+    callers can then check for missing artifacts and report errors themselves.
+    """
+    from . import datasets as ds
+
+    project_root = Path(config["_project_root"])
+    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
+    reports_root = (project_root / config["paths"]["reports_dir"]).resolve()
+    dataset = ds.dataset_name(config)
+    requested = run_slug or ds.run_slug(config)
+    resolved_slug, run_dir = ds.resolve_run_dir(
+        config, data_dir, requested, required_files=required_files
+    )
+    return RunPaths(
+        project_root=project_root,
+        data_dir=data_dir,
+        reports_dir=reports_root,
+        dataset_name=dataset,
+        run_slug=resolved_slug,
+        run_dir=run_dir,
+        run_reports_dir=reports_root / dataset / resolved_slug,
+    )
+
+
+def classification_metrics_block(
+    y_true,
+    y_pred,
+    *,
+    labels=None,
+) -> dict[str, float]:
+    """Macro precision / recall / F1 plus accuracy for hard predictions.
+
+    Works for binary and multi-class targets. Pass ``labels`` to fix the class
+    set when the OOF predictions don't cover every class (e.g. small folds).
+    """
+    macro_p, macro_r, macro_f1, _ = precision_recall_fscore_support(
+        y_true, y_pred, labels=labels, average="macro", zero_division=0
+    )
+    return {
+        "macro_precision": float(macro_p),
+        "macro_recall": float(macro_r),
+        "macro_f1": float(macro_f1),
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+    }
+
+
+def metrics_by_group(
+    oof_df: pd.DataFrame,
+    *,
+    group_col: str,
+    y_true_col: str,
+    y_pred_col: str,
+    labels=None,
+) -> dict[str, dict]:
+    """Per-group ``classification_metrics_block`` plus an ``n_items`` count."""
+    out: dict[str, dict] = {}
+    for value, sub in oof_df.groupby(group_col, sort=True):
+        block = classification_metrics_block(
+            sub[y_true_col].to_numpy(),
+            sub[y_pred_col].to_numpy(),
+            labels=labels,
+        )
+        block["n_items"] = int(len(sub))
+        out[str(value)] = block
+    return out
 
 
 def _extract_rubric_score(item: dict) -> float | None:
@@ -121,10 +219,33 @@ MODEL_DISPLAY_NAMES = {
     "lenght_abort": "lenght_abort (logreg)",
     "trajectory_shape": "trajectory_shape (logreg)",
     "trajectory_full": "trajectory_full (logreg)",
+    "minirocket_reasoning_traj": "reasoning_traj (MiniRocket)",
     "mode_stack": "mode_stack (logreg)",
     "lightgbm_trajectory_full": "trajectory_full (lightgbm)",
     "lightgbm_mode_stack": "mode_stack (lightgbm)",
 }
+
+MODEL_REPORT_ORDER = (
+    "length_only",
+    "lenght_abort",
+    "trajectory_shape",
+    "trajectory_full",
+    "minirocket_reasoning_traj",
+    "lightgbm_trajectory_full",
+    "mode_stack",
+    "lightgbm_mode_stack",
+)
+
+MODEL_ROC_STYLES = (
+    ("length_only", "#8c8c8c"),
+    ("lenght_abort", "#8c8c8c"),
+    ("trajectory_shape", "#2166ac"),
+    ("trajectory_full", "#b2182b"),
+    ("minirocket_reasoning_traj", "#ef8a62"),
+    ("lightgbm_trajectory_full", "#4d9221"),
+    ("mode_stack", "#1b7837"),
+    ("lightgbm_mode_stack", "#762a83"),
+)
 
 
 def merge_traces_and_rankings(traces: list[dict], rankings: list[dict]) -> list[dict]:
@@ -246,6 +367,20 @@ def _all_feature_names(prefix: str) -> list[str]:
         f"{prefix}_time_positive",
         f"{prefix}_time_negative",
     ]
+
+
+def _trajectory_series(prefix: str, params: list[float], interp_points: int) -> dict:
+    """Store the interpolated trajectory as fixed-width columns for MiniRocket.
+
+    Column names are ``{prefix}_traj_t{i:02d}`` (zero-padded so lexicographic
+    sort preserves chronological order). Absent trajectories are stored as NaN;
+    the MiniRocket estimator median-imputes them at fit/predict time.
+    """
+    if not params:
+        return {f"{prefix}_traj_t{i:02d}": np.nan for i in range(interp_points)}
+    centred = _mean_center(np.array(params, dtype=float))
+    interp = _interpolate(centred, interp_points)
+    return {f"{prefix}_traj_t{i:02d}": float(interp[i]) for i in range(interp_points)}
 
 
 def _trajectory_features(prefix: str, params: list[float], interp_points: int) -> dict:
@@ -430,6 +565,8 @@ def build_feature_table(
 
         row.update(_trajectory_features("reasoning", reasoning_params, interp_points))
         row.update(_trajectory_features("answer", answer_params, interp_points))
+        row.update(_trajectory_series("reasoning", reasoning_params, interp_points))
+        row.update(_trajectory_series("answer", answer_params, interp_points))
         row.update(_cross_features(reasoning_params, answer_params))
 
         row["total_n_chunks"] = row["reasoning_n_chunks"] + row["answer_n_chunks"]
@@ -511,6 +648,115 @@ def choose_feature_sets(
         "trajectory_shape": shape,
         "trajectory_full": usable(length + shape),
     }
+
+
+def trajectory_series_columns(df: pd.DataFrame, *, prefix: str = "reasoning") -> list[str]:
+    """Return usable ``{prefix}_traj_t*`` columns, or ``[]`` if the series is empty."""
+    stem = f"{prefix}_traj_t"
+    cols = sorted(col for col in df.columns if col.startswith(stem))
+    if not cols:
+        return []
+    if not df[cols].notna().any().any():
+        return []
+    return cols
+
+
+DEFAULT_STEP_GLOBAL_COLS: tuple[str, ...] = (
+    "reasoning_range",
+    "reasoning_monotonicity",
+    "reasoning_total_variation",
+    "reasoning_direction_changes",
+    "reasoning_curvature_abs_mean",
+    "reasoning_n_chunks",
+    "reasoning_peak_pos",
+    "reasoning_trough_pos",
+)
+
+
+def build_step_feature_table(
+    merged: list[dict],
+    feature_df: pd.DataFrame,
+    *,
+    type_field: str | None = None,
+    global_cols: tuple[str, ...] = DEFAULT_STEP_GLOBAL_COLS,
+) -> pd.DataFrame:
+    """Per-step feature table for traces with a known ``error_step_index``.
+
+    One row per (trace, step). Skips traces without ``error_step_index`` or
+    ``reasoning_params``. ``target`` is 1 on the row whose ``step_index`` equals
+    the trace's ``error_step_index`` and 0 elsewhere — pair with
+    ``GroupKFold`` over ``id`` to keep folds at trace granularity.
+
+    ``type_field`` names the trace-level field used to populate the
+    ``failure_type`` column (e.g. ``"hallucination_category"`` for AgentHallu,
+    ``"critical_error_type"`` for AgentErrorBench). Pass ``None`` for datasets
+    that don't carry a categorical failure-type label (e.g. ProcessBench);
+    every row then gets ``failure_type="unknown"``.
+    """
+    feature_lookup = (
+        feature_df.set_index("id") if "id" in feature_df.columns else None
+    )
+    rows: list[dict] = []
+    for item in merged:
+        params = [float(v) for v in (item.get("reasoning_params") or [])]
+        error_step_index = item.get("error_step_index")
+        if error_step_index is None or not params:
+            continue
+        if error_step_index >= len(params):
+            error_step_index = len(params) - 1
+
+        values = np.asarray(params, dtype=float)
+        mean_value = float(values.mean())
+        total_steps = len(values)
+        feature_row = (
+            feature_lookup.loc[item["id"]]
+            if feature_lookup is not None and item["id"] in feature_lookup.index
+            else None
+        )
+
+        running_peak = np.maximum.accumulate(values)
+        running_trough = np.minimum.accumulate(values)
+
+        type_value = item.get(type_field) if type_field else None
+        failure_type = (
+            str(type_value) if type_value not in (None, "") else "unknown"
+        )
+
+        for idx, value in enumerate(values):
+            prev_value = values[idx - 1] if idx > 0 else value
+            next_value = values[idx + 1] if idx + 1 < total_steps else value
+            delta_prev = float(value - prev_value)
+            delta_next = float(next_value - value)
+            row = {
+                "id": item["id"],
+                "subject": str(item.get("subject") or "unknown"),
+                "failure_type": failure_type,
+                "true_step_index": int(error_step_index),
+                "step_index": idx,
+                "target": int(idx == error_step_index),
+                "n_steps": total_steps,
+                "step_pos": float(idx / max(total_steps - 1, 1)),
+                "remaining_steps": float(total_steps - idx - 1),
+                "slod_value": float(value),
+                "slod_centered": float(value - mean_value),
+                "slod_from_start": float(value - values[0]),
+                "slod_to_end": float(values[-1] - value),
+                "delta_prev": delta_prev,
+                "delta_next": delta_next,
+                "abs_delta_prev": abs(delta_prev),
+                "abs_delta_next": abs(delta_next),
+                "curvature": float(delta_next - delta_prev),
+                "fall_from_peak": float(running_peak[idx] - value),
+                "rebound_from_trough": float(value - running_trough[idx]),
+                "is_peak_so_far": float(value >= running_peak[idx] - EPS),
+                "is_trough_so_far": float(value <= running_trough[idx] + EPS),
+            }
+            if feature_row is not None:
+                for col in global_cols:
+                    row[col] = feature_row.get(col, np.nan)
+            rows.append(row)
+
+    return pd.DataFrame(rows)
 
 
 def _make_estimator(random_state: int) -> Pipeline:
@@ -800,17 +1046,9 @@ def plot_roc_curves(
     model_results: dict[str, dict],
     out_path: Path,
 ) -> None:
-    """Plot out-of-fold ROC curves for the available feature-set baselines."""
+    """Plot out-of-fold ROC curves for the available feature-set baselines and model variants."""
     fig, ax = plt.subplots(figsize=(6, 5))
-    for name, color in [
-        ("length_only", "#8c8c8c"),
-        ("lenght_abort", "#8c8c8c"),
-        ("trajectory_shape", "#2166ac"),
-        ("trajectory_full", "#b2182b"),
-        ("lightgbm_trajectory_full", "#4d9221"),
-        ("mode_stack", "#1b7837"),
-        ("lightgbm_mode_stack", "#762a83"),
-    ]:
+    for name, color in MODEL_ROC_STYLES:
         result = model_results.get(name)
         if result is None:
             continue
@@ -1135,15 +1373,7 @@ def write_markdown_report(
         ]
     )
     wrote_model_row = False
-    for name in (
-        "length_only",
-        "lenght_abort",
-        "trajectory_shape",
-        "trajectory_full",
-        "lightgbm_trajectory_full",
-        "mode_stack",
-        "lightgbm_mode_stack",
-    ):
+    for name in MODEL_REPORT_ORDER:
         result = model_results.get(name)
         if result is not None:
             lines.append(_metric_line(name, result))

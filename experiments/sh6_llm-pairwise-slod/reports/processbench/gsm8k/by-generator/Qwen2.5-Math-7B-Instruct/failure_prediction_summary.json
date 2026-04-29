@@ -1,5 +1,5 @@
 {
-  "dataset": "processbench-gsm8k",
+  "dataset": "processbench",
   "run_slug": "gsm8k/by-generator/Qwen2.5-Math-7B-Instruct",
   "target_label": "final_answer_correct",
   "n_items": 22,
@@ -96,7 +96,7 @@
       }
     },
     "trajectory_shape": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_start",
         "reasoning_end",
@@ -126,53 +126,71 @@
         "reasoning_negative_mass",
         "reasoning_time_positive",
         "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
         "total_n_chunks"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.675,
-          "std": 0.4153311931459038
+          "mean": 0.6916666666666667,
+          "std": 0.37230513172814456
         },
         "average_precision": {
           "mean": 0.8886111111111111,
-          "std": 0.1460920984672611
+          "std": 0.13263823443701256
         },
         "accuracy": {
-          "mean": 0.82,
-          "std": 0.09273618495495704
+          "mean": 0.78,
+          "std": 0.12884098726725127
         },
         "balanced_accuracy": {
-          "mean": 0.7166666666666666,
-          "std": 0.19436506316151
+          "mean": 0.6833333333333332,
+          "std": 0.2
         },
         "f1": {
-          "mean": 0.8806349206349207,
-          "std": 0.06621464291801239
+          "mean": 0.8425396825396826,
+          "std": 0.10944971038357583
         }
       },
       "oof_probabilities": [
-        0.4219549571535834,
-        0.8398787456950921,
-        0.09975660823601766,
-        0.9625878540671738,
-        0.11734318948687723,
-        0.8136400681767031,
-        0.9190750837078996,
-        0.6390648638302928,
-        0.3425873433077265,
-        0.9936610960695238,
-        0.7348450710672486,
-        0.7997295948711788,
-        0.9583785452873477,
-        0.5121404344179317,
-        0.7733432760012792,
-        0.5141032156630775,
-        0.5711206958947458,
-        0.8651960451198007,
-        0.5084725260629088,
-        0.9625878540671738,
-        0.9744087454648738,
-        0.9663845019383621
+        0.11206671451059928,
+        0.7998321291907956,
+        0.21265289659391365,
+        0.9888921942159393,
+        0.06942802145930332,
+        0.9431337709792038,
+        0.9131636109561243,
+        0.706081060852864,
+        0.4840608840789524,
+        0.9579717011771753,
+        0.5336411204780183,
+        0.8151546456872488,
+        0.9950190600504244,
+        0.9926222113647751,
+        0.898731895554415,
+        0.8521271774198796,
+        0.6812713678795735,
+        0.2501911786879343,
+        0.6147094126522384,
+        0.9888921942159393,
+        0.99837133207104,
+        0.9240485078665917
       ],
       "oof_predictions": [
         0,
@@ -192,7 +210,7 @@
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1,
@@ -201,12 +219,12 @@
       "confusion_matrix": {
         "tn": 3,
         "fp": 3,
-        "fn": 1,
-        "tp": 15
+        "fn": 2,
+        "tp": 14
       }
     },
     "trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -236,53 +254,71 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.675,
-          "std": 0.4153311931459038
+          "mean": 0.6916666666666667,
+          "std": 0.37230513172814456
         },
         "average_precision": {
           "mean": 0.8886111111111111,
-          "std": 0.1460920984672611
+          "std": 0.13263823443701256
         },
         "accuracy": {
-          "mean": 0.82,
-          "std": 0.09273618495495704
+          "mean": 0.78,
+          "std": 0.12884098726725127
         },
         "balanced_accuracy": {
-          "mean": 0.7166666666666666,
-          "std": 0.19436506316151
+          "mean": 0.6833333333333332,
+          "std": 0.2
         },
         "f1": {
-          "mean": 0.8806349206349207,
-          "std": 0.06621464291801239
+          "mean": 0.8425396825396826,
+          "std": 0.10944971038357583
         }
       },
       "oof_probabilities": [
-        0.421954957153584,
-        0.8398787456950918,
-        0.09975660823601776,
-        0.9625878540671738,
-        0.11734318948689573,
-        0.8136400681767031,
-        0.9190750837078994,
-        0.6390648638303026,
-        0.34258734330772656,
-        0.9936610960695238,
-        0.7348450710672487,
-        0.799729594871179,
-        0.9583785452873405,
-        0.5121404344179317,
-        0.7733432760012793,
-        0.5141032156630773,
-        0.5711206958947456,
-        0.8651960451198009,
-        0.5084725260629092,
-        0.9625878540671738,
-        0.9744087454648738,
-        0.9663845019383573
+        0.1120667145105992,
+        0.7998321291907954,
+        0.2126528965939142,
+        0.9888921942159393,
+        0.06942802145930338,
+        0.9431337709792036,
+        0.9131636109561243,
+        0.7060810608528643,
+        0.4840608840789522,
+        0.9579717011771758,
+        0.5336411204780183,
+        0.8151546456872493,
+        0.9950190600504244,
+        0.9926222113647751,
+        0.898731895554415,
+        0.8521271774198796,
+        0.6812713678795733,
+        0.250191178687935,
+        0.6147094126522384,
+        0.9888921942159393,
+        0.99837133207104,
+        0.9240485078665919
       ],
       "oof_predictions": [
         0,
@@ -302,7 +338,7 @@
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1,
@@ -311,8 +347,8 @@
       "confusion_matrix": {
         "tn": 3,
         "fp": 3,
-        "fn": 1,
-        "tp": 15
+        "fn": 2,
+        "tp": 14
       }
     },
     "mode_stack": {
@@ -403,7 +439,7 @@
       }
     },
     "lightgbm_trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -433,7 +469,25 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
@@ -649,6 +703,96 @@
           "std_importance": 0.0
         },
         {
+          "feature": "reasoning_traj_t01",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t02",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t03",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t04",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t05",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t06",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t07",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t08",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t09",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t10",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t11",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t12",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t13",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t14",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t15",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t16",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t17",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t18",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
           "feature": "reasoning_trough_pos",
           "mean_importance": 0.0,
           "std_importance": 0.0
@@ -659,6 +803,109 @@
           "std_importance": 0.0
         }
       ]
+    },
+    "minirocket_reasoning_traj": {
+      "n_features": 20,
+      "feature_cols": [
+        "reasoning_traj_t00",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
+        "reasoning_traj_t19"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.625,
+          "std": 0.3515837184954831
+        },
+        "average_precision": {
+          "mean": 0.8702777777777777,
+          "std": 0.12196817030644197
+        },
+        "accuracy": {
+          "mean": 0.79,
+          "std": 0.18000000000000002
+        },
+        "balanced_accuracy": {
+          "mean": 0.675,
+          "std": 0.2692582403567252
+        },
+        "f1": {
+          "mean": 0.8714285714285716,
+          "std": 0.11203133672398659
+        }
+      },
+      "oof_probabilities": [
+        0.9021089183594351,
+        0.902438158673567,
+        0.2908123343299361,
+        0.9959696326080418,
+        0.1358893834109542,
+        0.8461671465720869,
+        0.9740396659941332,
+        0.8278713265178987,
+        0.7455968411503903,
+        0.9992192806149053,
+        0.5364817816932139,
+        0.8393824296007537,
+        0.9795321201613226,
+        0.31850164600110875,
+        0.8556055246312517,
+        0.9765508400166258,
+        0.7594686721951417,
+        0.7871766338954945,
+        0.7131930966440535,
+        0.9959696326080418,
+        0.9915392205307354,
+        0.9640003573905532
+      ],
+      "oof_predictions": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "confusion_matrix": {
+        "tn": 2,
+        "fp": 4,
+        "fn": 1,
+        "tp": 15
+      },
+      "model_name": "minirocket",
+      "feature_importance": null
     },
     "lightgbm_mode_stack": {
       "n_features": 6,
@@ -783,11 +1030,32 @@
   },
   "top_univariate_features": [
     {
+      "feature": "reasoning_traj_t14",
+      "roc_auc": 0.825,
+      "signal_auc": 0.825,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t15",
+      "roc_auc": 0.825,
+      "signal_auc": 0.825,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_max_rise_pos",
       "roc_auc": 0.8166666666666667,
       "signal_auc": 0.8166666666666667,
       "direction": "higher -> correct",
       "family": "timing"
+    },
+    {
+      "feature": "reasoning_traj_t18",
+      "roc_auc": 0.20833333333333331,
+      "signal_auc": 0.7916666666666667,
+      "direction": "higher -> wrong",
+      "family": "shape"
     },
     {
       "feature": "reasoning_n_chunks",
@@ -818,6 +1086,34 @@
       "family": "shape"
     },
     {
+      "feature": "reasoning_traj_t07",
+      "roc_auc": 0.775,
+      "signal_auc": 0.775,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t09",
+      "roc_auc": 0.225,
+      "signal_auc": 0.775,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t04",
+      "roc_auc": 0.24166666666666664,
+      "signal_auc": 0.7583333333333333,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t16",
+      "roc_auc": 0.7583333333333333,
+      "signal_auc": 0.7583333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_late_mean",
       "roc_auc": 0.725,
       "signal_auc": 0.725,
@@ -839,6 +1135,13 @@
       "family": "shape"
     },
     {
+      "feature": "reasoning_traj_t06",
+      "roc_auc": 0.7083333333333333,
+      "signal_auc": 0.7083333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_mid_mean",
       "roc_auc": 0.3083333333333333,
       "signal_auc": 0.6916666666666667,
@@ -846,223 +1149,167 @@
       "family": "shape"
     },
     {
-      "feature": "reasoning_max",
-      "roc_auc": 0.6833333333333333,
-      "signal_auc": 0.6833333333333333,
+      "feature": "reasoning_traj_t10",
+      "roc_auc": 0.6916666666666667,
+      "signal_auc": 0.6916666666666667,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_curvature_abs_mean",
-      "roc_auc": 0.6749999999999999,
-      "signal_auc": 0.6749999999999999,
-      "direction": "higher -> correct",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_max_drop",
-      "roc_auc": 0.6583333333333333,
-      "signal_auc": 0.6583333333333333,
-      "direction": "higher -> correct",
-      "family": "derailment"
-    },
-    {
-      "feature": "reasoning_start",
-      "roc_auc": 0.35,
-      "signal_auc": 0.65,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_zero_crossings",
-      "roc_auc": 0.6416666666666666,
-      "signal_auc": 0.6416666666666666,
-      "direction": "higher -> correct",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_end_minus_start",
-      "roc_auc": 0.36666666666666664,
-      "signal_auc": 0.6333333333333333,
-      "direction": "higher -> wrong",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_max_drop_pos",
-      "roc_auc": 0.6333333333333333,
-      "signal_auc": 0.6333333333333333,
-      "direction": "higher -> correct",
-      "family": "derailment"
-    },
-    {
-      "feature": "reasoning_range",
-      "roc_auc": 0.6083333333333333,
-      "signal_auc": 0.6083333333333333,
-      "direction": "higher -> correct",
-      "family": "commitment"
-    },
-    {
-      "feature": "reasoning_min",
-      "roc_auc": 0.6083333333333333,
-      "signal_auc": 0.6083333333333333,
+      "feature": "reasoning_traj_t12",
+      "roc_auc": 0.6916666666666667,
+      "signal_auc": 0.6916666666666667,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_monotonicity",
-      "roc_auc": 0.6083333333333333,
-      "signal_auc": 0.6083333333333333,
-      "direction": "higher -> correct",
-      "family": "commitment"
-    },
-    {
-      "feature": "reasoning_rebound_from_trough",
-      "roc_auc": 0.6083333333333333,
-      "signal_auc": 0.6083333333333333,
+      "feature": "reasoning_traj_t13",
+      "roc_auc": 0.6916666666666667,
+      "signal_auc": 0.6916666666666667,
       "direction": "higher -> correct",
       "family": "shape"
     }
   ],
   "top_coefficients": [
     {
-      "feature": "reasoning_late_mean",
-      "coefficient": 0.6923681033663932,
-      "abs_coefficient": 0.6923681033663932,
+      "feature": "reasoning_max_drop_pos",
+      "coefficient": 0.6912533012870579,
+      "abs_coefficient": 0.6912533012870579,
       "direction": "higher -> correct",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_max_drop",
-      "coefficient": -0.6788923965643057,
-      "abs_coefficient": 0.6788923965643057,
-      "direction": "higher -> wrong",
       "family": "derailment"
     },
     {
-      "feature": "reasoning_n_chunks",
-      "coefficient": 0.5650261886371049,
-      "abs_coefficient": 0.5650261886371049,
-      "direction": "higher -> correct",
-      "family": "length"
-    },
-    {
-      "feature": "reasoning_max_drop_pos",
-      "coefficient": 0.560672978977834,
-      "abs_coefficient": 0.560672978977834,
-      "direction": "higher -> correct",
+      "feature": "reasoning_max_drop",
+      "coefficient": -0.6517487621384906,
+      "abs_coefficient": 0.6517487621384906,
+      "direction": "higher -> wrong",
       "family": "derailment"
     },
     {
       "feature": "reasoning_total_variation",
-      "coefficient": -0.540822537444341,
-      "abs_coefficient": 0.540822537444341,
+      "coefficient": -0.4985340960588397,
+      "abs_coefficient": 0.4985340960588397,
       "direction": "higher -> wrong",
       "family": "thrashing"
     },
     {
-      "feature": "reasoning_late_minus_early",
-      "coefficient": 0.48220826730305855,
-      "abs_coefficient": 0.48220826730305855,
+      "feature": "reasoning_traj_t15",
+      "coefficient": 0.417165614601627,
+      "abs_coefficient": 0.417165614601627,
       "direction": "higher -> correct",
-      "family": "transition"
+      "family": "shape"
     },
     {
-      "feature": "reasoning_start",
-      "coefficient": 0.4002140087060569,
-      "abs_coefficient": 0.4002140087060569,
+      "feature": "reasoning_n_chunks",
+      "coefficient": 0.4139685544523004,
+      "abs_coefficient": 0.4139685544523004,
+      "direction": "higher -> correct",
+      "family": "length"
+    },
+    {
+      "feature": "reasoning_traj_t16",
+      "coefficient": 0.36303446218779445,
+      "abs_coefficient": 0.36303446218779445,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t14",
+      "coefficient": 0.3470380619442523,
+      "abs_coefficient": 0.3470380619442523,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_max_rise",
+      "coefficient": 0.32979959736828973,
+      "abs_coefficient": 0.32979959736828973,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t08",
+      "coefficient": -0.3165715191291442,
+      "abs_coefficient": 0.3165715191291442,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_time_positive",
+      "coefficient": 0.2919581989302989,
+      "abs_coefficient": 0.2919581989302989,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_min",
+      "coefficient": 0.24717159746061448,
+      "abs_coefficient": 0.24717159746061448,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_direction_changes",
-      "coefficient": -0.3777396081744494,
-      "abs_coefficient": 0.3777396081744494,
+      "coefficient": -0.2362507224142347,
+      "abs_coefficient": 0.2362507224142347,
       "direction": "higher -> wrong",
       "family": "thrashing"
     },
     {
-      "feature": "reasoning_mid_mean",
-      "coefficient": -0.34549309582738885,
-      "abs_coefficient": 0.34549309582738885,
+      "feature": "reasoning_time_negative",
+      "coefficient": -0.22864864960294476,
+      "abs_coefficient": 0.22864864960294476,
       "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_end_minus_start",
-      "coefficient": -0.316891558848572,
-      "abs_coefficient": 0.316891558848572,
-      "direction": "higher -> wrong",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_min",
-      "coefficient": 0.2846255356797829,
-      "abs_coefficient": 0.2846255356797829,
-      "direction": "higher -> correct",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_early_mean",
-      "coefficient": -0.2741552011643289,
-      "abs_coefficient": 0.2741552011643289,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_max_rise",
-      "coefficient": 0.2534922830012086,
-      "abs_coefficient": 0.2534922830012086,
-      "direction": "higher -> correct",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_max_rise_pos",
-      "coefficient": -0.24768933785282357,
-      "abs_coefficient": 0.24768933785282357,
-      "direction": "higher -> wrong",
-      "family": "timing"
-    },
-    {
-      "feature": "reasoning_time_positive",
-      "coefficient": 0.23268413720219266,
-      "abs_coefficient": 0.23268413720219266,
-      "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_curvature_abs_mean",
-      "coefficient": -0.22936611864695883,
-      "abs_coefficient": 0.22936611864695883,
+      "coefficient": -0.21046285115372568,
+      "abs_coefficient": 0.21046285115372568,
       "direction": "higher -> wrong",
       "family": "thrashing"
     },
     {
+      "feature": "reasoning_traj_t05",
+      "coefficient": -0.20985014367324165,
+      "abs_coefficient": 0.20985014367324165,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_late_mean",
+      "coefficient": 0.20963068352179226,
+      "abs_coefficient": 0.20963068352179226,
+      "direction": "higher -> correct",
+      "family": "landing"
+    },
+    {
       "feature": "reasoning_range",
-      "coefficient": -0.2105312392736842,
-      "abs_coefficient": 0.2105312392736842,
+      "coefficient": -0.20746466438111144,
+      "abs_coefficient": 0.20746466438111144,
       "direction": "higher -> wrong",
       "family": "commitment"
     },
     {
+      "feature": "reasoning_traj_t07",
+      "coefficient": -0.18680495976194916,
+      "abs_coefficient": 0.18680495976194916,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_rebound_from_trough",
-      "coefficient": -0.1798051005204518,
-      "abs_coefficient": 0.1798051005204518,
+      "coefficient": -0.17024558344504137,
+      "abs_coefficient": 0.17024558344504137,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_time_negative",
-      "coefficient": -0.17061032741830195,
-      "abs_coefficient": 0.17061032741830195,
+      "feature": "reasoning_traj_t04",
+      "coefficient": -0.1568993859669869,
+      "abs_coefficient": 0.1568993859669869,
       "direction": "higher -> wrong",
       "family": "shape"
-    },
-    {
-      "feature": "reasoning_zero_crossings",
-      "coefficient": 0.1587636850496942,
-      "abs_coefficient": 0.1587636850496942,
-      "direction": "higher -> correct",
-      "family": "thrashing"
     }
   ],
   "mode_detectors": [
@@ -1325,8 +1572,8 @@
   },
   "mode_stack_capture": {
     "mode_stack_auc": 0.5916666666666666,
-    "full_auc": 0.675,
-    "captured_fraction": 0.5238095238095231,
+    "full_auc": 0.6916666666666667,
+    "captured_fraction": 0.4782608695652169,
     "comparison_set": "trajectory_full"
   }
 }

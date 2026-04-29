@@ -1,7 +1,7 @@
 {
   "model_name": "lightgbm",
   "feature_set": "trajectory_full",
-  "n_features": 63,
+  "n_features": 99,
   "feature_cols": [
     "reasoning_n_chunks",
     "answer_n_chunks",
@@ -62,6 +62,42 @@
     "answer_negative_mass",
     "answer_time_positive",
     "answer_time_negative",
+    "reasoning_traj_t01",
+    "reasoning_traj_t02",
+    "reasoning_traj_t03",
+    "reasoning_traj_t04",
+    "reasoning_traj_t05",
+    "reasoning_traj_t06",
+    "reasoning_traj_t07",
+    "reasoning_traj_t08",
+    "reasoning_traj_t09",
+    "reasoning_traj_t10",
+    "reasoning_traj_t11",
+    "reasoning_traj_t12",
+    "reasoning_traj_t13",
+    "reasoning_traj_t14",
+    "reasoning_traj_t15",
+    "reasoning_traj_t16",
+    "reasoning_traj_t17",
+    "reasoning_traj_t18",
+    "answer_traj_t01",
+    "answer_traj_t02",
+    "answer_traj_t03",
+    "answer_traj_t04",
+    "answer_traj_t05",
+    "answer_traj_t06",
+    "answer_traj_t07",
+    "answer_traj_t08",
+    "answer_traj_t09",
+    "answer_traj_t10",
+    "answer_traj_t11",
+    "answer_traj_t12",
+    "answer_traj_t13",
+    "answer_traj_t14",
+    "answer_traj_t15",
+    "answer_traj_t16",
+    "answer_traj_t17",
+    "answer_traj_t18",
     "answer_minus_reasoning_mean",
     "answer_start_minus_reasoning_end",
     "answer_end_minus_reasoning_end",
@@ -77,35 +113,35 @@
   },
   "fold_metrics": {
     "roc_auc": {
-      "mean": 0.6492941840767928,
-      "std": 0.09301265647740896
+      "mean": 0.5785996612083568,
+      "std": 0.1090721669072281
     },
     "average_precision": {
-      "mean": 0.4159682329218695,
-      "std": 0.07307118454128697
+      "mean": 0.34333352579454524,
+      "std": 0.06645193439464175
     },
     "accuracy": {
-      "mean": 0.7724137931034483,
-      "std": 0.051609067403778484
+      "mean": 0.7517241379310343,
+      "std": 0.025804533701889256
     },
     "balanced_accuracy": {
-      "mean": 0.5821193299454169,
-      "std": 0.05861470157105888
+      "mean": 0.5444381705251271,
+      "std": 0.06176311620097595
     },
     "f1": {
-      "mean": 0.31914751914751915,
-      "std": 0.11432072527500596
+      "mean": 0.22675213675213673,
+      "std": 0.14684536759487787
     }
   },
   "confusion_matrix": {
-    "tn": 104,
-    "fp": 10,
-    "fn": 23,
-    "tp": 8
+    "tn": 103,
+    "fp": 11,
+    "fn": 25,
+    "tp": 6
   },
-  "duration_seconds": 0.537009735009633,
-  "timestamp_utc": "2026-04-29T10:39:50+00:00",
-  "git_sha": "461ab22",
+  "duration_seconds": 0.7836895399959758,
+  "timestamp_utc": "2026-04-29T14:22:50+00:00",
+  "git_sha": "a3d7e83",
   "python_version": "3.12.3",
   "library_versions": {
     "sklearn": "1.7.2",

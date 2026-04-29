@@ -1,0 +1,18 @@
+{
+  "dataset": "frontierscience",
+  "run_slug": "R1-Distill-32B-cloudjudge_reasoning-auto",
+  "type_field": null,
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "skipped": true,
+    "reason": "No traces in this run carry an `error_step_index` label."
+  },
+  "type": {
+    "skipped": true,
+    "reason": "Dataset `frontierscience` has no categorical failure-type label."
+  }
+}

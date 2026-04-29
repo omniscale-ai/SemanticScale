@@ -32,6 +32,7 @@ from typing import Callable, Literal, Protocol
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
+from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression, Ridge
 from sklearn.metrics import make_scorer
@@ -67,6 +68,8 @@ REGRESSION_SCORING = {
     "neg_root_mean_squared_error": "neg_root_mean_squared_error",
     "spearman": make_scorer(_spearman_score, greater_is_better=True),
 }
+
+MINIROCKET_DEFAULT_N_KERNELS = 32
 
 
 # Backwards-compatibility alias so callers that imported `SCORING` keep working.
@@ -402,9 +405,102 @@ class LGBMRegSpec:
         )
 
 
+class _MiniRocketLogReg(ClassifierMixin, BaseEstimator):
+    """MiniRocket transform → StandardScaler → balanced logistic regression.
+
+    Expects a 2-D array (n_samples, n_timepoints) — a single univariate
+    channel with NaN already imputed upstream. Reshapes to (n, 1, T) for aeon
+    before calling MiniRocket's fit_transform.
+    """
+
+    def __init__(
+        self,
+        n_kernels: int = MINIROCKET_DEFAULT_N_KERNELS,
+        random_state: int | None = None,
+    ):
+        self.n_kernels = n_kernels
+        self.random_state = random_state
+
+    @staticmethod
+    def _reshape(X) -> np.ndarray:
+        arr = np.asarray(X, dtype=float)
+        if arr.ndim != 2:
+            msg = f"Expected 2-D (n, T); got shape {arr.shape}"
+            raise ValueError(msg)
+        flat_mask = np.std(arr, axis=1) <= 1e-7
+        if flat_mask.any():
+            # aeon MiniRocket rejects constant series; add a tiny deterministic
+            # zero-mean ramp so flat trajectories remain effectively flat while
+            # satisfying the transformer's variance floor.
+            arr = arr.copy()
+            ramp = np.linspace(-5e-7, 5e-7, arr.shape[1], dtype=float)
+            arr[flat_mask] = arr[flat_mask] + ramp
+        return arr.reshape(arr.shape[0], 1, arr.shape[1])
+
+    def fit(self, X, y):
+        from aeon.transformations.collection.convolution_based import MiniRocket
+
+        self.classes_ = np.unique(y)
+        X3 = self._reshape(X)
+        self.minirocket_ = MiniRocket(
+            n_kernels=self.n_kernels, random_state=self.random_state
+        )
+        feats = self.minirocket_.fit_transform(X3)
+        self.scaler_ = StandardScaler().fit(feats)
+        self.classifier_ = LogisticRegression(
+            max_iter=5000, class_weight="balanced", random_state=self.random_state
+        ).fit(self.scaler_.transform(feats), y)
+        return self
+
+    def predict(self, X):
+        feats = self.scaler_.transform(self.minirocket_.transform(self._reshape(X)))
+        return self.classifier_.predict(feats)
+
+    def predict_proba(self, X):
+        feats = self.scaler_.transform(self.minirocket_.transform(self._reshape(X)))
+        return self.classifier_.predict_proba(feats)
+
+
+@dataclass
+class MiniRocketSpec:
+    """MiniRocket convolutional features over the reasoning trajectory.
+
+    Treats the per-item reasoning trajectory (``reasoning_traj_t{i:02d}``
+    columns written by ``build_feature_table``) as a univariate time series.
+    aeon's MiniRocket generates a fixed-width random-kernel feature vector;
+    a class-balanced L2 logistic regression yields ``predict_proba`` compatible
+    with the OOF parquet schema.  The standard tabular feature sets are
+    bypassed — the runner must pass the trajectory columns explicitly via
+    ``feature_cols_override``.
+    """
+
+    name: str = "minirocket"
+    task_type: TaskType = "classification"
+    n_kernels: int = MINIROCKET_DEFAULT_N_KERNELS
+
+    def build_estimator(self, random_state: int):
+        return Pipeline(
+            steps=[
+                ("imputer", SimpleImputer(strategy="median")),
+                (
+                    "minirocket",
+                    _MiniRocketLogReg(
+                        n_kernels=self.n_kernels, random_state=random_state
+                    ),
+                ),
+            ]
+        )
+
+    def feature_importance(self, fitted_estimator, feature_cols: list[str]) -> pd.DataFrame | None:
+        # MiniRocket kernels are anonymous random projections; per-kernel
+        # importance is not interpretable in the same units as logreg/lightgbm.
+        return None
+
+
 MODEL_REGISTRY: dict[str, Callable[[], ModelSpec]] = {
     "logreg": LogRegSpec,
     "lightgbm": LightGBMSpec,
+    "minirocket": MiniRocketSpec,
     "ridge": RidgeSpec,
     "lightgbm_reg": LGBMRegSpec,
 }

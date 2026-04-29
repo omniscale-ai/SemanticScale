@@ -77,8 +77,10 @@ failure_analysis:
   random_state: 42
   top_k_features: 12
 
-agenthallu_slod_prediction:
-  judgment_model: logreg
-  judgment_feature_set: trajectory_full
+failure_attribution:
   cv_folds: 5
   random_state: 42
+  # Drop failure-type classes with fewer than this many samples before fitting
+  # the multi-class classifier. AgentHallu has fine-grained categories that
+  # would otherwise overwhelm small folds.
+  min_class_count: 5

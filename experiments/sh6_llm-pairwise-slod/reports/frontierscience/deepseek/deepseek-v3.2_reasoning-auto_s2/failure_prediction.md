@@ -12,9 +12,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 3 | 0.743 +/- 0.057 | 0.534 +/- 0.058 | 0.777 +/- 0.080 | 0.737 +/- 0.079 | 0.727 +/- 0.070 |
-| trajectory_shape (logreg) | 60 | 0.776 +/- 0.084 | 0.661 +/- 0.115 | 0.719 +/- 0.114 | 0.717 +/- 0.126 | 0.665 +/- 0.124 |
-| trajectory_full (logreg) | 63 | 0.799 +/- 0.081 | 0.694 +/- 0.100 | 0.748 +/- 0.116 | 0.749 +/- 0.117 | 0.691 +/- 0.139 |
-| trajectory_full (lightgbm) | 63 | 0.836 +/- 0.091 | 0.758 +/- 0.151 | 0.769 +/- 0.102 | 0.781 +/- 0.104 | 0.715 +/- 0.129 |
+| trajectory_shape (logreg) | 96 | 0.796 +/- 0.056 | 0.664 +/- 0.073 | 0.705 +/- 0.056 | 0.718 +/- 0.064 | 0.633 +/- 0.069 |
+| trajectory_full (logreg) | 99 | 0.787 +/- 0.072 | 0.657 +/- 0.087 | 0.713 +/- 0.068 | 0.724 +/- 0.087 | 0.650 +/- 0.072 |
+| reasoning_traj (MiniRocket) | 20 | 0.570 +/- 0.096 | 0.470 +/- 0.053 | 0.580 +/- 0.091 | 0.596 +/- 0.085 | 0.481 +/- 0.110 |
+| trajectory_full (lightgbm) | 99 | 0.878 +/- 0.064 | 0.810 +/- 0.108 | 0.752 +/- 0.072 | 0.762 +/- 0.094 | 0.702 +/- 0.075 |
 | mode_stack (logreg) | 13 | 0.824 +/- 0.066 | 0.692 +/- 0.102 | 0.738 +/- 0.089 | 0.711 +/- 0.083 | 0.685 +/- 0.088 |
 | mode_stack (lightgbm) | 13 | 0.857 +/- 0.093 | 0.797 +/- 0.126 | 0.728 +/- 0.105 | 0.750 +/- 0.101 | 0.654 +/- 0.135 |
 
@@ -39,18 +40,18 @@
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| answer_end_minus_reasoning_end | landing | -1.255 | higher -> wrong |
-| answer_rebound_from_trough | shape | 1.150 | higher -> correct |
-| answer_range_minus_reasoning_range | commitment | -0.952 | higher -> wrong |
-| answer_early_mean | shape | -0.827 | higher -> wrong |
-| answer_start_minus_reasoning_end | landing | -0.762 | higher -> wrong |
-| answer_time_negative | shape | -0.630 | higher -> wrong |
-| answer_trough_pos | timing | 0.621 | higher -> correct |
-| answer_max_rise | shape | -0.603 | higher -> wrong |
-| answer_mid_mean | shape | -0.598 | higher -> wrong |
-| answer_min | shape | -0.575 | higher -> wrong |
-| answer_fall_from_peak | derailment | 0.557 | higher -> correct |
-| answer_max | shape | -0.556 | higher -> wrong |
+| answer_traj_t13 | shape | -1.087 | higher -> wrong |
+| answer_trough_pos | timing | 1.004 | higher -> correct |
+| answer_end_minus_reasoning_end | landing | -0.968 | higher -> wrong |
+| answer_range_minus_reasoning_range | commitment | -0.940 | higher -> wrong |
+| answer_time_negative | shape | -0.862 | higher -> wrong |
+| answer_traj_t18 | shape | 0.835 | higher -> correct |
+| answer_start_minus_reasoning_end | landing | -0.671 | higher -> wrong |
+| answer_traj_t05 | shape | -0.635 | higher -> wrong |
+| reasoning_max_rise | shape | 0.635 | higher -> correct |
+| answer_fall_from_peak | derailment | 0.635 | higher -> correct |
+| reasoning_trough_pos | timing | 0.602 | higher -> correct |
+| answer_traj_t09 | shape | 0.566 | higher -> correct |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -106,8 +107,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.824**
-- `trajectory_full` ROC-AUC: **0.799**
-- Above-chance discrimination preserved by the mode stack: **108.5%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.787**
+- Above-chance discrimination preserved by the mode stack: **113.0%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 

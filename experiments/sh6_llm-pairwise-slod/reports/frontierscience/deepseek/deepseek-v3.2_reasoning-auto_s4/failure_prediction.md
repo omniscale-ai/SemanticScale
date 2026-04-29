@@ -12,9 +12,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 3 | 0.658 +/- 0.144 | 0.495 +/- 0.107 | 0.767 +/- 0.096 | 0.721 +/- 0.111 | 0.735 +/- 0.091 |
-| trajectory_shape (logreg) | 60 | 0.837 +/- 0.052 | 0.769 +/- 0.102 | 0.765 +/- 0.043 | 0.772 +/- 0.055 | 0.705 +/- 0.065 |
-| trajectory_full (logreg) | 63 | 0.832 +/- 0.045 | 0.753 +/- 0.093 | 0.773 +/- 0.034 | 0.778 +/- 0.045 | 0.718 +/- 0.042 |
-| trajectory_full (lightgbm) | 63 | 0.834 +/- 0.066 | 0.756 +/- 0.119 | 0.771 +/- 0.037 | 0.785 +/- 0.051 | 0.718 +/- 0.044 |
+| trajectory_shape (logreg) | 96 | 0.844 +/- 0.053 | 0.779 +/- 0.099 | 0.736 +/- 0.029 | 0.745 +/- 0.058 | 0.678 +/- 0.030 |
+| trajectory_full (logreg) | 99 | 0.834 +/- 0.050 | 0.754 +/- 0.103 | 0.706 +/- 0.055 | 0.712 +/- 0.064 | 0.642 +/- 0.073 |
+| reasoning_traj (MiniRocket) | 20 | 0.472 +/- 0.021 | 0.425 +/- 0.057 | 0.495 +/- 0.030 | 0.523 +/- 0.043 | 0.360 +/- 0.090 |
+| trajectory_full (lightgbm) | 99 | 0.849 +/- 0.021 | 0.780 +/- 0.087 | 0.786 +/- 0.035 | 0.791 +/- 0.048 | 0.738 +/- 0.045 |
 | mode_stack (logreg) | 13 | 0.769 +/- 0.098 | 0.652 +/- 0.114 | 0.726 +/- 0.072 | 0.694 +/- 0.085 | 0.690 +/- 0.061 |
 | mode_stack (lightgbm) | 13 | 0.822 +/- 0.038 | 0.791 +/- 0.049 | 0.739 +/- 0.035 | 0.752 +/- 0.041 | 0.672 +/- 0.060 |
 
@@ -39,18 +40,18 @@
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| answer_end | landing | -1.150 | higher -> wrong |
-| answer_fall_from_peak | derailment | 0.961 | higher -> correct |
-| answer_positive_mass | shape | -0.910 | higher -> wrong |
-| answer_range_minus_reasoning_range | commitment | -0.910 | higher -> wrong |
-| answer_rebound_from_trough | shape | 0.907 | higher -> correct |
-| answer_peak_pos | timing | 0.821 | higher -> correct |
-| reasoning_zero_crossings | thrashing | 0.815 | higher -> correct |
-| reasoning_max_rise | shape | -0.742 | higher -> wrong |
-| answer_late_mean | landing | -0.694 | higher -> wrong |
-| answer_early_mean | shape | -0.689 | higher -> wrong |
-| answer_monotonicity | commitment | -0.637 | higher -> wrong |
-| reasoning_trough_pos | timing | -0.629 | higher -> wrong |
+| reasoning_zero_crossings | thrashing | 1.115 | higher -> correct |
+| answer_end | landing | -1.069 | higher -> wrong |
+| reasoning_traj_t09 | shape | 0.990 | higher -> correct |
+| answer_peak_pos | timing | 0.985 | higher -> correct |
+| reasoning_trough_pos | timing | -0.924 | higher -> wrong |
+| answer_traj_t03 | shape | -0.905 | higher -> wrong |
+| reasoning_max_rise | shape | -0.776 | higher -> wrong |
+| answer_fall_from_peak | derailment | 0.764 | higher -> correct |
+| answer_time_positive | shape | 0.733 | higher -> correct |
+| answer_late_mean | landing | -0.729 | higher -> wrong |
+| answer_range_minus_reasoning_range | commitment | -0.700 | higher -> wrong |
+| reasoning_max_rise_pos | timing | 0.655 | higher -> correct |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -106,8 +107,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.769**
-- `trajectory_full` ROC-AUC: **0.832**
-- Above-chance discrimination preserved by the mode stack: **81.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.834**
+- Above-chance discrimination preserved by the mode stack: **80.7%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 

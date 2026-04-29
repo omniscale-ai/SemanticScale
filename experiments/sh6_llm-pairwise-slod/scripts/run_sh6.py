@@ -17,7 +17,7 @@ Usage:
     ... run_sh6.py --config <cfg> --include-advanced
 
     # Run stages 3..6 for all configs, including model comparison artifacts:
-    ... run_sh6.py --all-configs --start-from 3 --stop-at 6 --include-05b
+    ... run_sh6.py --all-configs --start-from 3 --stop-at 6
 """
 
 from __future__ import annotations
@@ -39,6 +39,7 @@ STAGES = [
     (3, "03_analyze_accuracy.py"),
     (4, "04_plot_trajectories.py"),
     (5, "05_analyze_failure_modes.py"),
+    (5, "05h_failure_attribution.py"),
 ]
 
 ANCHOR_STAGE = (6, "06_anchor_validation.py")
@@ -75,8 +76,6 @@ def parse_args() -> argparse.Namespace:
                         help="First stage number to run (default: 1)")
     parser.add_argument("--stop-at", type=int, default=5, dest="stop_at",
                         help="Last stage number to run, inclusive (default: 5; set 6 to include anchor validation)")
-    parser.add_argument("--include-05b", action="store_true", dest="include_05b",
-                        help="Also run Stage-05 model comparison artifacts (logreg + lightgbm)")
     parser.add_argument("--include-advanced", action="store_true", dest="include_advanced",
                         help="Also run stage 07 (advanced failure analysis) after stage 5")
     parser.add_argument("--dry-run", action="store_true", dest="dry_run",
@@ -172,22 +171,17 @@ def run_for_single_config(
     config_label = str(config_path)
     print(f"Config: {config_path}")
     print(f"Stages: {args.start_from}..{args.stop_at}"
-          + (" + 05b" if args.include_05b else "")
           + (" + 7" if args.include_advanced else ""))
 
     for num, script in STAGES:
         if num < args.start_from or num > args.stop_at:
             continue
-        extra_args: list[str] | None = None
-        if num == 5 and args.include_05b:
-            extra_args = ["--models", "logreg", "lightgbm"]
         failure = run_stage(
             num,
             script,
             config_path,
             config_label,
             args.dry_run,
-            extra_args=extra_args,
         )
         if failure is not None:
             failures.append(failure)
@@ -203,7 +197,7 @@ def run_for_single_config(
                 config_path,
                 f"{config_label} [{extra_run_slug}]",
                 args.dry_run,
-                extra_args=[*(extra_args or []), "--run-slug", extra_run_slug],
+                extra_args=["--run-slug", extra_run_slug],
             )
             if extra_failure is not None:
                 failures.append(extra_failure)
@@ -238,7 +232,6 @@ def run_for_all_configs(args: argparse.Namespace) -> list[StageFailure]:
     failures: list[StageFailure] = []
     print(f"Configs: {len(configs)} found under {CONFIGS_DIR}")
     print(f"Stages: {args.start_from}..{args.stop_at}"
-          + (" + 05b" if args.include_05b else "")
           + (" + 7" if args.include_advanced else ""))
 
     for idx, cfg in enumerate(configs, start=1):

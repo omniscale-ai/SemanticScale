@@ -12,9 +12,9 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 1 | 0.702 +/- 0.077 | 0.787 +/- 0.072 | 0.685 +/- 0.032 | 0.706 +/- 0.027 | 0.768 +/- 0.023 |
-| trajectory_shape (logreg) | 29 | 0.618 +/- 0.058 | 0.744 +/- 0.047 | 0.646 +/- 0.044 | 0.660 +/- 0.040 | 0.723 +/- 0.037 |
-| trajectory_full (logreg) | 29 | 0.618 +/- 0.058 | 0.744 +/- 0.047 | 0.646 +/- 0.044 | 0.660 +/- 0.040 | 0.723 +/- 0.037 |
-| trajectory_full (lightgbm) | 29 | 0.658 +/- 0.031 | 0.787 +/- 0.028 | 0.608 +/- 0.080 | 0.640 +/- 0.068 | 0.720 +/- 0.049 |
+| trajectory_shape (logreg) | 47 | 0.563 +/- 0.045 | 0.713 +/- 0.043 | 0.531 +/- 0.039 | 0.548 +/- 0.040 | 0.626 +/- 0.042 |
+| trajectory_full (logreg) | 47 | 0.563 +/- 0.045 | 0.713 +/- 0.043 | 0.531 +/- 0.039 | 0.548 +/- 0.040 | 0.626 +/- 0.042 |
+| trajectory_full (lightgbm) | 47 | 0.620 +/- 0.046 | 0.753 +/- 0.037 | 0.516 +/- 0.076 | 0.579 +/- 0.057 | 0.692 +/- 0.034 |
 | mode_stack (logreg) | 4 | 0.689 +/- 0.089 | 0.780 +/- 0.080 | 0.667 +/- 0.057 | 0.691 +/- 0.047 | 0.758 +/- 0.035 |
 | mode_stack (lightgbm) | 4 | 0.624 +/- 0.060 | 0.724 +/- 0.062 | 0.613 +/- 0.033 | 0.650 +/- 0.040 | 0.730 +/- 0.044 |
 
@@ -25,32 +25,32 @@
 | answer_n_chunks | length | 0.702 | higher -> correct |
 | answer_end | landing | 0.617 | higher -> correct |
 | answer_negative_mass | shape | 0.616 | higher -> wrong |
+| answer_traj_t12 | shape | 0.606 | higher -> correct |
 | answer_start | shape | 0.603 | higher -> correct |
+| answer_traj_t09 | shape | 0.600 | higher -> correct |
+| answer_traj_t07 | shape | 0.597 | higher -> wrong |
 | answer_end_minus_start | landing | 0.585 | higher -> wrong |
+| answer_traj_t06 | shape | 0.585 | higher -> correct |
+| answer_traj_t17 | shape | 0.585 | higher -> correct |
 | answer_curvature_abs_mean | thrashing | 0.580 | higher -> wrong |
 | answer_rebound_from_trough | shape | 0.577 | higher -> correct |
-| answer_std | shape | 0.567 | higher -> correct |
-| answer_monotonicity | commitment | 0.561 | higher -> correct |
-| answer_positive_mass | shape | 0.558 | higher -> correct |
-| answer_fall_from_peak | derailment | 0.557 | higher -> correct |
-| answer_min | shape | 0.556 | higher -> wrong |
 
 ## Strongest Multivariate Coefficients
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| answer_n_chunks | length | -0.913 | higher -> wrong |
-| answer_positive_mass | shape | 0.441 | higher -> correct |
-| answer_negative_mass | shape | 0.391 | higher -> correct |
-| answer_max_rise_pos | timing | -0.372 | higher -> wrong |
-| answer_curvature_abs_mean | thrashing | -0.369 | higher -> wrong |
-| answer_max_rise | shape | -0.359 | higher -> wrong |
-| answer_direction_changes | thrashing | 0.315 | higher -> correct |
-| answer_total_variation | thrashing | 0.252 | higher -> correct |
-| answer_max_drop_pos | derailment | 0.237 | higher -> correct |
-| answer_end | landing | 0.189 | higher -> correct |
-| answer_min | shape | 0.176 | higher -> correct |
-| answer_start | shape | 0.152 | higher -> correct |
+| answer_n_chunks | length | -0.958 | higher -> wrong |
+| answer_traj_t06 | shape | -0.391 | higher -> wrong |
+| answer_max_rise_pos | timing | -0.362 | higher -> wrong |
+| answer_max_rise | shape | -0.358 | higher -> wrong |
+| answer_positive_mass | shape | 0.330 | higher -> correct |
+| answer_curvature_abs_mean | thrashing | -0.295 | higher -> wrong |
+| answer_direction_changes | thrashing | 0.280 | higher -> correct |
+| answer_negative_mass | shape | 0.261 | higher -> correct |
+| answer_traj_t12 | shape | -0.258 | higher -> wrong |
+| answer_traj_t16 | shape | -0.249 | higher -> wrong |
+| answer_traj_t15 | shape | 0.237 | higher -> correct |
+| answer_traj_t01 | shape | 0.226 | higher -> correct |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -105,8 +105,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.689**
-- `trajectory_full` ROC-AUC: **0.618**
-- Above-chance discrimination preserved by the mode stack: **159.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.563**
+- Above-chance discrimination preserved by the mode stack: **300.8%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 

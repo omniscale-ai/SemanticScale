@@ -1,5 +1,5 @@
 {
-  "dataset": "processbench-gsm8k",
+  "dataset": "processbench",
   "run_slug": "gsm8k/by-generator/Qwen2-72B-Instruct",
   "target_label": "final_answer_correct",
   "n_items": 20,
@@ -92,7 +92,7 @@
       }
     },
     "trajectory_shape": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_start",
         "reasoning_end",
@@ -122,57 +122,75 @@
         "reasoning_negative_mass",
         "reasoning_time_positive",
         "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
         "total_n_chunks"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.7333333333333333,
-          "std": 0.22607766610417562
+          "mean": 0.7166666666666667,
+          "std": 0.26666666666666666
         },
         "average_precision": {
-          "mean": 0.85,
-          "std": 0.16158932858054434
+          "mean": 0.8777777777777777,
+          "std": 0.10333930687632374
         },
         "accuracy": {
           "mean": 0.65,
-          "std": 0.25495097567963926
+          "std": 0.3391164991562634
         },
         "balanced_accuracy": {
-          "mean": 0.5666666666666667,
-          "std": 0.2758824226207808
+          "mean": 0.6333333333333333,
+          "std": 0.35978388574871506
         },
         "f1": {
-          "mean": 0.7447619047619047,
-          "std": 0.20287279170581862
+          "mean": 0.72,
+          "std": 0.2712931993250107
         }
       },
       "oof_probabilities": [
-        0.9922357626689161,
-        0.5879531607790095,
-        0.1629611641221531,
-        0.5122959120210241,
-        0.03533870071103598,
-        0.6214656763047656,
-        0.025687306053279096,
-        0.7233664414611276,
-        0.8104843592343516,
-        0.9851742295258337,
-        0.02671804644438363,
-        0.9027610401730655,
-        0.9450956350578208,
-        0.1982235248418068,
-        0.9642143239822932,
-        0.9643424837519895,
-        0.9728128902547694,
-        0.9718077562922596,
-        0.8931898382814296,
-        0.7381651401529702
+        0.997180579402349,
+        0.7409684088490679,
+        0.44172912319502233,
+        0.20274345897534388,
+        0.059906369076737194,
+        0.501180914270239,
+        0.030954971673887322,
+        0.8159236866543336,
+        0.9432183013342463,
+        0.9972868409380968,
+        0.011070494292170718,
+        0.8799397308402348,
+        0.9325569750476138,
+        0.12043828468467568,
+        0.9466526473844896,
+        0.9723109415919471,
+        0.9763467820433857,
+        0.9694659804214398,
+        0.8770100842563069,
+        0.29931361455512456
       ],
       "oof_predictions": [
         1,
         1,
         0,
-        1,
+        0,
         0,
         1,
         0,
@@ -188,17 +206,17 @@
         1,
         1,
         1,
-        1
+        0
       ],
       "confusion_matrix": {
-        "tn": 3,
-        "fp": 5,
-        "fn": 2,
-        "tp": 10
+        "tn": 4,
+        "fp": 4,
+        "fn": 3,
+        "tp": 9
       }
     },
     "trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -228,57 +246,75 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.7333333333333333,
-          "std": 0.22607766610417562
+          "mean": 0.7166666666666667,
+          "std": 0.26666666666666666
         },
         "average_precision": {
-          "mean": 0.85,
-          "std": 0.16158932858054434
+          "mean": 0.8777777777777777,
+          "std": 0.10333930687632374
         },
         "accuracy": {
           "mean": 0.65,
-          "std": 0.25495097567963926
+          "std": 0.3391164991562634
         },
         "balanced_accuracy": {
-          "mean": 0.5666666666666667,
-          "std": 0.2758824226207808
+          "mean": 0.6333333333333333,
+          "std": 0.35978388574871506
         },
         "f1": {
-          "mean": 0.7447619047619047,
-          "std": 0.20287279170581862
+          "mean": 0.72,
+          "std": 0.2712931993250107
         }
       },
       "oof_probabilities": [
-        0.9922357626689161,
-        0.5879531607790096,
-        0.16296116412215322,
-        0.5122959120210238,
-        0.03533870071103598,
-        0.6214656763047655,
-        0.025687306053279072,
-        0.7233664414611276,
-        0.8104843592343516,
-        0.9851742295258339,
-        0.026718046444383612,
-        0.9027610401730655,
-        0.9450956350578208,
-        0.19822352484180686,
-        0.9642143239822932,
-        0.9643424837519893,
-        0.9728128902547694,
-        0.9718077562922596,
-        0.8931898382814296,
-        0.7381651401529703
+        0.997180579402349,
+        0.740968408849068,
+        0.44172912319502233,
+        0.20274345897534346,
+        0.059906369076736625,
+        0.501180914270239,
+        0.03095497167388716,
+        0.8159236866543338,
+        0.9432183013342463,
+        0.9972868409380968,
+        0.011070494292170661,
+        0.8799397308402348,
+        0.932556975047614,
+        0.12043828468467568,
+        0.9466526473844896,
+        0.9723109415919471,
+        0.9763467820433857,
+        0.96946598042144,
+        0.8770100842563069,
+        0.2993136145551251
       ],
       "oof_predictions": [
         1,
         1,
         0,
-        1,
+        0,
         0,
         1,
         0,
@@ -294,13 +330,13 @@
         1,
         1,
         1,
-        1
+        0
       ],
       "confusion_matrix": {
-        "tn": 3,
-        "fp": 5,
-        "fn": 2,
-        "tp": 10
+        "tn": 4,
+        "fp": 4,
+        "fn": 3,
+        "tp": 9
       }
     },
     "mode_stack": {
@@ -387,7 +423,7 @@
       }
     },
     "lightgbm_trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -417,7 +453,25 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
@@ -629,6 +683,96 @@
           "std_importance": 0.0
         },
         {
+          "feature": "reasoning_traj_t01",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t02",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t03",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t04",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t05",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t06",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t07",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t08",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t09",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t10",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t11",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t12",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t13",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t14",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t15",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t16",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t17",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t18",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
           "feature": "reasoning_trough_pos",
           "mean_importance": 0.0,
           "std_importance": 0.0
@@ -639,6 +783,105 @@
           "std_importance": 0.0
         }
       ]
+    },
+    "minirocket_reasoning_traj": {
+      "n_features": 20,
+      "feature_cols": [
+        "reasoning_traj_t00",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
+        "reasoning_traj_t19"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.75,
+          "std": 0.27386127875258304
+        },
+        "average_precision": {
+          "mean": 0.8333333333333333,
+          "std": 0.18257418583505539
+        },
+        "accuracy": {
+          "mean": 0.55,
+          "std": 0.18708286933869706
+        },
+        "balanced_accuracy": {
+          "mean": 0.6,
+          "std": 0.2068278940998476
+        },
+        "f1": {
+          "mean": 0.6,
+          "std": 0.16733200530681513
+        }
+      },
+      "oof_probabilities": [
+        0.9938488235902478,
+        0.4625250202567355,
+        0.9738838311845223,
+        0.0001565590640162343,
+        0.9953341535091915,
+        0.9097381477962447,
+        0.003984187611870294,
+        0.023552779787907343,
+        0.43602314914122403,
+        0.9864311428758407,
+        0.03278505774724371,
+        0.9691591818870172,
+        0.9708713805926774,
+        0.482166208232127,
+        0.9662162213925141,
+        0.9910495131729171,
+        0.6122109759654223,
+        0.9989902518434273,
+        0.1100692758467404,
+        0.21035734736669753
+      ],
+      "oof_predictions": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 4,
+        "fp": 4,
+        "fn": 5,
+        "tp": 7
+      },
+      "model_name": "minirocket",
+      "feature_importance": null
     },
     "lightgbm_mode_stack": {
       "n_features": 6,
@@ -787,11 +1030,46 @@
       "family": "thrashing"
     },
     {
+      "feature": "reasoning_traj_t04",
+      "roc_auc": 0.2,
+      "signal_auc": 0.8,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_late_mean",
       "roc_auc": 0.21666666666666665,
       "signal_auc": 0.7833333333333333,
       "direction": "higher -> wrong",
       "family": "landing"
+    },
+    {
+      "feature": "reasoning_traj_t09",
+      "roc_auc": 0.7833333333333333,
+      "signal_auc": 0.7833333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t13",
+      "roc_auc": 0.7833333333333333,
+      "signal_auc": 0.7833333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t17",
+      "roc_auc": 0.21666666666666665,
+      "signal_auc": 0.7833333333333333,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t07",
+      "roc_auc": 0.7666666666666667,
+      "signal_auc": 0.7666666666666667,
+      "direction": "higher -> correct",
+      "family": "shape"
     },
     {
       "feature": "reasoning_n_chunks",
@@ -815,7 +1093,28 @@
       "family": "shape"
     },
     {
+      "feature": "reasoning_traj_t06",
+      "roc_auc": 0.75,
+      "signal_auc": 0.75,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_positive_mass",
+      "roc_auc": 0.7333333333333333,
+      "signal_auc": 0.7333333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t02",
+      "roc_auc": 0.7333333333333333,
+      "signal_auc": 0.7333333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t10",
       "roc_auc": 0.7333333333333333,
       "signal_auc": 0.7333333333333333,
       "direction": "higher -> correct",
@@ -841,204 +1140,148 @@
       "signal_auc": 0.7166666666666667,
       "direction": "higher -> correct",
       "family": "derailment"
-    },
-    {
-      "feature": "reasoning_direction_changes",
-      "roc_auc": 0.7,
-      "signal_auc": 0.7,
-      "direction": "higher -> correct",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_max_rise_pos",
-      "roc_auc": 0.6916666666666667,
-      "signal_auc": 0.6916666666666667,
-      "direction": "higher -> correct",
-      "family": "timing"
-    },
-    {
-      "feature": "reasoning_end",
-      "roc_auc": 0.3333333333333333,
-      "signal_auc": 0.6666666666666667,
-      "direction": "higher -> wrong",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_monotonicity",
-      "roc_auc": 0.3333333333333333,
-      "signal_auc": 0.6666666666666667,
-      "direction": "higher -> wrong",
-      "family": "commitment"
-    },
-    {
-      "feature": "reasoning_rebound_from_trough",
-      "roc_auc": 0.3333333333333333,
-      "signal_auc": 0.6666666666666667,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_start",
-      "roc_auc": 0.65,
-      "signal_auc": 0.65,
-      "direction": "higher -> correct",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_range",
-      "roc_auc": 0.35,
-      "signal_auc": 0.65,
-      "direction": "higher -> wrong",
-      "family": "commitment"
-    },
-    {
-      "feature": "reasoning_fall_from_peak",
-      "roc_auc": 0.35,
-      "signal_auc": 0.65,
-      "direction": "higher -> wrong",
-      "family": "derailment"
     }
   ],
   "top_coefficients": [
     {
       "feature": "reasoning_trough_pos",
-      "coefficient": -0.7492328132499508,
-      "abs_coefficient": 0.7492328132499508,
+      "coefficient": -0.7862541627709266,
+      "abs_coefficient": 0.7862541627709266,
       "direction": "higher -> wrong",
       "family": "timing"
     },
     {
       "feature": "reasoning_total_variation",
-      "coefficient": -0.6530935091622057,
-      "abs_coefficient": 0.6530935091622057,
+      "coefficient": -0.542155214071747,
+      "abs_coefficient": 0.542155214071747,
       "direction": "higher -> wrong",
       "family": "thrashing"
     },
     {
+      "feature": "reasoning_direction_changes",
+      "coefficient": 0.5088478567718027,
+      "abs_coefficient": 0.5088478567718027,
+      "direction": "higher -> correct",
+      "family": "thrashing"
+    },
+    {
       "feature": "reasoning_max_drop_pos",
-      "coefficient": -0.5508486038360888,
-      "abs_coefficient": 0.5508486038360888,
+      "coefficient": -0.43691040448491286,
+      "abs_coefficient": 0.43691040448491286,
       "direction": "higher -> wrong",
       "family": "derailment"
     },
     {
       "feature": "reasoning_positive_mass",
-      "coefficient": -0.4827580809351896,
-      "abs_coefficient": 0.4827580809351896,
+      "coefficient": -0.3908726151245547,
+      "abs_coefficient": 0.3908726151245547,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_curvature_abs_mean",
-      "coefficient": -0.4662606162886739,
-      "abs_coefficient": 0.4662606162886739,
-      "direction": "higher -> wrong",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_mid_mean",
-      "coefficient": -0.4518398239522641,
-      "abs_coefficient": 0.4518398239522641,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_direction_changes",
-      "coefficient": 0.41076041184695966,
-      "abs_coefficient": 0.41076041184695966,
-      "direction": "higher -> correct",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_time_positive",
-      "coefficient": -0.4020610254065578,
-      "abs_coefficient": 0.4020610254065578,
+      "feature": "reasoning_std",
+      "coefficient": -0.37797242163128575,
+      "abs_coefficient": 0.37797242163128575,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
       "feature": "reasoning_time_negative",
-      "coefficient": 0.4020610254065578,
-      "abs_coefficient": 0.4020610254065578,
+      "coefficient": 0.35742509074339557,
+      "abs_coefficient": 0.35742509074339557,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_std",
-      "coefficient": -0.37203219502787965,
-      "abs_coefficient": 0.37203219502787965,
+      "feature": "reasoning_time_positive",
+      "coefficient": -0.3574250907433954,
+      "abs_coefficient": 0.3574250907433954,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_zero_crossings",
-      "coefficient": -0.3507887990464443,
-      "abs_coefficient": 0.3507887990464443,
-      "direction": "higher -> wrong",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_early_mean",
-      "coefficient": 0.3181801084159103,
-      "abs_coefficient": 0.3181801084159103,
+      "feature": "reasoning_traj_t03",
+      "coefficient": 0.3520713134882425,
+      "abs_coefficient": 0.3520713134882425,
       "direction": "higher -> correct",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_max",
-      "coefficient": -0.30798969047244545,
-      "abs_coefficient": 0.30798969047244545,
-      "direction": "higher -> wrong",
       "family": "shape"
     },
     {
       "feature": "reasoning_range",
-      "coefficient": -0.28964844492295383,
-      "abs_coefficient": 0.28964844492295383,
+      "coefficient": -0.3488332647759818,
+      "abs_coefficient": 0.3488332647759818,
       "direction": "higher -> wrong",
       "family": "commitment"
     },
     {
-      "feature": "reasoning_max_rise",
-      "coefficient": -0.27065824113910325,
-      "abs_coefficient": 0.27065824113910325,
+      "feature": "reasoning_traj_t02",
+      "coefficient": 0.3419976493974511,
+      "abs_coefficient": 0.3419976493974511,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_curvature_abs_mean",
+      "coefficient": -0.3329871096791371,
+      "abs_coefficient": 0.3329871096791371,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_zero_crossings",
+      "coefficient": -0.33195382247746663,
+      "abs_coefficient": 0.33195382247746663,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_max",
+      "coefficient": -0.3309672059433799,
+      "abs_coefficient": 0.3309672059433799,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_n_chunks",
+      "coefficient": -0.2524103712827592,
+      "abs_coefficient": 0.2524103712827592,
+      "direction": "higher -> wrong",
+      "family": "length"
+    },
+    {
+      "feature": "reasoning_fall_from_peak",
+      "coefficient": -0.21048236075185484,
+      "abs_coefficient": 0.21048236075185484,
+      "direction": "higher -> wrong",
+      "family": "derailment"
+    },
+    {
+      "feature": "reasoning_mid_mean",
+      "coefficient": -0.20583754216510602,
+      "abs_coefficient": 0.20583754216510602,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
       "feature": "reasoning_max_rise_pos",
-      "coefficient": 0.25455922181865087,
-      "abs_coefficient": 0.25455922181865087,
+      "coefficient": 0.20043503513561947,
+      "abs_coefficient": 0.20043503513561947,
       "direction": "higher -> correct",
       "family": "timing"
     },
     {
-      "feature": "reasoning_n_chunks",
-      "coefficient": -0.24876842561212711,
-      "abs_coefficient": 0.24876842561212711,
+      "feature": "reasoning_traj_t16",
+      "coefficient": -0.19043985462536547,
+      "abs_coefficient": 0.19043985462536547,
       "direction": "higher -> wrong",
-      "family": "length"
+      "family": "shape"
     },
     {
-      "feature": "reasoning_late_minus_early",
-      "coefficient": -0.24796033855884034,
-      "abs_coefficient": 0.24796033855884034,
+      "feature": "reasoning_max_rise",
+      "coefficient": -0.18977151576361842,
+      "abs_coefficient": 0.18977151576361842,
       "direction": "higher -> wrong",
-      "family": "transition"
-    },
-    {
-      "feature": "reasoning_fall_from_peak",
-      "coefficient": -0.2290676088015382,
-      "abs_coefficient": 0.2290676088015382,
-      "direction": "higher -> wrong",
-      "family": "derailment"
-    },
-    {
-      "feature": "reasoning_peak_pos",
-      "coefficient": -0.2218771271490892,
-      "abs_coefficient": 0.2218771271490892,
-      "direction": "higher -> wrong",
-      "family": "timing"
+      "family": "shape"
     }
   ],
   "mode_detectors": [
@@ -1301,8 +1544,8 @@
   },
   "mode_stack_capture": {
     "mode_stack_auc": 0.6333333333333333,
-    "full_auc": 0.7333333333333333,
-    "captured_fraction": 0.5714285714285714,
+    "full_auc": 0.7166666666666667,
+    "captured_fraction": 0.6153846153846152,
     "comparison_set": "trajectory_full"
   }
 }

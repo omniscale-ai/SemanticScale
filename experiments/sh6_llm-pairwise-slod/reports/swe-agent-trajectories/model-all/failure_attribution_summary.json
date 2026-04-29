@@ -1,0 +1,18 @@
+{
+  "dataset": "swe-agent-trajectories",
+  "run_slug": "model-all",
+  "type_field": null,
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "skipped": true,
+    "reason": "No traces in this run carry an `error_step_index` label."
+  },
+  "type": {
+    "skipped": true,
+    "reason": "Dataset `swe-agent-trajectories` has no categorical failure-type label."
+  }
+}

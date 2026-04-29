@@ -1,5 +1,5 @@
 {
-  "dataset": "processbench-gsm8k",
+  "dataset": "processbench",
   "run_slug": "gsm8k/by-generator/Meta-Llama-3-8B-Instruct",
   "target_label": "final_answer_correct",
   "n_items": 24,
@@ -100,7 +100,7 @@
       }
     },
     "trajectory_shape": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_start",
         "reasoning_end",
@@ -130,69 +130,87 @@
         "reasoning_negative_mass",
         "reasoning_time_positive",
         "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
         "total_n_chunks"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.4666666666666666,
-          "std": 0.22110831935702663
+          "mean": 0.5,
+          "std": 0.21081851067789195
         },
         "average_precision": {
-          "mean": 0.6799999999999999,
-          "std": 0.15180396715647596
+          "mean": 0.691111111111111,
+          "std": 0.15486354009056716
         },
         "accuracy": {
           "mean": 0.41000000000000003,
           "std": 0.11135528725660043
         },
         "balanced_accuracy": {
-          "mean": 0.4,
-          "std": 0.14337208778404376
+          "mean": 0.3833333333333333,
+          "std": 0.14529663145135577
         },
         "f1": {
-          "mean": 0.48857142857142855,
-          "std": 0.07687785169756403
+          "mean": 0.40857142857142853,
+          "std": 0.2137326195344576
         }
       },
       "oof_probabilities": [
-        0.9827697966142629,
-        0.15619117990063897,
-        0.7281894538356757,
-        0.6821375247869051,
-        0.607359896944758,
-        0.9544287269941697,
-        0.06263285740828126,
-        0.7262452444490696,
-        0.016776154186418486,
-        0.804330153731726,
-        0.8048582908589879,
-        0.6340651955818716,
-        0.7688841355346758,
-        0.7763680855814318,
-        0.1730163600579753,
-        0.4580311833911092,
-        0.9407650803882979,
-        0.06989577526161755,
-        0.7069840465003885,
-        0.0338458241018291,
-        0.09610094299342735,
-        0.3385450166132989,
-        0.9934210810113117,
-        0.972726894871717
+        0.983297448736727,
+        0.1586488543532068,
+        0.7482815083415046,
+        0.7995439876355722,
+        0.255915658719402,
+        0.967347561593966,
+        0.06044536687324037,
+        0.8181290605955217,
+        0.013525815042878614,
+        0.9584234666046275,
+        0.8143430985132876,
+        0.4431468279873391,
+        0.7644256826366046,
+        0.7957966246231579,
+        0.17696716887466732,
+        0.2553973642606127,
+        0.9676358294923265,
+        0.02850994778823353,
+        0.8307654534196351,
+        0.032130120093907824,
+        0.0678994836849041,
+        0.3975056052003636,
+        0.9926033833018763,
+        0.9723468565998036
       ],
       "oof_predictions": [
         1,
         0,
         1,
         1,
-        1,
-        1,
         0,
         1,
         0,
         1,
+        0,
         1,
         1,
+        0,
         1,
         1,
         0,
@@ -207,14 +225,14 @@
         1
       ],
       "confusion_matrix": {
-        "tn": 3,
-        "fp": 8,
-        "fn": 6,
-        "tp": 7
+        "tn": 4,
+        "fp": 7,
+        "fn": 7,
+        "tp": 6
       }
     },
     "trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -244,69 +262,87 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.4666666666666666,
-          "std": 0.22110831935702663
+          "mean": 0.5,
+          "std": 0.21081851067789195
         },
         "average_precision": {
-          "mean": 0.6799999999999999,
-          "std": 0.15180396715647596
+          "mean": 0.691111111111111,
+          "std": 0.15486354009056716
         },
         "accuracy": {
           "mean": 0.41000000000000003,
           "std": 0.11135528725660043
         },
         "balanced_accuracy": {
-          "mean": 0.4,
-          "std": 0.14337208778404376
+          "mean": 0.3833333333333333,
+          "std": 0.14529663145135577
         },
         "f1": {
-          "mean": 0.48857142857142855,
-          "std": 0.07687785169756403
+          "mean": 0.40857142857142853,
+          "std": 0.2137326195344576
         }
       },
       "oof_probabilities": [
-        0.9827697966142629,
-        0.15619117990063894,
-        0.7281894538356803,
-        0.6821375247868994,
-        0.607359896944758,
-        0.9544287269941693,
-        0.06263285740828126,
-        0.7262452444490697,
-        0.0167761541864185,
-        0.804330153731726,
-        0.804858290858988,
-        0.6340651955818696,
-        0.7688841355346758,
-        0.7763680855814319,
-        0.17301636005797535,
-        0.4580311833911109,
-        0.940765080388301,
-        0.06989577526161757,
-        0.7069840465003884,
-        0.03384582410182911,
-        0.09610094299342824,
-        0.33854501661329944,
-        0.9934210810113114,
-        0.972726894871717
+        0.983297448736727,
+        0.15864885435320725,
+        0.7482815083415053,
+        0.7995439876355726,
+        0.2559156587194028,
+        0.967347561593966,
+        0.060445366873239335,
+        0.8181290605955217,
+        0.013525815042878694,
+        0.9584234666046275,
+        0.8143430985132872,
+        0.44314682798734056,
+        0.7644256826365985,
+        0.7957966246231585,
+        0.17696716887466576,
+        0.2553973642606124,
+        0.9676358294923265,
+        0.028509947788234024,
+        0.830765453419635,
+        0.032130120093908206,
+        0.0678994836849043,
+        0.3975056052003636,
+        0.9926033833018763,
+        0.972346856599804
       ],
       "oof_predictions": [
         1,
         0,
         1,
         1,
-        1,
-        1,
         0,
         1,
         0,
         1,
+        0,
         1,
         1,
+        0,
         1,
         1,
         0,
@@ -321,10 +357,10 @@
         1
       ],
       "confusion_matrix": {
-        "tn": 3,
-        "fp": 8,
-        "fn": 6,
-        "tp": 7
+        "tn": 4,
+        "fp": 7,
+        "fn": 7,
+        "tp": 6
       }
     },
     "mode_stack": {
@@ -419,7 +455,7 @@
       }
     },
     "lightgbm_trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -449,7 +485,25 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
@@ -461,23 +515,23 @@
           "std": 0.11135528725660043
         },
         "accuracy": {
-          "mean": 0.47000000000000003,
-          "std": 0.13999999999999999
+          "mean": 0.37,
+          "std": 0.06000000000000001
         },
         "balanced_accuracy": {
-          "mean": 0.55,
-          "std": 0.09999999999999999
+          "mean": 0.45,
+          "std": 0.1
         },
         "f1": {
-          "mean": 0.24761904761904763,
-          "std": 0.30476190476190473
+          "mean": 0.19428571428571428,
+          "std": 0.24404750290357283
         }
       },
       "oof_probabilities": [
         0.4999999905887404,
         0.5000000031370866,
-        0.3296735547369362,
-        0.38146895479544074,
+        0.6524718536434989,
+        0.679548979405402,
         0.5000000031370866,
         0.5000000031370866,
         0.4999999905887404,
@@ -490,11 +544,11 @@
         0.4999999905887404,
         0.4999999905887404,
         0.5000000031370866,
-        0.7891114362817986,
+        0.8161340332522549,
         0.4999999905887404,
         0.4999999905887404,
         0.4999999905887404,
-        0.3206915478637806,
+        0.2904778807489756,
         0.4999999905887404,
         0.4999999905887404,
         0.4999999905887404
@@ -502,8 +556,8 @@
       "oof_predictions": [
         0,
         1,
-        0,
-        0,
+        1,
+        1,
         1,
         1,
         0,
@@ -526,37 +580,72 @@
         0
       ],
       "confusion_matrix": {
-        "tn": 8,
-        "fp": 3,
+        "tn": 6,
+        "fp": 5,
         "fn": 10,
         "tp": 3
       },
       "model_name": "lightgbm",
       "feature_importance": [
         {
-          "feature": "reasoning_max_drop",
-          "mean_importance": 6.302771596610546,
-          "std_importance": 14.093425736676064
-        },
-        {
           "feature": "reasoning_monotonicity",
-          "mean_importance": 6.086626496165991,
-          "std_importance": 13.610110599078519
+          "mean_importance": 5.251918181777,
+          "std_importance": 11.743646066720471
         },
         {
-          "feature": "reasoning_total_variation",
-          "mean_importance": 2.4329092890024184,
-          "std_importance": 5.440150553300089
+          "feature": "reasoning_max_drop",
+          "mean_importance": 5.018975146859884,
+          "std_importance": 11.222769605760691
+        },
+        {
+          "feature": "reasoning_traj_t05",
+          "mean_importance": 3.8109748430550097,
+          "std_importance": 8.521598809612595
         },
         {
           "feature": "reasoning_start",
-          "mean_importance": 1.856867688894272,
-          "std_importance": 4.152082377590523
+          "mean_importance": 1.7967697262763977,
+          "std_importance": 4.017699247867715
+        },
+        {
+          "feature": "reasoning_total_variation",
+          "mean_importance": 1.2170480072498322,
+          "std_importance": 2.7214020760912816
+        },
+        {
+          "feature": "reasoning_traj_t12",
+          "mean_importance": 0.8035628847777844,
+          "std_importance": 1.796821234558957
+        },
+        {
+          "feature": "reasoning_time_positive",
+          "mean_importance": 0.6152712970972061,
+          "std_importance": 1.3757884449138218
+        },
+        {
+          "feature": "reasoning_traj_t10",
+          "mean_importance": 0.1721585810184479,
+          "std_importance": 0.38495829006715443
         },
         {
           "feature": "reasoning_peak_pos",
-          "mean_importance": 0.7747813232243062,
-          "std_importance": 1.732463706426785
+          "mean_importance": 0.15942370072007178,
+          "std_importance": 0.35648223203466267
+        },
+        {
+          "feature": "reasoning_direction_changes",
+          "mean_importance": 0.04794581979513168,
+          "std_importance": 0.10721011229886948
+        },
+        {
+          "feature": "reasoning_time_negative",
+          "mean_importance": 0.015239439904689789,
+          "std_importance": 0.034076423565909286
+        },
+        {
+          "feature": "reasoning_end",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
         },
         {
           "feature": "reasoning_end_minus_start",
@@ -569,32 +658,17 @@
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_late_minus_early",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
-          "feature": "reasoning_late_mean",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
-          "feature": "reasoning_direction_changes",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
-          "feature": "reasoning_early_mean",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
-          "feature": "reasoning_end",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
           "feature": "reasoning_curvature_abs_mean",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_min",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_mid_mean",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
@@ -619,27 +693,22 @@
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_n_chunks",
+          "feature": "reasoning_late_minus_early",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_negative_mass",
+          "feature": "reasoning_late_mean",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_min",
+          "feature": "reasoning_early_mean",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_mid_mean",
-          "mean_importance": 0.0,
-          "std_importance": 0.0
-        },
-        {
-          "feature": "reasoning_range",
+          "feature": "reasoning_rebound_from_trough",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
@@ -654,17 +723,92 @@
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_rebound_from_trough",
+          "feature": "reasoning_traj_t01",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_time_negative",
+          "feature": "reasoning_range",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
         {
-          "feature": "reasoning_time_positive",
+          "feature": "reasoning_negative_mass",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_n_chunks",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t04",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t03",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t02",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t06",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t08",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t07",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t09",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t11",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t13",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t14",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t15",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t16",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t17",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t18",
           "mean_importance": 0.0,
           "std_importance": 0.0
         },
@@ -679,6 +823,113 @@
           "std_importance": 0.0
         }
       ]
+    },
+    "minirocket_reasoning_traj": {
+      "n_features": 20,
+      "feature_cols": [
+        "reasoning_traj_t00",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
+        "reasoning_traj_t19"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.65,
+          "std": 0.27080128015453203
+        },
+        "average_precision": {
+          "mean": 0.8077777777777777,
+          "std": 0.15257461238908332
+        },
+        "accuracy": {
+          "mean": 0.6199999999999999,
+          "std": 0.24
+        },
+        "balanced_accuracy": {
+          "mean": 0.6333333333333333,
+          "std": 0.24494897427831783
+        },
+        "f1": {
+          "mean": 0.5742857142857143,
+          "std": 0.33690063938248405
+        }
+      },
+      "oof_probabilities": [
+        0.049860841950630765,
+        0.2532888940142954,
+        0.5861335912199989,
+        0.28250100519832866,
+        0.40842227828290995,
+        0.09671846464707395,
+        0.4068751301884743,
+        0.962538862162666,
+        0.09299261196206192,
+        0.5914634243302271,
+        0.17399932802725895,
+        0.5565398976922491,
+        0.9883260986396075,
+        0.16011379055288646,
+        0.9576993263751135,
+        0.7502705093075274,
+        0.4170697134847029,
+        0.16022161386292685,
+        0.9551596849528998,
+        0.014452133043912057,
+        0.9852592781391725,
+        0.5070933307932287,
+        0.425122278949395,
+        0.4777684322599183
+      ],
+      "oof_predictions": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 8,
+        "fp": 3,
+        "fn": 6,
+        "tp": 7
+      },
+      "model_name": "minirocket",
+      "feature_importance": null
     },
     "lightgbm_mode_stack": {
       "n_features": 6,
@@ -814,6 +1065,20 @@
       "family": "shape"
     },
     {
+      "feature": "reasoning_traj_t12",
+      "roc_auc": 0.21666666666666665,
+      "signal_auc": 0.7833333333333333,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t13",
+      "roc_auc": 0.25,
+      "signal_auc": 0.75,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_monotonicity",
       "roc_auc": 0.7166666666666666,
       "signal_auc": 0.7166666666666666,
@@ -884,6 +1149,27 @@
       "family": "timing"
     },
     {
+      "feature": "reasoning_traj_t05",
+      "roc_auc": 0.36666666666666664,
+      "signal_auc": 0.6333333333333333,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t14",
+      "roc_auc": 0.6333333333333333,
+      "signal_auc": 0.6333333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t15",
+      "roc_auc": 0.6333333333333333,
+      "signal_auc": 0.6333333333333333,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_direction_changes",
       "roc_auc": 0.625,
       "signal_auc": 0.625,
@@ -910,181 +1196,146 @@
       "signal_auc": 0.6,
       "direction": "higher -> correct",
       "family": "commitment"
-    },
-    {
-      "feature": "reasoning_late_mean",
-      "roc_auc": 0.5833333333333334,
-      "signal_auc": 0.5833333333333334,
-      "direction": "higher -> correct",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_late_minus_early",
-      "roc_auc": 0.41666666666666663,
-      "signal_auc": 0.5833333333333334,
-      "direction": "higher -> wrong",
-      "family": "transition"
-    },
-    {
-      "feature": "reasoning_peak_pos",
-      "roc_auc": 0.41666666666666663,
-      "signal_auc": 0.5833333333333334,
-      "direction": "higher -> wrong",
-      "family": "timing"
-    },
-    {
-      "feature": "reasoning_max",
-      "roc_auc": 0.4166666666666667,
-      "signal_auc": 0.5833333333333333,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_fall_from_peak",
-      "roc_auc": 0.4166666666666667,
-      "signal_auc": 0.5833333333333333,
-      "direction": "higher -> wrong",
-      "family": "derailment"
     }
   ],
   "top_coefficients": [
     {
       "feature": "reasoning_monotonicity",
-      "coefficient": -0.8980605261059631,
-      "abs_coefficient": 0.8980605261059631,
+      "coefficient": -0.8225265997308288,
+      "abs_coefficient": 0.8225265997308288,
       "direction": "higher -> wrong",
       "family": "commitment"
     },
     {
       "feature": "reasoning_negative_mass",
-      "coefficient": 0.6811281190045246,
-      "abs_coefficient": 0.6811281190045246,
+      "coefficient": 0.7110950807156566,
+      "abs_coefficient": 0.7110950807156566,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_zero_crossings",
-      "coefficient": 0.6103515137632921,
-      "abs_coefficient": 0.6103515137632921,
+      "coefficient": 0.5528297792328953,
+      "abs_coefficient": 0.5528297792328953,
       "direction": "higher -> correct",
       "family": "thrashing"
     },
     {
+      "feature": "reasoning_max_rise_pos",
+      "coefficient": 0.46811796005794865,
+      "abs_coefficient": 0.46811796005794865,
+      "direction": "higher -> correct",
+      "family": "timing"
+    },
+    {
       "feature": "reasoning_min",
-      "coefficient": 0.49679327265392187,
-      "abs_coefficient": 0.49679327265392187,
+      "coefficient": 0.416993017146961,
+      "abs_coefficient": 0.416993017146961,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_time_positive",
-      "coefficient": -0.4025701136309926,
-      "abs_coefficient": 0.4025701136309926,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_time_negative",
-      "coefficient": 0.4025701136309926,
-      "abs_coefficient": 0.4025701136309926,
+      "feature": "reasoning_std",
+      "coefficient": 0.41368409580309057,
+      "abs_coefficient": 0.41368409580309057,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_max_drop_pos",
-      "coefficient": 0.3861289981598088,
-      "abs_coefficient": 0.3861289981598088,
+      "coefficient": 0.38614204117769935,
+      "abs_coefficient": 0.38614204117769935,
       "direction": "higher -> correct",
       "family": "derailment"
     },
     {
-      "feature": "reasoning_std",
-      "coefficient": 0.3658682527568453,
-      "abs_coefficient": 0.3658682527568453,
-      "direction": "higher -> correct",
-      "family": "shape"
-    },
-    {
       "feature": "reasoning_range",
-      "coefficient": -0.3597372196634528,
-      "abs_coefficient": 0.3597372196634528,
+      "coefficient": -0.3811531774347178,
+      "abs_coefficient": 0.3811531774347178,
       "direction": "higher -> wrong",
       "family": "commitment"
     },
     {
-      "feature": "reasoning_max_rise_pos",
-      "coefficient": 0.3462753650724736,
-      "abs_coefficient": 0.3462753650724736,
-      "direction": "higher -> correct",
-      "family": "timing"
-    },
-    {
-      "feature": "reasoning_late_mean",
-      "coefficient": -0.32136006197563505,
-      "abs_coefficient": 0.32136006197563505,
-      "direction": "higher -> wrong",
-      "family": "landing"
-    },
-    {
       "feature": "reasoning_max_rise",
-      "coefficient": 0.3097302503390188,
-      "abs_coefficient": 0.3097302503390188,
+      "coefficient": 0.3564480771445906,
+      "abs_coefficient": 0.3564480771445906,
       "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_time_negative",
+      "coefficient": 0.34805716333615494,
+      "abs_coefficient": 0.34805716333615494,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_time_positive",
+      "coefficient": -0.3480571633361549,
+      "abs_coefficient": 0.3480571633361549,
+      "direction": "higher -> wrong",
       "family": "shape"
     },
     {
       "feature": "reasoning_rebound_from_trough",
-      "coefficient": -0.3007028494772143,
-      "abs_coefficient": 0.3007028494772143,
+      "coefficient": -0.2864102993299549,
+      "abs_coefficient": 0.2864102993299549,
       "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_early_mean",
-      "coefficient": -0.2580641869623978,
-      "abs_coefficient": 0.2580641869623978,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
-      "feature": "reasoning_mid_mean",
-      "coefficient": 0.24210092508987296,
-      "abs_coefficient": 0.24210092508987296,
+      "feature": "reasoning_traj_t12",
+      "coefficient": 0.24793570372503648,
+      "abs_coefficient": 0.24793570372503648,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_max_drop",
-      "coefficient": 0.22860739366745944,
-      "abs_coefficient": 0.22860739366745944,
-      "direction": "higher -> correct",
-      "family": "derailment"
-    },
-    {
-      "feature": "reasoning_end",
-      "coefficient": -0.1906127657517008,
-      "abs_coefficient": 0.1906127657517008,
+      "feature": "reasoning_late_mean",
+      "coefficient": -0.22146152633812238,
+      "abs_coefficient": 0.22146152633812238,
       "direction": "higher -> wrong",
       "family": "landing"
     },
     {
-      "feature": "reasoning_trough_pos",
-      "coefficient": 0.13722225996121482,
-      "abs_coefficient": 0.13722225996121482,
+      "feature": "reasoning_max_drop",
+      "coefficient": 0.22141346038225385,
+      "abs_coefficient": 0.22141346038225385,
       "direction": "higher -> correct",
-      "family": "timing"
+      "family": "derailment"
+    },
+    {
+      "feature": "reasoning_traj_t15",
+      "coefficient": -0.2115977479242439,
+      "abs_coefficient": 0.2115977479242439,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t14",
+      "coefficient": -0.20321539515414555,
+      "abs_coefficient": 0.20321539515414555,
+      "direction": "higher -> wrong",
+      "family": "shape"
     },
     {
       "feature": "reasoning_curvature_abs_mean",
-      "coefficient": 0.1345467516331265,
-      "abs_coefficient": 0.1345467516331265,
+      "coefficient": 0.19642309894244758,
+      "abs_coefficient": 0.19642309894244758,
       "direction": "higher -> correct",
       "family": "thrashing"
     },
     {
-      "feature": "reasoning_positive_mass",
-      "coefficient": 0.1316195896432704,
-      "abs_coefficient": 0.1316195896432704,
+      "feature": "reasoning_end",
+      "coefficient": -0.19562105337944363,
+      "abs_coefficient": 0.19562105337944363,
+      "direction": "higher -> wrong",
+      "family": "landing"
+    },
+    {
+      "feature": "reasoning_traj_t11",
+      "coefficient": 0.18812209487108592,
+      "abs_coefficient": 0.18812209487108592,
       "direction": "higher -> correct",
       "family": "shape"
     }
@@ -1349,7 +1600,7 @@
   },
   "mode_stack_capture": {
     "mode_stack_auc": 0.4666666666666667,
-    "full_auc": 0.4666666666666666,
+    "full_auc": 0.5,
     "captured_fraction": NaN,
     "comparison_set": "trajectory_full"
   }

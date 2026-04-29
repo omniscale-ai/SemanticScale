@@ -15,9 +15,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 3 | 0.564 +/- 0.076 | 0.484 +/- 0.067 | 0.557 +/- 0.082 | 0.550 +/- 0.063 | 0.517 +/- 0.140 |
-| trajectory_shape (logreg) | 60 | 0.486 +/- 0.093 | 0.441 +/- 0.051 | 0.502 +/- 0.071 | 0.490 +/- 0.073 | 0.453 +/- 0.108 |
-| trajectory_full (logreg) | 63 | 0.474 +/- 0.082 | 0.434 +/- 0.039 | 0.527 +/- 0.059 | 0.520 +/- 0.040 | 0.465 +/- 0.112 |
-| trajectory_full (lightgbm) | 63 | 0.433 +/- 0.173 | 0.420 +/- 0.083 | 0.440 +/- 0.071 | 0.470 +/- 0.068 | 0.265 +/- 0.120 |
+| trajectory_shape (logreg) | 96 | 0.451 +/- 0.079 | 0.434 +/- 0.058 | 0.520 +/- 0.073 | 0.510 +/- 0.049 | 0.454 +/- 0.129 |
+| trajectory_full (logreg) | 99 | 0.435 +/- 0.066 | 0.424 +/- 0.044 | 0.499 +/- 0.101 | 0.490 +/- 0.080 | 0.431 +/- 0.154 |
+| reasoning_traj (MiniRocket) | 20 | 0.489 +/- 0.118 | 0.440 +/- 0.058 | 0.473 +/- 0.102 | 0.480 +/- 0.103 | 0.411 +/- 0.099 |
+| trajectory_full (lightgbm) | 99 | 0.433 +/- 0.137 | 0.406 +/- 0.059 | 0.433 +/- 0.104 | 0.460 +/- 0.102 | 0.264 +/- 0.152 |
 | mode_stack (logreg) | 13 | 0.618 +/- 0.088 | 0.558 +/- 0.077 | 0.565 +/- 0.100 | 0.560 +/- 0.116 | 0.537 +/- 0.074 |
 | mode_stack (lightgbm) | 13 | 0.394 +/- 0.114 | 0.438 +/- 0.086 | 0.458 +/- 0.095 | 0.480 +/- 0.098 | 0.321 +/- 0.152 |
 
@@ -34,26 +35,26 @@
 | reasoning_rebound_from_trough | shape | 0.596 | higher -> correct |
 | reasoning_end_minus_start | landing | 0.591 | higher -> correct |
 | reasoning_curvature_abs_mean | thrashing | 0.589 | higher -> correct |
+| reasoning_traj_t04 | shape | 0.584 | higher -> correct |
+| reasoning_traj_t05 | shape | 0.582 | higher -> correct |
 | reasoning_fall_from_peak | derailment | 0.580 | higher -> correct |
-| total_n_chunks | length | 0.579 | higher -> correct |
-| reasoning_zero_crossings | thrashing | 0.573 | higher -> correct |
 
 ## Strongest Multivariate Coefficients
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| reasoning_max_rise | shape | -0.997 | higher -> wrong |
-| reasoning_monotonicity | commitment | -0.689 | higher -> wrong |
-| answer_range_minus_reasoning_range | commitment | 0.666 | higher -> correct |
-| answer_peak_pos | timing | -0.572 | higher -> wrong |
-| answer_trough_pos | timing | -0.498 | higher -> wrong |
-| reasoning_peak_pos | timing | 0.440 | higher -> correct |
-| answer_time_negative | shape | -0.425 | higher -> wrong |
-| answer_n_chunks | length | 0.420 | higher -> correct |
-| reasoning_min | shape | -0.419 | higher -> wrong |
-| answer_positive_mass | shape | 0.408 | higher -> correct |
-| reasoning_zero_crossings | thrashing | 0.379 | higher -> correct |
-| reasoning_curvature_abs_mean | thrashing | -0.374 | higher -> wrong |
+| reasoning_max_rise | shape | -0.808 | higher -> wrong |
+| reasoning_monotonicity | commitment | -0.753 | higher -> wrong |
+| answer_range_minus_reasoning_range | commitment | 0.678 | higher -> correct |
+| answer_peak_pos | timing | -0.583 | higher -> wrong |
+| answer_trough_pos | timing | -0.478 | higher -> wrong |
+| reasoning_curvature_abs_mean | thrashing | -0.430 | higher -> wrong |
+| reasoning_start | shape | 0.426 | higher -> correct |
+| reasoning_min | shape | -0.415 | higher -> wrong |
+| reasoning_peak_pos | timing | 0.414 | higher -> correct |
+| answer_n_chunks | length | 0.401 | higher -> correct |
+| answer_monotonicity | commitment | -0.384 | higher -> wrong |
+| reasoning_zero_crossings | thrashing | 0.378 | higher -> correct |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -108,7 +109,7 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.618**
-- `trajectory_full` ROC-AUC: **0.474**
+- `trajectory_full` ROC-AUC: **0.435**
 - Above-chance discrimination preserved by the mode stack: **n/a** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage

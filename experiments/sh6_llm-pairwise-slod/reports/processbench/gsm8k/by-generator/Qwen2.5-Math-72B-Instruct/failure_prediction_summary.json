@@ -1,5 +1,5 @@
 {
-  "dataset": "processbench-gsm8k",
+  "dataset": "processbench",
   "run_slug": "gsm8k/by-generator/Qwen2.5-Math-72B-Instruct",
   "target_label": "final_answer_correct",
   "n_items": 22,
@@ -96,7 +96,7 @@
       }
     },
     "trajectory_shape": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_start",
         "reasoning_end",
@@ -126,87 +126,105 @@
         "reasoning_negative_mass",
         "reasoning_time_positive",
         "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
         "total_n_chunks"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.5238095238095237,
-          "std": 0.1401866804179023
+          "mean": 0.4126984126984126,
+          "std": 0.1122391716169123
         },
         "average_precision": {
-          "mean": 0.9199168556311413,
-          "std": 0.03316096642784825
+          "mean": 0.8949168556311413,
+          "std": 0.030411470785725342
         },
         "accuracy": {
-          "mean": 0.6845238095238096,
-          "std": 0.04208968935634212
+          "mean": 0.630952380952381,
+          "std": 0.1438457853999354
         },
         "balanced_accuracy": {
-          "mean": 0.5357142857142857,
-          "std": 0.21184679071490692
+          "mean": 0.503968253968254,
+          "std": 0.11514776292497544
         },
         "f1": {
-          "mean": 0.800854700854701,
-          "std": 0.02617673988224539
+          "mean": 0.7301587301587302,
+          "std": 0.1630368141601122
         }
       },
       "oof_probabilities": [
-        0.9495883867494924,
-        0.9909610190333841,
-        0.4311271214994012,
-        0.9836305329298989,
-        0.6340483921528397,
-        0.9338716502415744,
-        0.5651066083145951,
-        0.3535353578975199,
-        0.9652094520239941,
-        0.9992025216235325,
-        0.30188759909363366,
-        0.042312388706592596,
-        0.9163019087639723,
-        0.4101541505265376,
-        0.44317894896780086,
-        0.9868112600303341,
-        0.9655733057084689,
-        0.9654376797974316,
-        0.8256406238757408,
-        0.9965409723913468,
-        0.8728802892838311,
-        0.733260803886935
+        0.9641644293346457,
+        0.995087413254814,
+        0.3668303317128998,
+        0.9987929255345238,
+        0.2972002833177611,
+        0.9264906788874695,
+        0.6152481155707157,
+        0.15237185782374785,
+        0.9993029963916803,
+        0.9976219802932857,
+        0.11017998331260809,
+        0.015107400781226655,
+        0.9150020929420324,
+        0.3519434654697143,
+        0.8106709468453359,
+        0.9635111909233781,
+        0.9956374005957143,
+        0.9904739510690307,
+        0.8783064967133242,
+        0.9995067914278464,
+        0.8961168609731205,
+        0.21947555462643642
       ],
       "oof_predictions": [
         1,
         1,
         0,
         1,
-        1,
-        1,
-        1,
         0,
         1,
         1,
         0,
+        1,
+        1,
+        0,
         0,
         1,
         0,
-        0,
         1,
         1,
         1,
         1,
         1,
         1,
-        1
+        1,
+        0
       ],
       "confusion_matrix": {
         "tn": 1,
         "fp": 2,
-        "fn": 5,
-        "tp": 14
+        "fn": 6,
+        "tp": 13
       }
     },
     "trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -236,83 +254,101 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
-          "mean": 0.5238095238095237,
-          "std": 0.1401866804179023
+          "mean": 0.4126984126984126,
+          "std": 0.1122391716169123
         },
         "average_precision": {
-          "mean": 0.9199168556311413,
-          "std": 0.03316096642784825
+          "mean": 0.8949168556311413,
+          "std": 0.030411470785725342
         },
         "accuracy": {
-          "mean": 0.6845238095238096,
-          "std": 0.04208968935634212
+          "mean": 0.630952380952381,
+          "std": 0.1438457853999354
         },
         "balanced_accuracy": {
-          "mean": 0.5357142857142857,
-          "std": 0.21184679071490692
+          "mean": 0.503968253968254,
+          "std": 0.11514776292497544
         },
         "f1": {
-          "mean": 0.800854700854701,
-          "std": 0.02617673988224539
+          "mean": 0.7301587301587302,
+          "std": 0.1630368141601122
         }
       },
       "oof_probabilities": [
-        0.9495883867494886,
-        0.9909610190333841,
-        0.43112712149940136,
-        0.9836305329299007,
-        0.6340483921528397,
-        0.9338716502415744,
-        0.5651066083145865,
-        0.35353535789751966,
-        0.9652094520240001,
-        0.9992025216235325,
-        0.3018875990936547,
-        0.04231238870659271,
-        0.9163019087639723,
-        0.4101541505265376,
-        0.4431789489678158,
-        0.9868112600303341,
-        0.9655733057084708,
-        0.9654376797974351,
-        0.8256406238757408,
-        0.9965409723913468,
-        0.8728802892838311,
-        0.7332608038869349
+        0.964164429334646,
+        0.995087413254814,
+        0.3668303317129001,
+        0.9987929255345238,
+        0.29720028331776144,
+        0.9264906788874697,
+        0.6152481155707152,
+        0.1523718578237474,
+        0.9993029963916803,
+        0.9976219802932857,
+        0.11017998331260809,
+        0.015107400781226679,
+        0.9150020929420326,
+        0.3519434654697145,
+        0.8106709468453359,
+        0.9635111909233781,
+        0.9956374005957143,
+        0.9904739510690307,
+        0.8783064967133243,
+        0.9995067914278464,
+        0.8961168609731208,
+        0.21947555462643697
       ],
       "oof_predictions": [
         1,
         1,
         0,
         1,
-        1,
-        1,
-        1,
         0,
         1,
         1,
         0,
+        1,
+        1,
+        0,
         0,
         1,
         0,
-        0,
         1,
         1,
         1,
         1,
         1,
         1,
-        1
+        1,
+        0
       ],
       "confusion_matrix": {
         "tn": 1,
         "fp": 2,
-        "fn": 5,
-        "tp": 14
+        "fn": 6,
+        "tp": 13
       }
     },
     "mode_stack": {
@@ -403,7 +439,7 @@
       }
     },
     "lightgbm_trajectory_full": {
-      "n_features": 29,
+      "n_features": 47,
       "feature_cols": [
         "reasoning_n_chunks",
         "reasoning_start",
@@ -433,7 +469,25 @@
         "reasoning_positive_mass",
         "reasoning_negative_mass",
         "reasoning_time_positive",
-        "reasoning_time_negative"
+        "reasoning_time_negative",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18"
       ],
       "metrics": {
         "roc_auc": {
@@ -649,6 +703,96 @@
           "std_importance": 0.0
         },
         {
+          "feature": "reasoning_traj_t01",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t02",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t03",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t04",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t05",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t06",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t07",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t08",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t09",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t10",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t11",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t12",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t13",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t14",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t15",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t16",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t17",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "reasoning_traj_t18",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
           "feature": "reasoning_trough_pos",
           "mean_importance": 0.0,
           "std_importance": 0.0
@@ -659,6 +803,109 @@
           "std_importance": 0.0
         }
       ]
+    },
+    "minirocket_reasoning_traj": {
+      "n_features": 20,
+      "feature_cols": [
+        "reasoning_traj_t00",
+        "reasoning_traj_t01",
+        "reasoning_traj_t02",
+        "reasoning_traj_t03",
+        "reasoning_traj_t04",
+        "reasoning_traj_t05",
+        "reasoning_traj_t06",
+        "reasoning_traj_t07",
+        "reasoning_traj_t08",
+        "reasoning_traj_t09",
+        "reasoning_traj_t10",
+        "reasoning_traj_t11",
+        "reasoning_traj_t12",
+        "reasoning_traj_t13",
+        "reasoning_traj_t14",
+        "reasoning_traj_t15",
+        "reasoning_traj_t16",
+        "reasoning_traj_t17",
+        "reasoning_traj_t18",
+        "reasoning_traj_t19"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.4047619047619048,
+          "std": 0.29928107357086986
+        },
+        "average_precision": {
+          "mean": 0.8704459561602418,
+          "std": 0.09798061844401874
+        },
+        "accuracy": {
+          "mean": 0.7678571428571429,
+          "std": 0.1390871600660467
+        },
+        "balanced_accuracy": {
+          "mean": 0.4444444444444444,
+          "std": 0.07856742013183862
+        },
+        "f1": {
+          "mean": 0.8612276612276611,
+          "std": 0.09481294474205511
+        }
+      },
+      "oof_probabilities": [
+        0.9737783433358815,
+        0.99976629339661,
+        0.8232399000231566,
+        0.9973184566511277,
+        0.3731614688221568,
+        0.9696753339751836,
+        0.633789079886785,
+        0.9803725608823278,
+        0.9813026033220569,
+        0.9628637388812221,
+        0.5679019525619158,
+        0.11480970327419102,
+        0.9665901447148141,
+        0.6971997282426083,
+        0.9910399169723528,
+        0.9730481764835549,
+        0.9825564210119038,
+        0.9990047121814661,
+        0.9720224722923076,
+        0.9994975139296504,
+        0.9975712146748762,
+        0.9032065046297909
+      ],
+      "oof_predictions": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "confusion_matrix": {
+        "tn": 0,
+        "fp": 3,
+        "fn": 2,
+        "tp": 17
+      },
+      "model_name": "minirocket",
+      "feature_importance": null
     },
     "lightgbm_mode_stack": {
       "n_features": 6,
@@ -874,11 +1121,39 @@
       "family": "shape"
     },
     {
+      "feature": "reasoning_traj_t16",
+      "roc_auc": 0.25396825396825395,
+      "signal_auc": 0.746031746031746,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_max_drop",
       "roc_auc": 0.2619047619047619,
       "signal_auc": 0.7380952380952381,
       "direction": "higher -> wrong",
       "family": "derailment"
+    },
+    {
+      "feature": "reasoning_traj_t03",
+      "roc_auc": 0.2619047619047619,
+      "signal_auc": 0.7380952380952381,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t07",
+      "roc_auc": 0.7301587301587302,
+      "signal_auc": 0.7301587301587302,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t06",
+      "roc_auc": 0.7301587301587301,
+      "signal_auc": 0.7301587301587301,
+      "direction": "higher -> correct",
+      "family": "shape"
     },
     {
       "feature": "reasoning_max_rise",
@@ -888,180 +1163,152 @@
       "family": "shape"
     },
     {
-      "feature": "reasoning_n_chunks",
-      "roc_auc": 0.30158730158730157,
-      "signal_auc": 0.6984126984126984,
-      "direction": "higher -> wrong",
-      "family": "length"
-    },
-    {
-      "feature": "reasoning_early_mean",
-      "roc_auc": 0.6984126984126983,
-      "signal_auc": 0.6984126984126983,
+      "feature": "reasoning_traj_t12",
+      "roc_auc": 0.6984126984126985,
+      "signal_auc": 0.6984126984126985,
       "direction": "higher -> correct",
       "family": "shape"
-    },
-    {
-      "feature": "reasoning_late_minus_early",
-      "roc_auc": 0.6428571428571429,
-      "signal_auc": 0.6428571428571429,
-      "direction": "higher -> correct",
-      "family": "transition"
-    },
-    {
-      "feature": "reasoning_zero_crossings",
-      "roc_auc": 0.3571428571428572,
-      "signal_auc": 0.6428571428571428,
-      "direction": "higher -> wrong",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_fall_from_peak",
-      "roc_auc": 0.6428571428571428,
-      "signal_auc": 0.6428571428571428,
-      "direction": "higher -> correct",
-      "family": "derailment"
     }
   ],
   "top_coefficients": [
     {
       "feature": "reasoning_max_drop_pos",
-      "coefficient": -1.3185399103046234,
-      "abs_coefficient": 1.3185399103046234,
+      "coefficient": -0.8587725803207484,
+      "abs_coefficient": 0.8587725803207484,
       "direction": "higher -> wrong",
       "family": "derailment"
     },
     {
       "feature": "reasoning_trough_pos",
-      "coefficient": 0.6780014094135206,
-      "abs_coefficient": 0.6780014094135206,
+      "coefficient": 0.6786382242840722,
+      "abs_coefficient": 0.6786382242840722,
       "direction": "higher -> correct",
       "family": "timing"
     },
     {
+      "feature": "reasoning_min",
+      "coefficient": -0.6585177767997566,
+      "abs_coefficient": 0.6585177767997566,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_n_chunks",
-      "coefficient": 0.6632295415388128,
-      "abs_coefficient": 0.6632295415388128,
+      "coefficient": 0.5523559541762171,
+      "abs_coefficient": 0.5523559541762171,
       "direction": "higher -> correct",
       "family": "length"
     },
     {
-      "feature": "reasoning_min",
-      "coefficient": -0.5788981933838648,
-      "abs_coefficient": 0.5788981933838648,
-      "direction": "higher -> wrong",
-      "family": "shape"
-    },
-    {
       "feature": "reasoning_monotonicity",
-      "coefficient": -0.5495222453950855,
-      "abs_coefficient": 0.5495222453950855,
+      "coefficient": -0.4690651625160505,
+      "abs_coefficient": 0.4690651625160505,
       "direction": "higher -> wrong",
       "family": "commitment"
     },
     {
+      "feature": "reasoning_traj_t12",
+      "coefficient": -0.45754574209307325,
+      "abs_coefficient": 0.45754574209307325,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_traj_t13",
+      "coefficient": -0.42923885927717287,
+      "abs_coefficient": 0.42923885927717287,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
       "feature": "reasoning_std",
-      "coefficient": 0.52601615875125,
-      "abs_coefficient": 0.52601615875125,
+      "coefficient": 0.4267565336804763,
+      "abs_coefficient": 0.4267565336804763,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_positive_mass",
-      "coefficient": 0.44063418128648235,
-      "abs_coefficient": 0.44063418128648235,
+      "feature": "reasoning_traj_t16",
+      "coefficient": 0.40721794573876785,
+      "abs_coefficient": 0.40721794573876785,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_zero_crossings",
-      "coefficient": -0.4026566966599739,
-      "abs_coefficient": 0.4026566966599739,
+      "coefficient": -0.35861677567951317,
+      "abs_coefficient": 0.35861677567951317,
       "direction": "higher -> wrong",
       "family": "thrashing"
     },
     {
-      "feature": "reasoning_max_rise_pos",
-      "coefficient": -0.38025013830203913,
-      "abs_coefficient": 0.38025013830203913,
-      "direction": "higher -> wrong",
-      "family": "timing"
+      "feature": "reasoning_positive_mass",
+      "coefficient": 0.3405041249423978,
+      "abs_coefficient": 0.3405041249423978,
+      "direction": "higher -> correct",
+      "family": "shape"
     },
     {
-      "feature": "reasoning_early_mean",
-      "coefficient": 0.2965343310629399,
-      "abs_coefficient": 0.2965343310629399,
+      "feature": "reasoning_range",
+      "coefficient": 0.32615709681741684,
+      "abs_coefficient": 0.32615709681741684,
+      "direction": "higher -> correct",
+      "family": "commitment"
+    },
+    {
+      "feature": "reasoning_traj_t15",
+      "coefficient": 0.299144721851896,
+      "abs_coefficient": 0.299144721851896,
       "direction": "higher -> correct",
       "family": "shape"
     },
     {
       "feature": "reasoning_peak_pos",
-      "coefficient": 0.2640667374195875,
-      "abs_coefficient": 0.2640667374195875,
+      "coefficient": 0.2736646726454799,
+      "abs_coefficient": 0.2736646726454799,
       "direction": "higher -> correct",
       "family": "timing"
     },
     {
       "feature": "reasoning_max_drop",
-      "coefficient": 0.24360907922512032,
-      "abs_coefficient": 0.24360907922512032,
+      "coefficient": 0.2033577396250575,
+      "abs_coefficient": 0.2033577396250575,
       "direction": "higher -> correct",
       "family": "derailment"
     },
     {
-      "feature": "reasoning_range",
-      "coefficient": 0.24302841605073222,
-      "abs_coefficient": 0.24302841605073222,
+      "feature": "reasoning_traj_t03",
+      "coefficient": 0.19003343998963815,
+      "abs_coefficient": 0.19003343998963815,
       "direction": "higher -> correct",
-      "family": "commitment"
-    },
-    {
-      "feature": "reasoning_start",
-      "coefficient": -0.20295379057747956,
-      "abs_coefficient": 0.20295379057747956,
-      "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_late_mean",
-      "coefficient": 0.16817008378431067,
-      "abs_coefficient": 0.16817008378431067,
+      "feature": "reasoning_max_rise_pos",
+      "coefficient": -0.17925394662792188,
+      "abs_coefficient": 0.17925394662792188,
+      "direction": "higher -> wrong",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_traj_t02",
+      "coefficient": 0.17002482505912878,
+      "abs_coefficient": 0.17002482505912878,
       "direction": "higher -> correct",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_max_rise",
-      "coefficient": -0.16413890665312383,
-      "abs_coefficient": 0.16413890665312383,
-      "direction": "higher -> wrong",
       "family": "shape"
     },
     {
-      "feature": "reasoning_mid_mean",
-      "coefficient": -0.155463951054715,
-      "abs_coefficient": 0.155463951054715,
-      "direction": "higher -> wrong",
+      "feature": "reasoning_traj_t09",
+      "coefficient": 0.1664917916707183,
+      "abs_coefficient": 0.1664917916707183,
+      "direction": "higher -> correct",
       "family": "shape"
     },
     {
-      "feature": "reasoning_direction_changes",
-      "coefficient": -0.15346523343540278,
-      "abs_coefficient": 0.15346523343540278,
-      "direction": "higher -> wrong",
-      "family": "thrashing"
-    },
-    {
-      "feature": "reasoning_end",
-      "coefficient": -0.15218870239026572,
-      "abs_coefficient": 0.15218870239026572,
-      "direction": "higher -> wrong",
-      "family": "landing"
-    },
-    {
-      "feature": "reasoning_max",
-      "coefficient": -0.13642527914091615,
-      "abs_coefficient": 0.13642527914091615,
-      "direction": "higher -> wrong",
+      "feature": "reasoning_early_mean",
+      "coefficient": 0.16427091565329316,
+      "abs_coefficient": 0.16427091565329316,
+      "direction": "higher -> correct",
       "family": "shape"
     }
   ],
@@ -1325,8 +1572,8 @@
   },
   "mode_stack_capture": {
     "mode_stack_auc": 0.16666666666666666,
-    "full_auc": 0.5238095238095237,
-    "captured_fraction": -14.000000000000052,
+    "full_auc": 0.4126984126984126,
+    "captured_fraction": NaN,
     "comparison_set": "trajectory_full"
   }
 }

@@ -1,0 +1,59 @@
+{
+  "dataset": "processbench",
+  "run_slug": "gsm8k",
+  "type_field": null,
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 207,
+    "n_step_rows": 1106,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.2946859903381642,
+    "by_failure_type": {
+      "unknown": {
+        "step_localization_accuracy": 0.2946859903381642,
+        "n_failed": 207
+      }
+    },
+    "by_subject": {
+      "gsm8k": {
+        "step_localization_accuracy": 0.2946859903381642,
+        "n_failed": 207
+      }
+    }
+  },
+  "type": {
+    "skipped": true,
+    "reason": "Dataset `processbench` has no categorical failure-type label."
+  }
+}

@@ -35,3 +35,10 @@ failure_analysis:
   cv_folds: 5
   random_state: 42
   top_k_features: 12
+
+failure_attribution:
+  cv_folds: 5
+  random_state: 42
+  # ProcessBench has no failure-type label; only failure-location prediction
+  # runs. min_class_count is here for symmetry but unused.
+  min_class_count: 5

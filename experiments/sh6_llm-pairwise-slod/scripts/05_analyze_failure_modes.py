@@ -49,7 +49,9 @@ from semanticscale.sh6.failure_analysis import (
     plot_mode_detector_summary,
     plot_roc_curves,
     plot_top_coefficients,
+    resolve_run_paths,
     score_univariate_features,
+    trajectory_series_columns,
     write_feature_table,
     write_markdown_report,
     write_summary_json,
@@ -65,7 +67,7 @@ from semanticscale.utils import load_config, load_jsonl, setup_logging
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODELS = ("logreg", "lightgbm")
+DEFAULT_MODELS = ("logreg", "lightgbm", "minirocket")
 REPORTS_DIR_DEFAULT = Path(__file__).resolve().parents[1] / "reports"
 PROTOCOL_DELTA = 0.03
 N_BOOTSTRAP_DEFAULT = 1000
@@ -150,6 +152,12 @@ def _attach_file_log(log_path: Path) -> logging.Handler:
     return handler
 
 
+def _minirocket_trajectory_cols(features_csv: Path) -> list[str]:
+    """Return sorted reasoning_traj_t* columns from a features CSV, or []."""
+    header = pd.read_csv(features_csv, nrows=0)
+    return sorted(c for c in header.columns if c.startswith("reasoning_traj_t"))
+
+
 def _run_model_comparison_for_run(
     *,
     reports_dir: Path,
@@ -159,7 +167,11 @@ def _run_model_comparison_for_run(
     cv_folds: int,
     random_state: int,
 ) -> None:
-    """Run additional model artifacts for one run using trajectory_features.csv."""
+    """Run additional model artifacts for one run using trajectory_features.csv.
+
+    MiniRocket is routed separately: it operates on the ``reasoning_traj_t*``
+    time-series columns rather than the tabular ``feature_set``.
+    """
     features_csv = reports_dir / "trajectory_features.csv"
     if not features_csv.exists():
         logger.error("Features CSV not found: %s", features_csv)
@@ -172,19 +184,50 @@ def _run_model_comparison_for_run(
         logger.info("Running model comparison on %s", features_csv)
         logger.info("Artifacts dir: %s", artifact_dir)
         logger.info("Models: %s", models)
-        summary = run_models_on_run(
-            features_csv=features_csv,
-            artifact_dir=artifact_dir,
-            models=models,
-            feature_set=feature_set,
-            target_label=target_label,
-            cv_folds=cv_folds,
-            random_state=random_state,
-            repo_root=Path.cwd(),
-        )
-        if "_skipped" in summary:
-            logger.warning("Model comparison skipped: %s", summary["_skipped"]["reason"])
-            return
+
+        tabular_models = [m for m in models if m != "minirocket"]
+        summary: dict = {}
+
+        if tabular_models:
+            result = run_models_on_run(
+                features_csv=features_csv,
+                artifact_dir=artifact_dir,
+                models=tabular_models,
+                feature_set=feature_set,
+                target_label=target_label,
+                cv_folds=cv_folds,
+                random_state=random_state,
+                repo_root=Path.cwd(),
+            )
+            if "_skipped" in result:
+                logger.warning("Model comparison skipped: %s", result["_skipped"]["reason"])
+                return
+            summary.update(result)
+
+        if "minirocket" in models:
+            traj_cols = _minirocket_trajectory_cols(features_csv)
+            if not traj_cols:
+                logger.warning(
+                    "MiniRocket requested but no reasoning_traj_t* columns found in %s "
+                    "— re-run without --skip-failure-analysis to regenerate the CSV",
+                    features_csv,
+                )
+            else:
+                mr_result = run_models_on_run(
+                    features_csv=features_csv,
+                    artifact_dir=artifact_dir,
+                    models=["minirocket"],
+                    feature_set=feature_set,
+                    target_label=target_label,
+                    cv_folds=cv_folds,
+                    random_state=random_state,
+                    repo_root=Path.cwd(),
+                    feature_cols_override=traj_cols,
+                )
+                if "_skipped" in mr_result:
+                    logger.warning("MiniRocket skipped: %s", mr_result["_skipped"]["reason"])
+                else:
+                    summary.update(mr_result)
 
         for model_name, info in summary.items():
             logger.info(
@@ -526,6 +569,14 @@ def _run_failure_analysis(
         if analysis_note:
             logger.info(analysis_note)
         extra_models = {"lightgbm_trajectory_full": ("lightgbm", full_features)}
+        reasoning_traj_cols = trajectory_series_columns(df_with_scores, prefix="reasoning")
+        if reasoning_traj_cols:
+            extra_models["minirocket_reasoning_traj"] = (
+                "minirocket",
+                reasoning_traj_cols,
+            )
+        else:
+            logger.info("Skipping minirocket_reasoning_traj: no usable reasoning trajectory columns")
         mode_stack_features = feature_sets.get("mode_stack") or []
         if mode_stack_features:
             extra_models["lightgbm_mode_stack"] = ("lightgbm", mode_stack_features)
@@ -619,9 +670,6 @@ def main() -> None:
         return
 
     config = load_config(args.config)
-    project_root = Path(config["_project_root"])
-    dataset_name = ds.dataset_name(config)
-    run_slug = args.run_slug or ds.run_slug(config)
 
     analysis_cfg = config.get("failure_analysis", {})
     target_label = args.target or analysis_cfg.get("target_label", "auto")
@@ -630,10 +678,16 @@ def main() -> None:
     random_state = int(analysis_cfg.get("random_state", 42))
     top_k = int(analysis_cfg.get("top_k_features", 12))
 
-    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
-    reports_dir = (project_root / config["paths"]["reports_dir"]).resolve() / dataset_name / run_slug
+    paths = resolve_run_paths(
+        config,
+        run_slug=args.run_slug,
+        required_files=("traces.jsonl", "chunk_rankings.jsonl"),
+    )
+    dataset_name = paths.dataset_name
+    run_slug = paths.run_slug
+    reports_dir = paths.run_reports_dir
     if not args.skip_failure_analysis:
-        run_dir = data_dir / dataset_name / run_slug
+        run_dir = paths.run_dir
 
         traces_path = run_dir / "traces.jsonl"
         rankings_path = run_dir / "chunk_rankings.jsonl"

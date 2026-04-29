@@ -1,7 +1,7 @@
 {
   "model_name": "lightgbm",
   "feature_set": "trajectory_full",
-  "n_features": 29,
+  "n_features": 47,
   "feature_cols": [
     "reasoning_n_chunks",
     "reasoning_start",
@@ -31,7 +31,25 @@
     "reasoning_positive_mass",
     "reasoning_negative_mass",
     "reasoning_time_positive",
-    "reasoning_time_negative"
+    "reasoning_time_negative",
+    "reasoning_traj_t01",
+    "reasoning_traj_t02",
+    "reasoning_traj_t03",
+    "reasoning_traj_t04",
+    "reasoning_traj_t05",
+    "reasoning_traj_t06",
+    "reasoning_traj_t07",
+    "reasoning_traj_t08",
+    "reasoning_traj_t09",
+    "reasoning_traj_t10",
+    "reasoning_traj_t11",
+    "reasoning_traj_t12",
+    "reasoning_traj_t13",
+    "reasoning_traj_t14",
+    "reasoning_traj_t15",
+    "reasoning_traj_t16",
+    "reasoning_traj_t17",
+    "reasoning_traj_t18"
   ],
   "cv_folds": 5,
   "random_state": 42,
@@ -43,12 +61,12 @@
   },
   "fold_metrics": {
     "roc_auc": {
-      "mean": 0.8227159227344085,
-      "std": 0.021694600326294926
+      "mean": 0.8230086047188504,
+      "std": 0.022088719022189878
     },
     "average_precision": {
-      "mean": 0.7271682355132556,
-      "std": 0.03372943255267334
+      "mean": 0.7273486518425823,
+      "std": 0.03395887939306526
     },
     "accuracy": {
       "mean": 0.7382060290396286,
@@ -69,9 +87,9 @@
     "fn": 176,
     "tp": 663
   },
-  "duration_seconds": 1.1773427089792676,
-  "timestamp_utc": "2026-04-29T10:45:56+00:00",
-  "git_sha": "461ab22",
+  "duration_seconds": 2.296090211981209,
+  "timestamp_utc": "2026-04-29T14:30:34+00:00",
+  "git_sha": "a3d7e83",
   "python_version": "3.12.3",
   "library_versions": {
     "sklearn": "1.7.2",

@@ -242,7 +242,8 @@ Stage 5 writes the following files under
 - `failure_prediction.md`
   Human-readable report.
 - `failure_prediction_roc.png`
-  Cross-validated ROC curves for the feature-set baselines.
+  Cross-validated ROC curves for the feature-set baselines and first-class
+  model variants such as MiniRocket.
 - `failure_feature_coefficients.png`
   Top coefficients from the full logistic model.
 - `failure_mode_detectors.png`

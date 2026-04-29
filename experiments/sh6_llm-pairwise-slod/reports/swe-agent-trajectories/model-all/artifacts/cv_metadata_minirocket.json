@@ -1,0 +1,74 @@
+{
+  "model_name": "minirocket",
+  "feature_set": "custom",
+  "n_features": 20,
+  "feature_cols": [
+    "reasoning_traj_t00",
+    "reasoning_traj_t01",
+    "reasoning_traj_t02",
+    "reasoning_traj_t03",
+    "reasoning_traj_t04",
+    "reasoning_traj_t05",
+    "reasoning_traj_t06",
+    "reasoning_traj_t07",
+    "reasoning_traj_t08",
+    "reasoning_traj_t09",
+    "reasoning_traj_t10",
+    "reasoning_traj_t11",
+    "reasoning_traj_t12",
+    "reasoning_traj_t13",
+    "reasoning_traj_t14",
+    "reasoning_traj_t15",
+    "reasoning_traj_t16",
+    "reasoning_traj_t17",
+    "reasoning_traj_t18",
+    "reasoning_traj_t19"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "auto-resolved",
+  "target_counts": {
+    "n_items": 2017,
+    "n_positive": 839,
+    "n_negative": 1178
+  },
+  "fold_metrics": {
+    "roc_auc": {
+      "mean": 0.8227168026910476,
+      "std": 0.02110421536533486
+    },
+    "average_precision": {
+      "mean": 0.7254693735174276,
+      "std": 0.033932052636290684
+    },
+    "accuracy": {
+      "mean": 0.7382060290396286,
+      "std": 0.02093834075984356
+    },
+    "balanced_accuracy": {
+      "mean": 0.7457065231753793,
+      "std": 0.01903980983502586
+    },
+    "f1": {
+      "mean": 0.7154231945228853,
+      "std": 0.018937679956181706
+    }
+  },
+  "confusion_matrix": {
+    "tn": 826,
+    "fp": 352,
+    "fn": 176,
+    "tp": 663
+  },
+  "duration_seconds": 0.2724480990145821,
+  "timestamp_utc": "2026-04-29T14:30:35+00:00",
+  "git_sha": "a3d7e83",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.7.2",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1"
+  }
+}

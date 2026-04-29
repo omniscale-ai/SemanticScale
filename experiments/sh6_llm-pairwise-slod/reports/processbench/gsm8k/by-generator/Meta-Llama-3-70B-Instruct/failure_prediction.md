@@ -1,4 +1,4 @@
-# SH6 processbench-gsm8k/gsm8k/by-generator/Meta-Llama-3-70B-Instruct — Failure Prediction
+# SH6 processbench/gsm8k/by-generator/Meta-Llama-3-70B-Instruct — Failure Prediction
 
 ## Setup
 
@@ -15,9 +15,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 1 | 0.231 +/- 0.159 | 0.413 +/- 0.048 | 0.358 +/- 0.073 | 0.357 +/- 0.074 | 0.490 +/- 0.121 |
-| trajectory_shape (logreg) | 29 | 0.533 +/- 0.267 | 0.618 +/- 0.164 | 0.575 +/- 0.230 | 0.576 +/- 0.231 | 0.462 +/- 0.298 |
-| trajectory_full (logreg) | 29 | 0.533 +/- 0.267 | 0.618 +/- 0.164 | 0.575 +/- 0.230 | 0.576 +/- 0.231 | 0.462 +/- 0.298 |
-| trajectory_full (lightgbm) | 29 | 0.600 +/- 0.249 | 0.713 +/- 0.192 | 0.633 +/- 0.194 | 0.638 +/- 0.199 | 0.612 +/- 0.194 |
+| trajectory_shape (logreg) | 47 | 0.467 +/- 0.178 | 0.568 +/- 0.082 | 0.442 +/- 0.235 | 0.443 +/- 0.236 | 0.404 +/- 0.251 |
+| trajectory_full (logreg) | 47 | 0.467 +/- 0.178 | 0.568 +/- 0.082 | 0.442 +/- 0.235 | 0.443 +/- 0.236 | 0.404 +/- 0.251 |
+| reasoning_traj (MiniRocket) | 20 | 0.611 +/- 0.122 | 0.681 +/- 0.114 | 0.525 +/- 0.073 | 0.519 +/- 0.079 | 0.473 +/- 0.104 |
+| trajectory_full (lightgbm) | 47 | 0.572 +/- 0.211 | 0.678 +/- 0.139 | 0.600 +/- 0.249 | 0.605 +/- 0.254 | 0.546 +/- 0.304 |
 | mode_stack (logreg) | 6 | 0.311 +/- 0.191 | 0.509 +/- 0.086 | 0.275 +/- 0.090 | 0.286 +/- 0.103 | 0.224 +/- 0.196 |
 | mode_stack (lightgbm) | 6 | 0.544 +/- 0.184 | 0.640 +/- 0.135 | 0.600 +/- 0.133 | 0.610 +/- 0.139 | 0.622 +/- 0.104 |
 
@@ -32,28 +33,28 @@
 | reasoning_peak_pos | timing | 0.717 | higher -> correct |
 | reasoning_positive_mass | shape | 0.711 | higher -> correct |
 | reasoning_late_minus_early | transition | 0.694 | higher -> wrong |
+| reasoning_traj_t17 | shape | 0.694 | higher -> wrong |
 | reasoning_early_mean | shape | 0.689 | higher -> wrong |
+| reasoning_traj_t02 | shape | 0.689 | higher -> wrong |
 | reasoning_range | commitment | 0.683 | higher -> wrong |
 | reasoning_trough_pos | timing | 0.678 | higher -> wrong |
-| reasoning_std | shape | 0.672 | higher -> wrong |
-| reasoning_min | shape | 0.672 | higher -> wrong |
 
 ## Strongest Multivariate Coefficients
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| reasoning_monotonicity | commitment | 1.150 | higher -> correct |
-| reasoning_peak_pos | timing | 1.138 | higher -> correct |
-| reasoning_max_drop | derailment | 1.057 | higher -> correct |
-| reasoning_positive_mass | shape | -0.923 | higher -> wrong |
-| reasoning_late_mean | landing | -0.586 | higher -> wrong |
-| reasoning_min | shape | -0.539 | higher -> wrong |
-| reasoning_rebound_from_trough | shape | 0.369 | higher -> correct |
-| reasoning_zero_crossings | thrashing | -0.302 | higher -> wrong |
-| reasoning_late_minus_early | transition | -0.300 | higher -> wrong |
-| reasoning_n_chunks | length | -0.281 | higher -> wrong |
-| reasoning_direction_changes | thrashing | 0.252 | higher -> correct |
-| reasoning_fall_from_peak | derailment | -0.232 | higher -> wrong |
+| reasoning_peak_pos | timing | 1.194 | higher -> correct |
+| reasoning_monotonicity | commitment | 1.172 | higher -> correct |
+| reasoning_max_drop | derailment | 1.032 | higher -> correct |
+| reasoning_positive_mass | shape | -0.854 | higher -> wrong |
+| reasoning_min | shape | -0.641 | higher -> wrong |
+| reasoning_traj_t14 | shape | -0.425 | higher -> wrong |
+| reasoning_traj_t15 | shape | -0.413 | higher -> wrong |
+| reasoning_direction_changes | thrashing | 0.364 | higher -> correct |
+| reasoning_std | shape | -0.302 | higher -> wrong |
+| reasoning_zero_crossings | thrashing | -0.262 | higher -> wrong |
+| reasoning_negative_mass | shape | -0.260 | higher -> wrong |
+| reasoning_n_chunks | length | -0.250 | higher -> wrong |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -108,8 +109,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.311**
-- `trajectory_full` ROC-AUC: **0.533**
-- Above-chance discrimination preserved by the mode stack: **-566.7%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.467**
+- Above-chance discrimination preserved by the mode stack: **n/a** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 

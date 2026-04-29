@@ -15,9 +15,10 @@
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
 | length_only (logreg) | 1 | 0.458 +/- 0.144 | 0.613 +/- 0.121 | 0.485 +/- 0.118 | 0.511 +/- 0.113 | 0.608 +/- 0.082 |
-| trajectory_shape (logreg) | 29 | 0.632 +/- 0.039 | 0.785 +/- 0.041 | 0.508 +/- 0.090 | 0.511 +/- 0.089 | 0.552 +/- 0.106 |
-| trajectory_full (logreg) | 29 | 0.632 +/- 0.039 | 0.785 +/- 0.041 | 0.508 +/- 0.090 | 0.511 +/- 0.089 | 0.552 +/- 0.106 |
-| trajectory_full (lightgbm) | 29 | 0.531 +/- 0.204 | 0.698 +/- 0.168 | 0.515 +/- 0.080 | 0.533 +/- 0.083 | 0.597 +/- 0.098 |
+| trajectory_shape (logreg) | 47 | 0.644 +/- 0.155 | 0.773 +/- 0.132 | 0.538 +/- 0.139 | 0.533 +/- 0.130 | 0.549 +/- 0.117 |
+| trajectory_full (logreg) | 47 | 0.644 +/- 0.155 | 0.773 +/- 0.132 | 0.538 +/- 0.139 | 0.533 +/- 0.130 | 0.549 +/- 0.117 |
+| reasoning_traj (MiniRocket) | 20 | 0.339 +/- 0.190 | 0.605 +/- 0.149 | 0.352 +/- 0.118 | 0.378 +/- 0.113 | 0.448 +/- 0.132 |
+| trajectory_full (lightgbm) | 47 | 0.471 +/- 0.181 | 0.632 +/- 0.127 | 0.513 +/- 0.166 | 0.511 +/- 0.166 | 0.532 +/- 0.181 |
 | mode_stack (logreg) | 6 | 0.587 +/- 0.160 | 0.729 +/- 0.131 | 0.555 +/- 0.149 | 0.556 +/- 0.157 | 0.557 +/- 0.194 |
 | mode_stack (lightgbm) | 6 | 0.424 +/- 0.122 | 0.635 +/- 0.127 | 0.443 +/- 0.159 | 0.444 +/- 0.141 | 0.474 +/- 0.076 |
 
@@ -25,35 +26,35 @@
 
 | Feature | Family | Signal ROC-AUC | Direction |
 |---|---|---|---|
+| reasoning_traj_t18 | shape | 0.697 | higher -> correct |
+| reasoning_traj_t12 | shape | 0.693 | higher -> wrong |
+| reasoning_traj_t01 | shape | 0.687 | higher -> wrong |
 | reasoning_rebound_from_trough | shape | 0.679 | higher -> correct |
 | reasoning_max_rise | shape | 0.678 | higher -> correct |
+| reasoning_traj_t17 | shape | 0.672 | higher -> correct |
+| reasoning_traj_t11 | shape | 0.661 | higher -> wrong |
 | reasoning_max_rise_pos | timing | 0.661 | higher -> wrong |
 | reasoning_end | landing | 0.656 | higher -> correct |
 | reasoning_peak_pos | timing | 0.652 | higher -> correct |
+| reasoning_traj_t05 | shape | 0.650 | higher -> wrong |
 | reasoning_end_minus_start | landing | 0.648 | higher -> correct |
-| reasoning_start | shape | 0.638 | higher -> correct |
-| reasoning_min | shape | 0.628 | higher -> wrong |
-| reasoning_trough_pos | timing | 0.611 | higher -> correct |
-| reasoning_zero_crossings | thrashing | 0.608 | higher -> wrong |
-| reasoning_fall_from_peak | derailment | 0.606 | higher -> correct |
-| reasoning_max_drop_pos | derailment | 0.605 | higher -> correct |
 
 ## Strongest Multivariate Coefficients
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| reasoning_max_rise | shape | 1.518 | higher -> correct |
-| reasoning_max_drop_pos | derailment | 0.861 | higher -> correct |
-| reasoning_max_drop | derailment | -0.765 | higher -> wrong |
-| reasoning_max | shape | 0.710 | higher -> correct |
-| reasoning_max_rise_pos | timing | -0.535 | higher -> wrong |
-| reasoning_peak_pos | timing | 0.525 | higher -> correct |
-| reasoning_trough_pos | timing | -0.489 | higher -> wrong |
-| reasoning_range | commitment | 0.488 | higher -> correct |
-| reasoning_positive_mass | shape | -0.455 | higher -> wrong |
-| reasoning_mid_mean | shape | -0.373 | higher -> wrong |
-| reasoning_curvature_abs_mean | thrashing | 0.372 | higher -> correct |
-| reasoning_direction_changes | thrashing | -0.278 | higher -> wrong |
+| reasoning_max_rise | shape | 1.278 | higher -> correct |
+| reasoning_max_drop | derailment | -0.901 | higher -> wrong |
+| reasoning_traj_t03 | shape | -0.829 | higher -> wrong |
+| reasoning_traj_t05 | shape | 0.757 | higher -> correct |
+| reasoning_max_rise_pos | timing | -0.746 | higher -> wrong |
+| reasoning_max_drop_pos | derailment | 0.694 | higher -> correct |
+| reasoning_traj_t15 | shape | -0.604 | higher -> wrong |
+| reasoning_traj_t07 | shape | -0.567 | higher -> wrong |
+| reasoning_traj_t17 | shape | 0.554 | higher -> correct |
+| reasoning_max | shape | 0.514 | higher -> correct |
+| reasoning_traj_t12 | shape | 0.457 | higher -> correct |
+| reasoning_peak_pos | timing | 0.408 | higher -> correct |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -108,8 +109,8 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
 - `mode_stack` ROC-AUC: **0.587**
-- `trajectory_full` ROC-AUC: **0.632**
-- Above-chance discrimination preserved by the mode stack: **65.5%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `trajectory_full` ROC-AUC: **0.644**
+- Above-chance discrimination preserved by the mode stack: **60.0%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 
