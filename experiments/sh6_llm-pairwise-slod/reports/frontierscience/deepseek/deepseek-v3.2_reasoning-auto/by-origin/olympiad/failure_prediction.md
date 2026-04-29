@@ -15,7 +15,8 @@
 | trajectory_shape (logreg) | 60 | 0.596 +/- 0.155 | 0.721 +/- 0.109 | 0.617 +/- 0.105 | 0.642 +/- 0.102 | 0.714 +/- 0.084 |
 | trajectory_full (logreg) | 63 | 0.680 +/- 0.133 | 0.790 +/- 0.091 | 0.703 +/- 0.078 | 0.726 +/- 0.070 | 0.786 +/- 0.059 |
 | trajectory_full (lightgbm) | 63 | 0.733 +/- 0.090 | 0.784 +/- 0.091 | 0.746 +/- 0.074 | 0.789 +/- 0.074 | 0.845 +/- 0.060 |
-| mode_stack (logreg) | 10 | 0.637 +/- 0.104 | 0.752 +/- 0.053 | 0.633 +/- 0.131 | 0.642 +/- 0.150 | 0.679 +/- 0.185 |
+| mode_stack (logreg) | 13 | 0.733 +/- 0.131 | 0.822 +/- 0.088 | 0.717 +/- 0.109 | 0.747 +/- 0.107 | 0.802 +/- 0.094 |
+| mode_stack (lightgbm) | 13 | 0.740 +/- 0.080 | 0.818 +/- 0.053 | 0.648 +/- 0.148 | 0.695 +/- 0.117 | 0.773 +/- 0.083 |
 
 ## Top Single Features
 
@@ -105,9 +106,9 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
-- `mode_stack` ROC-AUC: **0.637**
+- `mode_stack` ROC-AUC: **0.733**
 - `trajectory_full` ROC-AUC: **0.680**
-- Above-chance discrimination preserved by the mode stack: **76.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- Above-chance discrimination preserved by the mode stack: **129.6%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 
@@ -122,7 +123,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

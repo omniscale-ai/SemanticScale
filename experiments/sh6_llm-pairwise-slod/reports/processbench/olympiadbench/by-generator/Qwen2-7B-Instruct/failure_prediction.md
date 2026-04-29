@@ -18,7 +18,8 @@
 | trajectory_shape (logreg) | 29 | 0.446 +/- 0.134 | 0.688 +/- 0.118 | 0.513 +/- 0.183 | 0.544 +/- 0.161 | 0.613 +/- 0.204 |
 | trajectory_full (logreg) | 29 | 0.446 +/- 0.134 | 0.688 +/- 0.118 | 0.513 +/- 0.183 | 0.544 +/- 0.161 | 0.613 +/- 0.204 |
 | trajectory_full (lightgbm) | 29 | 0.577 +/- 0.145 | 0.759 +/- 0.090 | 0.608 +/- 0.050 | 0.689 +/- 0.085 | 0.776 +/- 0.080 |
-| mode_stack (logreg) | 5 | 0.442 +/- 0.322 | 0.708 +/- 0.178 | 0.513 +/- 0.124 | 0.584 +/- 0.084 | 0.699 +/- 0.042 |
+| mode_stack (logreg) | 6 | 0.442 +/- 0.322 | 0.708 +/- 0.178 | 0.513 +/- 0.124 | 0.584 +/- 0.084 | 0.699 +/- 0.042 |
+| mode_stack (lightgbm) | 6 | 0.528 +/- 0.165 | 0.715 +/- 0.095 | 0.532 +/- 0.175 | 0.584 +/- 0.145 | 0.685 +/- 0.110 |
 
 ## Top Single Features
 
@@ -121,7 +122,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

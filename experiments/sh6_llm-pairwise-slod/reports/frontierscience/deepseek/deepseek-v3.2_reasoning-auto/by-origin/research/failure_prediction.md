@@ -31,7 +31,7 @@
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

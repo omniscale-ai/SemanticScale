@@ -15,7 +15,8 @@
 | trajectory_shape (logreg) | 29 | 0.618 +/- 0.058 | 0.744 +/- 0.047 | 0.646 +/- 0.044 | 0.660 +/- 0.040 | 0.723 +/- 0.037 |
 | trajectory_full (logreg) | 29 | 0.618 +/- 0.058 | 0.744 +/- 0.047 | 0.646 +/- 0.044 | 0.660 +/- 0.040 | 0.723 +/- 0.037 |
 | trajectory_full (lightgbm) | 29 | 0.658 +/- 0.031 | 0.787 +/- 0.028 | 0.608 +/- 0.080 | 0.640 +/- 0.068 | 0.720 +/- 0.049 |
-| mode_stack (logreg) | 3 | 0.455 +/- 0.088 | 0.652 +/- 0.044 | 0.463 +/- 0.117 | 0.473 +/- 0.093 | 0.549 +/- 0.068 |
+| mode_stack (logreg) | 4 | 0.689 +/- 0.089 | 0.780 +/- 0.080 | 0.667 +/- 0.057 | 0.691 +/- 0.047 | 0.758 +/- 0.035 |
+| mode_stack (lightgbm) | 4 | 0.624 +/- 0.060 | 0.724 +/- 0.062 | 0.613 +/- 0.033 | 0.650 +/- 0.040 | 0.730 +/- 0.044 |
 
 ## Top Single Features
 
@@ -103,9 +104,9 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
-- `mode_stack` ROC-AUC: **0.455**
+- `mode_stack` ROC-AUC: **0.689**
 - `trajectory_full` ROC-AUC: **0.618**
-- Above-chance discrimination preserved by the mode stack: **-37.8%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- Above-chance discrimination preserved by the mode stack: **159.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 
@@ -118,7 +119,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

@@ -1,0 +1,51 @@
+paths:
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
+
+dataset:
+  name: agenterrorbench
+  # Local cache directory for AgentErrorBench trajectories. If the directory is
+  # missing, SH6 downloads the public benchmark folder from Google Drive.
+  # Supported inputs are:
+  # - AgentDebug-style JSON with `metadata` + `messages`
+  # - episode JSON/JSONL produced by `agentdebug.rollout.step_to_episode`
+  # - step-level rollout JSONL with `prompt` / `action`
+  # - AgentErrorBench label files (`*_labels.json`)
+  # - optional `*_critical_error.json` annotations next to the trajectories
+  local_path: ../../../data/sh6/agenterrorbench
+  drive_url: https://drive.google.com/drive/folders/1bQe6dQA85pktT63YnKIKJDTVaH3O3Vpu?usp=drive_link
+  download_if_missing: true
+  # Optional mirror checkout if you keep the benchmark in a Git repo instead.
+  repo_url: null
+  repo_ref: main
+  source_subdir: null
+  file_globs:
+    - "**/*.jsonl"
+    - "**/*.json"
+  environments: all
+  providers: all
+  models: all
+  max_samples: null
+
+# No `traces` block: AgentErrorBench already ships trajectories and labels, so
+# Stage 1 just loads and normalises them.
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: false
+    extra_body:
+      max_tokens: 65536
+  max_concurrent: 40
+  extra_comparisons_per_problem: 20
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

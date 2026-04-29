@@ -18,7 +18,8 @@
 | trajectory_shape (logreg) | 29 | 0.440 +/- 0.206 | 0.623 +/- 0.095 | 0.460 +/- 0.105 | 0.491 +/- 0.093 | 0.563 +/- 0.114 |
 | trajectory_full (logreg) | 29 | 0.440 +/- 0.206 | 0.623 +/- 0.095 | 0.460 +/- 0.105 | 0.491 +/- 0.093 | 0.563 +/- 0.114 |
 | trajectory_full (lightgbm) | 29 | 0.444 +/- 0.086 | 0.634 +/- 0.062 | 0.518 +/- 0.058 | 0.545 +/- 0.057 | 0.637 +/- 0.049 |
-| mode_stack (logreg) | 5 | 0.582 +/- 0.231 | 0.704 +/- 0.130 | 0.527 +/- 0.119 | 0.527 +/- 0.134 | 0.536 +/- 0.174 |
+| mode_stack (logreg) | 6 | 0.589 +/- 0.251 | 0.716 +/- 0.141 | 0.527 +/- 0.119 | 0.527 +/- 0.134 | 0.536 +/- 0.174 |
+| mode_stack (lightgbm) | 6 | 0.403 +/- 0.113 | 0.557 +/- 0.062 | 0.516 +/- 0.108 | 0.527 +/- 0.106 | 0.578 +/- 0.097 |
 
 ## Top Single Features
 
@@ -106,7 +107,7 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
-- `mode_stack` ROC-AUC: **0.582**
+- `mode_stack` ROC-AUC: **0.589**
 - `trajectory_full` ROC-AUC: **0.440**
 - Above-chance discrimination preserved by the mode stack: **n/a** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
@@ -121,7 +122,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

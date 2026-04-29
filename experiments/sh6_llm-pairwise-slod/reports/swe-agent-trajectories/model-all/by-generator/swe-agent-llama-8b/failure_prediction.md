@@ -10,15 +10,20 @@
 - Final answer correct but reasoning wrong: 0
 - Final answer wrong but reasoning clean: 0
 
+## Status
+
+- The `lenght_abort` baseline includes both chunk-count features and `truncation_abort_score` on this run.
+
 ## Cross-Validated Prediction
 
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
-| length_only (logreg) | 1 | 0.625 +/- 0.048 | 0.497 +/- 0.061 | 0.620 +/- 0.038 | 0.590 +/- 0.046 | 0.591 +/- 0.028 |
+| lenght_abort (logreg) | 2 | 0.759 +/- 0.044 | 0.607 +/- 0.079 | 0.734 +/- 0.024 | 0.705 +/- 0.021 | 0.696 +/- 0.025 |
 | trajectory_shape (logreg) | 29 | 0.713 +/- 0.051 | 0.607 +/- 0.053 | 0.677 +/- 0.047 | 0.670 +/- 0.045 | 0.626 +/- 0.051 |
 | trajectory_full (logreg) | 29 | 0.714 +/- 0.051 | 0.609 +/- 0.052 | 0.677 +/- 0.047 | 0.670 +/- 0.045 | 0.626 +/- 0.051 |
 | trajectory_full (lightgbm) | 29 | 0.710 +/- 0.046 | 0.601 +/- 0.052 | 0.681 +/- 0.040 | 0.683 +/- 0.039 | 0.623 +/- 0.044 |
-| mode_stack (logreg) | 6 | 0.751 +/- 0.036 | 0.586 +/- 0.051 | 0.723 +/- 0.028 | 0.698 +/- 0.022 | 0.683 +/- 0.031 |
+| mode_stack (logreg) | 7 | 0.751 +/- 0.037 | 0.586 +/- 0.051 | 0.723 +/- 0.028 | 0.698 +/- 0.022 | 0.683 +/- 0.031 |
+| mode_stack (lightgbm) | 7 | 0.850 +/- 0.029 | 0.763 +/- 0.023 | 0.765 +/- 0.033 | 0.765 +/- 0.031 | 0.717 +/- 0.039 |
 
 ## Top Single Features
 
@@ -123,7 +128,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

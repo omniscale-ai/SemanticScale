@@ -1,0 +1,694 @@
+id,row_index,fold,target,prob_hallucination,pred_hallucination,subject,hallucination_category
+BFCL/000,0,3,1,0.39011543986706965,0,Tool Use,Unknown Type
+BFCL/001,1,4,0,0.5262251570355254,1,Tool Use,Unknown Type
+BFCL/002,2,1,1,0.392108031481638,0,Tool Use,Unknown Type
+BFCL/003,3,0,1,0.4473562076158973,0,Tool Use,Unknown Type
+BFCL/004,4,4,1,0.34186367123896005,0,Tool Use,Unknown Type
+BFCL/005,5,0,1,0.6597955569493511,1,Tool Use,Unknown Type
+BFCL/006,6,3,1,0.5954949119059231,1,Tool Use,Unknown Type
+BFCL/007,7,0,0,0.5076030299231237,1,Tool Use,Unknown Type
+BFCL/008,8,4,1,0.5978368279826659,1,Tool Use,Unknown Type
+BFCL/009,9,2,0,0.5686651060018054,1,Tool Use,Unknown Type
+BFCL/010,10,1,0,0.3664685392408903,0,Tool Use,Unknown Type
+BFCL/011,11,4,0,0.5764429378653705,1,Tool Use,Unknown Type
+BFCL/012,12,1,0,0.5592154563088406,1,Tool Use,Unknown Type
+BFCL/013,13,4,0,0.43042480115400295,0,Tool Use,Unknown Type
+BFCL/014,14,2,1,0.5509929360823399,1,Tool Use,Unknown Type
+BFCL/015,15,1,1,0.45944965696646667,0,Tool Use,Unknown Type
+BFCL/016,16,4,1,0.5809930221133044,1,Tool Use,Unknown Type
+BFCL/017,17,4,1,0.8584519013546438,1,Tool Use,Unknown Type
+BFCL/018,18,4,0,0.3879972090447582,0,Tool Use,Unknown Type
+BFCL/019,19,2,0,0.5328774048920433,1,Tool Use,Unknown Type
+BFCL/020,20,2,0,0.5550643507335778,1,Tool Use,Unknown Type
+BFCL/021,21,0,1,0.36043728393917107,0,Tool Use,Unknown Type
+BFCL/022,22,2,0,0.35034506599989085,0,Tool Use,Unknown Type
+BFCL/023,23,4,1,0.527813142276424,1,Tool Use,Unknown Type
+BFCL/024,24,4,1,0.5857580141184416,1,Tool Use,Unknown Type
+BFCL/025,25,4,1,0.4567690012620862,0,Tool Use,Unknown Type
+BFCL/026,26,2,0,0.5250515613339455,1,Tool Use,Unknown Type
+BFCL/027,27,4,1,0.571779590224307,1,Tool Use,Unknown Type
+BFCL/028,28,4,1,0.5425335887682637,1,Tool Use,Unknown Type
+BFCL/029,29,1,0,0.5768435283011615,1,Tool Use,Unknown Type
+BFCL/030,30,1,1,0.6081982593090569,1,Tool Use,Unknown Type
+BFCL/031,31,0,1,0.29252223387783954,0,Tool Use,Unknown Type
+BFCL/032,32,4,1,0.24028543223954088,0,Tool Use,Unknown Type
+BFCL/033,33,2,0,0.4982613320287392,0,Tool Use,Unknown Type
+BFCL/034,34,0,1,0.45664315433971,0,Tool Use,Unknown Type
+BFCL/035,35,2,1,0.6310249331428688,1,Tool Use,Unknown Type
+BFCL/036,36,1,0,0.3867871092664769,0,Tool Use,Unknown Type
+BFCL/037,37,0,1,0.6492998018312892,1,Tool Use,Unknown Type
+BFCL/038,38,0,0,0.5738404341664907,1,Tool Use,Unknown Type
+BFCL/039,39,4,1,0.5540856115626202,1,Tool Use,Unknown Type
+BFCL/040,40,0,1,0.45576385667561087,0,Tool Use,Unknown Type
+BFCL/041,41,3,1,0.5180507796018846,1,Tool Use,Unknown Type
+BFCL/042,42,3,1,0.4893433751497365,0,Tool Use,Unknown Type
+BFCL/043,43,2,1,0.5264555589029636,1,Tool Use,Unknown Type
+BFCL/044,44,4,1,0.48198487045510985,0,Tool Use,Unknown Type
+BFCL/045,45,2,0,0.48399958301727936,0,Tool Use,Unknown Type
+BFCL/046,46,1,1,0.6583782665783549,1,Tool Use,Unknown Type
+BFCL/047,47,4,1,0.34661808858571874,0,Tool Use,Unknown Type
+BFCL/048,48,0,1,0.34289226073715284,0,Tool Use,Unknown Type
+BFCL/049,49,0,1,0.5006898979103628,1,Tool Use,Unknown Type
+BFCL/050,50,4,0,0.6285628739861188,1,Tool Use,Unknown Type
+BFCL/051,51,1,1,0.39074609336015415,0,Tool Use,Unknown Type
+BFCL/052,52,3,1,0.5416802282869019,1,Tool Use,Unknown Type
+BFCL/053,53,1,0,0.4027117399970911,0,Tool Use,Unknown Type
+BFCL/054,54,3,1,0.4232086926406461,0,Tool Use,Unknown Type
+BFCL/055,55,1,0,0.430144312811436,0,Tool Use,Unknown Type
+BFCL/056,56,0,1,0.3774594772097599,0,Tool Use,Unknown Type
+BFCL/057,57,4,1,0.5373906148212066,1,Tool Use,Unknown Type
+BFCL/058,58,4,1,0.30935984808427797,0,Tool Use,Unknown Type
+BFCL/059,59,3,1,0.5041572449786945,1,Tool Use,Unknown Type
+BFCL/060,60,0,1,0.2939113959785134,0,Tool Use,Unknown Type
+BFCL/061,61,1,1,0.5878927130190795,1,Tool Use,Unknown Type
+BFCL/062,62,3,1,0.490146641444008,0,Tool Use,Unknown Type
+BFCL/063,63,1,1,0.4217754211266928,0,Tool Use,Unknown Type
+BFCL/064,64,2,1,0.5268113561736093,1,Tool Use,Unknown Type
+BFCL/065,65,4,0,0.7170250055215794,1,Tool Use,Unknown Type
+BFCL/066,66,0,1,0.4434499698366481,0,Tool Use,Unknown Type
+BFCL/067,67,0,1,0.6511601395156434,1,Tool Use,Unknown Type
+BFCL/068,68,2,0,0.4687749198613221,0,Tool Use,Unknown Type
+BFCL/069,69,0,1,0.4167113436149701,0,Tool Use,Unknown Type
+BFCL/070,70,3,1,0.5250929180765058,1,Tool Use,Unknown Type
+BFCL/071,71,3,1,0.47593655918440353,0,Tool Use,Unknown Type
+BFCL/072,72,2,1,0.26444414105836367,0,Tool Use,Unknown Type
+BFCL/073,73,1,0,0.4213893578823508,0,Tool Use,Unknown Type
+BFCL/074,74,1,1,0.5861210597564869,1,Tool Use,Unknown Type
+BFCL/075,75,0,1,0.5009151940891358,1,Tool Use,Unknown Type
+BFCL/076,76,4,1,0.2293115074458875,0,Tool Use,Unknown Type
+BFCL/077,77,0,1,0.2762286428853574,0,Tool Use,Unknown Type
+BFCL/078,78,4,1,0.3546395458415487,0,Tool Use,Unknown Type
+BFCL/079,79,2,0,0.5899412622269093,1,Tool Use,Unknown Type
+BFCL/080,80,1,1,0.6408310087517922,1,Tool Use,Unknown Type
+BFCL/081,81,0,1,0.4662161885125704,0,Tool Use,Unknown Type
+BFCL/082,82,0,1,0.4676158579268724,0,Tool Use,Unknown Type
+BFCL/083,83,3,1,0.26337622697108964,0,Tool Use,Unknown Type
+BFCL/084,84,3,0,0.6386542697707366,1,Tool Use,Unknown Type
+BFCL/085,85,4,1,0.4839586255342526,0,Tool Use,Unknown Type
+BFCL/086,86,0,1,0.39681894400055734,0,Tool Use,Unknown Type
+BFCL/087,87,4,1,0.43952549375627536,0,Tool Use,Unknown Type
+BFCL/088,88,1,0,0.4371456734143042,0,Tool Use,Unknown Type
+BFCL/089,89,4,1,0.27786481479345165,0,Tool Use,Unknown Type
+BFCL/090,90,3,0,0.5420453702590488,1,Tool Use,Unknown Type
+BFCL/091,91,2,1,0.43583171288993494,0,Tool Use,Unknown Type
+BFCL/092,92,4,0,0.28568956599281187,0,Tool Use,Unknown Type
+BFCL/093,93,3,1,0.3643274361035602,0,Tool Use,Unknown Type
+BFCL/094,94,1,1,0.5926739580485941,1,Tool Use,Unknown Type
+BFCL/095,95,3,0,0.4738324541267289,0,Tool Use,Unknown Type
+BFCL/096,96,1,0,0.6290736944263382,1,Tool Use,Unknown Type
+BFCL/097,97,4,1,0.6600164373440367,1,Tool Use,Unknown Type
+BFCL/098,98,4,1,0.2988586786290283,0,Tool Use,Unknown Type
+BFCL/099,99,1,0,0.6700800208824687,1,Tool Use,Unknown Type
+BFCL/100,100,0,0,0.35801599900510367,0,Tool Use,Unknown Type
+BFCL/101,101,0,1,0.48120105050355666,0,Tool Use,Unknown Type
+BFCL/102,102,2,0,0.5713769039054977,1,Tool Use,Unknown Type
+BFCL/103,103,2,1,0.5978925345507634,1,Tool Use,Unknown Type
+BFCL/104,104,2,1,0.45684597124418785,0,Tool Use,Unknown Type
+BFCL/105,105,2,0,0.5422981965465925,1,Tool Use,Unknown Type
+BFCL/106,106,1,0,0.5747634357221268,1,Tool Use,Unknown Type
+BFCL/107,107,1,0,0.43444208957309216,0,Tool Use,Unknown Type
+BFCL/108,108,3,1,0.45666835307031206,0,Tool Use,Unknown Type
+BFCL/109,109,2,0,0.6556850998720342,1,Tool Use,Unknown Type
+BFCL/110,110,0,1,0.42524624824099166,0,Tool Use,Unknown Type
+BFCL/111,111,1,1,0.4665539107793827,0,Tool Use,Unknown Type
+BFCL/112,112,4,1,0.4736148875390839,0,Tool Use,Unknown Type
+BFCL/113,113,3,0,0.5638815554647713,1,Tool Use,Unknown Type
+BFCL/114,114,2,0,0.35193743013500783,0,Tool Use,Unknown Type
+BFCL/115,115,1,1,0.3371349498292516,0,Tool Use,Unknown Type
+BFCL/116,116,0,0,0.421135234005576,0,Tool Use,Unknown Type
+BFCL/117,117,3,1,0.5040341544058053,1,Tool Use,Unknown Type
+BFCL/118,118,2,1,0.40930894680015484,0,Tool Use,Unknown Type
+BFCL/119,119,3,0,0.51128909932379,1,Tool Use,Unknown Type
+BFCL/120,120,3,0,0.32315580272850136,0,Tool Use,Unknown Type
+BFCL/121,121,3,0,0.3623695469673631,0,Tool Use,Unknown Type
+BFCL/122,122,3,1,0.6392359572307633,1,Tool Use,Unknown Type
+BFCL/123,123,0,1,0.34916474044897394,0,Tool Use,Unknown Type
+BFCL/124,124,0,0,0.3992992081184767,0,Tool Use,Unknown Type
+BFCL/125,125,2,0,0.6718496161405538,1,Tool Use,Unknown Type
+BFCL/126,126,0,1,0.4530738136000579,0,Tool Use,Unknown Type
+BFCL/127,127,3,0,0.4645903997358855,0,Tool Use,Unknown Type
+BFCL/128,128,0,0,0.400032628862253,0,Tool Use,Unknown Type
+BFCL/129,129,1,1,0.6807194554486459,1,Tool Use,Unknown Type
+BFCL/130,130,3,1,0.2972764480874801,0,Tool Use,Unknown Type
+BFCL/131,131,1,1,0.7164903819550277,1,Tool Use,Unknown Type
+BFCL/132,132,1,0,0.4530538925821292,0,Tool Use,Unknown Type
+BFCL/133,133,1,1,0.636799222562579,1,Tool Use,Unknown Type
+BFCL/134,134,3,0,0.574363085496531,1,Tool Use,Unknown Type
+BFCL/135,135,2,0,0.406985679207212,0,Tool Use,Unknown Type
+BFCL/136,136,0,1,0.38603067823057186,0,Tool Use,Unknown Type
+BFCL/137,137,0,0,0.46210604260379334,0,Tool Use,Unknown Type
+BFCL/138,138,1,1,0.3535083351980325,0,Tool Use,Unknown Type
+BFCL/139,139,0,1,0.3971415961787533,0,Tool Use,Unknown Type
+BFCL/140,140,0,1,0.6962793378695517,1,Tool Use,Unknown Type
+BFCL/141,141,0,1,0.7063305627830604,1,Tool Use,Unknown Type
+BFCL/142,142,1,0,0.4148474265611793,0,Tool Use,Unknown Type
+BFCL/143,143,4,0,0.4689553655308647,0,Tool Use,Unknown Type
+BFCL/144,144,2,1,0.6494816837939158,1,Tool Use,Unknown Type
+BFCL/145,145,0,0,0.4758066277172631,0,Tool Use,Unknown Type
+BFCL/146,146,2,1,0.5972936007368557,1,Tool Use,Unknown Type
+BFCL/147,147,4,0,0.5228585275265633,1,Tool Use,Unknown Type
+BFCL/148,148,0,1,0.50343287953664,1,Tool Use,Unknown Type
+BFCL/149,149,3,0,0.5005733146521344,1,Tool Use,Unknown Type
+BFCL/150,150,0,0,0.593885714766106,1,Tool Use,Unknown Type
+BFCL/151,151,0,1,0.43127021086191253,0,Tool Use,Unknown Type
+BFCL/152,152,3,0,0.503678823797878,1,Tool Use,Unknown Type
+BFCL/153,153,3,1,0.44897469543178437,0,Tool Use,Unknown Type
+BFCL/154,154,1,0,0.49861885414271867,0,Tool Use,Unknown Type
+BFCL/155,155,2,1,0.5130891799884184,1,Tool Use,Unknown Type
+BFCL/156,156,2,1,0.6129042268670135,1,Tool Use,Unknown Type
+BFCL/157,157,0,0,0.4113656566182752,0,Tool Use,Unknown Type
+BFCL/158,158,4,1,0.37660040809573486,0,Tool Use,Unknown Type
+BFCL/159,159,1,1,0.44239345157747395,0,Tool Use,Unknown Type
+BFCL/160,160,2,1,0.6992359743965142,1,Tool Use,Unknown Type
+BFCL/161,161,4,1,0.4429541800092508,0,Tool Use,Unknown Type
+BFCL/162,162,4,1,0.4836351812598662,0,Tool Use,Unknown Type
+BFCL/163,163,3,0,0.5916593859107635,1,Tool Use,Unknown Type
+Camel/000,164,2,1,0.5358466424621926,1,Math,Unknown Type
+Camel/001,165,3,0,0.7202602268794034,1,Science,Unknown Type
+Camel/002,166,2,0,0.48747505642441047,0,General Assistant,Unknown Type
+Camel/003,167,4,1,0.3463003616022945,0,Math,Unknown Type
+Camel/004,168,1,1,0.43844716571343845,0,Science,Unknown Type
+Camel/005,169,1,1,0.5477192327284919,1,General Assistant,Unknown Type
+Camel/006,170,0,1,0.795181294126206,1,Science,Unknown Type
+Camel/007,171,1,0,0.6156203996901215,1,Science,Unknown Type
+Camel/008,172,0,1,0.49461136495288477,0,Math,Unknown Type
+Camel/009,173,1,1,0.5419823767642168,1,Math,Unknown Type
+Camel/010,174,1,0,0.4709581517698388,0,General Assistant,Unknown Type
+Camel/011,175,1,1,0.5239588449132547,1,Science,Unknown Type
+Camel/012,176,4,1,0.6067472138849956,1,General Assistant,Unknown Type
+Camel/013,177,1,0,0.5515547336289702,1,General Assistant,Unknown Type
+Camel/014,178,4,1,0.7873836803358077,1,Science,Unknown Type
+Camel/015,179,4,0,0.37759883035192204,0,General Assistant,Unknown Type
+Camel/016,180,0,1,0.45826001633215324,0,World Knowledge,Unknown Type
+Camel/017,181,1,0,0.44952988849729447,0,Science,Unknown Type
+Camel/018,182,4,1,0.6632754133659732,1,Science,Unknown Type
+Camel/019,183,3,1,0.6018781451982465,1,General Assistant,Unknown Type
+Camel/020,184,3,1,0.393141453190881,0,World Knowledge,Unknown Type
+Camel/021,185,0,1,0.6631294189061748,1,Science,Unknown Type
+Camel/022,186,0,1,0.34716124633724177,0,General Assistant,Unknown Type
+Camel/023,187,2,0,0.48675275393879747,0,General Assistant,Unknown Type
+Camel/024,188,2,1,0.3767773634574405,0,General Assistant,Unknown Type
+Camel/025,189,1,0,0.5028935827535924,1,Math,Unknown Type
+Camel/026,190,0,1,0.304525325963969,0,Math,Unknown Type
+Camel/027,191,4,1,0.28842092131992647,0,Math,Unknown Type
+Camel/028,192,1,0,0.3891018804708642,0,World Knowledge,Unknown Type
+Camel/029,193,1,1,0.4443210362612976,0,World Knowledge,Unknown Type
+Camel/030,194,0,1,0.41450671038734377,0,Science,Unknown Type
+Camel/031,195,1,1,0.4396052088424786,0,Science,Unknown Type
+Camel/032,196,3,1,0.5899103781811859,1,Science,Unknown Type
+Camel/033,197,2,0,0.3318200198223025,0,Science,Unknown Type
+Camel/034,198,3,1,0.4219257160581298,0,General Assistant,Unknown Type
+Camel/035,199,0,0,0.6873540126001149,1,General Assistant,Unknown Type
+Camel/036,200,1,0,0.5063082277396019,1,General Assistant,Unknown Type
+Camel/037,201,0,1,0.42748860512674863,0,General Assistant,Unknown Type
+Camel/038,202,2,1,0.8899322281755921,1,General Assistant,Unknown Type
+Camel/039,203,1,1,0.3964276310475974,0,World Knowledge,Unknown Type
+Camel/040,204,3,0,0.38779461804892595,0,World Knowledge,Unknown Type
+Camel/041,205,4,0,0.9615306969582299,1,World Knowledge,Unknown Type
+Camel/042,206,0,0,0.4647743662148985,0,World Knowledge,Unknown Type
+Camel/043,207,1,0,0.3485653075383182,0,World Knowledge,Unknown Type
+Camel/044,208,0,1,0.5863494933893985,1,World Knowledge,Unknown Type
+Camel/045,209,0,1,0.533492061491754,1,World Knowledge,Unknown Type
+Camel/046,210,4,1,0.7777475014636108,1,World Knowledge,Unknown Type
+Camel/047,211,2,0,0.4113467488302589,0,World Knowledge,Unknown Type
+Camel/048,212,4,0,0.816480101783433,1,World Knowledge,Unknown Type
+Camel/049,213,1,1,0.35824800550404423,0,World Knowledge,Unknown Type
+Camel/050,214,4,0,0.42800247969252636,0,World Knowledge,Unknown Type
+Camel/051,215,3,1,0.508396718163121,1,World Knowledge,Unknown Type
+Camel/052,216,4,1,0.644955531698582,1,Science,Unknown Type
+Camel/053,217,1,1,0.5729216329735446,1,Science,Unknown Type
+Camel/054,218,1,1,0.5824889422888511,1,Science,Unknown Type
+Camel/055,219,4,1,0.464285354955735,0,Science,Unknown Type
+Camel/056,220,3,1,0.6287320175267728,1,Science,Unknown Type
+Camel/057,221,4,1,0.7623747744020011,1,Science,Unknown Type
+Camel/058,222,3,1,0.39842903568382054,0,Science,Unknown Type
+Camel/059,223,3,1,0.26106076641488,0,Science,Unknown Type
+Camel/060,224,3,1,0.5533657093896115,1,Science,Unknown Type
+Camel/061,225,0,0,0.6581854581910646,1,Science,Unknown Type
+Camel/062,226,2,0,0.937967737704123,1,Science,Unknown Type
+Camel/063,227,4,1,0.5493989576904497,1,Science,Unknown Type
+Camel/064,228,4,0,0.35493986937920496,0,Science,Unknown Type
+Camel/065,229,1,1,0.6948529857096416,1,Science,Unknown Type
+Camel/066,230,3,1,0.6250138286335595,1,Science,Unknown Type
+Camel/067,231,2,1,0.670148716153601,1,Science,Unknown Type
+Camel/068,232,4,0,0.3877538417799264,0,Science,Unknown Type
+Camel/069,233,1,0,0.48956114697534864,0,Science,Unknown Type
+Camel/070,234,1,1,0.5543994678953489,1,Science,Unknown Type
+Camel/071,235,2,1,0.17428568068523628,0,Science,Unknown Type
+Camel/072,236,1,1,0.2446699950292684,0,Science,Unknown Type
+Camel/073,237,2,1,0.6275727701790017,1,Science,Unknown Type
+Camel/074,238,1,1,0.8279412318073972,1,Science,Unknown Type
+Camel/075,239,2,1,0.41556149818348104,0,Science,Unknown Type
+Camel/076,240,0,0,0.6155105418318513,1,Math,Unknown Type
+Camel/077,241,0,0,0.5505407133447837,1,Math,Unknown Type
+Camel/078,242,1,0,0.3715106476432483,0,Math,Unknown Type
+Camel/079,243,2,0,0.5662196668737587,1,Math,Unknown Type
+Camel/080,244,0,0,0.3383815696088773,0,Math,Unknown Type
+Camel/081,245,4,0,0.31200887976517966,0,Math,Unknown Type
+Camel/082,246,4,0,0.5714366812603985,1,Math,Unknown Type
+Camel/083,247,0,0,0.6418698477554436,1,Math,Unknown Type
+Camel/084,248,2,0,0.4660105275161272,0,Math,Unknown Type
+Camel/085,249,4,0,0.36277903781059045,0,Math,Unknown Type
+Camel/086,250,3,0,0.23562411624648022,0,Math,Unknown Type
+Camel/087,251,1,1,0.45377684334470425,0,Math,Unknown Type
+Camel/088,252,2,1,0.4621603878197683,0,Math,Unknown Type
+Camel/089,253,2,1,0.4829191344443923,0,Math,Unknown Type
+Camel/090,254,0,1,0.39518155048816905,0,Math,Unknown Type
+Camel/091,255,2,1,0.5504815365132534,1,Math,Unknown Type
+Camel/092,256,3,1,0.5419436488880156,1,Math,Unknown Type
+Magentic_One/000,257,2,0,0.8776944507880183,1,World Knowledge,Unknown Type
+Magentic_One/001,258,0,1,0.5095504623745679,1,Science,Unknown Type
+Magentic_One/002,259,2,1,0.6117770116244744,1,Science,Unknown Type
+Magentic_One/003,260,2,0,0.45676698098280927,0,World Knowledge,Unknown Type
+Magentic_One/004,261,0,0,0.30894005111209993,0,General Assistant,Unknown Type
+Magentic_One/005,262,4,1,0.436525413860034,0,World Knowledge,Unknown Type
+Magentic_One/006,263,4,0,0.3480905192483857,0,World Knowledge,Unknown Type
+Magentic_One/007,264,3,1,0.4600428797536725,0,Science,Unknown Type
+Magentic_One/008,265,1,1,0.40337004100174556,0,General Assistant,Unknown Type
+Magentic_One/009,266,3,0,0.45928577417133576,0,General Assistant,Unknown Type
+Magentic_One/010,267,2,1,0.7075311371728804,1,Science,Unknown Type
+Magentic_One/011,268,4,1,0.5837958053009841,1,Science,Unknown Type
+Magentic_One/012,269,3,1,0.43610652043877457,0,Math,Unknown Type
+Magentic_One/013,270,3,1,0.37835553414884293,0,General Assistant,Unknown Type
+Magentic_One/014,271,1,0,0.4703252104859967,0,Science,Unknown Type
+Magentic_One/015,272,3,0,0.6156924907997053,1,Science,Unknown Type
+Magentic_One/016,273,1,1,0.5659914859399735,1,World Knowledge,Unknown Type
+Magentic_One/017,274,2,1,0.7800629427496427,1,General Assistant,Unknown Type
+Magentic_One/018,275,2,1,0.5760821921582244,1,Math,Unknown Type
+Magentic_One/019,276,3,1,0.32174892942444167,0,World Knowledge,Unknown Type
+Magentic_One/020,277,2,1,0.4394302868228721,0,General Assistant,Unknown Type
+Magentic_One/021,278,0,1,0.5817538491035129,1,World Knowledge,Unknown Type
+Magentic_One/022,279,1,1,0.47837617648747,0,World Knowledge,Unknown Type
+Magentic_One/023,280,3,1,0.7536124283334256,1,Math,Unknown Type
+Magentic_One/024,281,2,1,0.5051033441277867,1,World Knowledge,Unknown Type
+Magentic_One/025,282,2,1,0.5436897764252479,1,World Knowledge,Unknown Type
+Magentic_One/026,283,0,0,0.3508823911230613,0,General Assistant,Unknown Type
+Magentic_One/027,284,3,0,0.6324104058036576,1,Science,Unknown Type
+Magentic_One/028,285,4,1,0.648167642121673,1,Science,Unknown Type
+Magentic_One/029,286,0,0,0.34972905736155074,0,Math,Unknown Type
+Magentic_One/030,287,4,0,0.6712423629014784,1,Math,Unknown Type
+Magentic_One/031,288,0,1,0.39558591657253034,0,Math,Unknown Type
+Magentic_One/032,289,1,1,0.678860609623144,1,Math,Unknown Type
+Magentic_One/033,290,3,0,0.38638513650741707,0,Math,Unknown Type
+Magentic_One/034,291,4,1,0.3796673783438026,0,World Knowledge,Unknown Type
+Magentic_One/035,292,2,1,0.3421247584051088,0,World Knowledge,Unknown Type
+Magentic_One/036,293,0,0,0.4171802494634916,0,World Knowledge,Unknown Type
+Magentic_One/037,294,0,1,0.500773699714947,1,World Knowledge,Unknown Type
+Magentic_One/038,295,3,1,0.515389012073325,1,World Knowledge,Unknown Type
+Magentic_One/039,296,2,0,0.38459165291231434,0,World Knowledge,Unknown Type
+Magentic_One/040,297,2,0,0.427172429629077,0,World Knowledge,Unknown Type
+Magentic_One/041,298,4,1,0.7324959347043806,1,World Knowledge,Unknown Type
+Magentic_One/042,299,1,1,0.3117347300960461,0,World Knowledge,Unknown Type
+Magentic_One/043,300,1,1,0.47825659925512504,0,Math,Unknown Type
+Magentic_One/044,301,4,0,0.6909992430210047,1,Science,Unknown Type
+Magentic_One/045,302,1,1,0.4969846371814154,0,Science,Unknown Type
+Magentic_One/046,303,2,1,0.57071824129956,1,Science,Unknown Type
+Magentic_One/047,304,0,1,0.4489769598022607,0,Science,Unknown Type
+Magentic_One/048,305,1,0,0.4482618792060714,0,Science,Unknown Type
+Magentic_One/049,306,2,0,0.4153726056802368,0,Science,Unknown Type
+Magentic_One/050,307,2,0,0.3850782274213562,0,General Assistant,Unknown Type
+Magentic_One/051,308,3,1,0.4107933624660259,0,General Assistant,Unknown Type
+Magentic_One/052,309,1,1,0.3042102059993658,0,General Assistant,Unknown Type
+Magentic_One/053,310,1,0,0.3222830673194992,0,General Assistant,Unknown Type
+Magentic_One/054,311,0,1,0.6058900316205886,1,General Assistant,Unknown Type
+Magentic_One/055,312,3,0,0.5313610132469604,1,General Assistant,Unknown Type
+Magentic_One/056,313,4,0,0.7499074511691856,1,General Assistant,Unknown Type
+Magentic_One/057,314,3,0,0.5091992290621734,1,General Assistant,Unknown Type
+Magentic_One/058,315,0,1,0.34455986302148456,0,General Assistant,Unknown Type
+Magentic_One/059,316,3,1,0.22068635823952934,0,General Assistant,Unknown Type
+Magentic_One/060,317,0,0,0.3888299968655092,0,General Assistant,Unknown Type
+Magentic_One/061,318,1,1,0.15227298280169885,0,General Assistant,Unknown Type
+Magentic_One/062,319,2,0,0.5442059433340445,1,General Assistant,Unknown Type
+Magentic_One/063,320,2,0,0.34078187030882645,0,World Knowledge,Unknown Type
+Magentic_One/064,321,4,0,0.41012339661116193,0,World Knowledge,Unknown Type
+Magentic_One/065,322,2,0,0.2681054739742461,0,World Knowledge,Unknown Type
+Magentic_One/066,323,4,0,0.4304849533044573,0,World Knowledge,Unknown Type
+Magentic_One/067,324,2,0,0.5700673890770233,1,World Knowledge,Unknown Type
+Magentic_One/068,325,2,0,0.3817063161222288,0,World Knowledge,Unknown Type
+Magentic_One/069,326,4,1,0.3657762344136644,0,World Knowledge,Unknown Type
+Magentic_One/070,327,1,0,0.5369434989393949,1,World Knowledge,Unknown Type
+Magentic_One/071,328,3,1,0.5548158607824463,1,World Knowledge,Unknown Type
+Magentic_One/072,329,1,0,0.3930733222914213,0,Science,Unknown Type
+Magentic_One/073,330,2,1,0.8422440055781634,1,Science,Unknown Type
+Magentic_One/074,331,2,1,0.3734721293315556,0,Science,Unknown Type
+Magentic_One/075,332,2,1,0.50563217598764,1,Science,Unknown Type
+Magentic_One/076,333,4,1,0.40184993900351,0,Science,Unknown Type
+Magentic_One/077,334,4,0,0.9288842293262863,1,Science,Unknown Type
+Magentic_One/078,335,2,1,0.30607099649359387,0,Science,Unknown Type
+Magentic_One/079,336,1,1,0.4809082604831658,0,Science,Unknown Type
+Magentic_One/080,337,0,0,0.8044486813466631,1,Science,Unknown Type
+Magentic_One/081,338,0,0,0.4599702732104386,0,Science,Unknown Type
+Magentic_One/082,339,4,0,0.8251261393201136,1,Science,Unknown Type
+Magentic_One/083,340,4,0,0.8558502210222682,1,Science,Unknown Type
+Magentic_One/084,341,4,1,0.9318424671064468,1,Science,Unknown Type
+Magentic_One/085,342,0,0,0.6464606149612305,1,Math,Unknown Type
+Magentic_One/086,343,4,0,0.9016466317009816,1,Math,Unknown Type
+Magentic_One/087,344,1,1,0.3906837074030252,0,Math,Unknown Type
+Magentic_One/088,345,4,1,0.4154820876730797,0,Math,Unknown Type
+Magentic_One/089,346,1,1,0.43196040833910165,0,Math,Unknown Type
+Magentic_One/090,347,0,1,0.3698737889578623,0,Math,Unknown Type
+Magentic_One/091,348,1,1,0.5896205672038342,1,Math,Unknown Type
+Magentic_One/092,349,3,1,0.3701078154571817,0,Math,Unknown Type
+Magentic_One/093,350,0,1,0.4042605997674728,0,Math,Unknown Type
+Octotools/000,351,2,0,0.9342141097219251,1,World Knowledge,Unknown Type
+Octotools/001,352,3,0,0.6010787476672661,1,General Assistant,Unknown Type
+Octotools/002,353,4,1,0.6632912229795077,1,Math,Unknown Type
+Octotools/003,354,1,0,0.29656084630157564,0,Math,Unknown Type
+Octotools/004,355,2,0,0.68614963401621,1,Math,Unknown Type
+Octotools/005,356,1,1,0.268628352431246,0,Science,Unknown Type
+Octotools/006,357,3,1,0.7842078596663622,1,World Knowledge,Unknown Type
+Octotools/007,358,0,0,0.6238301192713964,1,General Assistant,Unknown Type
+Octotools/008,359,1,1,0.6782198611353256,1,General Assistant,Unknown Type
+Octotools/009,360,1,1,0.7051116077411423,1,Science,Unknown Type
+Octotools/010,361,3,1,0.3828519890420675,0,Science,Unknown Type
+Octotools/011,362,3,1,0.8328736716765093,1,General Assistant,Unknown Type
+Octotools/012,363,2,1,0.7022322526559456,1,Math,Unknown Type
+Octotools/013,364,0,0,0.7230580436533639,1,World Knowledge,Unknown Type
+Octotools/014,365,1,1,0.7646722424410326,1,Science,Unknown Type
+Octotools/015,366,4,1,0.5452307174058819,1,World Knowledge,Unknown Type
+Octotools/016,367,3,0,0.46255359748979497,0,General Assistant,Unknown Type
+Octotools/017,368,0,1,0.7871522487925956,1,Math,Unknown Type
+Octotools/018,369,0,1,0.39849530234390534,0,General Assistant,Unknown Type
+Octotools/019,370,0,1,0.4236416547177854,0,Science,Unknown Type
+Octotools/020,371,3,0,0.5438623168778286,1,Math,Unknown Type
+Octotools/021,372,1,1,0.48294364214917923,0,Science,Unknown Type
+Octotools/022,373,1,1,0.454129848537523,0,Math,Unknown Type
+Octotools/023,374,3,1,0.35700030912119923,0,World Knowledge,Unknown Type
+Octotools/024,375,2,1,0.3241840017845898,0,World Knowledge,Unknown Type
+Octotools/025,376,2,1,0.45814510001163256,0,World Knowledge,Unknown Type
+Octotools/026,377,0,1,0.6639322771358945,1,World Knowledge,Unknown Type
+Octotools/027,378,4,1,0.4081319938862769,0,World Knowledge,Unknown Type
+Octotools/028,379,4,0,0.639016674839722,1,World Knowledge,Unknown Type
+Octotools/029,380,4,1,0.5857476705931165,1,Math,Unknown Type
+Octotools/030,381,4,1,0.08248828665312569,0,Math,Unknown Type
+Octotools/031,382,3,1,0.5028610737372146,1,Math,Unknown Type
+Octotools/032,383,0,0,0.5607970031803667,1,Science,Unknown Type
+Octotools/033,384,2,1,0.3921067466703323,0,Science,Unknown Type
+Octotools/034,385,3,1,0.46607072130995036,0,Science,Unknown Type
+Octotools/035,386,2,1,0.3891542623177235,0,Science,Unknown Type
+Octotools/036,387,2,0,0.6061540775125707,1,Science,Unknown Type
+Octotools/037,388,4,0,0.17451733059194166,0,Science,Unknown Type
+Octotools/038,389,0,0,0.5794167660951732,1,World Knowledge,Unknown Type
+Octotools/039,390,1,1,0.5902527482822328,1,World Knowledge,Unknown Type
+Octotools/040,391,3,0,0.43160441577816405,0,World Knowledge,Unknown Type
+Octotools/041,392,4,0,0.46116899437817344,0,World Knowledge,Unknown Type
+Octotools/042,393,0,0,0.3011127398740708,0,Science,Unknown Type
+Octotools/043,394,1,1,0.45966408259436514,0,Math,Unknown Type
+Octotools/044,395,4,1,0.7155871886991048,1,Math,Unknown Type
+Octotools/045,396,1,0,0.7618718922036579,1,Math,Unknown Type
+Octotools/046,397,3,1,0.4230417269894997,0,Math,Unknown Type
+OpenDeepSearch/000,398,2,1,0.38647919894059485,0,General Assistant,Unknown Type
+OpenDeepSearch/001,399,2,1,0.5649395806347919,1,Science,Unknown Type
+OpenDeepSearch/002,400,3,0,0.5333287649635283,1,General Assistant,Unknown Type
+OpenDeepSearch/003,401,0,1,0.3427415355124407,0,World Knowledge,Unknown Type
+OpenDeepSearch/004,402,4,1,0.4816793270851646,0,World Knowledge,Unknown Type
+OpenDeepSearch/005,403,2,1,0.6148693665262742,1,Science,Unknown Type
+OpenDeepSearch/006,404,1,1,0.3153767339296676,0,General Assistant,Unknown Type
+OpenDeepSearch/007,405,4,1,0.29042513622561084,0,Science,Unknown Type
+OpenDeepSearch/008,406,4,0,0.5714558866770153,1,World Knowledge,Unknown Type
+OpenDeepSearch/009,407,4,0,0.5132189085718949,1,World Knowledge,Unknown Type
+OpenDeepSearch/010,408,2,1,0.546739176097731,1,Science,Unknown Type
+OpenDeepSearch/011,409,3,1,0.4166905412842979,0,Math,Unknown Type
+OpenDeepSearch/012,410,3,1,0.32957937241520135,0,Math,Unknown Type
+OpenDeepSearch/013,411,2,1,0.5266179152229531,1,General Assistant,Unknown Type
+OpenDeepSearch/014,412,0,0,0.4190670519109103,0,General Assistant,Unknown Type
+OpenDeepSearch/015,413,4,1,0.4518690628685012,0,General Assistant,Unknown Type
+OpenDeepSearch/016,414,4,1,0.3162632091266146,0,Science,Unknown Type
+OpenDeepSearch/017,415,4,1,0.3876768564514878,0,General Assistant,Unknown Type
+OpenDeepSearch/018,416,3,1,0.45472677379984544,0,Science,Unknown Type
+OpenDeepSearch/019,417,1,1,0.44151558610308594,0,General Assistant,Unknown Type
+OpenDeepSearch/020,418,2,1,0.5528218850806869,1,General Assistant,Unknown Type
+OpenDeepSearch/021,419,3,1,0.4142609275862748,0,Science,Unknown Type
+OpenDeepSearch/022,420,2,0,0.28162815182148826,0,General Assistant,Unknown Type
+OpenDeepSearch/023,421,4,1,0.5473438952712697,1,Math,Unknown Type
+OpenDeepSearch/024,422,3,0,0.3603560339496261,0,General Assistant,Unknown Type
+OpenDeepSearch/025,423,3,1,0.6065783411888135,1,Science,Unknown Type
+OpenDeepSearch/026,424,4,1,0.5925282643054044,1,General Assistant,Unknown Type
+OpenDeepSearch/027,425,4,1,0.636178353299683,1,World Knowledge,Unknown Type
+OpenDeepSearch/028,426,1,0,0.6020509186843642,1,Math,Unknown Type
+OpenDeepSearch/029,427,2,1,0.4609506153286407,0,Math,Unknown Type
+OpenDeepSearch/030,428,3,1,0.6882443805686628,1,Math,Unknown Type
+OpenDeepSearch/031,429,1,1,0.3679207009967845,0,Math,Unknown Type
+OpenDeepSearch/032,430,1,1,0.4148920257767378,0,Math,Unknown Type
+OpenDeepSearch/033,431,2,1,0.429265306733925,0,Math,Unknown Type
+OpenDeepSearch/034,432,2,1,0.3461298484188482,0,World Knowledge,Unknown Type
+OpenDeepSearch/035,433,2,1,0.49617174527747215,0,World Knowledge,Unknown Type
+OpenDeepSearch/036,434,2,0,0.3940743680216931,0,World Knowledge,Unknown Type
+OpenDeepSearch/037,435,1,0,0.4122624397908395,0,World Knowledge,Unknown Type
+OpenDeepSearch/038,436,2,0,0.6402836947707031,1,World Knowledge,Unknown Type
+OpenDeepSearch/039,437,1,1,0.3727779585412645,0,World Knowledge,Unknown Type
+OpenDeepSearch/040,438,2,0,0.5998350820696139,1,World Knowledge,Unknown Type
+OpenDeepSearch/041,439,1,1,0.4826833923669531,0,World Knowledge,Unknown Type
+OpenDeepSearch/042,440,2,1,0.4413293332969931,0,World Knowledge,Unknown Type
+OpenDeepSearch/043,441,4,1,0.6952031736588196,1,World Knowledge,Unknown Type
+OpenDeepSearch/044,442,2,0,0.5491647468981643,1,World Knowledge,Unknown Type
+OpenDeepSearch/045,443,3,1,0.45570415868741926,0,World Knowledge,Unknown Type
+OpenDeepSearch/046,444,1,1,0.5467715742638811,1,World Knowledge,Unknown Type
+OpenDeepSearch/047,445,4,1,0.5494560133030585,1,Math,Unknown Type
+OpenDeepSearch/048,446,3,0,0.41996965264978364,0,Math,Unknown Type
+OpenDeepSearch/049,447,3,0,0.549281604642656,1,Math,Unknown Type
+OpenDeepSearch/050,448,4,0,0.4980613050450658,0,World Knowledge,Unknown Type
+OpenDeepSearch/051,449,4,0,0.47480671034485883,0,World Knowledge,Unknown Type
+OpenDeepSearch/052,450,0,0,0.3791989078216835,0,World Knowledge,Unknown Type
+OpenDeepSearch/053,451,1,0,0.41392266121091464,0,World Knowledge,Unknown Type
+OpenDeepSearch/054,452,1,0,0.6845745170009622,1,World Knowledge,Unknown Type
+OpenDeepSearch/055,453,0,0,0.44887206513199707,0,World Knowledge,Unknown Type
+OpenDeepSearch/056,454,2,0,0.5041758410642933,1,World Knowledge,Unknown Type
+OpenDeepSearch/057,455,0,0,0.5034736965206951,1,World Knowledge,Unknown Type
+OpenDeepSearch/058,456,1,0,0.46806108393585427,0,World Knowledge,Unknown Type
+OpenDeepSearch/059,457,3,0,0.4317520393532934,0,World Knowledge,Unknown Type
+OpenDeepSearch/060,458,2,0,0.6481753507662619,1,World Knowledge,Unknown Type
+OpenDeepSearch/061,459,1,1,0.4127871309873016,0,World Knowledge,Unknown Type
+OpenDeepSearch/062,460,4,0,0.4799726881216255,0,World Knowledge,Unknown Type
+OpenDeepSearch/063,461,3,1,0.514468053365872,1,World Knowledge,Unknown Type
+OpenDeepSearch/064,462,0,0,0.42527667927997614,0,World Knowledge,Unknown Type
+OpenDeepSearch/065,463,0,0,0.4528645979861059,0,World Knowledge,Unknown Type
+OpenDeepSearch/066,464,1,0,0.4025541005418639,0,World Knowledge,Unknown Type
+OpenDeepSearch/067,465,1,1,0.5447640377231768,1,World Knowledge,Unknown Type
+OpenDeepSearch/068,466,3,0,0.4614653643401922,0,World Knowledge,Unknown Type
+OpenDeepSearch/069,467,3,1,0.4789216378455478,0,World Knowledge,Unknown Type
+OpenDeepSearch/070,468,0,1,0.39588431749169917,0,World Knowledge,Unknown Type
+OpenDeepSearch/071,469,3,0,0.602531817129532,1,World Knowledge,Unknown Type
+OpenDeepSearch/072,470,1,0,0.2782672099009346,0,World Knowledge,Unknown Type
+OpenDeepSearch/073,471,1,0,0.5546639000464989,1,World Knowledge,Unknown Type
+OpenDeepSearch/074,472,4,1,0.299280210260951,0,World Knowledge,Unknown Type
+OpenDeepSearch/075,473,0,0,0.3523797698836125,0,World Knowledge,Unknown Type
+OpenDeepSearch/076,474,0,1,0.45466956656564883,0,World Knowledge,Unknown Type
+OpenDeepSearch/077,475,4,0,0.5297564802021273,1,World Knowledge,Unknown Type
+OpenDeepSearch/078,476,3,1,0.5598641687748834,1,World Knowledge,Unknown Type
+OpenDeepSearch/079,477,0,1,0.44887206513199707,0,World Knowledge,Unknown Type
+OpenDeepSearch/080,478,2,1,0.6160500694703546,1,World Knowledge,Unknown Type
+OpenDeepSearch/081,479,2,1,0.4641771919025033,0,World Knowledge,Unknown Type
+OpenDeepSearch/082,480,1,1,0.5080020203484907,1,World Knowledge,Unknown Type
+OpenDeepSearch/083,481,3,0,0.4087001411762549,0,World Knowledge,Unknown Type
+OpenDeepSearch/084,482,4,0,0.41138574510548237,0,World Knowledge,Unknown Type
+OpenDeepSearch/085,483,3,0,0.3659659413200053,0,World Knowledge,Unknown Type
+OpenDeepSearch/086,484,0,1,0.4930839359999295,0,World Knowledge,Unknown Type
+OpenDeepSearch/087,485,0,1,0.4449982850162889,0,World Knowledge,Unknown Type
+OpenDeepSearch/088,486,0,1,0.5669891390775722,1,Science,Unknown Type
+OpenDeepSearch/089,487,1,1,0.45221088347711563,0,Science,Unknown Type
+OpenDeepSearch/090,488,1,1,0.42286297104962384,0,Science,Unknown Type
+OpenDeepSearch/091,489,3,1,0.611119949024519,1,Science,Unknown Type
+OpenDeepSearch/092,490,3,0,0.2827006337631246,0,Math,Unknown Type
+OpenDeepSearch/093,491,4,0,0.6071954929028214,1,Math,Unknown Type
+OpenDeepSearch/094,492,2,0,0.5587992037526153,1,Math,Unknown Type
+OpenDeepSearch/095,493,4,1,0.5019787265684532,1,Math,Unknown Type
+OpenDeepSearch/096,494,2,1,0.43010221772749824,0,Math,Unknown Type
+OpenDeepSearch/097,495,1,1,0.36844198302361053,0,Math,Unknown Type
+OpenDeepSearch/098,496,0,1,0.47502463124114175,0,Math,Unknown Type
+OpenDeepSearch/099,497,3,0,0.49832228100864534,0,Math,Unknown Type
+OpenManus/000,498,3,0,0.2290985476979312,0,Science,Unknown Type
+OpenManus/001,499,2,0,0.3741345887677161,0,Science,Unknown Type
+OpenManus/002,500,2,1,0.8197833327013284,1,General Assistant,Unknown Type
+OpenManus/003,501,3,1,0.4888756976969442,0,Science,Unknown Type
+OpenManus/004,502,3,1,0.5876680812509668,1,Math,Unknown Type
+OpenManus/005,503,2,1,0.5743809133159977,1,World Knowledge,Unknown Type
+OpenManus/006,504,0,1,0.5568122749098195,1,General Assistant,Unknown Type
+OpenManus/007,505,4,1,0.7106360731477701,1,World Knowledge,Unknown Type
+OpenManus/008,506,3,0,0.8685126761530021,1,General Assistant,Unknown Type
+OpenManus/009,507,2,1,0.707765101303816,1,World Knowledge,Unknown Type
+OpenManus/010,508,3,1,0.45863613970746553,0,Math,Unknown Type
+OpenManus/011,509,2,1,0.6660380880937897,1,Science,Unknown Type
+OpenManus/012,510,1,0,0.2319627972040092,0,General Assistant,Unknown Type
+OpenManus/013,511,4,1,0.7795363326720676,1,Science,Unknown Type
+OpenManus/014,512,0,1,0.394666767217851,0,World Knowledge,Unknown Type
+OpenManus/015,513,2,1,0.6790319991667301,1,World Knowledge,Unknown Type
+OpenManus/016,514,3,0,0.8260286052816411,1,World Knowledge,Unknown Type
+OpenManus/017,515,4,1,0.7670238717371197,1,Math,Unknown Type
+OpenManus/018,516,1,1,0.6451074309140584,1,Math,Unknown Type
+OpenManus/019,517,2,1,0.36651545800163954,0,Math,Unknown Type
+OpenManus/020,518,4,1,0.6939380219616418,1,Math,Unknown Type
+OpenManus/021,519,2,1,0.37928767970709903,0,Math,Unknown Type
+OpenManus/022,520,1,1,0.46394688154710145,0,Math,Unknown Type
+OpenManus/023,521,1,1,0.5316685912527436,1,Math,Unknown Type
+OpenManus/024,522,2,0,0.8867875802770308,1,Math,Unknown Type
+OpenManus/025,523,3,1,0.5953399566710071,1,World Knowledge,Unknown Type
+OpenManus/026,524,2,1,0.3499818122633067,0,World Knowledge,Unknown Type
+OpenManus/027,525,0,1,0.4190670519109103,0,World Knowledge,Unknown Type
+OpenManus/028,526,0,0,0.8032717659169536,1,World Knowledge,Unknown Type
+OpenManus/029,527,0,1,0.8167128529109037,1,World Knowledge,Unknown Type
+OpenManus/030,528,0,1,0.758333389973611,1,World Knowledge,Unknown Type
+OpenManus/031,529,3,1,0.5270812113971212,1,World Knowledge,Unknown Type
+OpenManus/032,530,2,1,0.7886012635040741,1,World Knowledge,Unknown Type
+OpenManus/033,531,4,1,0.6408350285738602,1,World Knowledge,Unknown Type
+OpenManus/034,532,1,0,0.4736786540051358,0,Math,Unknown Type
+OpenManus/035,533,0,0,0.7995593054394892,1,Math,Unknown Type
+OpenManus/036,534,0,1,0.576898118647006,1,Science,Unknown Type
+OpenManus/037,535,0,0,0.684607695541603,1,Science,Unknown Type
+OpenManus/038,536,3,1,0.6772672973079457,1,Science,Unknown Type
+OpenManus/039,537,2,1,0.5940966651279102,1,Science,Unknown Type
+OpenManus/040,538,2,1,0.7712859530280787,1,Science,Unknown Type
+OpenManus/041,539,3,1,0.8769761386952165,1,Science,Unknown Type
+OpenManus/042,540,0,0,0.7968624473495763,1,Science,Unknown Type
+OpenManus/043,541,1,1,0.5604015717076534,1,Science,Unknown Type
+OpenManus/044,542,4,1,0.8640586419372933,1,Science,Unknown Type
+OpenManus/045,543,1,1,0.4179277767288124,0,Science,Unknown Type
+OpenManus/046,544,0,1,0.4310383493369913,0,Science,Unknown Type
+OpenManus/047,545,1,1,0.5410693613162042,1,World Knowledge,Unknown Type
+OpenManus/048,546,4,0,0.553906124565444,1,World Knowledge,Unknown Type
+OpenManus/049,547,0,0,0.4662343692761023,0,World Knowledge,Unknown Type
+OpenManus/050,548,1,1,0.615511290145806,1,World Knowledge,Unknown Type
+OpenManus/051,549,1,0,0.548373265141857,1,World Knowledge,Unknown Type
+OpenManus/052,550,0,1,0.5025703495192559,1,World Knowledge,Unknown Type
+OpenManus/053,551,3,1,0.520711025445012,1,World Knowledge,Unknown Type
+OpenManus/054,552,0,1,0.6817496689176282,1,World Knowledge,Unknown Type
+OpenManus/055,553,3,1,0.726213891519203,1,World Knowledge,Unknown Type
+OpenManus/056,554,0,1,0.7997447345658513,1,World Knowledge,Unknown Type
+OpenManus/057,555,1,1,0.4981299305840897,0,World Knowledge,Unknown Type
+OpenManus/058,556,0,1,0.6947795307249022,1,World Knowledge,Unknown Type
+OpenManus/059,557,4,1,0.7098405891603906,1,World Knowledge,Unknown Type
+OpenManus/060,558,4,1,0.2860579469661365,0,World Knowledge,Unknown Type
+OpenManus/061,559,3,0,0.6369223634470812,1,World Knowledge,Unknown Type
+OpenManus/062,560,2,0,0.43346441709672584,0,World Knowledge,Unknown Type
+OpenManus/063,561,2,1,0.5917854633874775,1,World Knowledge,Unknown Type
+OpenManus/064,562,3,1,0.5845630162257455,1,World Knowledge,Unknown Type
+OpenManus/065,563,4,1,0.49367764954403653,0,World Knowledge,Unknown Type
+OpenManus/066,564,3,1,0.8433541976116067,1,World Knowledge,Unknown Type
+OpenManus/067,565,2,1,0.3668300629072235,0,World Knowledge,Unknown Type
+OpenManus/068,566,2,1,0.9532020217774438,1,World Knowledge,Unknown Type
+OpenManus/069,567,2,0,0.534461286101798,1,World Knowledge,Unknown Type
+OpenManus/070,568,2,1,0.4852605866661938,0,World Knowledge,Unknown Type
+OpenManus/071,569,3,1,0.5414168684774056,1,World Knowledge,Unknown Type
+OpenManus/072,570,4,1,0.5230688716298195,1,World Knowledge,Unknown Type
+OpenManus/073,571,2,1,0.5089657816099044,1,World Knowledge,Unknown Type
+OpenManus/074,572,4,1,0.8268834637161468,1,Science,Unknown Type
+OpenManus/075,573,4,1,0.3445755298099634,0,Science,Unknown Type
+OpenManus/076,574,3,1,0.8962777953020413,1,Science,Unknown Type
+OpenManus/077,575,3,1,0.5203891114164498,1,Science,Unknown Type
+OpenManus/078,576,3,1,0.5922450232594108,1,Science,Unknown Type
+OpenManus/079,577,2,1,0.569596833653239,1,Science,Unknown Type
+OpenManus/080,578,3,0,0.5854463029609762,1,Science,Unknown Type
+OpenManus/081,579,1,1,0.30302119202399663,0,Science,Unknown Type
+OpenManus/082,580,0,1,0.8550566793802888,1,Science,Unknown Type
+OpenManus/083,581,2,1,0.6750553252816552,1,Science,Unknown Type
+OpenManus/084,582,2,1,0.45061739267227835,0,Science,Unknown Type
+OpenManus/085,583,3,1,0.7558957269412012,1,Science,Unknown Type
+OpenManus/086,584,2,1,0.9886117022793038,1,Science,Unknown Type
+OpenManus/087,585,1,1,0.4621590205301945,0,Science,Unknown Type
+OpenManus/088,586,0,1,0.3402366343881745,0,Science,Unknown Type
+OpenManus/089,587,0,1,0.7495125046989134,1,Science,Unknown Type
+OpenManus/090,588,4,1,0.7431519400568644,1,Science,Unknown Type
+OpenManus/091,589,0,1,0.5518521801418204,1,Science,Unknown Type
+OpenManus/092,590,0,1,0.6505131106784153,1,Science,Unknown Type
+OpenManus/093,591,2,1,0.5454092466463537,1,Science,Unknown Type
+OpenManus/094,592,0,1,0.724316151419901,1,Math,Unknown Type
+OpenManus/095,593,0,0,0.6178756477764022,1,Math,Unknown Type
+OpenManus/096,594,2,1,0.6993872659245413,1,Math,Unknown Type
+OpenManus/097,595,4,1,0.27483328236172305,0,Math,Unknown Type
+OpenManus/098,596,1,1,0.4653444650557384,0,Math,Unknown Type
+OpenManus/099,597,4,0,0.42328465472491855,0,Math,Unknown Type
+OpenManus/100,598,3,1,0.5077653595160658,1,Math,Unknown Type
+OpenManus/101,599,0,1,0.3791080260361398,0,Math,Unknown Type
+OpenManus/102,600,3,1,0.6649744870898227,1,Math,Unknown Type
+OpenManus/103,601,2,1,0.5473109664831141,1,Math,Unknown Type
+SmolAgents/000,602,4,0,0.8326046030693119,1,Science,Unknown Type
+SmolAgents/001,603,2,1,0.588902735214528,1,Math,Unknown Type
+SmolAgents/002,604,0,1,0.8451850127013113,1,Science,Unknown Type
+SmolAgents/003,605,3,1,0.37224772716777216,0,Math,Unknown Type
+SmolAgents/004,606,0,0,0.36588505328086673,0,General Assistant,Unknown Type
+SmolAgents/005,607,0,0,0.5982034679621635,1,Science,Unknown Type
+SmolAgents/006,608,0,1,0.39369589775195757,0,General Assistant,Unknown Type
+SmolAgents/007,609,2,0,0.3742720107662844,0,General Assistant,Unknown Type
+SmolAgents/008,610,4,1,0.5092678892685168,1,Math,Unknown Type
+SmolAgents/009,611,3,1,0.6422897280957783,1,General Assistant,Unknown Type
+SmolAgents/010,612,0,0,0.36858705347020915,0,World Knowledge,Unknown Type
+SmolAgents/011,613,1,0,0.4512176602955624,0,General Assistant,Unknown Type
+SmolAgents/012,614,1,1,0.36062213410392047,0,General Assistant,Unknown Type
+SmolAgents/013,615,0,0,0.4907919332652356,0,General Assistant,Unknown Type
+SmolAgents/014,616,3,1,0.44689277101266733,0,World Knowledge,Unknown Type
+SmolAgents/015,617,4,1,0.5089674053663993,1,General Assistant,Unknown Type
+SmolAgents/016,618,1,0,0.6700256508806839,1,Math,Unknown Type
+SmolAgents/017,619,1,1,0.4361866396947905,0,Science,Unknown Type
+SmolAgents/018,620,3,1,0.4466291278207853,0,Math,Unknown Type
+SmolAgents/019,621,3,0,0.7444558381226547,1,Science,Unknown Type
+SmolAgents/020,622,4,1,0.2638794047738777,0,General Assistant,Unknown Type
+SmolAgents/021,623,3,1,0.46034156600136134,0,Science,Unknown Type
+SmolAgents/022,624,2,1,0.40908367356154174,0,Science,Unknown Type
+SmolAgents/023,625,0,1,0.38039917836567344,0,Math,Unknown Type
+SmolAgents/024,626,4,1,0.6576167681269639,1,World Knowledge,Unknown Type
+SmolAgents/025,627,0,1,0.4061444638552008,0,General Assistant,Unknown Type
+SmolAgents/026,628,1,1,0.4316483243714556,0,Science,Unknown Type
+SmolAgents/027,629,2,1,0.5148998032690026,1,World Knowledge,Unknown Type
+SmolAgents/028,630,4,1,0.593879244771789,1,Math,Unknown Type
+SmolAgents/029,631,4,0,0.38584123770573425,0,Math,Unknown Type
+SmolAgents/030,632,4,0,0.4514764296497233,0,General Assistant,Unknown Type
+SmolAgents/031,633,2,1,0.4139784015221728,0,General Assistant,Unknown Type
+SmolAgents/032,634,1,1,0.4729127637174848,0,General Assistant,Unknown Type
+SmolAgents/033,635,0,1,0.720223311526601,1,Math,Unknown Type
+SmolAgents/034,636,0,1,0.48043232962774973,0,World Knowledge,Unknown Type
+SmolAgents/035,637,4,0,0.6769346845719248,1,General Assistant,Unknown Type
+SmolAgents/036,638,3,1,0.4359012112824361,0,Science,Unknown Type
+SmolAgents/037,639,2,1,0.8792989797588933,1,World Knowledge,Unknown Type
+SmolAgents/038,640,4,0,0.4229230643133662,0,World Knowledge,Unknown Type
+SmolAgents/039,641,2,1,0.47677132945509587,0,Science,Unknown Type
+SmolAgents/040,642,0,1,0.5100406840054341,1,Math,Unknown Type
+SmolAgents/041,643,3,0,0.5860435234912712,1,Math,Unknown Type
+SmolAgents/042,644,3,0,0.4244697177388124,0,Math,Unknown Type
+SmolAgents/043,645,3,1,0.4799031733761881,0,World Knowledge,Unknown Type
+SmolAgents/044,646,1,0,0.5034735876192475,1,World Knowledge,Unknown Type
+SmolAgents/045,647,1,1,0.36816081595299827,0,World Knowledge,Unknown Type
+SmolAgents/046,648,3,1,0.4153102768141195,0,Math,Unknown Type
+SmolAgents/047,649,2,1,0.3452579573278543,0,Math,Unknown Type
+SmolAgents/048,650,4,1,0.3181162270984271,0,Math,Unknown Type
+SmolAgents/049,651,3,1,0.5521284457854884,1,Math,Unknown Type
+SmolAgents/050,652,4,1,0.43131725238146157,0,Math,Unknown Type
+SmolAgents/051,653,3,1,0.5954201969566483,1,Math,Unknown Type
+SmolAgents/052,654,0,0,0.6001985729236495,1,Science,Unknown Type
+SmolAgents/053,655,2,1,0.5951633415100706,1,Science,Unknown Type
+SmolAgents/054,656,3,1,0.4062163893324792,0,World Knowledge,Unknown Type
+SmolAgents/055,657,1,1,0.3122570014397943,0,World Knowledge,Unknown Type
+SmolAgents/056,658,1,1,0.5289390171784477,1,World Knowledge,Unknown Type
+SmolAgents/057,659,4,0,0.403180603609115,0,World Knowledge,Unknown Type
+SmolAgents/058,660,1,1,0.4970442705133198,0,World Knowledge,Unknown Type
+SmolAgents/059,661,4,1,0.4722960094952366,0,World Knowledge,Unknown Type
+SmolAgents/060,662,1,1,0.4970442705133198,0,World Knowledge,Unknown Type
+SmolAgents/061,663,4,1,0.45771124088309406,0,World Knowledge,Unknown Type
+SmolAgents/062,664,4,0,0.4077131123853156,0,World Knowledge,Unknown Type
+SmolAgents/063,665,4,0,0.5542425421946674,1,World Knowledge,Unknown Type
+SmolAgents/064,666,0,0,0.41412533165812415,0,World Knowledge,Unknown Type
+SmolAgents/065,667,3,0,0.4158248731874978,0,World Knowledge,Unknown Type
+SmolAgents/066,668,0,1,0.4560649530924305,0,World Knowledge,Unknown Type
+SmolAgents/067,669,1,0,0.31797107985895473,0,World Knowledge,Unknown Type
+SmolAgents/068,670,3,1,0.5003696351105127,1,World Knowledge,Unknown Type
+SmolAgents/069,671,4,0,0.5624417842816279,1,World Knowledge,Unknown Type
+SmolAgents/070,672,3,0,0.37792876000802356,0,World Knowledge,Unknown Type
+SmolAgents/071,673,2,0,0.48348835943106383,0,Science,Unknown Type
+SmolAgents/072,674,2,1,0.44225654280891563,0,Science,Unknown Type
+SmolAgents/073,675,3,0,0.605594670070127,1,Science,Unknown Type
+SmolAgents/074,676,1,0,0.6535455911715575,1,Science,Unknown Type
+SmolAgents/075,677,3,0,0.593600118246874,1,Science,Unknown Type
+SmolAgents/076,678,1,1,0.46661084590950674,0,Science,Unknown Type
+SmolAgents/077,679,4,1,0.4483248728063575,0,Science,Unknown Type
+SmolAgents/078,680,0,1,0.7433179816712977,1,Science,Unknown Type
+SmolAgents/079,681,2,1,0.29440748813695783,0,Science,Unknown Type
+SmolAgents/080,682,0,1,0.4749916004168728,0,Math,Unknown Type
+SmolAgents/081,683,1,1,0.4235988789238617,0,Math,Unknown Type
+SmolAgents/082,684,1,0,0.49767141117633196,0,Math,Unknown Type
+SmolAgents/083,685,3,1,0.3051093900694227,0,Math,Unknown Type
+SmolAgents/084,686,3,1,0.27684326002098064,0,Math,Unknown Type
+SmolAgents/085,687,4,1,0.5690171887664374,1,Math,Unknown Type
+SmolAgents/086,688,0,0,0.5773667631697618,1,Math,Unknown Type
+SmolAgents/087,689,1,0,0.48954791469062164,0,Math,Unknown Type
+SmolAgents/088,690,3,0,0.574589856000959,1,Math,Unknown Type
+SmolAgents/089,691,1,1,0.3850603248108656,0,Math,Unknown Type
+SmolAgents/090,692,3,0,0.45820759084084695,0,Math,Unknown Type

@@ -10,6 +10,13 @@ success and failure.
    Loads or generates traces and assigns an outcome label.
    For `frontierscience`, this means inference plus grading.
    For `processbench`, traces already exist and include step-level error labels.
+   For `agenterrorbench`, traces already exist as JSON/JSONL trajectories; if
+   `critical_error` annotations are present, Stage 1 uses them to localise the
+   first failure step.
+   For `agenthallu`, Stage 1 can also run the benchmark's hallucination
+   judgment + responsible-step attribution prompts and write those predictions
+   back into `traces.jsonl` without changing the ground-truth labels used by
+   later SLoD stages.
 
 2. `02_slod.py`
    Runs pairwise SLoD comparisons over trace chunks and aggregates them with a
@@ -38,6 +45,9 @@ Other scripts:
 - `05b_lightgbm_comparison.py`: Tests interaction signal using LightGBM.
 - `05z_aggregate_models.py`: Aggregates model results across datasets.
 - `05d/e/f/g`: UMAP diagnostics and categorical analyses for specific datasets.
+- `05h_agenthallu_slod_prediction.py`: AgentHallu-only SLoD baseline for
+  judgment + responsible-step attribution, using existing `chunk_rankings.jsonl`
+  rather than an external judge model.
 - `run_sh6.py`: Orchestrator for the full pipeline.
 
 ## Stage 5: Failure Analysis
@@ -253,6 +263,16 @@ uv run python experiments/sh6_llm-pairwise-slod/scripts/05_analyze_failure_modes
   --target is_correct
 ```
 
+For AgentErrorBench, point the config at a local benchmark snapshot and run:
+
+```bash
+uv run python experiments/sh6_llm-pairwise-slod/scripts/01_traces.py \
+  --config experiments/sh6_llm-pairwise-slod/config/agenterrorbench.yaml
+```
+
+If `dataset.local_path` is missing, Stage 1 downloads the public
+AgentErrorBench release from Google Drive into that cache directory first.
+
 ## Config knobs
 
 The optional `failure_analysis` block controls Stage 5:
@@ -278,6 +298,105 @@ Meaning:
   Seed for cross-validation and the logistic baseline
 - `top_k_features`
   Number of coefficients shown in the coefficient plot
+
+For AgentHallu, the optional `agenthallu_eval` block controls the benchmark
+evaluation that runs in Stage 1:
+
+```yaml
+agenthallu_eval:
+  enabled: true
+  method: all_at_once
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: false
+    extra_body:
+      temperature: 0.0
+      max_tokens: 2048
+```
+
+Meaning:
+
+- `enabled`
+  When true, Stage 1 evaluates AgentHallu judgment + attribution instead of
+  only normalising the dataset.
+- `method`
+  `all_at_once` (standard prompting over the full trajectory) or
+  `step_by_step` (prefix-based prompting that stops at the first predicted
+  hallucinated step).
+- `model`
+  Judge model configuration in the same SH6 backend format used elsewhere.
+  The Stage 3 summary reports macro-F1, macro-recall, and accuracy for
+  judgment, plus step localization accuracy on hallucinated items only.
+- `geval`
+  Optional explanation-quality evaluation for attribution. When enabled,
+  SH6 scores hallucinated samples with the paper's 1-5 GEVAL rubric and
+  reports the average GEVAL score alongside step localization accuracy.
+
+For the separate SLoD-only AgentHallu baseline, `agenthallu_slod_prediction`
+controls the offline prediction pass:
+
+```yaml
+agenthallu_slod_prediction:
+  judgment_model: logreg
+  judgment_feature_set: trajectory_full
+  cv_folds: 5
+  random_state: 42
+```
+
+This path does **not** call the external AgentHallu judge. It consumes the
+existing SH6 `chunk_rankings.jsonl` and predicts:
+
+- judgment (hallucination vs no hallucination) from trajectory features
+- attribution (responsible step) from per-step SLoD sequence features
+
+Run it with:
+
+```bash
+uv run python experiments/sh6_llm-pairwise-slod/scripts/05h_agenthallu_slod_prediction.py \
+  --config experiments/sh6_llm-pairwise-slod/config/agenthallu.yaml
+```
+
+For AgentErrorBench, the `dataset` block controls local snapshot loading:
+
+```yaml
+dataset:
+  name: agenterrorbench
+  local_path: ../../../data/sh6/agenterrorbench
+  drive_url: https://drive.google.com/drive/folders/1bQe6dQA85pktT63YnKIKJDTVaH3O3Vpu?usp=drive_link
+  download_if_missing: true
+  file_globs:
+    - "**/*.jsonl"
+    - "**/*.json"
+  environments: all
+  providers: all
+  models: all
+```
+
+Meaning:
+
+- `local_path`
+  Directory or file containing the benchmark export. Stage 1 accepts
+  AgentDebug-style `messages`/`metadata` JSON, episode JSONL produced by
+  `agentdebug.rollout.step_to_episode`, step-level rollout JSONL,
+  AgentErrorBench `*_labels.json`, and optional `*_critical_error.json` files
+  next to the trajectories.
+- `drive_url`
+  Public Google Drive folder used for auto-download when the local cache is
+  missing.
+- `download_if_missing`
+  When true, SH6 populates `local_path` from `drive_url` before scanning files.
+- `file_globs`
+  Recursive patterns used to discover candidate JSON/JSONL files under
+  `local_path`.
+- `environments`
+  Optional environment filter (`ALFWorld`, `GAIA`, `WebShop`, or `all`).
+- `providers`
+  Optional provider filter when the snapshot mixes multiple rollout backends.
+- `models`
+  Optional generator-model filter.
 
 ## Interpretation guidance
 
@@ -420,4 +539,3 @@ Outputs land under
 `reports/frontierscience/deepseek-ai/DeepSeek-R1-Distill-Qwen-{1.5B,32B}_reasoning-auto/`,
 in parallel to the cloud `deepseek/deepseek-v3.2_reasoning-auto/` run, so
 you can compare detector verdicts and `trajectory_shape` AUC side by side.
-

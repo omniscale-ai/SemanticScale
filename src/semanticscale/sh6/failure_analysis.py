@@ -118,10 +118,12 @@ FEATURE_FAMILY_RULES = [
 
 MODEL_DISPLAY_NAMES = {
     "length_only": "length_only (logreg)",
+    "lenght_abort": "lenght_abort (logreg)",
     "trajectory_shape": "trajectory_shape (logreg)",
     "trajectory_full": "trajectory_full (logreg)",
     "mode_stack": "mode_stack (logreg)",
     "lightgbm_trajectory_full": "trajectory_full (lightgbm)",
+    "lightgbm_mode_stack": "mode_stack (lightgbm)",
 }
 
 
@@ -802,10 +804,12 @@ def plot_roc_curves(
     fig, ax = plt.subplots(figsize=(6, 5))
     for name, color in [
         ("length_only", "#8c8c8c"),
+        ("lenght_abort", "#8c8c8c"),
         ("trajectory_shape", "#2166ac"),
         ("trajectory_full", "#b2182b"),
         ("lightgbm_trajectory_full", "#4d9221"),
         ("mode_stack", "#1b7837"),
+        ("lightgbm_mode_stack", "#762a83"),
     ]:
         result = model_results.get(name)
         if result is None:
@@ -1133,10 +1137,12 @@ def write_markdown_report(
     wrote_model_row = False
     for name in (
         "length_only",
+        "lenght_abort",
         "trajectory_shape",
         "trajectory_full",
         "lightgbm_trajectory_full",
         "mode_stack",
+        "lightgbm_mode_stack",
     ):
         result = model_results.get(name)
         if result is not None:
@@ -1315,7 +1321,7 @@ def write_markdown_report(
             "",
             "## Interpretation Notes",
             "",
-            "- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.",
+            "- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.",
             "- Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.",
             "- Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.",
             "- `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.",

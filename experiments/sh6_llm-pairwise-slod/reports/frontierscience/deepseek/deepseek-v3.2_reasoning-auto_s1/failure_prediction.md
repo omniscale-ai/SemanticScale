@@ -11,10 +11,12 @@
 
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
-| length_only | 3 | 0.658 +/- 0.158 | 0.500 +/- 0.144 | 0.747 +/- 0.069 | 0.695 +/- 0.094 | 0.713 +/- 0.066 |
-| trajectory_shape | 60 | 0.763 +/- 0.079 | 0.620 +/- 0.100 | 0.672 +/- 0.074 | 0.669 +/- 0.078 | 0.609 +/- 0.080 |
-| trajectory_full | 63 | 0.763 +/- 0.079 | 0.618 +/- 0.103 | 0.699 +/- 0.058 | 0.689 +/- 0.070 | 0.643 +/- 0.058 |
-| mode_stack | 10 | 0.792 +/- 0.080 | 0.665 +/- 0.107 | 0.723 +/- 0.067 | 0.689 +/- 0.081 | 0.680 +/- 0.064 |
+| length_only (logreg) | 3 | 0.658 +/- 0.158 | 0.500 +/- 0.144 | 0.747 +/- 0.069 | 0.695 +/- 0.094 | 0.713 +/- 0.066 |
+| trajectory_shape (logreg) | 60 | 0.763 +/- 0.079 | 0.620 +/- 0.100 | 0.672 +/- 0.074 | 0.669 +/- 0.078 | 0.609 +/- 0.080 |
+| trajectory_full (logreg) | 63 | 0.763 +/- 0.079 | 0.618 +/- 0.103 | 0.699 +/- 0.058 | 0.689 +/- 0.070 | 0.643 +/- 0.058 |
+| trajectory_full (lightgbm) | 63 | 0.814 +/- 0.046 | 0.673 +/- 0.048 | 0.682 +/- 0.095 | 0.703 +/- 0.093 | 0.597 +/- 0.123 |
+| mode_stack (logreg) | 13 | 0.786 +/- 0.081 | 0.647 +/- 0.111 | 0.715 +/- 0.078 | 0.682 +/- 0.087 | 0.669 +/- 0.081 |
+| mode_stack (lightgbm) | 13 | 0.829 +/- 0.025 | 0.719 +/- 0.048 | 0.698 +/- 0.071 | 0.723 +/- 0.042 | 0.597 +/- 0.128 |
 
 ## Top Single Features
 
@@ -103,9 +105,9 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
-- `mode_stack` ROC-AUC: **0.792**
+- `mode_stack` ROC-AUC: **0.786**
 - `trajectory_full` ROC-AUC: **0.763**
-- Above-chance discrimination preserved by the mode stack: **110.7%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- Above-chance discrimination preserved by the mode stack: **108.8%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 > Caveat: the FrontierScience capture number is **inflated** because the answer-side detectors (`answer_meandering`, `answer_volatility`, `answer_uncommitted`, `answer_overrange`) were selected post-hoc by ranking univariate AUCs on this dataset. Treat this number as a descriptive upper bound. The SWE-agent capture number, where the reasoning-side detectors were pre-registered, is the unbiased estimate.
 
@@ -120,7 +122,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.

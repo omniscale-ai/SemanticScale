@@ -11,13 +11,19 @@ Dispatches to the dataset configured in config.yaml:
     ships reasoning traces pre-chunked into ``steps`` together with a
     ``label`` marking the first erroneous step. We just load and normalise.
 
+  * ``agenterrorbench`` — loads trajectory JSON/JSONL exported from
+    AgentErrorBench / AgentDebug, and optionally merges detector
+    ``critical_error`` annotations when they are present alongside the
+    trajectories.
+
 Output:
     {data_dir}/{dataset}/{run_slug}/traces.jsonl
     {data_dir}/{dataset}/{run_slug}/summary.json
 
 Usage:
-    python scripts/01_traces.py --config config-frontierscience-nano.yaml
-    python scripts/01_traces.py --config config-processbench.yaml
+    python scripts/01_traces.py --config config/frontierscience-nano.yaml
+    python scripts/01_traces.py --config config/processbench-gsm8k.yaml
+    python scripts/01_traces.py --config config/agenterrorbench.yaml
 """
 
 import argparse
@@ -25,8 +31,8 @@ import json
 import logging
 from pathlib import Path
 
+from semanticscale.sh6.agenthallu_eval import evaluate_traces
 from semanticscale.sh6 import datasets as ds
-from semanticscale.sh6.scoring import score_results
 from semanticscale.utils import load_config, save_jsonl, setup_logging
 
 logger = logging.getLogger(__name__)
@@ -112,11 +118,14 @@ def main() -> None:
         return
 
     traces = ds.produce_traces(config, project_root, overrides)
+    traces = evaluate_traces(traces, config)
+    for trace in traces:
+        trace.pop("_agenthallu_eval_steps", None)
 
     save_jsonl(traces, traces_path)
     logger.info("Saved %d traces to %s", len(traces), traces_path)
 
-    summary = score_results(traces)
+    summary = ds.score_results(config, traces)
     out_dir.mkdir(parents=True, exist_ok=True)
     with summary_path.open("w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)

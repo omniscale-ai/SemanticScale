@@ -40,29 +40,28 @@ def compute_slice_accuracy(
     """
     if not traces_path.exists():
         return None
-    counts: dict[str, dict] = defaultdict(
-        lambda: {"total": 0, "correct": 0, "errors": 0}
-    )
+    grouped_rows: dict[str, list[dict]] = defaultdict(list)
     for row in load_jsonl(traces_path):
         label = ds.slice_label(config, row)
         if label is None:
             continue
-        bucket = counts[label]
-        bucket["total"] += 1
-        if row.get("error"):
-            bucket["errors"] += 1
-        elif row.get("is_correct"):
-            bucket["correct"] += 1
-    if not counts:
+        grouped_rows[label].append(row)
+    if not grouped_rows:
         return None
     return {
         label: {
-            "total": v["total"],
-            "correct": v["correct"],
-            "errors": v["errors"],
-            "accuracy": v["correct"] / max(v["total"] - v["errors"], 1),
+            "total": summary["total"],
+            "correct": summary["correct"],
+            "errors": summary["errors"],
+            "accuracy": summary["accuracy"],
         }
-        for label, v in sorted(counts.items())
+        for label, summary in sorted(
+            (
+                (label, ds.score_results(config, rows))
+                for label, rows in grouped_rows.items()
+            ),
+            key=lambda item: item[0],
+        )
     }
 
 
@@ -117,6 +116,31 @@ def write_summary_md(
             f"| {s['errors']} |"
         )
 
+    if any("judgment" in s for s in summaries):
+        lines += [
+            "",
+            "## AgentHallu Judgment and Attribution",
+            "",
+            "| Run slug | Method | Judge model | Macro-F1 | Macro-recall | Accuracy | Step localization | GEVAL | Hallucinated answered |",
+            "|---|---|---|---|---|---|---|---|---|",
+        ]
+        for s in summaries:
+            judgment = s.get("judgment")
+            attribution = s.get("attribution")
+            if not judgment or not attribution:
+                continue
+            lines.append(
+                f"| {_slug(s)} "
+                f"| {s.get('evaluation_method', '') or 'n/a'} "
+                f"| {s.get('model', '') or 'n/a'} "
+                f"| {100 * judgment.get('macro_f1', 0.0):.1f}% "
+                f"| {100 * judgment.get('macro_recall', 0.0):.1f}% "
+                f"| {100 * judgment.get('accuracy', 0.0):.1f}% "
+                f"| {100 * attribution.get('step_localization_accuracy', 0.0):.1f}% "
+                f"| {attribution.get('geval_score', 0.0):.2f} "
+                f"| {attribution.get('hallucinated_answered', 0)} |"
+            )
+
     for s in summaries:
         by_subj = s.get("by_subject", {})
         if not by_subj:
@@ -153,12 +177,40 @@ def write_summary_md(
             ]
             for label, v in sorted(by_slice.items(), key=lambda x: -x[1]["accuracy"]):
                 lines.append(
-                    f"| {label} "
-                    f"| {100 * v['accuracy']:.1f}% "
-                    f"| {v['correct']} "
-                    f"| {v['total']} "
-                    f"| {v['errors']} |"
+                f"| {label} "
+                f"| {100 * v['accuracy']:.1f}% "
+                f"| {v['correct']} "
+                f"| {v['total']} "
+                f"| {v['errors']} |"
                 )
+
+    for s in summaries:
+        by_category = s.get("by_hallucination_category", {})
+        if not by_category:
+            continue
+        lines += [
+            "",
+            f"## {_slug(s)} — Hallucination Category Breakdown",
+            "",
+            "| Category | Macro-F1 | Macro-recall | Accuracy | Step localization | GEVAL | Answered | Errors |",
+            "|---|---|---|---|---|---|---|---|",
+        ]
+        for category, metrics in sorted(
+            by_category.items(),
+            key=lambda item: item[0],
+        ):
+            judgment = metrics.get("judgment", {})
+            attribution = metrics.get("attribution", {})
+            lines.append(
+                f"| {category} "
+                f"| {100 * judgment.get('macro_f1', 0.0):.1f}% "
+                f"| {100 * judgment.get('macro_recall', 0.0):.1f}% "
+                f"| {100 * metrics.get('accuracy', 0.0):.1f}% "
+                f"| {100 * attribution.get('step_localization_accuracy', 0.0):.1f}% "
+                f"| {attribution.get('geval_score', 0.0):.2f} "
+                f"| {metrics.get('answered', 0)} "
+                f"| {metrics.get('errors', 0)} |"
+            )
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w") as f:

@@ -103,15 +103,15 @@
     "fn": 11,
     "tp": 50
   },
-  "duration_seconds": 0.5400481520046014,
-  "timestamp_utc": "2026-04-29T07:58:10+00:00",
-  "git_sha": "7f53b40",
+  "duration_seconds": 0.5275575009873137,
+  "timestamp_utc": "2026-04-29T09:18:46+00:00",
+  "git_sha": "f43bbe9",
   "python_version": "3.12.3",
   "library_versions": {
-    "sklearn": "1.8.0",
+    "sklearn": "1.7.2",
     "lightgbm": "4.6.0",
     "numpy": "2.3.5",
-    "pandas": "3.0.2",
+    "pandas": "2.3.3",
     "scipy": "1.17.1"
   }
 }

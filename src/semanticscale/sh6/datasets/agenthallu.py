@@ -40,6 +40,8 @@ import subprocess
 from datetime import timezone
 from pathlib import Path
 
+from .. import agenthallu_eval
+
 logger = logging.getLogger(__name__)
 
 DATASET_NAME = "agenthallu"
@@ -179,6 +181,55 @@ def _step_to_chunk(step: dict) -> str | None:
     return "\n".join(parts)
 
 
+def _json_compact(value) -> str:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ": "))
+
+
+def _tool_calls_for_eval(tool_calls) -> list[str]:
+    chunks: list[str] = []
+    for call in tool_calls or []:
+        if not isinstance(call, dict):
+            chunks.append(str(call))
+            continue
+        name = call.get("name")
+        args = call.get("arguments", {})
+        chunks.append(
+            f'{{Calling tool: "{name}" with arguments: {_json_compact(args)}}}'
+        )
+    return chunks
+
+
+def _tool_responses_for_eval(tool_responses) -> list[str]:
+    chunks: list[str] = []
+    for response in tool_responses or []:
+        if isinstance(response, str):
+            chunks.append(response)
+        else:
+            chunks.append(json.dumps(response, ensure_ascii=False))
+    return chunks
+
+
+def _step_for_eval(step: dict) -> dict:
+    step_num = step.get("step")
+    content = step.get("content")
+    if content is None:
+        content = ""
+    elif not isinstance(content, str):
+        content = json.dumps(content, ensure_ascii=False)
+    text = "; ".join(
+        [
+            f"Content at step {step_num}: {{{content}}}",
+            f"Tool Calls at step {step_num}: {_tool_calls_for_eval(step.get('tool_calls', []))}",
+            f"Tool Responses at step {step_num}: {_tool_responses_for_eval(step.get('tool_responses', []))}",
+        ]
+    )
+    try:
+        step_index = int(step_num)
+    except (TypeError, ValueError):
+        step_index = 0
+    return {"step": step_index, "text": f"Step {step_num}: {text}"}
+
+
 def _parse_step_index(raw) -> int | None:
     """Parse the dataset's 1-indexed ``hallucination_step`` into a 0-indexed int."""
     if raw is None:
@@ -258,6 +309,7 @@ def produce_traces(
                 continue
 
             history = row.get("history") or []
+            eval_steps = [_step_for_eval(step) for step in history]
             chunks = [c for c in (_step_to_chunk(s) for s in history) if c]
             if not chunks:
                 skipped_no_chunks += 1
@@ -294,6 +346,7 @@ def produce_traces(
                     "is_correct": is_correct,
                     "error_step_index": error_step,
                     "final_answer_correct": is_correct,
+                    "hallucination_step": None if error_step is None else error_step + 1,
                     "generator": str(row.get("model_id") or ""),
                     "agent_type": str(row.get("agent_type") or ""),
                     "framework": framework,
@@ -304,6 +357,7 @@ def produce_traces(
                     "model": None,
                     "usage": None,
                     "error": None,
+                    "_agenthallu_eval_steps": eval_steps,
                     "timestamp": ts,
                     "has_final_answer": agent_answer is not None,
                     "grade": None,
@@ -324,3 +378,8 @@ def produce_traces(
         skipped_no_chunks,
     )
     return traces
+
+
+def score_results(results: list[dict]) -> dict:
+    """Dataset-specific summary hook used by SH6 Stage 1 / Stage 3."""
+    return agenthallu_eval.score_results(results)

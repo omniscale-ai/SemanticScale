@@ -1,0 +1,142 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all",
+  "judgment": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "n_items": 693,
+    "n_hallucinated": 443,
+    "n_clean": 250,
+    "metrics": {
+      "macro_precision": 0.503030303030303,
+      "macro_recall": 0.5032776523702032,
+      "macro_f1": 0.48959056577095234,
+      "accuracy": 0.4963924963924964
+    },
+    "by_subject": {
+      "General Assistant": {
+        "macro_precision": 0.5050505050505051,
+        "macro_recall": 0.5048076923076923,
+        "macro_f1": 0.49043062200956933,
+        "accuracy": 0.49295774647887325,
+        "n_items": 71,
+        "n_hallucinated": 39
+      },
+      "Math": {
+        "macro_precision": 0.44479062811565306,
+        "macro_recall": 0.43795518207282913,
+        "macro_f1": 0.42272727272727273,
+        "accuracy": 0.4330708661417323,
+        "n_items": 127,
+        "n_hallucinated": 85
+      },
+      "Science": {
+        "macro_precision": 0.48567362428842503,
+        "macro_recall": 0.48177209077740224,
+        "macro_f1": 0.4695876288659794,
+        "accuracy": 0.5238095238095238,
+        "n_items": 147,
+        "n_hallucinated": 109
+      },
+      "Tool Use": {
+        "macro_precision": 0.46951951951951953,
+        "macro_recall": 0.4676905936654464,
+        "macro_f1": 0.453885583866502,
+        "accuracy": 0.4573170731707317,
+        "n_items": 164,
+        "n_hallucinated": 103
+      },
+      "World Knowledge": {
+        "macro_precision": 0.5609031491384433,
+        "macro_recall": 0.5622041509891977,
+        "macro_f1": 0.5535037878787878,
+        "accuracy": 0.5543478260869565,
+        "n_items": 184,
+        "n_hallucinated": 107
+      }
+    },
+    "confusion_matrix": {
+      "tn": 132,
+      "fp": 118,
+      "fn": 231,
+      "tp": 212
+    }
+  },
+  "attribution": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_hallucinated": 443,
+    "n_step_rows": 3315,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.23024830699774265,
+    "by_hallucination_category": {
+      "Human-Interaction Hallucination": {
+        "step_localization_accuracy": 0.3424657534246575,
+        "n_hallucinated": 73
+      },
+      "Planning Hallucination": {
+        "step_localization_accuracy": 0.582089552238806,
+        "n_hallucinated": 67
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.059322033898305086,
+        "n_hallucinated": 118
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.13414634146341464,
+        "n_hallucinated": 82
+      },
+      "Tool-Use Hallucination": {
+        "step_localization_accuracy": 0.1941747572815534,
+        "n_hallucinated": 103
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.15384615384615385,
+        "n_hallucinated": 39
+      },
+      "Math": {
+        "step_localization_accuracy": 0.2823529411764706,
+        "n_hallucinated": 85
+      },
+      "Science": {
+        "step_localization_accuracy": 0.28440366972477066,
+        "n_hallucinated": 109
+      },
+      "Tool Use": {
+        "step_localization_accuracy": 0.1941747572815534,
+        "n_hallucinated": 103
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.19626168224299065,
+        "n_hallucinated": 107
+      }
+    }
+  }
+}

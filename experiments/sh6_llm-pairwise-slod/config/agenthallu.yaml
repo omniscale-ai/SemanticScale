@@ -21,8 +21,41 @@ dataset:
   models: all
   max_samples: null
 
-# No `traces` section: trajectories already ship fully annotated, so Stage 1
-# just loads and normalises — no inference is run.
+agenthallu_eval:
+  enabled: true
+  # Matches the benchmark paper/reference implementation:
+  # - all_at_once: one judgment + attribution call over the full trajectory
+  # - step_by_step: inspect prefixes until the first hallucinated step is found
+  method: all_at_once
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: false
+    extra_body:
+      temperature: 0.0
+      max_tokens: 2048
+  max_concurrent: 20
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+  geval:
+    enabled: false
+    # The paper reports explanation quality with GPT-5 as evaluator.
+    # Enable this block to reproduce that metric in SH6.
+    model:
+      name: gpt-5-2025-08-07
+      base_url: https://api.openai.com/v1
+      api_key_env: OPENAI_API_KEY
+      reasoning:
+        enabled: false
+      extra_body:
+        max_tokens: 256
+    max_concurrent: 20
+    max_retries: 5
+    retry_min_wait: 1.0
+    retry_max_wait: 60.0
 
 pairwise_slod:
   model:
@@ -43,3 +76,9 @@ failure_analysis:
   cv_folds: 5
   random_state: 42
   top_k_features: 12
+
+agenthallu_slod_prediction:
+  judgment_model: logreg
+  judgment_feature_set: trajectory_full
+  cv_folds: 5
+  random_state: 42

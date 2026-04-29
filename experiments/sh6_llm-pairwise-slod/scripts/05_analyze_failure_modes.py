@@ -19,7 +19,7 @@ Outputs:
     reports/{dataset}/{run_slug}/failure_feature_coefficients.png
 
 Usage:
-    python scripts/05_analyze_failure_modes.py --config config-processbench.yaml
+    python scripts/05_analyze_failure_modes.py --config config/processbench-gsm8k.yaml
 """
 
 from __future__ import annotations
@@ -478,14 +478,39 @@ def _run_failure_analysis(
         axis=1,
     )
     feature_sets = choose_feature_sets(df_with_scores, extra_meta_columns=score_cols)
-    mode_stack = [
+    baseline_feature_set = "length_only"
+    length_features = list(feature_sets.get(baseline_feature_set) or [])
+    baseline_note = None
+    truncation_feature = "truncation_abort_score"
+    truncation_series = df_with_scores.get(truncation_feature)
+    if truncation_series is not None:
+        truncation_nonnull = truncation_series.dropna()
+        if not truncation_nonnull.empty and truncation_nonnull.nunique() >= 2:
+            if truncation_feature not in length_features:
+                length_features.append(truncation_feature)
+            feature_sets.pop("length_only", None)
+            baseline_feature_set = "lenght_abort"
+            feature_sets[baseline_feature_set] = length_features
+            baseline_note = (
+                "The `lenght_abort` baseline includes both chunk-count features "
+                "and `truncation_abort_score` on this run."
+            )
+    else:
+        feature_sets[baseline_feature_set] = length_features
+    mode_stack_scores = [
         col
         for col in score_cols
-        if df_with_scores[col].notna().any() and df_with_scores[col].dropna().nunique() >= 2
+        if col not in length_features
+        and df_with_scores[col].notna().any()
+        and df_with_scores[col].dropna().nunique() >= 2
     ]
-    if mode_stack:
-        feature_sets["mode_stack"] = mode_stack
+    if mode_stack_scores:
+        # Bundle length features in so the model has the structural baseline to
+        # build on; this keeps mode_stack comparable to the baseline and lets us
+        # read residual gain from the mode detectors directly.
+        feature_sets["mode_stack"] = length_features + mode_stack_scores
     can_predict, effective_cv_folds, feasibility_note = prediction_feasibility(df, cv_folds)
+    analysis_note = " ".join(note for note in (feasibility_note, baseline_note) if note) or None
     model_results: dict[str, dict] = {}
     univariate_rows: list[dict] = []
     coefficient_rows: list[dict] = []
@@ -498,9 +523,12 @@ def _run_failure_analysis(
         return
 
     if can_predict and effective_cv_folds is not None:
-        if feasibility_note:
-            logger.info(feasibility_note)
+        if analysis_note:
+            logger.info(analysis_note)
         extra_models = {"lightgbm_trajectory_full": ("lightgbm", full_features)}
+        mode_stack_features = feature_sets.get("mode_stack") or []
+        if mode_stack_features:
+            extra_models["lightgbm_mode_stack"] = ("lightgbm", mode_stack_features)
         model_results = evaluate_prediction_models(
             df_with_scores,
             feature_sets,
@@ -552,7 +580,7 @@ def _run_failure_analysis(
         out_path=reports_dir / "failure_prediction.md",
         dataset_name=dataset_name,
         run_slug=run_slug,
-        analysis_note=feasibility_note,
+        analysis_note=analysis_note,
         mode_rows=mode_rows,
         coverage=coverage,
         capture=capture,
@@ -565,7 +593,7 @@ def _run_failure_analysis(
         model_results=model_results,
         univariate_rows=univariate_rows,
         coefficient_rows=coefficient_rows,
-        analysis_note=feasibility_note,
+        analysis_note=analysis_note,
         mode_rows=mode_rows,
         coverage=coverage,
         capture=capture,

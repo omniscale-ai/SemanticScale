@@ -31,6 +31,7 @@ from pathlib import Path
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 CONFIGS_DIR = SCRIPTS_DIR.parent / "config"
+PROJECT_ROOT = SCRIPTS_DIR.parents[2]
 
 STAGES = [
     (1, "01_traces.py"),
@@ -42,6 +43,15 @@ STAGES = [
 
 ANCHOR_STAGE = (6, "06_anchor_validation.py")
 ADVANCED_STAGE = (7, "07_advanced_failure_analysis.py")
+
+DEFAULT_EXTRA_RUN_SLUGS = [
+    f"deepseek/deepseek-v3.2_reasoning-auto_s{i}" for i in range(1, 5)
+]
+EXTRA_RUN_STAGE_REQUIREMENTS = {
+    2: ("traces.jsonl",),
+    4: ("traces.jsonl", "chunk_rankings.jsonl"),
+    5: ("traces.jsonl", "chunk_rankings.jsonl"),
+}
 
 
 @dataclass(frozen=True)
@@ -129,6 +139,30 @@ def discover_configs() -> list[Path]:
     return sorted(CONFIGS_DIR.glob("*.yaml"))
 
 
+def discover_default_extra_run_slugs(
+    config_path: Path,
+    stage_num: int,
+    *,
+    dry_run: bool,
+) -> list[str]:
+    required_files = EXTRA_RUN_STAGE_REQUIREMENTS.get(stage_num)
+    if required_files is None:
+        return []
+
+    if config_path.name != "frontierscience-deepseek.yaml":
+        return []
+
+    if dry_run:
+        return list(DEFAULT_EXTRA_RUN_SLUGS)
+
+    dataset_dir = PROJECT_ROOT / "data" / "sh6" / "frontierscience"
+    return [
+        run_slug
+        for run_slug in DEFAULT_EXTRA_RUN_SLUGS
+        if all((dataset_dir / run_slug / name).exists() for name in required_files)
+    ]
+
+
 def run_for_single_config(
     args: argparse.Namespace,
     config_path: Path,
@@ -157,6 +191,22 @@ def run_for_single_config(
         )
         if failure is not None:
             failures.append(failure)
+
+        for extra_run_slug in discover_default_extra_run_slugs(
+            config_path,
+            num,
+            dry_run=args.dry_run,
+        ):
+            extra_failure = run_stage(
+                num,
+                script,
+                config_path,
+                f"{config_label} [{extra_run_slug}]",
+                args.dry_run,
+                extra_args=[*(extra_args or []), "--run-slug", extra_run_slug],
+            )
+            if extra_failure is not None:
+                failures.append(extra_failure)
 
     if run_anchor_stage and args.start_from <= ANCHOR_STAGE[0] <= args.stop_at:
         num, script = ANCHOR_STAGE

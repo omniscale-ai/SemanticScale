@@ -7,7 +7,7 @@ Stage 2 (SLoD ranking) and Stage 3 (analysis & plotting).
 Trace record schema (all keys present; dataset-specific ones may be None):
 
     id: str
-    dataset: str                    # "frontierscience" | "processbench"
+    dataset: str                    # e.g. "frontierscience" | "processbench"
     run_slug: str                   # identifies the run within a dataset
     problem: str
     subject: str
@@ -17,7 +17,7 @@ Trace record schema (all keys present; dataset-specific ones may be None):
     reasoning_text: str | None
     answer_text: str | None
 
-    # pre-chunked traces (processbench: provided by the dataset)
+    # pre-chunked traces (processbench / AgentErrorBench / AgentHallu: provided)
     reasoning_chunks: list[str] | None
     answer_chunks: list[str] | None
 
@@ -39,12 +39,24 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from . import agenthallu, frontierscience, gpqa_diamond, processbench, swe_agent_trajectories
+from . import (
+    agenterrorbench,
+    agenthallu,
+    frontierscience,
+    gpqa_diamond,
+    processbench,
+    swe_agent_trajectories,
+)
+from .. import scoring as generic_scoring
 
 _REGISTRY: dict[str, object] = {
     "frontierscience": frontierscience,
     "processbench": processbench,
+    "processbench-gsm8k": processbench,
+    "processbench-olympiadbench": processbench,
+    "processbench-omnimath": processbench,
     "swe-agent-trajectories": swe_agent_trajectories,
+    "agenterrorbench": agenterrorbench,
     "agenthallu": agenthallu,
     "gpqa-diamond": gpqa_diamond,
 }
@@ -128,6 +140,15 @@ def produce_traces(
     """
     module = _get_module(dataset_name(config))
     return module.produce_traces(config, project_root, overrides or {})
+
+
+def score_results(config: dict, results: list[dict]) -> dict:
+    """Score result rows, using a dataset-specific scorer when available."""
+    module = _get_module(dataset_name(config))
+    fn = getattr(module, "score_results", None)
+    if fn is not None:
+        return fn(results)
+    return generic_scoring.score_results(results)
 
 
 def slice_name(config: dict) -> str | None:

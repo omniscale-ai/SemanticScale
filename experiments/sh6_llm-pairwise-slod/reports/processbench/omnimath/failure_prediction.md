@@ -18,7 +18,8 @@
 | trajectory_shape (logreg) | 29 | 0.632 +/- 0.056 | 0.655 +/- 0.047 | 0.578 +/- 0.040 | 0.578 +/- 0.040 | 0.569 +/- 0.041 |
 | trajectory_full (logreg) | 29 | 0.632 +/- 0.056 | 0.655 +/- 0.047 | 0.578 +/- 0.040 | 0.578 +/- 0.040 | 0.569 +/- 0.041 |
 | trajectory_full (lightgbm) | 29 | 0.554 +/- 0.057 | 0.588 +/- 0.056 | 0.540 +/- 0.048 | 0.540 +/- 0.048 | 0.534 +/- 0.033 |
-| mode_stack (logreg) | 5 | 0.630 +/- 0.048 | 0.639 +/- 0.039 | 0.592 +/- 0.050 | 0.592 +/- 0.050 | 0.584 +/- 0.056 |
+| mode_stack (logreg) | 6 | 0.630 +/- 0.047 | 0.639 +/- 0.039 | 0.592 +/- 0.050 | 0.592 +/- 0.050 | 0.584 +/- 0.056 |
+| mode_stack (lightgbm) | 6 | 0.503 +/- 0.064 | 0.504 +/- 0.055 | 0.520 +/- 0.059 | 0.520 +/- 0.059 | 0.507 +/- 0.064 |
 
 ## Top Single Features
 
@@ -110,7 +111,7 @@ How much of the failure-prediction signal does the named-mode taxonomy actually 
 
 - `mode_stack` ROC-AUC: **0.630**
 - `trajectory_full` ROC-AUC: **0.632**
-- Above-chance discrimination preserved by the mode stack: **98.1%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- Above-chance discrimination preserved by the mode stack: **97.9%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 
@@ -123,7 +124,7 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 ## Interpretation Notes
 
-- `trajectory_shape` excludes chunk-count features, so any lift over `length_only` is genuine trajectory signal.
+- `trajectory_shape` excludes chunk-count features, so any lift over the structural baseline is genuine trajectory signal.
 - Pair-density columns are saved in the feature CSV for diagnostics, but excluded from the prediction models because they reflect ranking coverage rather than reasoning behavior.
 - Positive coefficients mean higher feature values predict final-answer success; negative coefficients predict failure.
 - `signal ROC-AUC` treats both directions symmetrically, so values closer to 1.0 indicate stronger standalone predictive signal.
