@@ -5929,10 +5929,10 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "no_commitment",
-        "rambling_overlong",
+        "thrashing",
         "truncation_abort",
-        "thrashing"
+        "no_commitment",
+        "rambling_overlong"
       ],
       "n_flagged": 293,
       "n_caught": 267,

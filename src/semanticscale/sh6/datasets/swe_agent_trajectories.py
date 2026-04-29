@@ -34,6 +34,13 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 DATASET_NAME = "swe-agent-trajectories"
+SLICE_NAME = "generator"
+
+
+def slice_label(trace: dict) -> str | None:
+    """Return the SWE-agent backbone model for per-model analysis grouping."""
+    gen = trace.get("generator")
+    return str(gen) if gen else None
 
 
 def _models(config: dict, overrides: dict) -> list[str] | None:

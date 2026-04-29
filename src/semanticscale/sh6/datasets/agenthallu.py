@@ -43,6 +43,14 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 DATASET_NAME = "agenthallu"
+SLICE_NAME = "framework"
+
+
+def slice_label(trace: dict) -> str | None:
+    """Return the trace's framework for per-framework analysis grouping."""
+    framework = trace.get("framework")
+    return str(framework) if framework else None
+
 
 _DEFAULT_REPO_URL = "https://github.com/liuxuannan/AgentHallu.git"
 _DEFAULT_REPO_REF = "main"

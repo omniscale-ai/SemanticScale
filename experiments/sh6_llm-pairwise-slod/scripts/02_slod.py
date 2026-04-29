@@ -20,6 +20,7 @@ Usage:
 import argparse
 import asyncio
 import logging
+from collections import defaultdict
 from pathlib import Path
 
 from semanticscale.sh6 import datasets as ds
@@ -27,6 +28,7 @@ from semanticscale.sh6.slod_rank import rank_all
 from semanticscale.utils import load_config, load_jsonl, save_jsonl, setup_logging
 
 logger = logging.getLogger(__name__)
+MIN_BALANCED_PER_SLICE_CLASS = 100
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,12 +54,132 @@ def parse_args() -> argparse.Namespace:
         "--balanced",
         action="store_true",
         help=(
-            "With --limit N, sample N/2 successful and N/2 failed traces "
-            "(by is_correct). If either class has fewer available, warn "
-            "and take what's available."
+            "With --limit N, sample a balanced success/failure subset "
+            "(by is_correct)."
+        ),
+    )
+    parser.add_argument(
+        "--balance-per-slice",
+        action="store_true",
+        help=(
+            "With --balanced --limit N, balance within the dataset's "
+            "slice_label groups and keep at least 100 successes and 100 "
+            "failures per slice when available."
         ),
     )
     return parser.parse_args()
+
+
+def _balanced_sample(traces: list[dict], limit: int) -> list[dict]:
+    successes = [t for t in traces if t.get("is_correct") is True]
+    failures = [t for t in traces if t.get("is_correct") is False]
+    per_class = limit // 2
+    if len(successes) < per_class:
+        logger.warning(
+            "Only %d successful traces available (wanted %d)",
+            len(successes), per_class,
+        )
+    if len(failures) < per_class:
+        logger.warning(
+            "Only %d failed traces available (wanted %d)",
+            len(failures), per_class,
+        )
+    sampled = successes[:per_class] + failures[:per_class]
+    logger.info(
+        "Balanced sampling: %d successful + %d failed = %d traces",
+        min(len(successes), per_class),
+        min(len(failures), per_class),
+        len(sampled),
+    )
+    return sampled
+
+
+def _balanced_sample_by_slice(traces: list[dict], config: dict, limit: int) -> list[dict]:
+    grouped: dict[str, dict[bool, list[dict]]] = defaultdict(lambda: {True: [], False: []})
+    skipped_without_slice = 0
+    for trace in traces:
+        outcome = trace.get("is_correct")
+        if outcome not in (True, False):
+            continue
+        slice_label = ds.slice_label(config, trace)
+        if slice_label is None:
+            skipped_without_slice += 1
+            continue
+        grouped[str(slice_label)][bool(outcome)].append(trace)
+
+    if not grouped:
+        slice_name = ds.slice_name(config)
+        logger.error(
+            "--balance-per-slice requested, but dataset %s has no usable %s labels",
+            ds.dataset_name(config),
+            slice_name or "slice",
+        )
+        raise SystemExit(1)
+
+    slice_name = ds.slice_name(config) or "slice"
+    slice_count = len(grouped)
+    requested_per_slice_class = limit // (2 * slice_count)
+    per_slice_class = max(
+        requested_per_slice_class,
+        MIN_BALANCED_PER_SLICE_CLASS,
+    )
+    minimum_total = 2 * slice_count * MIN_BALANCED_PER_SLICE_CLASS
+    if limit < minimum_total:
+        logger.info(
+            "Requested --limit=%d, but per-slice balancing needs at least %d "
+            "traces to keep %d successes and %d failures per %s across %d slices.",
+            limit,
+            minimum_total,
+            MIN_BALANCED_PER_SLICE_CLASS,
+            MIN_BALANCED_PER_SLICE_CLASS,
+            slice_name,
+            slice_count,
+        )
+
+    selected_trace_ids: set[int] = set()
+    summary_parts: list[str] = []
+    for label, buckets in grouped.items():
+        success_bucket = buckets[True]
+        failure_bucket = buckets[False]
+        if len(success_bucket) < per_slice_class:
+            logger.warning(
+                "%s %s has only %d successful traces available (wanted %d)",
+                slice_name,
+                label,
+                len(success_bucket),
+                per_slice_class,
+            )
+        if len(failure_bucket) < per_slice_class:
+            logger.warning(
+                "%s %s has only %d failed traces available (wanted %d)",
+                slice_name,
+                label,
+                len(failure_bucket),
+                per_slice_class,
+            )
+
+        selected_successes = success_bucket[:per_slice_class]
+        selected_failures = failure_bucket[:per_slice_class]
+        selected_trace_ids.update(id(trace) for trace in selected_successes)
+        selected_trace_ids.update(id(trace) for trace in selected_failures)
+        summary_parts.append(
+            f"{label}: {len(selected_successes)} success + {len(selected_failures)} failure"
+        )
+
+    sampled = [trace for trace in traces if id(trace) in selected_trace_ids]
+    logger.info(
+        "Per-%s balanced sampling: %s = %d traces",
+        slice_name,
+        "; ".join(summary_parts),
+        len(sampled),
+    )
+    if skipped_without_slice:
+        logger.warning(
+            "Skipped %d traces without a %s label during per-slice balancing",
+            skipped_without_slice,
+            slice_name,
+        )
+    return sampled
 
 
 def main() -> None:
@@ -89,29 +211,16 @@ def main() -> None:
     if args.balanced and args.limit is None:
         logger.error("--balanced requires --limit")
         raise SystemExit(1)
+    if args.balance_per_slice and not args.balanced:
+        logger.error("--balance-per-slice requires --balanced")
+        raise SystemExit(1)
 
     if args.limit is not None:
         if args.balanced:
-            successes = [t for t in traces if t.get("is_correct") is True]
-            failures = [t for t in traces if t.get("is_correct") is False]
-            per_class = args.limit // 2
-            if len(successes) < per_class:
-                logger.warning(
-                    "Only %d successful traces available (wanted %d)",
-                    len(successes), per_class,
-                )
-            if len(failures) < per_class:
-                logger.warning(
-                    "Only %d failed traces available (wanted %d)",
-                    len(failures), per_class,
-                )
-            traces = successes[:per_class] + failures[:per_class]
-            logger.info(
-                "Balanced sampling: %d successful + %d failed = %d traces",
-                min(len(successes), per_class),
-                min(len(failures), per_class),
-                len(traces),
-            )
+            if args.balance_per_slice:
+                traces = _balanced_sample_by_slice(traces, config, args.limit)
+            else:
+                traces = _balanced_sample(traces, args.limit)
         else:
             traces = traces[: args.limit]
             logger.info("Limiting to %d traces", len(traces))

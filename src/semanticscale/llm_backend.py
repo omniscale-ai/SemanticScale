@@ -41,6 +41,7 @@ from pydantic import BaseModel
 
 from semanticscale.openai_utils import (
     create_response,
+    extract_finish_reason,
     extract_response_text,
     extract_usage,
     should_retry_openai_exception,
@@ -128,6 +129,7 @@ class OpenAIBackend:
             "reasoning_text": reasoning_text,
             "answer_text": answer_text,
             "usage": extract_usage(response),
+            "finish_reason": extract_finish_reason(response),
         }
 
     async def parse(
@@ -233,6 +235,13 @@ class OpenRouterBackend:
             out["reasoning_tokens"] = getattr(details, "reasoning_tokens", None)
         return out
 
+    @staticmethod
+    def _extract_finish_reason(response: Any) -> str | None:
+        try:
+            return getattr(response.choices[0], "finish_reason", None)
+        except (AttributeError, IndexError):
+            return None
+
     async def create(
         self,
         *,
@@ -264,6 +273,8 @@ class OpenRouterBackend:
                 kwargs["reasoning"] = reasoning_arg
             if service_tier is not None:
                 kwargs["service_tier"] = service_tier
+            if extra_body:
+                kwargs.update(extra_body)
             return await self._client.chat.send_async(**kwargs)
 
         response = await _call()
@@ -272,6 +283,7 @@ class OpenRouterBackend:
             "reasoning_text": reasoning_text,
             "answer_text": answer_text,
             "usage": self._extract_usage(response),
+            "finish_reason": self._extract_finish_reason(response),
         }
 
     async def parse(
@@ -310,6 +322,8 @@ class OpenRouterBackend:
             }
             if service_tier is not None:
                 kwargs["service_tier"] = service_tier
+            if extra_body:
+                kwargs.update(extra_body)
             response = await self._client.chat.send_async(**kwargs)
             try:
                 content = response.choices[0].message.content
@@ -397,6 +411,13 @@ class LocalChatBackend:
             out["reasoning_tokens"] = getattr(details, "reasoning_tokens", None)
         return out
 
+    @staticmethod
+    def _extract_finish_reason(response: Any) -> str | None:
+        try:
+            return getattr(response.choices[0], "finish_reason", None)
+        except (AttributeError, IndexError):
+            return None
+
     async def create(
         self,
         *,
@@ -438,6 +459,7 @@ class LocalChatBackend:
             "reasoning_text": reasoning_text,
             "answer_text": answer_text,
             "usage": self._extract_usage(response),
+            "finish_reason": self._extract_finish_reason(response),
         }
 
     async def parse(

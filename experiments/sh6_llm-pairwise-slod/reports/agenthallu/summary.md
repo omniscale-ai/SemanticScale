@@ -15,3 +15,15 @@
 | Tool Use | 37.2% | 61 | 164 | 0 |
 | Math | 33.1% | 42 | 127 | 0 |
 | Science | 25.9% | 38 | 147 | 0 |
+
+## framework-all — Per-Framework Accuracy
+
+| Framework | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| Magentic_One | 42.6% | 40 | 94 | 0 |
+| OpenDeepSearch | 42.0% | 42 | 100 | 0 |
+| Camel | 38.7% | 36 | 93 | 0 |
+| SmolAgents | 37.4% | 34 | 91 | 0 |
+| BFCL | 37.2% | 61 | 164 | 0 |
+| Octotools | 36.2% | 17 | 47 | 0 |
+| OpenManus | 19.2% | 20 | 104 | 0 |

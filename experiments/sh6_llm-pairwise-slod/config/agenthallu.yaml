@@ -31,6 +31,8 @@ pairwise_slod:
     api_key_env: OPENROUTER_API_KEY
     reasoning:
       enabled: false
+    extra_body:
+      max_tokens: 65536
   max_concurrent: 40
   extra_comparisons_per_problem: 20
   min_chunks: 2

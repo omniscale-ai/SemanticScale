@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+from collections import defaultdict
 from pathlib import Path
 
 import pandas as pd
@@ -77,48 +78,37 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
-    setup_logging()
-    args = parse_args()
+def _safe_slice_dir(value: str) -> str:
+    return value.replace("/", "_")
 
-    config = load_config(args.config)
-    project_root = Path(config["_project_root"])
-    dataset_name = ds.dataset_name(config)
-    run_slug = args.run_slug or ds.run_slug(config)
 
-    analysis_cfg = config.get("failure_analysis", {})
-    target_label = args.target or analysis_cfg.get("target_label", "auto")
-    interp_points = int(analysis_cfg.get("interp_points", 20))
-    cv_folds = int(analysis_cfg.get("cv_folds", 5))
-    random_state = int(analysis_cfg.get("random_state", 42))
-    top_k = int(analysis_cfg.get("top_k_features", 12))
+def _run_failure_analysis(
+    *,
+    merged: list[dict],
+    dataset_name: str,
+    run_slug: str,
+    reports_dir: Path,
+    target_label: str,
+    interp_points: int,
+    cv_folds: int,
+    random_state: int,
+    top_k: int,
+) -> None:
+    """Run the full failure-analysis pipeline on a list of merged traces.
 
-    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
-    reports_dir = (project_root / config["paths"]["reports_dir"]).resolve() / dataset_name / run_slug
-    run_dir = data_dir / dataset_name / run_slug
-
-    traces_path = run_dir / "traces.jsonl"
-    rankings_path = run_dir / "chunk_rankings.jsonl"
-    if not traces_path.exists():
-        logger.error("traces.jsonl not found at %s", traces_path)
-        raise SystemExit(1)
-    if not rankings_path.exists():
-        logger.error("chunk_rankings.jsonl not found at %s — run 02_slod.py first", rankings_path)
-        raise SystemExit(1)
-
-    traces = load_jsonl(traces_path)
-    rankings = load_jsonl(rankings_path)
-    merged = merge_traces_and_rankings(traces, rankings)
-    logger.info("Merged %d ranked traces", len(merged))
-
+    Writes all reports under ``reports_dir``. Used both for the global per-run
+    analysis and for per-slice sub-analyses.
+    """
     df, resolved_target = build_feature_table(
         merged,
         target_label=target_label,
         interp_points=interp_points,
     )
     if df.empty:
-        logger.error("No rows available for failure analysis")
-        raise SystemExit(1)
+        logger.warning(
+            "No rows available for failure analysis at %s — skipping", reports_dir
+        )
+        return
 
     mode_scores_df = compute_mode_scores(df, modes=MODES)
     score_cols = [c for c in mode_scores_df.columns if c.endswith("_score")]
@@ -140,8 +130,11 @@ def main() -> None:
     coefficient_rows: list[dict] = []
     full_features = feature_sets.get("trajectory_full") or []
     if not full_features:
-        logger.error("No usable features available for multivariate failure analysis")
-        raise SystemExit(1)
+        logger.warning(
+            "No usable features for multivariate failure analysis at %s — skipping",
+            reports_dir,
+        )
+        return
 
     if can_predict and effective_cv_folds is not None:
         if feasibility_note:
@@ -217,6 +210,83 @@ def main() -> None:
     write_summary_json(summary, reports_dir / "failure_prediction_summary.json")
 
     logger.info("Failure analysis complete. Outputs written to %s", reports_dir)
+
+
+def main() -> None:
+    setup_logging()
+    args = parse_args()
+
+    config = load_config(args.config)
+    project_root = Path(config["_project_root"])
+    dataset_name = ds.dataset_name(config)
+    run_slug = args.run_slug or ds.run_slug(config)
+
+    analysis_cfg = config.get("failure_analysis", {})
+    target_label = args.target or analysis_cfg.get("target_label", "auto")
+    interp_points = int(analysis_cfg.get("interp_points", 20))
+    cv_folds = int(analysis_cfg.get("cv_folds", 5))
+    random_state = int(analysis_cfg.get("random_state", 42))
+    top_k = int(analysis_cfg.get("top_k_features", 12))
+
+    data_dir = (project_root / config["paths"]["data_dir"]).resolve()
+    reports_dir = (project_root / config["paths"]["reports_dir"]).resolve() / dataset_name / run_slug
+    run_dir = data_dir / dataset_name / run_slug
+
+    traces_path = run_dir / "traces.jsonl"
+    rankings_path = run_dir / "chunk_rankings.jsonl"
+    if not traces_path.exists():
+        logger.error("traces.jsonl not found at %s", traces_path)
+        raise SystemExit(1)
+    if not rankings_path.exists():
+        logger.error("chunk_rankings.jsonl not found at %s — run 02_slod.py first", rankings_path)
+        raise SystemExit(1)
+
+    traces = load_jsonl(traces_path)
+    rankings = load_jsonl(rankings_path)
+    merged = merge_traces_and_rankings(traces, rankings)
+    logger.info("Merged %d ranked traces", len(merged))
+
+    _run_failure_analysis(
+        merged=merged,
+        dataset_name=dataset_name,
+        run_slug=run_slug,
+        reports_dir=reports_dir,
+        target_label=target_label,
+        interp_points=interp_points,
+        cv_folds=cv_folds,
+        random_state=random_state,
+        top_k=top_k,
+    )
+
+    sl_name = ds.slice_name(config)
+    if not sl_name:
+        return
+
+    slices: dict[str, list[dict]] = defaultdict(list)
+    for item in merged:
+        label = ds.slice_label(config, item)
+        if label is None:
+            continue
+        slices[label].append(item)
+
+    for label, items in sorted(slices.items()):
+        slice_reports_dir = reports_dir / f"by-{sl_name}" / _safe_slice_dir(label)
+        slice_run_slug = f"{run_slug}/by-{sl_name}/{label}"
+        logger.info(
+            "Per-%s slice %s: %d items → %s",
+            sl_name, label, len(items), slice_reports_dir,
+        )
+        _run_failure_analysis(
+            merged=items,
+            dataset_name=dataset_name,
+            run_slug=slice_run_slug,
+            reports_dir=slice_reports_dir,
+            target_label=target_label,
+            interp_points=interp_points,
+            cv_folds=cv_folds,
+            random_state=random_state,
+            top_k=top_k,
+        )
 
 
 if __name__ == "__main__":

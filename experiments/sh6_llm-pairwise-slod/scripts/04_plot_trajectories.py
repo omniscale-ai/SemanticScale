@@ -14,6 +14,7 @@ Usage:
 import argparse
 import logging
 import random
+from collections import defaultdict
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -178,6 +179,14 @@ def plot_example_trajectories(
     logger.info("Saved %s", out)
 
 
+def _safe_slice_dir(value: str) -> str:
+    return value.replace("/", "_")
+
+
+def _qualifying_count(items: list[dict]) -> int:
+    return sum(1 for m in items if len(m.get("reasoning_params") or []) >= MIN_CHUNKS)
+
+
 def main() -> None:
     setup_logging()
     args = parse_args()
@@ -225,7 +234,33 @@ def main() -> None:
 
     plot_mean_trajectories(merged, reports_dir)
     plot_example_trajectories(merged, reports_dir, args.n_examples, args.seed)
-    logger.info("Done. Figures written to %s", reports_dir)
+    logger.info("Global figures written to %s", reports_dir)
+
+    sl_name = ds.slice_name(config)
+    if not sl_name:
+        return
+
+    slices: dict[str, list[dict]] = defaultdict(list)
+    for item in merged:
+        label = ds.slice_label(config, item)
+        if label is None:
+            continue
+        slices[label].append(item)
+
+    for label, items in sorted(slices.items()):
+        if _qualifying_count(items) < MIN_CHUNKS:
+            logger.info(
+                "Skipping slice %s=%s: only %d items with >= %d reasoning chunks",
+                sl_name, label, _qualifying_count(items), MIN_CHUNKS,
+            )
+            continue
+        slice_dir = reports_dir / f"by-{sl_name}" / _safe_slice_dir(label)
+        slice_dir.mkdir(parents=True, exist_ok=True)
+        plot_mean_trajectories(items, slice_dir)
+        plot_example_trajectories(items, slice_dir, args.n_examples, args.seed)
+        logger.info(
+            "Slice %s=%s: %d items → %s", sl_name, label, len(items), slice_dir
+        )
 
 
 if __name__ == "__main__":

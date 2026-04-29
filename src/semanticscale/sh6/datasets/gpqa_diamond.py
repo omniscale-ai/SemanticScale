@@ -21,6 +21,14 @@ from semanticscale.sh6.inference import make_model_slug, run_inference
 logger = logging.getLogger(__name__)
 
 DATASET_NAME = "gpqa-diamond"
+# GPQA-Diamond runs are already separated by generator at Stage 1 (one model
+# per directory), so analysis-time slicing is a no-op.
+SLICE_NAME: str | None = None
+
+
+def slice_label(trace: dict) -> str | None:  # noqa: ARG001
+    return None
+
 
 _DEFAULT_HF_PATH = "Idavidrein/gpqa"
 _DEFAULT_CONFIG = "gpqa_diamond"

@@ -23,6 +23,8 @@ pairwise_slod:
     name: deepseek/deepseek-v3.2
     base_url: https://openrouter.ai/api/v1
     api_key_env: OPENROUTER_API_KEY
+    extra_body:
+      max_tokens: 65536
   max_concurrent: 20
   extra_comparisons_per_problem: 10
   min_chunks: 2

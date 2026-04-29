@@ -84,3 +84,21 @@ def produce_traces(
     """
     module = _get_module(dataset_name(config))
     return module.produce_traces(config, project_root, overrides or {})
+
+
+def slice_name(config: dict) -> str | None:
+    """Return the analysis slice dimension for the configured dataset.
+
+    A non-None value means Stages 3/4/5 should produce per-slice reports
+    in addition to the global per-run reports. The value is also used as
+    the subdirectory prefix (``by-{slice_name}/{value}/``).
+    """
+    module = _get_module(dataset_name(config))
+    return getattr(module, "SLICE_NAME", None)
+
+
+def slice_label(config: dict, trace: dict) -> str | None:
+    """Return the slice label for one trace, or None if it can't be sliced."""
+    module = _get_module(dataset_name(config))
+    fn = getattr(module, "slice_label", None)
+    return fn(trace) if fn else None

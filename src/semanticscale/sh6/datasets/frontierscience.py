@@ -17,15 +17,27 @@ logger = logging.getLogger(__name__)
 _ALL_TYPES = ("olympiad", "research")
 
 DATASET_NAME = "frontierscience"
+SLICE_NAME = "origin"
+
+
+def slice_label(trace: dict) -> str | None:
+    """Return ``"olympiad"`` or ``"research"`` for analysis grouping.
+
+    Olympiad problems include a ``FINAL ANSWER`` directive in the prompt;
+    research problems do not. ``has_final_answer`` is set at load time and
+    is a perfect proxy for the original olympiad/research split.
+    """
+    return "olympiad" if trace.get("has_final_answer") else "research"
 
 
 def run_slug(config: dict, overrides: dict) -> str:
-    """Identifier for a FrontierScience run: model, reasoning effort, types."""
+    """Identifier for a FrontierScience run: model, reasoning effort, types, sample."""
     traces_cfg = config["traces"]
     model = overrides.get("model") or traces_cfg["model"]["name"]
     reasoning = traces_cfg["model"].get("reasoning", {})
     question_types = overrides.get("question_types")
-    return make_model_slug(model, reasoning, question_types)
+    sample_idx = overrides.get("sample_idx")
+    return make_model_slug(model, reasoning, question_types, sample_idx)
 
 
 def _has_final_answer_prompt(problem: str) -> bool:
@@ -117,6 +129,7 @@ def produce_traces(
         config=config,
         model_override=overrides.get("model"),
         service_tier_override=overrides.get("service_tier"),
+        sample_idx=overrides.get("sample_idx"),
     )
 
     grader_model = config["pairwise_slod"]["model"]["name"]

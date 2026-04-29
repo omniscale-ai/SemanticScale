@@ -21,11 +21,14 @@ def make_model_slug(
     model: str,
     reasoning: dict,
     question_types: list[str] | None = None,
+    sample_idx: int | None = None,
 ) -> str:
     """Return a filesystem-safe identifier for a model configuration.
 
     When *question_types* is given (e.g. ``["olympiad"]``), a suffix is appended
-    so filtered runs are stored in a separate output directory.
+    so filtered runs are stored in a separate output directory. When
+    *sample_idx* is given, an ``_s{N}`` suffix marks one sample of a
+    best-of-N draw, so each sample's artifacts live in their own directory.
     """
     if reasoning and reasoning.get("enabled", True) is False:
         effort = "none"
@@ -35,6 +38,8 @@ def make_model_slug(
     slug = f"{model}_reasoning-{effort}"
     if question_types:
         slug += "_types-" + "+".join(sorted(qt.lower() for qt in question_types))
+    if sample_idx is not None:
+        slug += f"_s{sample_idx}"
     return slug
 
 
@@ -66,6 +71,7 @@ async def _call_one(
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
+    sample_idx: int | None = None,
 ) -> dict:
     """Call the backend for a single item, with retry."""
 
@@ -88,7 +94,7 @@ async def _call_one(
                 "model": model,
                 "reasoning_effort": reasoning.get("effort", "auto"),
                 "service_tier": service_tier,
-                "model_slug": make_model_slug(model, reasoning),
+                "model_slug": make_model_slug(model, reasoning, sample_idx=sample_idx),
                 "problem": item["problem"],
                 "correct_answer": item["correct_answer"],
                 "subject": item.get("subject", "unknown"),
@@ -117,6 +123,7 @@ async def _call_one(
         "reasoning_text": reasoning_text,
         "answer_text": answer_text,
         "usage": out["usage"],
+        "finish_reason": out.get("finish_reason"),
         "error": None,
         "timestamp": datetime.datetime.now(tz=timezone.utc).isoformat(),
     }
@@ -136,6 +143,7 @@ async def _run_async(
     max_retries: int,
     retry_min_wait: float,
     retry_max_wait: float,
+    sample_idx: int | None = None,
 ) -> list[dict]:
     backend = make_backend(model_cfg)
     semaphore = asyncio.Semaphore(max_concurrent)
@@ -152,6 +160,7 @@ async def _run_async(
             max_retries=max_retries,
             retry_min_wait=retry_min_wait,
             retry_max_wait=retry_max_wait,
+            sample_idx=sample_idx,
         )
         for item in items
     ]
@@ -179,12 +188,24 @@ def run_inference(
     config: dict,
     model_override: str | None = None,
     service_tier_override: str | None = None,
+    sample_idx: int | None = None,
 ) -> list[dict]:
-    """Run async batch inference on items using the ``traces`` config section."""
+    """Run async batch inference on items using the ``traces`` config section.
+
+    When *sample_idx* is given, the inference call is biased toward a diverse
+    draw: ``temperature`` defaults to 0.6 (DeepSeek's recommended setting for
+    R1; reasonable for v3.2) and ``seed`` is set to *sample_idx*. Both can be
+    overridden per-sample via ``traces.model.extra_body`` in config.
+    """
     traces_cfg = config.get("traces", {})
     model_cfg = traces_cfg.get("model", {})
     model = model_override or model_cfg["name"]
     service_tier = service_tier_override or model_cfg.get("service_tier")
+
+    extra_body = dict(model_cfg.get("extra_body") or {})
+    if sample_idx is not None:
+        extra_body.setdefault("temperature", 0.6)
+        extra_body["seed"] = sample_idx
 
     return asyncio.run(
         _run_async(
@@ -193,10 +214,11 @@ def run_inference(
             model=model,
             reasoning=model_cfg.get("reasoning", {}),
             service_tier=service_tier,
-            extra_body=model_cfg.get("extra_body"),
+            extra_body=extra_body or None,
             max_concurrent=traces_cfg.get("max_concurrent", 10),
             max_retries=traces_cfg.get("max_retries", 5),
             retry_min_wait=traces_cfg.get("retry_min_wait", 1.0),
             retry_max_wait=traces_cfg.get("retry_max_wait", 60.0),
+            sample_idx=sample_idx,
         )
     )

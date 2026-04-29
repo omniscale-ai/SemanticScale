@@ -21,3 +21,18 @@
 |---|---|---|---|---|
 | swe-agent-llama-8b | 10.0% | 1 | 10 | 0 |
 | swe-agent-llama-70b | 8.4% | 16 | 190 | 0 |
+
+## model-all — Per-Generator Accuracy
+
+| Generator | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| swe-agent-llama-405b | 25.9% | 308 | 1191 | 0 |
+| swe-agent-llama-70b | 16.7% | 12467 | 74792 | 0 |
+| swe-agent-llama-8b | 15.2% | 614 | 4052 | 0 |
+
+## model-all_steps-50 — Per-Generator Accuracy
+
+| Generator | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| swe-agent-llama-8b | 10.0% | 1 | 10 | 0 |
+| swe-agent-llama-70b | 8.4% | 16 | 190 | 0 |

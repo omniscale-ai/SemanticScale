@@ -61,6 +61,13 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="processbench: restrict to traces from these generator models",
     )
+    parser.add_argument(
+        "--sample-idx",
+        type=int,
+        default=None,
+        dest="sample_idx",
+        help="Best-of-N sample index. Appends _s{N} to run_slug and seeds inference with N.",
+    )
     parser.add_argument("--force", action="store_true")
     return parser.parse_args()
 
@@ -75,6 +82,7 @@ def _overrides(args: argparse.Namespace) -> dict:
             "question_types": args.question_types,
             "subsets": args.subsets,
             "generators": args.generators,
+            "sample_idx": args.sample_idx,
         }.items()
         if v is not None
     }

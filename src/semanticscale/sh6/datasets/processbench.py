@@ -26,8 +26,15 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 DATASET_NAME = "processbench"
+SLICE_NAME = "generator"
 
 _ALL_SUBSETS = ("gsm8k", "math", "olympiadbench", "omnimath")
+
+
+def slice_label(trace: dict) -> str | None:
+    """Return the trace's generating model for per-model analysis grouping."""
+    gen = trace.get("generator")
+    return str(gen) if gen else None
 
 
 def _subsets(config: dict, overrides: dict) -> list[str]:

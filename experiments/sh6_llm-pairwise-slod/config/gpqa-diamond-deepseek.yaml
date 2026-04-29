@@ -16,6 +16,8 @@ traces:
     api_key_env: OPENROUTER_API_KEY
     reasoning:
       enabled: true
+    extra_body:
+      max_tokens: 65536
   max_concurrent: 40
   max_retries: 5
   retry_min_wait: 1.0
@@ -28,6 +30,8 @@ pairwise_slod:
     api_key_env: OPENROUTER_API_KEY
     reasoning:
       enabled: false
+    extra_body:
+      max_tokens: 65536
   max_concurrent: 40
   extra_comparisons_per_problem: 20
   min_chunks: 2

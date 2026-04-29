@@ -65,6 +65,25 @@ def extract_usage(response: Any) -> dict | None:
     return usage
 
 
+def extract_finish_reason(response: Any) -> str | None:
+    """Map Responses-API status to a finish_reason-style string.
+
+    The Responses API exposes ``status`` (``completed`` / ``incomplete`` / ...)
+    and ``incomplete_details.reason`` (e.g. ``max_output_tokens``,
+    ``content_filter``). For "completed" we return ``"stop"`` to match Chat
+    Completions semantics; for "incomplete" we return the underlying reason
+    if available, or ``"incomplete"`` otherwise.
+    """
+    status = getattr(response, "status", None)
+    if status == "completed":
+        return "stop"
+    if status == "incomplete":
+        details = getattr(response, "incomplete_details", None)
+        reason = getattr(details, "reason", None) if details is not None else None
+        return reason or "incomplete"
+    return status
+
+
 async def create_response(
     client: openai.AsyncOpenAI,
     *,
