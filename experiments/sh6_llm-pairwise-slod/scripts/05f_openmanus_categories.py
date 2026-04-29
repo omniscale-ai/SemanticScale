@@ -101,6 +101,7 @@ def _build_estimators(random_state: int) -> dict[str, Pipeline]:
         ])
 
     return {
+        "length_reasoning_only": _logreg_pipe(),
         "length_only": _logreg_pipe(),
         "logreg": _logreg_pipe(),
         "lightgbm": Pipeline([
@@ -274,10 +275,16 @@ def main() -> int:
     estimators = _build_estimators(args.random_state)
 
     LENGTH_COLS = [c for c in ("reasoning_n_chunks", "answer_n_chunks", "total_n_chunks") if c in feature_cols]
+    LENGTH_REASONING_COLS = [c for c in ("reasoning_n_chunks",) if c in feature_cols]
 
     results: dict[str, dict] = {}
     for name, est in estimators.items():
-        X_in = sub[LENGTH_COLS] if name == "length_only" else X
+        if name == "length_only":
+            X_in = sub[LENGTH_COLS]
+        elif name == "length_reasoning_only":
+            X_in = sub[LENGTH_REASONING_COLS]
+        else:
+            X_in = X
         logger.info("Fitting %s (multiclass) on %d items × %d features", name, len(sub), X_in.shape[1])
         results[name] = _eval_oof(est, X_in, y, cv)
         _plot_confusion(
@@ -297,11 +304,19 @@ def main() -> int:
         y, results["logreg"]["probs"], results["lightgbm"]["probs"],
         args.n_bootstrap, rng,
     )
+    # OpenManus is a single-framework subset, so length_only does NOT leak
+    # framework identity here. We still anchor the "shape lift" on
+    # length_reasoning_only for cross-comparison with the full-AgentHallu
+    # report where the leak does exist.
     delta_logreg_vs_length = _bootstrap_paired_macro_auc(
-        y, results["length_only"]["probs"], results["logreg"]["probs"],
+        y, results["length_reasoning_only"]["probs"], results["logreg"]["probs"],
         args.n_bootstrap, rng,
     )
     delta_lgbm_vs_length = _bootstrap_paired_macro_auc(
+        y, results["length_reasoning_only"]["probs"], results["lightgbm"]["probs"],
+        args.n_bootstrap, rng,
+    )
+    delta_lgbm_vs_length_full = _bootstrap_paired_macro_auc(
         y, results["length_only"]["probs"], results["lightgbm"]["probs"],
         args.n_bootstrap, rng,
     )
@@ -348,11 +363,13 @@ def main() -> int:
         md.append(f"| `{name}` | {r['macro_auc_ovr']:.3f} | {r['balanced_accuracy']:.3f} | {r['accuracy']:.3f} |")
 
     md += ["", "## Per-class AUC (one-vs-rest)", "",
-           "| Class | length_only | logreg | lightgbm |", "|---|---:|---:|---:|"]
+           "| Class | length_reasoning_only | length_only | logreg | lightgbm |",
+           "|---|---:|---:|---:|---:|"]
     for cls in classes:
         i = str(class_to_idx[cls])
         md.append(
             f"| `{cls}` | "
+            f"{results['length_reasoning_only']['per_class_auc'][i]:.3f} | "
             f"{results['length_only']['per_class_auc'][i]:.3f} | "
             f"{results['logreg']['per_class_auc'][i]:.3f} | "
             f"{results['lightgbm']['per_class_auc'][i]:.3f} |"
@@ -363,8 +380,9 @@ def main() -> int:
            "|---|---:|---:|---:|:---|"]
     for label, (m, lo, hi) in [
         ("lightgbm − logreg", delta_lgbm_vs_logreg),
-        ("logreg − length_only (shape lift)", delta_logreg_vs_length),
-        ("lightgbm − length_only (shape lift)", delta_lgbm_vs_length),
+        ("logreg − length_reasoning_only (shape lift, clean)", delta_logreg_vs_length),
+        ("lightgbm − length_reasoning_only (shape lift, clean)", delta_lgbm_vs_length),
+        ("lightgbm − length_only (shape lift over all chunk counts)", delta_lgbm_vs_length_full),
     ]:
         verdict = (
             "significant lift" if (not np.isnan(lo) and lo > 0)
@@ -374,6 +392,8 @@ def main() -> int:
         md.append(f"| {label} | {m:+.3f} | {lo:+.3f} | {hi:+.3f} | {verdict} |")
 
     md += ["", "## Confusion matrices",
+           "",
+           "![length_reasoning_only](openmanus_confusion_length_reasoning_only.png)",
            "",
            "![length_only](openmanus_confusion_length_only.png)",
            "",
@@ -388,13 +408,15 @@ def main() -> int:
     (out_dir / "openmanus_classification.md").write_text("\n".join(md))
 
     logger.info(
-        "Macro AUC: length_only=%.3f, logreg=%.3f, lightgbm=%.3f",
+        "Macro AUC: length_reasoning_only=%.3f, length_only=%.3f, logreg=%.3f, lightgbm=%.3f",
+        results["length_reasoning_only"]["macro_auc_ovr"],
         results["length_only"]["macro_auc_ovr"],
         results["logreg"]["macro_auc_ovr"],
         results["lightgbm"]["macro_auc_ovr"],
     )
     logger.info("Δ lgbm − logreg = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_logreg)
-    logger.info("Δ lgbm − length_only = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_length)
+    logger.info("Δ lgbm − length_reasoning_only = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_length)
+    logger.info("Δ lgbm − length_only = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_length_full)
     return 0
 
 

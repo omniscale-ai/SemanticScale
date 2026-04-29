@@ -77,17 +77,25 @@ def _load_labels(dataset_root: Path) -> pd.DataFrame:
 
 
 def _build_estimators(random_state: int, feature_cols: list[str]) -> dict[str, Pipeline]:
-    """Four estimators on the same CV folds:
+    """Five estimators on the same CV folds:
 
-    - ``length_only``      — 3 chunk-count features (structural baseline,
-                             matches the ``length_only`` set in Stage-5).
-                             Lift of trajectory_full over this isolates the
-                             contribution of SLoD shape features.
-    - ``logreg``           — logistic regression on trajectory_full.
-    - ``lightgbm``         — gradient boosting on trajectory_full.
-    - ``framework_only``   — logreg on one-hot ``framework``. Lift over this
-                             tells us how much signal is not just framework
-                             leakage.
+    - ``length_reasoning_only`` — just ``reasoning_n_chunks``. The honest
+                                  length baseline: cannot leak framework
+                                  identity through answer-channel presence.
+    - ``length_only``           — 3 chunk-count features. Kept as a *leakage
+                                  diagnostic*: ``answer_n_chunks`` is 0 for
+                                  100% of BFCL items and >0 elsewhere, so
+                                  it acts as a near-perfect framework
+                                  fingerprint. Treat its lift over
+                                  length_reasoning_only as a measure of how
+                                  much "answer-channel presence" leaks into
+                                  what looks like a structural baseline.
+    - ``logreg``                — logreg on trajectory_full.
+    - ``lightgbm``              — gradient boosting on trajectory_full.
+    - ``framework_only``        — logreg on one-hot ``framework``.
+
+    The cleanest "shape lift" is trajectory_full minus
+    length_reasoning_only, *not* minus length_only.
     """
     from lightgbm import LGBMClassifier
 
@@ -101,6 +109,7 @@ def _build_estimators(random_state: int, feature_cols: list[str]) -> dict[str, P
         ])
 
     return {
+        "length_reasoning_only": _logreg_pipe(),
         "length_only": _logreg_pipe(),
         "logreg": _logreg_pipe(),
         "lightgbm": Pipeline([
@@ -201,6 +210,7 @@ def _plot_per_class_auc(results: dict, classes: list[str], out_path: Path) -> No
 
     fig, ax = plt.subplots(figsize=(8, 5))
     palette = {
+        "length_reasoning_only": "#fddbc7",
         "length_only": "#f4a582",
         "logreg": "#2166ac",
         "lightgbm": "#1b7837",
@@ -266,8 +276,8 @@ def main() -> int:
     cv = StratifiedKFold(n_splits=args.cv_folds, shuffle=True, random_state=args.random_state)
     estimators = _build_estimators(args.random_state, feature_cols)
 
-    LENGTH_COLS = ["reasoning_n_chunks", "answer_n_chunks", "total_n_chunks"]
-    LENGTH_COLS = [c for c in LENGTH_COLS if c in feature_cols]
+    LENGTH_COLS = [c for c in ("reasoning_n_chunks", "answer_n_chunks", "total_n_chunks") if c in feature_cols]
+    LENGTH_REASONING_COLS = [c for c in ("reasoning_n_chunks",) if c in feature_cols]
 
     results: dict[str, dict] = {}
     for name, est in estimators.items():
@@ -275,6 +285,8 @@ def main() -> int:
             X_in = X[["framework"]]
         elif name == "length_only":
             X_in = X[LENGTH_COLS]
+        elif name == "length_reasoning_only":
+            X_in = X[LENGTH_REASONING_COLS]
         else:
             X_in = X[feature_cols]
         logger.info("Fitting %s on %d items × %s", name, len(failures), X_in.shape)
@@ -301,12 +313,19 @@ def main() -> int:
         y, results["framework_only"]["probs"], results["lightgbm"]["probs"], args.n_bootstrap, rng)
     delta_logreg_vs_fw = _bootstrap_paired_macro_auc(
         y, results["framework_only"]["probs"], results["logreg"]["probs"], args.n_bootstrap, rng)
-    # Lift of shape over chunk counts — the cleanest answer to
-    # "do SLoD shape features add anything?".
+    # Lift of shape over chunk counts. We anchor on length_reasoning_only —
+    # the honest length baseline — because length_only leaks framework
+    # identity through answer_n_chunks (BFCL has 0 answer chunks → perfectly
+    # tags Tool-Use Hallucination).
     delta_logreg_vs_length = _bootstrap_paired_macro_auc(
-        y, results["length_only"]["probs"], results["logreg"]["probs"], args.n_bootstrap, rng)
+        y, results["length_reasoning_only"]["probs"], results["logreg"]["probs"], args.n_bootstrap, rng)
     delta_lgbm_vs_length = _bootstrap_paired_macro_auc(
-        y, results["length_only"]["probs"], results["lightgbm"]["probs"], args.n_bootstrap, rng)
+        y, results["length_reasoning_only"]["probs"], results["lightgbm"]["probs"], args.n_bootstrap, rng)
+    # Quantify the leakage: length_only over length_reasoning_only. The
+    # bigger this is, the more the conventional 3-feature length baseline
+    # is just a framework fingerprint.
+    delta_length_leakage = _bootstrap_paired_macro_auc(
+        y, results["length_reasoning_only"]["probs"], results["length_only"]["probs"], args.n_bootstrap, rng)
 
     summary = {
         "n_items": int(len(failures)),
@@ -325,8 +344,9 @@ def main() -> int:
             "lightgbm_minus_logreg": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_logreg)),
             "lightgbm_minus_framework_only": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_fw)),
             "logreg_minus_framework_only": dict(zip(("mean", "ci_low", "ci_high"), delta_logreg_vs_fw)),
-            "logreg_minus_length_only": dict(zip(("mean", "ci_low", "ci_high"), delta_logreg_vs_length)),
-            "lightgbm_minus_length_only": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_length)),
+            "logreg_minus_length_reasoning_only": dict(zip(("mean", "ci_low", "ci_high"), delta_logreg_vs_length)),
+            "lightgbm_minus_length_reasoning_only": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_length)),
+            "length_only_minus_length_reasoning_only": dict(zip(("mean", "ci_low", "ci_high"), delta_length_leakage)),
         },
     }
     (out_dir / "agenthallu_classification.json").write_text(json.dumps(summary, indent=2))
@@ -355,12 +375,13 @@ def main() -> int:
         md.append(f"| `{name}` | {r['macro_auc_ovr']:.3f} | {r['balanced_accuracy']:.3f} | {r['accuracy']:.3f} |")
 
     md += ["", "## Per-class AUC (one-vs-rest)", "",
-           "| Class | length_only | logreg | lightgbm | framework_only |",
-           "|---|---:|---:|---:|---:|"]
+           "| Class | length_reasoning_only | length_only | logreg | lightgbm | framework_only |",
+           "|---|---:|---:|---:|---:|---:|"]
     for cls in classes:
         i = class_to_idx[cls]
         md.append(
             f"| `{cls}` | "
+            f"{results['length_reasoning_only']['per_class_auc'][str(i)]:.3f} | "
             f"{results['length_only']['per_class_auc'][str(i)]:.3f} | "
             f"{results['logreg']['per_class_auc'][str(i)]:.3f} | "
             f"{results['lightgbm']['per_class_auc'][str(i)]:.3f} | "
@@ -372,8 +393,9 @@ def main() -> int:
            "|---|---:|---:|---:|:---|"]
     for label, (m, lo, hi) in [
         ("lightgbm − logreg", delta_lgbm_vs_logreg),
-        ("logreg − length_only (shape lift)", delta_logreg_vs_length),
-        ("lightgbm − length_only (shape lift)", delta_lgbm_vs_length),
+        ("logreg − length_reasoning_only (shape lift, clean)", delta_logreg_vs_length),
+        ("lightgbm − length_reasoning_only (shape lift, clean)", delta_lgbm_vs_length),
+        ("length_only − length_reasoning_only (framework leak in length baseline)", delta_length_leakage),
         ("lightgbm − framework_only", delta_lgbm_vs_fw),
         ("logreg − framework_only", delta_logreg_vs_fw),
     ]:
@@ -387,13 +409,15 @@ def main() -> int:
     md += ["", "## Plots", "",
            "![per-class AUC](agenthallu_per_class_auc.png)",
            "",
-           "![length_only confusion](agenthallu_confusion_length_only.png)",
+           "![length_reasoning_only](agenthallu_confusion_length_reasoning_only.png)",
            "",
-           "![logreg confusion](agenthallu_confusion_logreg.png)",
+           "![length_only — leaks framework via answer_n_chunks](agenthallu_confusion_length_only.png)",
            "",
-           "![lightgbm confusion](agenthallu_confusion_lightgbm.png)",
+           "![logreg](agenthallu_confusion_logreg.png)",
            "",
-           "![framework-only confusion](agenthallu_confusion_framework_only.png)",
+           "![lightgbm](agenthallu_confusion_lightgbm.png)",
+           "",
+           "![framework_only](agenthallu_confusion_framework_only.png)",
            ""]
 
     (out_dir / "agenthallu_classification.md").write_text("\n".join(md))
