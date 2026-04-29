@@ -1096,6 +1096,624 @@
         "fn": 17,
         "tp": 25
       }
+    },
+    "lightgbm_trajectory_full": {
+      "n_features": 63,
+      "feature_cols": [
+        "reasoning_n_chunks",
+        "answer_n_chunks",
+        "total_n_chunks",
+        "reasoning_start",
+        "reasoning_end",
+        "reasoning_end_minus_start",
+        "reasoning_std",
+        "reasoning_range",
+        "reasoning_min",
+        "reasoning_max",
+        "reasoning_early_mean",
+        "reasoning_mid_mean",
+        "reasoning_late_mean",
+        "reasoning_late_minus_early",
+        "reasoning_total_variation",
+        "reasoning_monotonicity",
+        "reasoning_direction_changes",
+        "reasoning_zero_crossings",
+        "reasoning_peak_pos",
+        "reasoning_trough_pos",
+        "reasoning_rebound_from_trough",
+        "reasoning_fall_from_peak",
+        "reasoning_max_rise",
+        "reasoning_max_drop",
+        "reasoning_max_rise_pos",
+        "reasoning_max_drop_pos",
+        "reasoning_curvature_abs_mean",
+        "reasoning_positive_mass",
+        "reasoning_negative_mass",
+        "reasoning_time_positive",
+        "reasoning_time_negative",
+        "answer_start",
+        "answer_end",
+        "answer_end_minus_start",
+        "answer_std",
+        "answer_range",
+        "answer_min",
+        "answer_max",
+        "answer_early_mean",
+        "answer_mid_mean",
+        "answer_late_mean",
+        "answer_late_minus_early",
+        "answer_total_variation",
+        "answer_monotonicity",
+        "answer_direction_changes",
+        "answer_zero_crossings",
+        "answer_peak_pos",
+        "answer_trough_pos",
+        "answer_rebound_from_trough",
+        "answer_fall_from_peak",
+        "answer_max_rise",
+        "answer_max_drop",
+        "answer_max_rise_pos",
+        "answer_max_drop_pos",
+        "answer_curvature_abs_mean",
+        "answer_positive_mass",
+        "answer_negative_mass",
+        "answer_time_positive",
+        "answer_time_negative",
+        "answer_minus_reasoning_mean",
+        "answer_start_minus_reasoning_end",
+        "answer_end_minus_reasoning_end",
+        "answer_range_minus_reasoning_range"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.4329545454545455,
+          "std": 0.17343268494255057
+        },
+        "average_precision": {
+          "mean": 0.420194509449863,
+          "std": 0.08317413713557996
+        },
+        "accuracy": {
+          "mean": 0.47000000000000003,
+          "std": 0.0678232998312527
+        },
+        "balanced_accuracy": {
+          "mean": 0.43977272727272726,
+          "std": 0.07055539286909222
+        },
+        "f1": {
+          "mean": 0.26499676793794447,
+          "std": 0.11965635013740503
+        }
+      },
+      "oof_probabilities": [
+        0.024728557849867182,
+        0.9937271812695614,
+        0.004634708606088714,
+        0.05559461110680525,
+        0.07425888808037147,
+        0.0222387004735996,
+        0.18682490732029838,
+        0.5127008098816804,
+        0.18251864780664462,
+        0.0005218993637505399,
+        0.5640884598394411,
+        0.0734433418860804,
+        0.33198121390455126,
+        0.7676743219820946,
+        0.03625976857975707,
+        0.22404558643906589,
+        0.13335289685004836,
+        0.011181690096393327,
+        0.7731554209454281,
+        0.12166620872860588,
+        0.07838492934930587,
+        0.99073712374861,
+        0.049586523814289414,
+        0.7952795894942423,
+        0.029450959155359144,
+        0.14557566378144884,
+        0.39204079907492334,
+        0.013038597933563153,
+        0.07805596627197497,
+        0.9253243670907901,
+        0.03480643209464774,
+        0.02077006183459592,
+        0.06338728375089371,
+        0.3538204789214232,
+        0.09179985167324241,
+        0.3143098463921584,
+        0.0016450352718524947,
+        0.002094486831608333,
+        0.07443505323132033,
+        0.924394917411241,
+        0.6557671381220302,
+        0.7271821470468376,
+        0.1513661483002245,
+        0.04825645048468198,
+        0.34785752414090126,
+        0.9297368317110296,
+        0.2731649434163323,
+        0.146463594515805,
+        0.7553229847353246,
+        0.21235366451421955,
+        0.08397071252171738,
+        0.544614402672246,
+        0.3888831996427576,
+        0.014668444021736777,
+        0.253319295531397,
+        0.9896817459658219,
+        0.6455231385655692,
+        0.4216025651925394,
+        0.5703810252399588,
+        0.025534093365165496,
+        0.330018549229167,
+        0.0003515700215291863,
+        0.38051883202586456,
+        0.7932177469947267,
+        0.09144841714046202,
+        0.3143098463921584,
+        0.012066958385752148,
+        0.010632564078812964,
+        0.8076265927017785,
+        0.1877256597285859,
+        0.005219283501980934,
+        0.0658215332064518,
+        0.7241318781671665,
+        0.14101953326811453,
+        0.17876575878808887,
+        0.16657601740674263,
+        0.9465105511389352,
+        0.08108893359734491,
+        0.09116696110308872,
+        0.9896817459658219,
+        0.6550993971194478,
+        0.9835663738120002,
+        0.9681979587001504,
+        0.003417153328014577,
+        0.0422890227454454,
+        0.3028994226549005,
+        0.07090498273236141,
+        0.5040865764750804,
+        0.7389026485745277,
+        0.048749134886625634,
+        0.20507567158754295,
+        0.2087869729030807,
+        0.19950973388166063,
+        0.7709398690026331,
+        0.006679270752810281,
+        0.7748530280013038,
+        0.21494817475090192,
+        0.9695489758687883,
+        0.053808724797077635,
+        0.7308467460136414
+      ],
+      "oof_predictions": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "confusion_matrix": {
+        "tn": 37,
+        "fp": 21,
+        "fn": 32,
+        "tp": 10
+      },
+      "model_name": "lightgbm",
+      "feature_importance": [
+        {
+          "feature": "reasoning_range",
+          "mean_importance": 84.82144363299012,
+          "std_importance": 37.70406516673772
+        },
+        {
+          "feature": "reasoning_max_rise",
+          "mean_importance": 82.05364431329072,
+          "std_importance": 51.559115345652074
+        },
+        {
+          "feature": "reasoning_min",
+          "mean_importance": 65.4836099581793,
+          "std_importance": 20.36560537873063
+        },
+        {
+          "feature": "answer_end_minus_reasoning_end",
+          "mean_importance": 57.27823598848406,
+          "std_importance": 34.450287686537536
+        },
+        {
+          "feature": "reasoning_mid_mean",
+          "mean_importance": 56.22677431832999,
+          "std_importance": 28.820458718669695
+        },
+        {
+          "feature": "reasoning_max_drop",
+          "mean_importance": 53.7376982929185,
+          "std_importance": 33.47264838086645
+        },
+        {
+          "feature": "reasoning_max",
+          "mean_importance": 41.76362221203745,
+          "std_importance": 20.592849215410272
+        },
+        {
+          "feature": "reasoning_max_drop_pos",
+          "mean_importance": 40.172052916884425,
+          "std_importance": 14.737684647543471
+        },
+        {
+          "feature": "reasoning_total_variation",
+          "mean_importance": 36.147716604871675,
+          "std_importance": 28.420011642081846
+        },
+        {
+          "feature": "reasoning_end",
+          "mean_importance": 35.83102121911943,
+          "std_importance": 33.857835749560635
+        },
+        {
+          "feature": "reasoning_early_mean",
+          "mean_importance": 34.239404648542404,
+          "std_importance": 14.752206350956593
+        },
+        {
+          "feature": "reasoning_max_rise_pos",
+          "mean_importance": 32.42926424434408,
+          "std_importance": 13.863563287651854
+        },
+        {
+          "feature": "reasoning_positive_mass",
+          "mean_importance": 32.412895967182706,
+          "std_importance": 16.567671952837706
+        },
+        {
+          "feature": "answer_minus_reasoning_mean",
+          "mean_importance": 30.97103033172898,
+          "std_importance": 8.118471128449224
+        },
+        {
+          "feature": "answer_range_minus_reasoning_range",
+          "mean_importance": 29.588246883451937,
+          "std_importance": 18.086694735718783
+        },
+        {
+          "feature": "reasoning_trough_pos",
+          "mean_importance": 26.426264689397065,
+          "std_importance": 17.153403530774085
+        },
+        {
+          "feature": "reasoning_curvature_abs_mean",
+          "mean_importance": 25.33821635618806,
+          "std_importance": 28.207159104634513
+        },
+        {
+          "feature": "reasoning_rebound_from_trough",
+          "mean_importance": 24.338514093821868,
+          "std_importance": 13.021910045363056
+        },
+        {
+          "feature": "reasoning_monotonicity",
+          "mean_importance": 23.808514587581158,
+          "std_importance": 10.011599510455321
+        },
+        {
+          "feature": "reasoning_late_mean",
+          "mean_importance": 23.76261172662489,
+          "std_importance": 8.16888342290477
+        },
+        {
+          "feature": "answer_start_minus_reasoning_end",
+          "mean_importance": 23.670096281915903,
+          "std_importance": 12.556061491211825
+        },
+        {
+          "feature": "reasoning_fall_from_peak",
+          "mean_importance": 22.65700960457325,
+          "std_importance": 18.881047679776202
+        },
+        {
+          "feature": "reasoning_start",
+          "mean_importance": 22.5280636806041,
+          "std_importance": 13.85595831104165
+        },
+        {
+          "feature": "reasoning_negative_mass",
+          "mean_importance": 20.511257331818342,
+          "std_importance": 10.150761775700827
+        },
+        {
+          "feature": "reasoning_std",
+          "mean_importance": 19.231848954223096,
+          "std_importance": 16.03984238005521
+        },
+        {
+          "feature": "reasoning_late_minus_early",
+          "mean_importance": 19.00701206102058,
+          "std_importance": 10.464567366914888
+        },
+        {
+          "feature": "reasoning_n_chunks",
+          "mean_importance": 16.796155966445802,
+          "std_importance": 9.459220056038752
+        },
+        {
+          "feature": "reasoning_end_minus_start",
+          "mean_importance": 16.535305872000755,
+          "std_importance": 10.050507749530206
+        },
+        {
+          "feature": "reasoning_direction_changes",
+          "mean_importance": 12.485034035146237,
+          "std_importance": 27.04137705756415
+        },
+        {
+          "feature": "reasoning_time_positive",
+          "mean_importance": 9.467833521589636,
+          "std_importance": 6.4594111444917575
+        },
+        {
+          "feature": "reasoning_zero_crossings",
+          "mean_importance": 8.956283818930387,
+          "std_importance": 8.37705087460988
+        },
+        {
+          "feature": "total_n_chunks",
+          "mean_importance": 6.252064346009865,
+          "std_importance": 5.889042467139848
+        },
+        {
+          "feature": "reasoning_time_negative",
+          "mean_importance": 5.734974942356348,
+          "std_importance": 4.9095944978783965
+        },
+        {
+          "feature": "reasoning_peak_pos",
+          "mean_importance": 3.267248583957553,
+          "std_importance": 4.576721616156518
+        },
+        {
+          "feature": "answer_n_chunks",
+          "mean_importance": 0.2075155783444643,
+          "std_importance": 0.4129635846343961
+        },
+        {
+          "feature": "answer_total_variation",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_time_positive",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_positive_mass",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_range",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_monotonicity",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_min",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_time_negative",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_std",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_start",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_rebound_from_trough",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_max_rise_pos",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_mid_mean",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_fall_from_peak",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_end_minus_start",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_end",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_early_mean",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_max_drop",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_max",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_late_minus_early",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_late_mean",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_curvature_abs_mean",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_direction_changes",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_peak_pos",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_negative_mass",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_max_drop_pos",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_max_rise",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_trough_pos",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        },
+        {
+          "feature": "answer_zero_crossings",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        }
+      ]
     }
   },
   "top_univariate_features": [

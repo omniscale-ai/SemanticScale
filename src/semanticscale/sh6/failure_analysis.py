@@ -41,6 +41,8 @@ from sklearn.model_selection import StratifiedKFold, cross_val_predict, cross_va
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
+from .failure_models import get_spec, run_oof
+
 logger = logging.getLogger(__name__)
 
 EPS = 1e-8
@@ -93,6 +95,14 @@ FEATURE_FAMILY_RULES = [
     ("n_chunks", "length"),
     ("answer_minus_reasoning", "answer_alignment"),
 ]
+
+MODEL_DISPLAY_NAMES = {
+    "length_only": "length_only (logreg)",
+    "trajectory_shape": "trajectory_shape (logreg)",
+    "trajectory_full": "trajectory_full (logreg)",
+    "mode_stack": "mode_stack (logreg)",
+    "lightgbm_trajectory_full": "trajectory_full (lightgbm)",
+}
 
 
 def merge_traces_and_rankings(traces: list[dict], rankings: list[dict]) -> list[dict]:
@@ -590,11 +600,37 @@ def _evaluate_feature_set(
     }
 
 
+def _evaluate_registered_model(
+    df: pd.DataFrame,
+    feature_cols: list[str],
+    model_name: str,
+    random_state: int,
+    cv_folds: int,
+) -> dict:
+    """Evaluate one registered non-incumbent model on a fixed feature set."""
+    y = df["target"].to_numpy()
+    X = df[feature_cols]
+    cv = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=random_state)
+    spec = get_spec(model_name)
+    result = run_oof(spec, X, y, cv, random_state)
+    return {
+        "n_features": result.n_features,
+        "feature_cols": result.feature_cols,
+        "metrics": result.fold_metrics,
+        "oof_probabilities": result.probabilities,
+        "oof_predictions": (result.probabilities >= 0.5).astype(int),
+        "confusion_matrix": result.confusion_matrix,
+        "model_name": result.model_name,
+        "feature_importance": result.feature_importance,
+    }
+
+
 def evaluate_prediction_models(
     df: pd.DataFrame,
     feature_sets: dict[str, list[str]],
     random_state: int,
     cv_folds: int,
+    extra_models: dict[str, tuple[str, list[str]]] | None = None,
 ) -> dict[str, dict]:
     """Run the predictive baseline for every requested feature set."""
     results = {}
@@ -604,6 +640,27 @@ def evaluate_prediction_models(
             continue
         logger.info("Evaluating %s with %d feature(s)", name, len(cols))
         results[name] = _evaluate_feature_set(df, cols, random_state, cv_folds)
+
+    for result_name, (model_name, cols) in (extra_models or {}).items():
+        if not cols:
+            logger.warning("Skipping %s: no usable features", result_name)
+            continue
+        logger.info(
+            "Evaluating %s with model=%s and %d feature(s)",
+            result_name,
+            model_name,
+            len(cols),
+        )
+        try:
+            results[result_name] = _evaluate_registered_model(
+                df,
+                cols,
+                model_name,
+                random_state,
+                cv_folds,
+            )
+        except ImportError as exc:
+            logger.warning("Skipping %s: %s", result_name, exc)
     return results
 
 
@@ -696,6 +753,10 @@ def _serialise_summary(obj: object) -> object:
         return {key: _serialise_summary(value) for key, value in obj.items()}
     if isinstance(obj, list):
         return [_serialise_summary(value) for value in obj]
+    if isinstance(obj, pd.DataFrame):
+        return [_serialise_summary(row) for row in obj.to_dict(orient="records")]
+    if isinstance(obj, pd.Series):
+        return _serialise_summary(obj.to_dict())
     if isinstance(obj, np.ndarray):
         return obj.tolist()
     if isinstance(obj, np.generic):
@@ -722,6 +783,7 @@ def plot_roc_curves(
         ("length_only", "#8c8c8c"),
         ("trajectory_shape", "#2166ac"),
         ("trajectory_full", "#b2182b"),
+        ("lightgbm_trajectory_full", "#4d9221"),
         ("mode_stack", "#1b7837"),
     ]:
         result = model_results.get(name)
@@ -730,7 +792,13 @@ def plot_roc_curves(
         probs = np.asarray(result["oof_probabilities"], dtype=float)
         fpr, tpr, _ = roc_curve(y_true, probs)
         score = auc(fpr, tpr)
-        ax.plot(fpr, tpr, linewidth=2, color=color, label=f"{name} (AUC={score:.3f})")
+        ax.plot(
+            fpr,
+            tpr,
+            linewidth=2,
+            color=color,
+            label=f"{MODEL_DISPLAY_NAMES.get(name, name)} (AUC={score:.3f})",
+        )
 
     ax.plot([0, 1], [0, 1], color="gray", linewidth=1, linestyle="--")
     ax.set_xlabel("False positive rate")
@@ -860,7 +928,7 @@ def _metric_line(name: str, result: dict) -> str:
     """Format one markdown table row of cross-validated metrics."""
     metrics = result["metrics"]
     return (
-        f"| {name} "
+        f"| {MODEL_DISPLAY_NAMES.get(name, name)} "
         f"| {result['n_features']} "
         f"| {metrics['roc_auc']['mean']:.3f} +/- {metrics['roc_auc']['std']:.3f} "
         f"| {metrics['average_precision']['mean']:.3f} +/- {metrics['average_precision']['std']:.3f} "
@@ -1042,7 +1110,13 @@ def write_markdown_report(
         ]
     )
     wrote_model_row = False
-    for name in ("length_only", "trajectory_shape", "trajectory_full", "mode_stack"):
+    for name in (
+        "length_only",
+        "trajectory_shape",
+        "trajectory_full",
+        "lightgbm_trajectory_full",
+        "mode_stack",
+    ):
         result = model_results.get(name)
         if result is not None:
             lines.append(_metric_line(name, result))

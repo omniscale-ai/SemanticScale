@@ -95,10 +95,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--models",
         nargs="+",
-        default=None,
+        default=list(DEFAULT_MODELS),
         help=(
-            "Also run model comparison artifacts on trajectory_features.csv. "
-            f"Example: --models {' '.join(DEFAULT_MODELS)}"
+            "Run model comparison artifacts on trajectory_features.csv. "
+            f"Defaults to: {' '.join(DEFAULT_MODELS)}"
         ),
     )
     parser.add_argument(
@@ -334,10 +334,17 @@ def _render_model_comparison_markdown(df: pd.DataFrame, incumbent: str, challeng
         "Verdict",
         "In protocol set",
     ]
-    for c in [f"AUC {incumbent}", f"AUC {challenger}", "Delta-AUC", "CI low", "CI high"]:
-        table[c] = table[c].map(
-            lambda v: "-" if pd.isna(v) else (f"{v:+.3f}" if c == "Delta-AUC" else f"{v:.3f}")
-        )
+
+    def _format_metric(value: object, signed: bool = False) -> str:
+        if pd.isna(value):
+            return "-"
+        if signed:
+            return f"{value:+.3f}"
+        return f"{value:.3f}"
+
+    for c in [f"AUC {incumbent}", f"AUC {challenger}", "CI low", "CI high"]:
+        table[c] = table[c].map(_format_metric)
+    table["Delta-AUC"] = table["Delta-AUC"].map(lambda v: _format_metric(v, signed=True))
     lines.append(table.to_markdown(index=False))
 
     protocol = df[df["in_protocol_set"]]
@@ -493,11 +500,13 @@ def _run_failure_analysis(
     if can_predict and effective_cv_folds is not None:
         if feasibility_note:
             logger.info(feasibility_note)
+        extra_models = {"lightgbm_trajectory_full": ("lightgbm", full_features)}
         model_results = evaluate_prediction_models(
             df_with_scores,
             feature_sets,
             random_state=random_state,
             cv_folds=effective_cv_folds,
+            extra_models=extra_models,
         )
         univariate_rows = score_univariate_features(
             df,

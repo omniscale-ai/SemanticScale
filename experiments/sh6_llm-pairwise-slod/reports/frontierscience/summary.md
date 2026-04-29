@@ -12,10 +12,9 @@
 | deepseek/deepseek-v3.2_reasoning-auto_s3 | 37.7% | 58 | 154 | 6 |
 | deepseek/deepseek-v3.2_reasoning-auto_s4 | 38.6% | 59 | 153 | 7 |
 | deepseek/deepseek-v3.2_reasoning-auto_types-research | 0.0% | 0 | 57 | 3 |
+| deepseek/deepseek-v3.2_reasoning-none_types-research | 0.0% | 0 | 60 | 0 |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto | 5.0% | 1 | 20 | 0 |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-32B_reasoning-auto | 20.9% | 31 | 148 | 12 |
-| deepseek-deepseek-v3.2_reasoning-medium | 100.0% | 1 | 1 | 0 |
-| deepseek/deepseek-v3.2_reasoning-auto | 100.0% | 3 | 3 | 0 |
 
 ## Qwen/Qwen3-30B-A3B-Instruct-2507_reasoning-none — Per-Subject Accuracy
 
@@ -81,6 +80,14 @@
 | chemistry | 0.0% | 0 | 20 | 0 |
 | physics | 0.0% | 0 | 20 | 2 |
 
+## deepseek/deepseek-v3.2_reasoning-none_types-research — Per-Subject Accuracy
+
+| Subject | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| biology | 0.0% | 0 | 20 | 0 |
+| chemistry | 0.0% | 0 | 20 | 0 |
+| physics | 0.0% | 0 | 20 | 0 |
+
 ## deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto — Per-Subject Accuracy
 
 | Subject | Accuracy | Correct | Total | Errors |
@@ -94,18 +101,6 @@
 | physics | 25.8% | 16 | 70 | 8 |
 | chemistry | 21.4% | 12 | 60 | 4 |
 | biology | 10.0% | 3 | 30 | 0 |
-
-## deepseek-deepseek-v3.2_reasoning-medium — Per-Subject Accuracy
-
-| Subject | Accuracy | Correct | Total | Errors |
-|---|---|---|---|---|
-| physics | 100.0% | 1 | 1 | 0 |
-
-## deepseek/deepseek-v3.2_reasoning-auto — Per-Subject Accuracy
-
-| Subject | Accuracy | Correct | Total | Errors |
-|---|---|---|---|---|
-| physics | 100.0% | 3 | 3 | 0 |
 
 ## Qwen/Qwen3-30B-A3B-Instruct-2507_reasoning-none — Per-Origin Accuracy
 
@@ -125,7 +120,8 @@
 
 | Origin | Accuracy | Correct | Total | Errors |
 |---|---|---|---|---|
-| olympiad | 100.0% | 3 | 3 | 0 |
+| olympiad | 64.2% | 61 | 100 | 5 |
+| research | 0.0% | 0 | 60 | 2 |
 
 ## deepseek/deepseek-v3.2_reasoning-auto_s1 — Per-Origin Accuracy
 
@@ -161,6 +157,12 @@
 |---|---|---|---|---|
 | research | 0.0% | 0 | 60 | 3 |
 
+## deepseek/deepseek-v3.2_reasoning-none_types-research — Per-Origin Accuracy
+
+| Origin | Accuracy | Correct | Total | Errors |
+|---|---|---|---|---|
+| research | 0.0% | 0 | 60 | 0 |
+
 ## deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_reasoning-auto — Per-Origin Accuracy
 
 | Origin | Accuracy | Correct | Total | Errors |
@@ -173,15 +175,3 @@
 |---|---|---|---|---|
 | olympiad | 31.5% | 28 | 100 | 11 |
 | research | 5.1% | 3 | 60 | 1 |
-
-## deepseek-deepseek-v3.2_reasoning-medium — Per-Origin Accuracy
-
-| Origin | Accuracy | Correct | Total | Errors |
-|---|---|---|---|---|
-| olympiad | 100.0% | 1 | 1 | 0 |
-
-## deepseek/deepseek-v3.2_reasoning-auto — Per-Origin Accuracy
-
-| Origin | Accuracy | Correct | Total | Errors |
-|---|---|---|---|---|
-| olympiad | 100.0% | 3 | 3 | 0 |
