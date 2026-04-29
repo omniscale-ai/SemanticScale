@@ -80,36 +80,35 @@ def _load_labels(dataset_root: Path) -> pd.DataFrame:
 
 
 def _build_estimators(random_state: int) -> dict[str, Pipeline]:
-    """Same hyperparameters as Stage-5b, multiclass-enabled.
+    """Three estimators, same CV folds:
 
-    LightGBM autodetects multiclass from y; sklearn's LogisticRegression
-    uses softmax in multinomial mode.
+    - ``length_only`` — logreg on 3 chunk-count features, structural baseline.
+    - ``logreg``      — logreg on trajectory_full (~63 cols).
+    - ``lightgbm``    — gradient boosting on trajectory_full.
+
+    Lift of trajectory_full models over length_only isolates the
+    contribution of SLoD shape features beyond just counting chunks.
     """
     from lightgbm import LGBMClassifier
 
-    return {
-        "logreg": Pipeline([
+    def _logreg_pipe():
+        return Pipeline([
             ("imputer", SimpleImputer(strategy="median")),
             ("scaler", StandardScaler()),
             ("clf", LogisticRegression(
-                max_iter=5000,
-                class_weight="balanced",
-                random_state=random_state,
+                max_iter=5000, class_weight="balanced", random_state=random_state,
             )),
-        ]),
+        ])
+
+    return {
+        "length_only": _logreg_pipe(),
+        "logreg": _logreg_pipe(),
         "lightgbm": Pipeline([
             ("imputer", SimpleImputer(strategy="median").set_output(transform="pandas")),
             ("clf", LGBMClassifier(
-                n_estimators=300,
-                num_leaves=31,
-                learning_rate=0.05,
-                min_child_samples=10,
-                feature_fraction=1.0,
-                bagging_fraction=1.0,
-                class_weight="balanced",
-                random_state=random_state,
-                n_jobs=1,
-                verbose=-1,
+                n_estimators=300, num_leaves=31, learning_rate=0.05, min_child_samples=10,
+                feature_fraction=1.0, bagging_fraction=1.0,
+                class_weight="balanced", random_state=random_state, n_jobs=1, verbose=-1,
             )),
         ]),
     }
@@ -274,27 +273,36 @@ def main() -> int:
     cv = StratifiedKFold(n_splits=args.cv_folds, shuffle=True, random_state=args.random_state)
     estimators = _build_estimators(args.random_state)
 
+    LENGTH_COLS = [c for c in ("reasoning_n_chunks", "answer_n_chunks", "total_n_chunks") if c in feature_cols]
+
     results: dict[str, dict] = {}
     for name, est in estimators.items():
-        logger.info("Fitting %s (multiclass) on %d items × %d features", name, len(sub), X.shape[1])
-        results[name] = _eval_oof(est, X, y, cv)
+        X_in = sub[LENGTH_COLS] if name == "length_only" else X
+        logger.info("Fitting %s (multiclass) on %d items × %d features", name, len(sub), X_in.shape[1])
+        results[name] = _eval_oof(est, X_in, y, cv)
         _plot_confusion(
             results[name]["confusion_matrix"],
             classes,
             out_dir / f"openmanus_confusion_{name}.png",
             title=f"OpenManus — {name} confusion (macro-AUC {results[name]['macro_auc_ovr']:.3f})",
         )
-        # Save OOF probs for downstream slicing.
         oof_df = pd.DataFrame(results[name]["probs"], columns=[f"p_{c}" for c in classes])
         oof_df.insert(0, "id", sub["id"].to_numpy())
         oof_df["true_class"] = y_str
         oof_df["pred_class"] = [classes[p] for p in results[name]["preds"]]
         oof_df.to_parquet(out_dir / f"openmanus_oof_{name}.parquet", index=False)
 
-    # Paired bootstrap on Δ macro-AUC.
     rng = np.random.default_rng(args.random_state)
-    delta_mean, ci_low, ci_high = _bootstrap_paired_macro_auc(
+    delta_lgbm_vs_logreg = _bootstrap_paired_macro_auc(
         y, results["logreg"]["probs"], results["lightgbm"]["probs"],
+        args.n_bootstrap, rng,
+    )
+    delta_logreg_vs_length = _bootstrap_paired_macro_auc(
+        y, results["length_only"]["probs"], results["logreg"]["probs"],
+        args.n_bootstrap, rng,
+    )
+    delta_lgbm_vs_length = _bootstrap_paired_macro_auc(
+        y, results["length_only"]["probs"], results["lightgbm"]["probs"],
         args.n_bootstrap, rng,
     )
 
@@ -309,9 +317,15 @@ def main() -> int:
         "cv_folds": args.cv_folds,
         "random_state": args.random_state,
         "chance_macro_auc": chance_macro_auc,
-        "logreg": {k: v for k, v in results["logreg"].items() if k not in ("probs", "preds")},
-        "lightgbm": {k: v for k, v in results["lightgbm"].items() if k not in ("probs", "preds")},
-        "delta_macro_auc": {"mean": delta_mean, "ci_low": ci_low, "ci_high": ci_high},
+        "models": {
+            name: {k: v for k, v in r.items() if k not in ("probs", "preds")}
+            for name, r in results.items()
+        },
+        "delta_macro_auc": {
+            "lightgbm_minus_logreg": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_logreg)),
+            "logreg_minus_length_only": dict(zip(("mean", "ci_low", "ci_high"), delta_logreg_vs_length)),
+            "lightgbm_minus_length_only": dict(zip(("mean", "ci_low", "ci_high"), delta_lgbm_vs_length)),
+        },
     }
     (out_dir / "openmanus_classification.json").write_text(json.dumps(summary, indent=2))
 
@@ -333,22 +347,39 @@ def main() -> int:
     for name, r in results.items():
         md.append(f"| `{name}` | {r['macro_auc_ovr']:.3f} | {r['balanced_accuracy']:.3f} | {r['accuracy']:.3f} |")
 
-    md += ["", "## Per-class AUC (one-vs-rest)", "", "| Class | logreg | lightgbm |", "|---|---:|---:|"]
+    md += ["", "## Per-class AUC (one-vs-rest)", "",
+           "| Class | length_only | logreg | lightgbm |", "|---|---:|---:|---:|"]
     for cls in classes:
-        a = results["logreg"]["per_class_auc"][str(class_to_idx[cls])]
-        b = results["lightgbm"]["per_class_auc"][str(class_to_idx[cls])]
-        md.append(f"| `{cls}` | {a:.3f} | {b:.3f} |")
+        i = str(class_to_idx[cls])
+        md.append(
+            f"| `{cls}` | "
+            f"{results['length_only']['per_class_auc'][i]:.3f} | "
+            f"{results['logreg']['per_class_auc'][i]:.3f} | "
+            f"{results['lightgbm']['per_class_auc'][i]:.3f} |"
+        )
 
-    md += ["", "## Δ macro-AUC (lightgbm − logreg)", "",
-           f"- Bootstrap mean: **{delta_mean:+.3f}**",
-           f"- 95% paired-bootstrap CI: **[{ci_low:+.3f}, {ci_high:+.3f}]** "
-           f"({'CI excludes 0 → significant' if (ci_low > 0 or ci_high < 0) else 'CI includes 0 → inconclusive'})",
-           ""]
+    md += ["", "## Δ macro-AUC (paired bootstrap, 95% CI)", "",
+           "| Comparison | Δ mean | CI low | CI high | Verdict |",
+           "|---|---:|---:|---:|:---|"]
+    for label, (m, lo, hi) in [
+        ("lightgbm − logreg", delta_lgbm_vs_logreg),
+        ("logreg − length_only (shape lift)", delta_logreg_vs_length),
+        ("lightgbm − length_only (shape lift)", delta_lgbm_vs_length),
+    ]:
+        verdict = (
+            "significant lift" if (not np.isnan(lo) and lo > 0)
+            else "significant regression" if (not np.isnan(hi) and hi < 0)
+            else "inconclusive (CI straddles 0)"
+        )
+        md.append(f"| {label} | {m:+.3f} | {lo:+.3f} | {hi:+.3f} | {verdict} |")
 
-    md += ["## Confusion matrices",
+    md += ["", "## Confusion matrices",
            "",
-           f"![logreg](openmanus_confusion_logreg.png)",
-           f"![lightgbm](openmanus_confusion_lightgbm.png)",
+           "![length_only](openmanus_confusion_length_only.png)",
+           "",
+           "![logreg](openmanus_confusion_logreg.png)",
+           "",
+           "![lightgbm](openmanus_confusion_lightgbm.png)",
            "",
            "## UMAP",
            "",
@@ -356,10 +387,14 @@ def main() -> int:
            ""]
     (out_dir / "openmanus_classification.md").write_text("\n".join(md))
 
-    logger.info("Macro AUC: logreg=%.3f, lightgbm=%.3f, Δ=%.3f [%.3f, %.3f]",
-                results["logreg"]["macro_auc_ovr"],
-                results["lightgbm"]["macro_auc_ovr"],
-                delta_mean, ci_low, ci_high)
+    logger.info(
+        "Macro AUC: length_only=%.3f, logreg=%.3f, lightgbm=%.3f",
+        results["length_only"]["macro_auc_ovr"],
+        results["logreg"]["macro_auc_ovr"],
+        results["lightgbm"]["macro_auc_ovr"],
+    )
+    logger.info("Δ lgbm − logreg = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_logreg)
+    logger.info("Δ lgbm − length_only = %+.3f [%+.3f, %+.3f]", *delta_lgbm_vs_length)
     return 0
 
 
