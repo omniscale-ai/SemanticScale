@@ -1,5 +1,5 @@
 {
-  "model_name": "lightgbm",
+  "model_name": "ridge",
   "feature_set": "trajectory_full",
   "n_features": 63,
   "feature_cols": [
@@ -69,42 +69,35 @@
   ],
   "cv_folds": 5,
   "random_state": 42,
-  "target_label": "auto-resolved",
-  "target_counts": {
-    "n_items": 153,
-    "n_positive": 61,
-    "n_negative": 92
+  "target_label": "rubric_score",
+  "task_type": "regression",
+  "target_summary": {
+    "n": 59,
+    "mean": 0.08648305084745762,
+    "std": 0.09576423052643115,
+    "min": 0.0,
+    "max": 0.4
   },
   "fold_metrics": {
-    "roc_auc": {
-      "mean": 0.8861785874943771,
-      "std": 0.05792884946466845
+    "r2": {
+      "mean": -1.7946936138764158,
+      "std": 0.9946269875316144
     },
-    "average_precision": {
-      "mean": 0.791002373230634,
-      "std": 0.10219704242299547
+    "neg_mean_absolute_error": {
+      "mean": -0.10986866229638326,
+      "std": 0.01283571628880594
     },
-    "accuracy": {
-      "mean": 0.8296774193548389,
-      "std": 0.07851848215992427
+    "neg_root_mean_squared_error": {
+      "mean": -0.13761550169321524,
+      "std": 0.021158265924250304
     },
-    "balanced_accuracy": {
-      "mean": 0.828272604588394,
-      "std": 0.08748147484452228
-    },
-    "f1": {
-      "mean": 0.7871468710089399,
-      "std": 0.11073393199935423
+    "spearman": {
+      "mean": 0.17743963113134814,
+      "std": 0.24754498087909527
     }
   },
-  "confusion_matrix": {
-    "tn": 77,
-    "fp": 15,
-    "fn": 11,
-    "tp": 50
-  },
-  "duration_seconds": 0.5400481520046014,
-  "timestamp_utc": "2026-04-29T07:58:10+00:00",
+  "duration_seconds": 0.08947893997537903,
+  "timestamp_utc": "2026-04-29T08:01:30+00:00",
   "git_sha": "7f53b40",
   "python_version": "3.12.3",
   "library_versions": {

@@ -1,0 +1,50 @@
+{
+  "model_name": "ridge",
+  "feature_set": "custom",
+  "n_features": 3,
+  "feature_cols": [
+    "reasoning_n_chunks",
+    "answer_n_chunks",
+    "total_n_chunks"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "rubric_score",
+  "task_type": "regression",
+  "target_summary": {
+    "n": 52,
+    "mean": 0.22332692307692306,
+    "std": 0.16100964151181543,
+    "min": 0.0,
+    "max": 0.65
+  },
+  "fold_metrics": {
+    "r2": {
+      "mean": -0.08035662216014516,
+      "std": 0.11228838243922967
+    },
+    "neg_mean_absolute_error": {
+      "mean": -0.13060710097749192,
+      "std": 0.009033529905612162
+    },
+    "neg_root_mean_squared_error": {
+      "mean": -0.16194686891235102,
+      "std": 0.015849462071751787
+    },
+    "spearman": {
+      "mean": 0.16602409408073232,
+      "std": 0.1850442941385754
+    }
+  },
+  "duration_seconds": 0.06107101001543924,
+  "timestamp_utc": "2026-04-29T08:01:25+00:00",
+  "git_sha": "7f53b40",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.8.0",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  }
+}

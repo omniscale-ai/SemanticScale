@@ -365,5 +365,7 @@ async def _run_async(
                     total_max = grade.get("total_max", 0.0)
                     total_awarded = grade.get("total_awarded", 0.0)
                     r["is_correct"] = total_awarded >= 7.0 if total_max > 0 else False
+                    if total_max > 0:
+                        r["rubric_score"] = total_awarded / total_max
         updated.append(r)
     return updated

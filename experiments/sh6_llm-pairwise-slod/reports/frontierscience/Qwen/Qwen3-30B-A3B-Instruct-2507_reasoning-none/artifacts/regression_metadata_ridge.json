@@ -1,0 +1,76 @@
+{
+  "model_name": "ridge",
+  "feature_set": "trajectory_full",
+  "n_features": 29,
+  "feature_cols": [
+    "answer_n_chunks",
+    "answer_start",
+    "answer_end",
+    "answer_end_minus_start",
+    "answer_std",
+    "answer_range",
+    "answer_min",
+    "answer_max",
+    "answer_early_mean",
+    "answer_mid_mean",
+    "answer_late_mean",
+    "answer_late_minus_early",
+    "answer_total_variation",
+    "answer_monotonicity",
+    "answer_direction_changes",
+    "answer_zero_crossings",
+    "answer_peak_pos",
+    "answer_trough_pos",
+    "answer_rebound_from_trough",
+    "answer_fall_from_peak",
+    "answer_max_rise",
+    "answer_max_drop",
+    "answer_max_rise_pos",
+    "answer_max_drop_pos",
+    "answer_curvature_abs_mean",
+    "answer_positive_mass",
+    "answer_negative_mass",
+    "answer_time_positive",
+    "answer_time_negative"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "rubric_score",
+  "task_type": "regression",
+  "target_summary": {
+    "n": 60,
+    "mean": 0.6631250000000001,
+    "std": 0.2565133301441987,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "fold_metrics": {
+    "r2": {
+      "mean": -0.7254936663601381,
+      "std": 0.8626114657141394
+    },
+    "neg_mean_absolute_error": {
+      "mean": -0.2467896643221003,
+      "std": 0.028853767199044585
+    },
+    "neg_root_mean_squared_error": {
+      "mean": -0.29325374340336097,
+      "std": 0.03111547451115963
+    },
+    "spearman": {
+      "mean": 0.2581098040553189,
+      "std": 0.3726391474835415
+    }
+  },
+  "duration_seconds": 0.044405301014194265,
+  "timestamp_utc": "2026-04-29T08:01:27+00:00",
+  "git_sha": "7f53b40",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.8.0",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  }
+}

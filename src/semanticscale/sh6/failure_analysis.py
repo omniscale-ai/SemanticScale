@@ -65,11 +65,31 @@ META_COLUMNS = {
     "target_label",
     "is_correct",
     "final_answer_correct",
+    "rubric_score",
     "error_step_index",
     "error_step_position",
     "has_answer_chunks",
     "exit_status",
 }
+
+
+def _extract_rubric_score(item: dict) -> float | None:
+    """Return rubric fractional credit in [0, 1] if available, else None.
+
+    Prefers an already-populated ``rubric_score`` (written by grading.py for new
+    runs). Falls back to deriving from ``item['grade']`` so already-graded data
+    on disk works without re-running the grader.
+    """
+    explicit = item.get("rubric_score")
+    if explicit is not None:
+        return float(explicit)
+    grade = item.get("grade")
+    if not isinstance(grade, dict) or grade.get("type") != "rubric":
+        return None
+    total_max = grade.get("total_max") or 0.0
+    if total_max <= 0:
+        return None
+    return float(grade.get("total_awarded", 0.0)) / float(total_max)
 
 MEASUREMENT_COLUMNS = {
     "reasoning_pair_density",
@@ -394,6 +414,7 @@ def build_feature_table(
             "target_label": resolved_target,
             "is_correct": item.get("is_correct"),
             "final_answer_correct": item.get("final_answer_correct"),
+            "rubric_score": _extract_rubric_score(item),
             "has_answer_chunks": bool(answer_params),
             "error_step_index": item.get("error_step_index"),
             "error_step_position": np.nan,
