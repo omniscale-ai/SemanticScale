@@ -1,0 +1,83 @@
+{
+  "model_name": "lightgbm",
+  "feature_set": "trajectory_full",
+  "n_features": 29,
+  "feature_cols": [
+    "answer_n_chunks",
+    "answer_start",
+    "answer_end",
+    "answer_end_minus_start",
+    "answer_std",
+    "answer_range",
+    "answer_min",
+    "answer_max",
+    "answer_early_mean",
+    "answer_mid_mean",
+    "answer_late_mean",
+    "answer_late_minus_early",
+    "answer_total_variation",
+    "answer_monotonicity",
+    "answer_direction_changes",
+    "answer_zero_crossings",
+    "answer_peak_pos",
+    "answer_trough_pos",
+    "answer_rebound_from_trough",
+    "answer_fall_from_peak",
+    "answer_max_rise",
+    "answer_max_drop",
+    "answer_max_rise_pos",
+    "answer_max_drop_pos",
+    "answer_curvature_abs_mean",
+    "answer_positive_mass",
+    "answer_negative_mass",
+    "answer_time_positive",
+    "answer_time_negative"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "auto-resolved",
+  "target_counts": {
+    "n_items": 197,
+    "n_positive": 127,
+    "n_negative": 70
+  },
+  "fold_metrics": {
+    "roc_auc": {
+      "mean": 0.6582197802197802,
+      "std": 0.03080315241608021
+    },
+    "average_precision": {
+      "mean": 0.7867855960474888,
+      "std": 0.027771231486178143
+    },
+    "accuracy": {
+      "mean": 0.6397435897435898,
+      "std": 0.0677233805916684
+    },
+    "balanced_accuracy": {
+      "mean": 0.6084615384615384,
+      "std": 0.07983865507447477
+    },
+    "f1": {
+      "mean": 0.719948717948718,
+      "std": 0.049283732194712146
+    }
+  },
+  "confusion_matrix": {
+    "tn": 35,
+    "fp": 35,
+    "fn": 36,
+    "tp": 91
+  },
+  "duration_seconds": 0.42660958698252216,
+  "timestamp_utc": "2026-04-29T06:59:42+00:00",
+  "git_sha": "4da8ebc",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.8.0",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  }
+}

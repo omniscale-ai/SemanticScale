@@ -2723,10 +2723,10 @@
     "confirmed": {
       "n_modes": 5,
       "modes": [
-        "answer_meandering",
-        "answer_volatility",
-        "answer_uncommitted",
         "premature_exit",
+        "answer_uncommitted",
+        "answer_volatility",
+        "answer_meandering",
         "no_commitment"
       ],
       "n_flagged": 98,

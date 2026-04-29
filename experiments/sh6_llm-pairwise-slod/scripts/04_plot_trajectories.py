@@ -195,12 +195,18 @@ def main() -> None:
     project_root = Path(config["_project_root"])
 
     dataset_name = ds.dataset_name(config)
-    slug = args.run_slug or ds.run_slug(config)
-
     data_dir = (project_root / config["paths"]["data_dir"]).resolve()
-    run_dir = data_dir / dataset_name / slug
+    requested_slug = args.run_slug or ds.run_slug(config)
+    slug, run_dir = ds.resolve_run_dir(
+        config,
+        data_dir,
+        requested_slug,
+        required_files=("traces.jsonl",),
+    )
     reports_dir = (project_root / config["paths"]["reports_dir"]).resolve() / dataset_name / slug
     reports_dir.mkdir(parents=True, exist_ok=True)
+    if slug != requested_slug:
+        logger.info("Resolved run slug %s -> %s", requested_slug, slug)
 
     traces_path = run_dir / "traces.jsonl"
     rankings_path = run_dir / "chunk_rankings.jsonl"

@@ -1,0 +1,1381 @@
+{
+  "dataset": "processbench",
+  "run_slug": "olympiadbench/by-generator/Qwen2.5-72B-Instruct",
+  "target_label": "final_answer_correct",
+  "n_items": 39,
+  "n_positive": 19,
+  "n_negative": 20,
+  "analysis_note": null,
+  "label_alignment": {
+    "n_items": 39,
+    "agreement": 1.0,
+    "final_correct_but_reasoning_wrong": 0,
+    "final_wrong_but_reasoning_clean": 0
+  },
+  "model_results": {
+    "length_only": {
+      "n_features": 1,
+      "feature_cols": [
+        "reasoning_n_chunks"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.38333333333333336,
+          "std": 0.12866164713870426
+        },
+        "average_precision": {
+          "mean": 0.5309126984126984,
+          "std": 0.1214289864086695
+        },
+        "accuracy": {
+          "mean": 0.3821428571428571,
+          "std": 0.06832545167753211
+        },
+        "balanced_accuracy": {
+          "mean": 0.3833333333333333,
+          "std": 0.06666666666666668
+        },
+        "f1": {
+          "mean": 0.3549206349206349,
+          "std": 0.20339670400178717
+        }
+      },
+      "oof_probabilities": [
+        0.46189661454311487,
+        0.5209492464281429,
+        0.5081484341324146,
+        0.44546518754343045,
+        0.5061576598064979,
+        0.4909733521614762,
+        0.5027254632087702,
+        0.4784112422707827,
+        0.5576036462726011,
+        0.5025119821172033,
+        0.5081484341324146,
+        0.6170743321940917,
+        0.475285799235996,
+        0.49789963690854305,
+        0.5178983941511153,
+        0.49627990686661055,
+        0.5119185260951679,
+        0.5267273560554747,
+        0.5041926182204354,
+        0.5029428590098021,
+        0.5576036462726011,
+        0.5121032299516828,
+        0.5178983941511153,
+        0.5140800907340097,
+        0.5130199889487804,
+        0.5089272050472938,
+        0.4790141856628227,
+        0.4784112422707827,
+        0.429152111663705,
+        0.4824395267694434,
+        0.48867680348905157,
+        0.5095892761177727,
+        0.4702604973267843,
+        0.4844155705087733,
+        0.4700598206267551,
+        0.42101302525982376,
+        0.5198774132182107,
+        0.4372916952845587,
+        0.4536682835493075
+      ],
+      "oof_predictions": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 7,
+        "fp": 13,
+        "fn": 11,
+        "tp": 8
+      }
+    },
+    "trajectory_shape": {
+      "n_features": 29,
+      "feature_cols": [
+        "reasoning_start",
+        "reasoning_end",
+        "reasoning_end_minus_start",
+        "reasoning_std",
+        "reasoning_range",
+        "reasoning_min",
+        "reasoning_max",
+        "reasoning_early_mean",
+        "reasoning_mid_mean",
+        "reasoning_late_mean",
+        "reasoning_late_minus_early",
+        "reasoning_total_variation",
+        "reasoning_monotonicity",
+        "reasoning_direction_changes",
+        "reasoning_zero_crossings",
+        "reasoning_peak_pos",
+        "reasoning_trough_pos",
+        "reasoning_rebound_from_trough",
+        "reasoning_fall_from_peak",
+        "reasoning_max_rise",
+        "reasoning_max_drop",
+        "reasoning_max_rise_pos",
+        "reasoning_max_drop_pos",
+        "reasoning_curvature_abs_mean",
+        "reasoning_positive_mass",
+        "reasoning_negative_mass",
+        "reasoning_time_positive",
+        "reasoning_time_negative",
+        "total_n_chunks"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.3416666666666667,
+          "std": 0.1452966314513558
+        },
+        "average_precision": {
+          "mean": 0.5216666666666667,
+          "std": 0.11499198927043518
+        },
+        "accuracy": {
+          "mean": 0.33214285714285713,
+          "std": 0.20095435566621714
+        },
+        "balanced_accuracy": {
+          "mean": 0.3416666666666667,
+          "std": 0.19965247584518234
+        },
+        "f1": {
+          "mean": 0.3476190476190476,
+          "std": 0.20940352487670452
+        }
+      },
+      "oof_probabilities": [
+        0.29819413471395706,
+        0.7531586492862598,
+        0.9997773292594696,
+        0.022698807391484607,
+        0.7303581719302267,
+        0.7542673408727028,
+        0.801471120328043,
+        0.17533634146866311,
+        0.7783535070440666,
+        0.5155964232880048,
+        0.9575307793073885,
+        0.9550632141181383,
+        0.7858283543099558,
+        0.9156417825473269,
+        0.7555836955514296,
+        0.41433746741735766,
+        0.9289486758068224,
+        0.017357683886045944,
+        0.4075995398872357,
+        0.8550327443772046,
+        0.5678045574259523,
+        0.7876145382696653,
+        0.9983986568983514,
+        0.8386081742438769,
+        0.14766628531682296,
+        0.07693017159412494,
+        0.03298009137128159,
+        0.6667681605331033,
+        0.9744689956853376,
+        0.06792100068322744,
+        0.3834714415235064,
+        0.13779933730149013,
+        0.8815746157035234,
+        0.02915441589069226,
+        0.020545422872226684,
+        0.17108617101960105,
+        0.13899015872803747,
+        0.4627557153385773,
+        0.014959603919241778
+      ],
+      "oof_predictions": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 6,
+        "fp": 14,
+        "fn": 12,
+        "tp": 7
+      }
+    },
+    "trajectory_full": {
+      "n_features": 29,
+      "feature_cols": [
+        "reasoning_n_chunks",
+        "reasoning_start",
+        "reasoning_end",
+        "reasoning_end_minus_start",
+        "reasoning_std",
+        "reasoning_range",
+        "reasoning_min",
+        "reasoning_max",
+        "reasoning_early_mean",
+        "reasoning_mid_mean",
+        "reasoning_late_mean",
+        "reasoning_late_minus_early",
+        "reasoning_total_variation",
+        "reasoning_monotonicity",
+        "reasoning_direction_changes",
+        "reasoning_zero_crossings",
+        "reasoning_peak_pos",
+        "reasoning_trough_pos",
+        "reasoning_rebound_from_trough",
+        "reasoning_fall_from_peak",
+        "reasoning_max_rise",
+        "reasoning_max_drop",
+        "reasoning_max_rise_pos",
+        "reasoning_max_drop_pos",
+        "reasoning_curvature_abs_mean",
+        "reasoning_positive_mass",
+        "reasoning_negative_mass",
+        "reasoning_time_positive",
+        "reasoning_time_negative"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.3416666666666667,
+          "std": 0.1452966314513558
+        },
+        "average_precision": {
+          "mean": 0.5216666666666667,
+          "std": 0.11499198927043518
+        },
+        "accuracy": {
+          "mean": 0.33214285714285713,
+          "std": 0.20095435566621714
+        },
+        "balanced_accuracy": {
+          "mean": 0.3416666666666667,
+          "std": 0.19965247584518234
+        },
+        "f1": {
+          "mean": 0.3476190476190476,
+          "std": 0.20940352487670452
+        }
+      },
+      "oof_probabilities": [
+        0.2981941347139566,
+        0.753158649286264,
+        0.9997773292594696,
+        0.02269880739148457,
+        0.7303581719302267,
+        0.7542673408727039,
+        0.801471120328042,
+        0.17533634146866206,
+        0.7783535070440628,
+        0.5155964232880058,
+        0.9575307793073885,
+        0.9550632141181382,
+        0.7858283543099558,
+        0.9156417825473285,
+        0.755583695551429,
+        0.414337467417358,
+        0.9289486758068223,
+        0.017357683886045625,
+        0.4075995398872369,
+        0.855032744377205,
+        0.5678045574259607,
+        0.7876145382696645,
+        0.9983986568983514,
+        0.8386081742438766,
+        0.14766628531682108,
+        0.07693017159412424,
+        0.032980091371281474,
+        0.6667681605331031,
+        0.9744689956853376,
+        0.06792100068322764,
+        0.38347144152350554,
+        0.13779933730148952,
+        0.881574615703519,
+        0.029154415890692526,
+        0.02054542287222671,
+        0.17108617101959775,
+        0.13899015872803813,
+        0.46275571533857884,
+        0.014959603919241634
+      ],
+      "oof_predictions": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 6,
+        "fp": 14,
+        "fn": 12,
+        "tp": 7
+      }
+    },
+    "mode_stack": {
+      "n_features": 5,
+      "feature_cols": [
+        "premature_exit_score",
+        "rambling_overlong_score",
+        "thrashing_score",
+        "no_commitment_score",
+        "derailment_late_score"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.3791666666666667,
+          "std": 0.19781795784115364
+        },
+        "average_precision": {
+          "mean": 0.5819444444444445,
+          "std": 0.13250581736351272
+        },
+        "accuracy": {
+          "mean": 0.4928571428571429,
+          "std": 0.14708043058552858
+        },
+        "balanced_accuracy": {
+          "mean": 0.4916666666666666,
+          "std": 0.14529663145135577
+        },
+        "f1": {
+          "mean": 0.4466666666666666,
+          "std": 0.12578641509408806
+        }
+      },
+      "oof_probabilities": [
+        0.48794981580258573,
+        0.4781584061367414,
+        0.576371385748505,
+        0.3297313567647821,
+        0.48458682247977414,
+        0.49123563430591416,
+        0.40625471059123913,
+        0.5575418705333366,
+        0.6445555960283962,
+        0.4456373906391269,
+        0.609101637944976,
+        0.6277076051503122,
+        0.5514515763578136,
+        0.4769592765070209,
+        0.4605774266962663,
+        0.5564242623680938,
+        0.8997326523698148,
+        0.2839334039165951,
+        0.5393198811014243,
+        0.4622250847662502,
+        0.5230591870218062,
+        0.5077061670022033,
+        0.9674270555172867,
+        0.5505906075431259,
+        0.4457703451818738,
+        0.2915684540635311,
+        0.43240219386585876,
+        0.32236662202154975,
+        0.756834572818583,
+        0.4411097925357605,
+        0.44307965312645275,
+        0.3819948494852484,
+        0.7343342697662704,
+        0.358620070273433,
+        0.4437982577160541,
+        0.5453657442669827,
+        0.3765413923425807,
+        0.7335090866018791,
+        0.41755509334440705
+      ],
+      "oof_predictions": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 11,
+        "fp": 9,
+        "fn": 11,
+        "tp": 8
+      }
+    },
+    "lightgbm_trajectory_full": {
+      "n_features": 29,
+      "feature_cols": [
+        "reasoning_n_chunks",
+        "reasoning_start",
+        "reasoning_end",
+        "reasoning_end_minus_start",
+        "reasoning_std",
+        "reasoning_range",
+        "reasoning_min",
+        "reasoning_max",
+        "reasoning_early_mean",
+        "reasoning_mid_mean",
+        "reasoning_late_mean",
+        "reasoning_late_minus_early",
+        "reasoning_total_variation",
+        "reasoning_monotonicity",
+        "reasoning_direction_changes",
+        "reasoning_zero_crossings",
+        "reasoning_peak_pos",
+        "reasoning_trough_pos",
+        "reasoning_rebound_from_trough",
+        "reasoning_fall_from_peak",
+        "reasoning_max_rise",
+        "reasoning_max_drop",
+        "reasoning_max_rise_pos",
+        "reasoning_max_drop_pos",
+        "reasoning_curvature_abs_mean",
+        "reasoning_positive_mass",
+        "reasoning_negative_mass",
+        "reasoning_time_positive",
+        "reasoning_time_negative"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.35416666666666663,
+          "std": 0.19676198255195987
+        },
+        "average_precision": {
+          "mean": 0.5449999999999999,
+          "std": 0.12347631443624066
+        },
+        "accuracy": {
+          "mean": 0.38571428571428573,
+          "std": 0.13859719937094467
+        },
+        "balanced_accuracy": {
+          "mean": 0.3833333333333333,
+          "std": 0.1379412113103904
+        },
+        "f1": {
+          "mean": 0.3866666666666666,
+          "std": 0.12773429211733256
+        }
+      },
+      "oof_probabilities": [
+        0.45521622688077,
+        0.706931112446674,
+        0.9862495485952885,
+        0.02778535413886875,
+        0.9868261962636198,
+        0.9130343518081663,
+        0.985722294481626,
+        0.20866354588527233,
+        0.8299904356306824,
+        0.11028063242338504,
+        0.9748155861260667,
+        0.5474985565030107,
+        0.9839907573276496,
+        0.2417543006511728,
+        0.9431371916885568,
+        0.10139952258378845,
+        0.5613191034396864,
+        0.4073862187413962,
+        0.6776515847539029,
+        0.8769078351807089,
+        0.1501296186290043,
+        0.8809629872449236,
+        0.5926067778001128,
+        0.9876681117739693,
+        0.9022397794020149,
+        0.11910138153479916,
+        0.15953947588991874,
+        0.36499898581897977,
+        0.8390790808525983,
+        0.15497428702622204,
+        0.44807422591366936,
+        0.09710022131243755,
+        0.9779205583366847,
+        0.08118637948735477,
+        0.27184059550816453,
+        0.5381812989348645,
+        0.8560449186482123,
+        0.20527698179610546,
+        0.0458926707933363
+      ],
+      "oof_predictions": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 7,
+        "fp": 13,
+        "fn": 11,
+        "tp": 8
+      },
+      "model_name": "lightgbm",
+      "feature_importance": [
+        {
+          "feature": "reasoning_max_rise_pos",
+          "mean_importance": 36.40202791392803,
+          "std_importance": 26.74595761668859
+        },
+        {
+          "feature": "reasoning_positive_mass",
+          "mean_importance": 28.380699010193347,
+          "std_importance": 33.462915827662364
+        },
+        {
+          "feature": "reasoning_max_drop_pos",
+          "mean_importance": 27.437200464308262,
+          "std_importance": 35.67057032038492
+        },
+        {
+          "feature": "reasoning_time_positive",
+          "mean_importance": 26.868101292848586,
+          "std_importance": 13.525349225991867
+        },
+        {
+          "feature": "reasoning_late_mean",
+          "mean_importance": 25.631576614081858,
+          "std_importance": 20.689096091993846
+        },
+        {
+          "feature": "reasoning_n_chunks",
+          "mean_importance": 18.928962963819504,
+          "std_importance": 21.246253737650598
+        },
+        {
+          "feature": "reasoning_max_drop",
+          "mean_importance": 18.579391911625862,
+          "std_importance": 28.221756229405216
+        },
+        {
+          "feature": "reasoning_range",
+          "mean_importance": 18.405122080445288,
+          "std_importance": 28.201143848891054
+        },
+        {
+          "feature": "reasoning_curvature_abs_mean",
+          "mean_importance": 18.09560307264328,
+          "std_importance": 26.435771284332787
+        },
+        {
+          "feature": "reasoning_total_variation",
+          "mean_importance": 13.800014805793761,
+          "std_importance": 20.56488037607944
+        },
+        {
+          "feature": "reasoning_start",
+          "mean_importance": 13.570037886500359,
+          "std_importance": 17.2821803673228
+        },
+        {
+          "feature": "reasoning_negative_mass",
+          "mean_importance": 13.314689874649048,
+          "std_importance": 26.03361781730755
+        },
+        {
+          "feature": "reasoning_zero_crossings",
+          "mean_importance": 12.46321636736393,
+          "std_importance": 16.07245671621076
+        },
+        {
+          "feature": "reasoning_mid_mean",
+          "mean_importance": 11.99970016181469,
+          "std_importance": 18.141473254010606
+        },
+        {
+          "feature": "reasoning_min",
+          "mean_importance": 11.910248886048795,
+          "std_importance": 11.0608833654544
+        },
+        {
+          "feature": "reasoning_monotonicity",
+          "mean_importance": 10.79838099181652,
+          "std_importance": 5.304815386609393
+        },
+        {
+          "feature": "reasoning_late_minus_early",
+          "mean_importance": 9.77088932543993,
+          "std_importance": 12.807066934918094
+        },
+        {
+          "feature": "reasoning_max",
+          "mean_importance": 9.29178320169449,
+          "std_importance": 9.717365794754873
+        },
+        {
+          "feature": "reasoning_end",
+          "mean_importance": 6.562807747721672,
+          "std_importance": 8.583594291335423
+        },
+        {
+          "feature": "reasoning_rebound_from_trough",
+          "mean_importance": 6.193889617919922,
+          "std_importance": 8.701262568805326
+        },
+        {
+          "feature": "reasoning_end_minus_start",
+          "mean_importance": 5.5613238394260405,
+          "std_importance": 7.781158892856686
+        },
+        {
+          "feature": "reasoning_trough_pos",
+          "mean_importance": 4.745926177501678,
+          "std_importance": 4.713598640223972
+        },
+        {
+          "feature": "reasoning_time_negative",
+          "mean_importance": 4.029087802767753,
+          "std_importance": 5.275513562967039
+        },
+        {
+          "feature": "reasoning_early_mean",
+          "mean_importance": 3.827641546726227,
+          "std_importance": 6.461076249213765
+        },
+        {
+          "feature": "reasoning_fall_from_peak",
+          "mean_importance": 3.731789430975914,
+          "std_importance": 2.7685787408393496
+        },
+        {
+          "feature": "reasoning_max_rise",
+          "mean_importance": 3.211099398136139,
+          "std_importance": 4.127402218469068
+        },
+        {
+          "feature": "reasoning_std",
+          "mean_importance": 1.8670225977897643,
+          "std_importance": 3.3430642848696444
+        },
+        {
+          "feature": "reasoning_direction_changes",
+          "mean_importance": 1.0486076176166534,
+          "std_importance": 1.240317246322398
+        },
+        {
+          "feature": "reasoning_peak_pos",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        }
+      ]
+    }
+  },
+  "top_univariate_features": [
+    {
+      "feature": "reasoning_trough_pos",
+      "roc_auc": 0.23125,
+      "signal_auc": 0.76875,
+      "direction": "higher -> wrong",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_fall_from_peak",
+      "roc_auc": 0.2375,
+      "signal_auc": 0.7625,
+      "direction": "higher -> wrong",
+      "family": "derailment"
+    },
+    {
+      "feature": "reasoning_total_variation",
+      "roc_auc": 0.2958333333333333,
+      "signal_auc": 0.7041666666666667,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_min",
+      "roc_auc": 0.3083333333333333,
+      "signal_auc": 0.6916666666666667,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_zero_crossings",
+      "roc_auc": 0.30833333333333335,
+      "signal_auc": 0.6916666666666667,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_end",
+      "roc_auc": 0.3125,
+      "signal_auc": 0.6875,
+      "direction": "higher -> wrong",
+      "family": "landing"
+    },
+    {
+      "feature": "reasoning_direction_changes",
+      "roc_auc": 0.3208333333333333,
+      "signal_auc": 0.6791666666666667,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_time_positive",
+      "roc_auc": 0.675,
+      "signal_auc": 0.675,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_time_negative",
+      "roc_auc": 0.675,
+      "signal_auc": 0.675,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_late_mean",
+      "roc_auc": 0.6666666666666667,
+      "signal_auc": 0.6666666666666667,
+      "direction": "higher -> correct",
+      "family": "landing"
+    },
+    {
+      "feature": "reasoning_late_minus_early",
+      "roc_auc": 0.6541666666666667,
+      "signal_auc": 0.6541666666666667,
+      "direction": "higher -> correct",
+      "family": "transition"
+    },
+    {
+      "feature": "reasoning_curvature_abs_mean",
+      "roc_auc": 0.3458333333333333,
+      "signal_auc": 0.6541666666666667,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_monotonicity",
+      "roc_auc": 0.6375,
+      "signal_auc": 0.6375,
+      "direction": "higher -> correct",
+      "family": "commitment"
+    },
+    {
+      "feature": "reasoning_max_drop_pos",
+      "roc_auc": 0.6375,
+      "signal_auc": 0.6375,
+      "direction": "higher -> correct",
+      "family": "derailment"
+    },
+    {
+      "feature": "reasoning_early_mean",
+      "roc_auc": 0.6291666666666667,
+      "signal_auc": 0.6291666666666667,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_negative_mass",
+      "roc_auc": 0.6291666666666667,
+      "signal_auc": 0.6291666666666667,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_max_rise_pos",
+      "roc_auc": 0.3729166666666667,
+      "signal_auc": 0.6270833333333333,
+      "direction": "higher -> wrong",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_max_drop",
+      "roc_auc": 0.3791666666666667,
+      "signal_auc": 0.6208333333333333,
+      "direction": "higher -> wrong",
+      "family": "derailment"
+    },
+    {
+      "feature": "reasoning_n_chunks",
+      "roc_auc": 0.38333333333333336,
+      "signal_auc": 0.6166666666666667,
+      "direction": "higher -> wrong",
+      "family": "length"
+    },
+    {
+      "feature": "reasoning_rebound_from_trough",
+      "roc_auc": 0.38541666666666663,
+      "signal_auc": 0.6145833333333334,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    }
+  ],
+  "top_coefficients": [
+    {
+      "feature": "reasoning_positive_mass",
+      "coefficient": -0.9714276026124468,
+      "abs_coefficient": 0.9714276026124468,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_late_mean",
+      "coefficient": -0.6490372094879341,
+      "abs_coefficient": 0.6490372094879341,
+      "direction": "higher -> wrong",
+      "family": "landing"
+    },
+    {
+      "feature": "reasoning_monotonicity",
+      "coefficient": 0.5926026610219405,
+      "abs_coefficient": 0.5926026610219405,
+      "direction": "higher -> correct",
+      "family": "commitment"
+    },
+    {
+      "feature": "reasoning_direction_changes",
+      "coefficient": -0.5454199491169756,
+      "abs_coefficient": 0.5454199491169756,
+      "direction": "higher -> wrong",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_total_variation",
+      "coefficient": 0.5384623395762127,
+      "abs_coefficient": 0.5384623395762127,
+      "direction": "higher -> correct",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_peak_pos",
+      "coefficient": 0.5348010008151646,
+      "abs_coefficient": 0.5348010008151646,
+      "direction": "higher -> correct",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_curvature_abs_mean",
+      "coefficient": 0.45919650873116996,
+      "abs_coefficient": 0.45919650873116996,
+      "direction": "higher -> correct",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_late_minus_early",
+      "coefficient": -0.43941234212995334,
+      "abs_coefficient": 0.43941234212995334,
+      "direction": "higher -> wrong",
+      "family": "transition"
+    },
+    {
+      "feature": "reasoning_time_negative",
+      "coefficient": 0.4092639820033126,
+      "abs_coefficient": 0.4092639820033126,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_time_positive",
+      "coefficient": -0.40926398200331165,
+      "abs_coefficient": 0.40926398200331165,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_start",
+      "coefficient": -0.36887454151054194,
+      "abs_coefficient": 0.36887454151054194,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_max_rise_pos",
+      "coefficient": -0.345629758892902,
+      "abs_coefficient": 0.345629758892902,
+      "direction": "higher -> wrong",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_zero_crossings",
+      "coefficient": 0.30251603736602456,
+      "abs_coefficient": 0.30251603736602456,
+      "direction": "higher -> correct",
+      "family": "thrashing"
+    },
+    {
+      "feature": "reasoning_negative_mass",
+      "coefficient": 0.29750667109086504,
+      "abs_coefficient": 0.29750667109086504,
+      "direction": "higher -> correct",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_max_rise",
+      "coefficient": -0.28331322412755655,
+      "abs_coefficient": 0.28331322412755655,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_trough_pos",
+      "coefficient": -0.2832635833070242,
+      "abs_coefficient": 0.2832635833070242,
+      "direction": "higher -> wrong",
+      "family": "timing"
+    },
+    {
+      "feature": "reasoning_n_chunks",
+      "coefficient": -0.2517528022675281,
+      "abs_coefficient": 0.2517528022675281,
+      "direction": "higher -> wrong",
+      "family": "length"
+    },
+    {
+      "feature": "reasoning_mid_mean",
+      "coefficient": -0.24322246784294763,
+      "abs_coefficient": 0.24322246784294763,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    },
+    {
+      "feature": "reasoning_end",
+      "coefficient": -0.20994765180992564,
+      "abs_coefficient": 0.20994765180992564,
+      "direction": "higher -> wrong",
+      "family": "landing"
+    },
+    {
+      "feature": "reasoning_min",
+      "coefficient": -0.16790382271285434,
+      "abs_coefficient": 0.16790382271285434,
+      "direction": "higher -> wrong",
+      "family": "shape"
+    }
+  ],
+  "mode_detectors": [
+    {
+      "mode": "premature_exit",
+      "description": "Very short reasoning trace \u2014 the model answered or gave up before exploring.",
+      "kind": "continuous",
+      "n_scored": 39,
+      "n_flagged": 2,
+      "base_rate": 0.5128205128205128,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": 0.4131578947368421,
+      "roc_auc_ci_lo": 0.2166508152173913,
+      "roc_auc_ci_hi": 0.6100460526315789,
+      "verdict": "inconclusive",
+      "threshold_quantile": 0.9,
+      "true_positive": 1,
+      "false_positive": 1,
+      "false_negative": 19,
+      "reason_skipped": null
+    },
+    {
+      "mode": "rambling_overlong",
+      "description": "Reasoning runs much longer than on successful traces, often without ever synthesising.",
+      "kind": "continuous",
+      "n_scored": 39,
+      "n_flagged": 4,
+      "base_rate": 0.5128205128205128,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": 0.5868421052631578,
+      "roc_auc_ci_lo": 0.38995394736842104,
+      "roc_auc_ci_hi": 0.7833491847826087,
+      "verdict": "inconclusive",
+      "threshold_quantile": 0.9,
+      "true_positive": 2,
+      "false_positive": 2,
+      "false_negative": 18,
+      "reason_skipped": null
+    },
+    {
+      "mode": "thrashing",
+      "description": "Many SLoD direction changes \u2014 the model flip-flops between abstraction levels instead of committing.",
+      "kind": "continuous",
+      "n_scored": 39,
+      "n_flagged": 4,
+      "base_rate": 0.5128205128205128,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": 0.5368421052631579,
+      "roc_auc_ci_lo": 0.3544890873015873,
+      "roc_auc_ci_hi": 0.7299544399099352,
+      "verdict": "inconclusive",
+      "threshold_quantile": 0.9,
+      "true_positive": 2,
+      "false_positive": 2,
+      "false_negative": 18,
+      "reason_skipped": null
+    },
+    {
+      "mode": "no_commitment",
+      "description": "Low end-to-end monotonicity \u2014 the trace never commits to a clear abstraction arc.",
+      "kind": "continuous",
+      "n_scored": 39,
+      "n_flagged": 4,
+      "base_rate": 0.5128205128205128,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": 0.5789473684210527,
+      "roc_auc_ci_lo": 0.3868421052631579,
+      "roc_auc_ci_hi": 0.7579473684210526,
+      "verdict": "inconclusive",
+      "threshold_quantile": 0.9,
+      "true_positive": 2,
+      "false_positive": 2,
+      "false_negative": 18,
+      "reason_skipped": null
+    },
+    {
+      "mode": "derailment_late",
+      "description": "Trace peaks high on the SLoD axis and then falls away, failing to land.",
+      "kind": "continuous",
+      "n_scored": 39,
+      "n_flagged": 4,
+      "base_rate": 0.5128205128205128,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": 0.4276315789473685,
+      "roc_auc_ci_lo": 0.2538356251591546,
+      "roc_auc_ci_hi": 0.6296497584541063,
+      "verdict": "inconclusive",
+      "threshold_quantile": 0.9,
+      "true_positive": 2,
+      "false_positive": 2,
+      "false_negative": 18,
+      "reason_skipped": null
+    },
+    {
+      "mode": "answer_drift",
+      "description": "Answer SLoD is far from where the reasoning ended \u2014 the answer does not follow the chain.",
+      "kind": "continuous",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": 0.9,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    },
+    {
+      "mode": "answer_meandering",
+      "description": "Answer trajectory has many SLoD direction changes \u2014 long, oscillating answer instead of a clean statement (FrontierScience-style hedging).",
+      "kind": "continuous",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": 0.9,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    },
+    {
+      "mode": "answer_volatility",
+      "description": "Large single-step SLoD jump in the answer \u2014 the response leaps between abstraction levels, a confabulation pattern.",
+      "kind": "continuous",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": 0.9,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    },
+    {
+      "mode": "answer_uncommitted",
+      "description": "Low monotonicity inside the answer trajectory \u2014 the answer never commits to a clear arc.",
+      "kind": "continuous",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": 0.9,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    },
+    {
+      "mode": "answer_overrange",
+      "description": "Answer covers a wider SLoD range than the reasoning did \u2014 the answer claims abstraction breadth the reasoning never built up.",
+      "kind": "continuous",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": 0.9,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    },
+    {
+      "mode": "truncation_abort",
+      "description": "Agent exited on context/budget/format, not a clean submit (SWE-agent style).",
+      "kind": "binary",
+      "n_scored": 0,
+      "n_flagged": 0,
+      "base_rate": NaN,
+      "precision": NaN,
+      "recall": NaN,
+      "f1": NaN,
+      "lift": NaN,
+      "roc_auc": NaN,
+      "roc_auc_ci_lo": NaN,
+      "roc_auc_ci_hi": NaN,
+      "verdict": "insufficient_data",
+      "threshold_quantile": null,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "reason_skipped": "feature unavailable"
+    }
+  ],
+  "mode_coverage": {
+    "any": {
+      "n_modes": 11,
+      "modes": [
+        "premature_exit",
+        "rambling_overlong",
+        "thrashing",
+        "no_commitment",
+        "derailment_late",
+        "answer_drift",
+        "answer_meandering",
+        "answer_volatility",
+        "answer_uncommitted",
+        "answer_overrange",
+        "truncation_abort"
+      ],
+      "n_flagged": 14,
+      "n_caught": 7,
+      "n_failures": 20,
+      "recall": 0.35,
+      "precision": 0.5
+    },
+    "confirmed": null,
+    "n_failures": 20
+  },
+  "mode_stack_capture": {
+    "mode_stack_auc": 0.3791666666666667,
+    "full_auc": 0.3416666666666667,
+    "captured_fraction": NaN,
+    "comparison_set": "trajectory_full"
+  }
+}

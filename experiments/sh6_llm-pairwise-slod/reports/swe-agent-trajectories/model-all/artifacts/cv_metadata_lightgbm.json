@@ -37,41 +37,41 @@
   "random_state": 42,
   "target_label": "auto-resolved",
   "target_counts": {
-    "n_items": 645,
-    "n_positive": 202,
-    "n_negative": 443
+    "n_items": 2017,
+    "n_positive": 839,
+    "n_negative": 1178
   },
   "fold_metrics": {
     "roc_auc": {
-      "mean": 0.8686843219811156,
-      "std": 0.026702706779878294
+      "mean": 0.8227159227344085,
+      "std": 0.021694600326294926
     },
     "average_precision": {
-      "mean": 0.6991793603298215,
-      "std": 0.03616578961730474
+      "mean": 0.7271682355132556,
+      "std": 0.03372943255267334
     },
     "accuracy": {
-      "mean": 0.7643410852713177,
-      "std": 0.03199963944271364
+      "mean": 0.7382060290396286,
+      "std": 0.02093834075984356
     },
     "balanced_accuracy": {
-      "mean": 0.7733137970552331,
-      "std": 0.031563932526686135
+      "mean": 0.7457065231753793,
+      "std": 0.01903980983502586
     },
     "f1": {
-      "mean": 0.678682505362372,
-      "std": 0.035705255957041174
+      "mean": 0.7154231945228853,
+      "std": 0.018937679956181706
     }
   },
   "confusion_matrix": {
-    "tn": 332,
-    "fp": 111,
-    "fn": 41,
-    "tp": 161
+    "tn": 826,
+    "fp": 352,
+    "fn": 176,
+    "tp": 663
   },
-  "duration_seconds": 1.3126787394285202,
-  "timestamp_utc": "2026-04-28T22:35:38+00:00",
-  "git_sha": "380a6ec",
+  "duration_seconds": 1.1655982510128524,
+  "timestamp_utc": "2026-04-29T07:03:01+00:00",
+  "git_sha": "4da8ebc",
   "python_version": "3.12.3",
   "library_versions": {
     "sklearn": "1.8.0",

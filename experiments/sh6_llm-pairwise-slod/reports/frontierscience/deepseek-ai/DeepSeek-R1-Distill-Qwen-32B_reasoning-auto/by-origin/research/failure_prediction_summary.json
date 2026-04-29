@@ -763,6 +763,542 @@
         "fn": 2,
         "tp": 1
       }
+    },
+    "lightgbm_trajectory_full": {
+      "n_features": 63,
+      "feature_cols": [
+        "reasoning_n_chunks",
+        "answer_n_chunks",
+        "total_n_chunks",
+        "reasoning_start",
+        "reasoning_end",
+        "reasoning_end_minus_start",
+        "reasoning_std",
+        "reasoning_range",
+        "reasoning_min",
+        "reasoning_max",
+        "reasoning_early_mean",
+        "reasoning_mid_mean",
+        "reasoning_late_mean",
+        "reasoning_late_minus_early",
+        "reasoning_total_variation",
+        "reasoning_monotonicity",
+        "reasoning_direction_changes",
+        "reasoning_zero_crossings",
+        "reasoning_peak_pos",
+        "reasoning_trough_pos",
+        "reasoning_rebound_from_trough",
+        "reasoning_fall_from_peak",
+        "reasoning_max_rise",
+        "reasoning_max_drop",
+        "reasoning_max_rise_pos",
+        "reasoning_max_drop_pos",
+        "reasoning_curvature_abs_mean",
+        "reasoning_positive_mass",
+        "reasoning_negative_mass",
+        "reasoning_time_positive",
+        "reasoning_time_negative",
+        "answer_start",
+        "answer_end",
+        "answer_end_minus_start",
+        "answer_std",
+        "answer_range",
+        "answer_min",
+        "answer_max",
+        "answer_early_mean",
+        "answer_mid_mean",
+        "answer_late_mean",
+        "answer_late_minus_early",
+        "answer_total_variation",
+        "answer_monotonicity",
+        "answer_direction_changes",
+        "answer_zero_crossings",
+        "answer_peak_pos",
+        "answer_trough_pos",
+        "answer_rebound_from_trough",
+        "answer_fall_from_peak",
+        "answer_max_rise",
+        "answer_max_drop",
+        "answer_max_rise_pos",
+        "answer_max_drop_pos",
+        "answer_curvature_abs_mean",
+        "answer_positive_mass",
+        "answer_negative_mass",
+        "answer_time_positive",
+        "answer_time_negative",
+        "answer_minus_reasoning_mean",
+        "answer_start_minus_reasoning_end",
+        "answer_end_minus_reasoning_end",
+        "answer_range_minus_reasoning_range"
+      ],
+      "metrics": {
+        "roc_auc": {
+          "mean": 0.7368421052631579,
+          "std": 0.21486752129677
+        },
+        "average_precision": {
+          "mean": 0.41919191919191917,
+          "std": 0.41185622298737606
+        },
+        "accuracy": {
+          "mean": 0.9324561403508772,
+          "std": 0.02297508921703294
+        },
+        "balanced_accuracy": {
+          "mean": 0.6486354775828459,
+          "std": 0.22906246043912343
+        },
+        "f1": {
+          "mean": 0.2222222222222222,
+          "std": 0.31426968052735443
+        }
+      },
+      "oof_probabilities": [
+        4.9638031719399874e-05,
+        4.9638031719404286e-05,
+        2.982085422973076e-07,
+        4.963803171939952e-05,
+        0.6221714375477577,
+        1.4582309058999478e-06,
+        8.889884913968044e-06,
+        0.014954290734399363,
+        0.0013522690678346458,
+        4.963803171940005e-05,
+        3.109992166171575e-06,
+        4.963803171940022e-05,
+        0.4913054267018578,
+        0.02112549857905293,
+        4.963803171940111e-05,
+        4.96380317194004e-05,
+        4.963803171939899e-05,
+        4.9638031719399346e-05,
+        4.963803171939916e-05,
+        3.0030866650999133e-05,
+        0.0001008753431002602,
+        2.4951756369027224e-05,
+        3.046936625978706e-06,
+        0.0003603654704724281,
+        0.00030163365863426225,
+        4.963803171939899e-05,
+        4.963803171939882e-05,
+        4.9638031719398634e-05,
+        3.118061368096631e-05,
+        0.9908919643515733,
+        0.32995513560086775,
+        0.9275168617748022,
+        1.8052469079291084e-06,
+        0.3960541045405877,
+        4.963803171939899e-05,
+        1.931959371839452e-06,
+        3.696844217812259e-05,
+        0.0181834976583221,
+        2.8652534643634615e-06,
+        1.1051318120726966e-06,
+        4.96380317194041e-05,
+        0.3152365895425867,
+        4.963803171939916e-05,
+        1.2987231043005944e-05,
+        0.0002259384381602158,
+        3.7806841247795227e-07,
+        1.0027695399122857e-05,
+        1.6985196821107597e-05,
+        4.963803171940005e-05,
+        3.678784019718824e-05,
+        4.963803171940111e-05,
+        0.0001585267996828852,
+        0.00012009377901679944,
+        4.9638031719399874e-05,
+        0.00045844361056681586,
+        4.963803171940111e-05,
+        0.0004960718402735693,
+        4.9675842592543604e-05,
+        1.975760716878027e-07
+      ],
+      "oof_predictions": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "confusion_matrix": {
+        "tn": 54,
+        "fp": 2,
+        "fn": 2,
+        "tp": 1
+      },
+      "model_name": "lightgbm",
+      "feature_importance": [
+        {
+          "feature": "reasoning_std",
+          "mean_importance": 184.7829437062594,
+          "std_importance": 320.0533949374942
+        },
+        {
+          "feature": "reasoning_late_mean",
+          "mean_importance": 137.42502847885424,
+          "std_importance": 238.02713155697546
+        },
+        {
+          "feature": "answer_range_minus_reasoning_range",
+          "mean_importance": 131.28576186493683,
+          "std_importance": 180.8761710184345
+        },
+        {
+          "feature": "reasoning_end_minus_start",
+          "mean_importance": 51.072607445835835,
+          "std_importance": 88.46030263850807
+        },
+        {
+          "feature": "reasoning_early_mean",
+          "mean_importance": 9.557834069997778,
+          "std_importance": 16.554654219548983
+        },
+        {
+          "feature": "answer_late_mean",
+          "mean_importance": 8.817002545652029,
+          "std_importance": 15.27149637953344
+        },
+        {
+          "feature": "answer_total_variation",
+          "mean_importance": 8.814003430945801,
+          "std_importance": 15.218135193480366
+        },
+        {
+          "feature": "answer_mid_mean",
+          "mean_importance": 6.904646993569936,
+          "std_importance": 11.956373238586115
+        },
+        {
+          "feature": "reasoning_n_chunks",
+          "mean_importance": 6.887963325579402,
+          "std_importance": 11.930302440574597
+        },
+        {
+          "feature": "total_n_chunks",
+          "mean_importance": 4.926021606119106,
+          "std_importance": 8.531395662418044
+        },
+        {
+          "feature": "answer_max_rise_pos",
+          "mean_importance": 2.3458133826605905,
+          "std_importance": 4.060911577158326
+        },
+        {
+          "feature": "reasoning_start",
+          "mean_importance": 2.084447790406319,
+          "std_importance": 3.6103694787084266
+        },
+        {
+          "feature": "answer_min",
+          "mean_importance": 1.3335548198748046,
+          "std_importance": 2.008975321873183
+        },
+        {
+          "feature": "reasoning_max_drop_pos",
+          "mean_importance": 0.703572129207653,
+          "std_importance": 1.218580943128344
+        },
+        {
+          "feature": "reasoning_max_rise_pos",
+          "mean_importance": 0.5957325174766311,
+          "std_importance": 1.0315589225923574
+        },
+        {
+          "feature": "reasoning_positive_mass",
+          "mean_importance": 0.528139223294185,
+          "std_importance": 0.908639689721832
+        },
+        {
+          "feature": "answer_negative_mass",
+          "mean_importance": 0.2645467489492148,
+          "std_importance": 0.25549807323650786
+        },
+        {
+          "feature": "answer_late_minus_early",
+          "mean_importance": 0.1721011281010114,
+          "std_importance": 0.29771668132127393
+        },
+        {
+          "feature": "answer_peak_pos",
+          "mean_importance": 0.08866850642059475,
+          "std_importance": 0.15227382248850346
+        },
+        {
+          "feature": "answer_std",
+          "mean_importance": 0.07645804515242449,
+          "std_importance": 0.13242552520954387
+        },
+        {
+          "feature": "reasoning_fall_from_peak",
+          "mean_importance": 0.06135566395510685,
+          "std_importance": 0.10627062048713082
+        },
+        {
+          "feature": "answer_range",
+          "mean_importance": 0.05804412041863863,
+          "std_importance": 0.051754557036257524
+        },
+        {
+          "feature": "reasoning_late_minus_early",
+          "mean_importance": 0.05201886081704288,
+          "std_importance": 0.08956581121713396
+        },
+        {
+          "feature": "answer_early_mean",
+          "mean_importance": 0.037021920301449844,
+          "std_importance": 0.06355341844971071
+        },
+        {
+          "feature": "reasoning_end",
+          "mean_importance": 0.02473132348449858,
+          "std_importance": 0.04283590531077624
+        },
+        {
+          "feature": "reasoning_trough_pos",
+          "mean_importance": 0.0226308008035024,
+          "std_importance": 0.03919769680763673
+        },
+        {
+          "feature": "answer_n_chunks",
+          "mean_importance": 0.020679530927870362,
+          "std_importance": 0.035817758967360024
+        },
+        {
+          "feature": "answer_positive_mass",
+          "mean_importance": 0.020410133300453142,
+          "std_importance": 0.03535138744273635
+        },
+        {
+          "feature": "answer_max_drop_pos",
+          "mean_importance": 0.01734736429424422,
+          "std_importance": 0.029350066809167324
+        },
+        {
+          "feature": "reasoning_negative_mass",
+          "mean_importance": 0.017135312816422388,
+          "std_importance": 0.02967923014131822
+        },
+        {
+          "feature": "answer_trough_pos",
+          "mean_importance": 0.006891654049771508,
+          "std_importance": 0.011891634276016262
+        },
+        {
+          "feature": "reasoning_range",
+          "mean_importance": 0.006464069602067912,
+          "std_importance": 0.005607385272033191
+        },
+        {
+          "feature": "reasoning_max",
+          "mean_importance": 0.006183743076465437,
+          "std_importance": 0.010536986471841064
+        },
+        {
+          "feature": "reasoning_time_negative",
+          "mean_importance": 0.004624434160366929,
+          "std_importance": 0.008009754922012644
+        },
+        {
+          "feature": "reasoning_rebound_from_trough",
+          "mean_importance": 0.00314607534430252,
+          "std_importance": 0.005336368190004704
+        },
+        {
+          "feature": "answer_max",
+          "mean_importance": 0.0020008476704487846,
+          "std_importance": 0.0025903331311623234
+        },
+        {
+          "feature": "answer_max_drop",
+          "mean_importance": 0.0018358304062005362,
+          "std_importance": 0.003020417143608551
+        },
+        {
+          "feature": "answer_time_positive",
+          "mean_importance": 0.0015234100089098017,
+          "std_importance": 0.0026386235361907325
+        },
+        {
+          "feature": "answer_end_minus_start",
+          "mean_importance": 0.0012407464309906388,
+          "std_importance": 0.001990322849202811
+        },
+        {
+          "feature": "reasoning_peak_pos",
+          "mean_importance": 0.0009152676768730365,
+          "std_importance": 0.0014072166377634074
+        },
+        {
+          "feature": "reasoning_time_positive",
+          "mean_importance": 0.0006664356408085601,
+          "std_importance": 0.0011543003898551486
+        },
+        {
+          "feature": "answer_start",
+          "mean_importance": 0.0005128712766160835,
+          "std_importance": 0.0008882373488879402
+        },
+        {
+          "feature": "answer_end",
+          "mean_importance": 0.0004455667004822292,
+          "std_importance": 0.0007717441189807214
+        },
+        {
+          "feature": "reasoning_total_variation",
+          "mean_importance": 0.00039708919639759127,
+          "std_importance": 0.0006876144588555742
+        },
+        {
+          "feature": "answer_end_minus_reasoning_end",
+          "mean_importance": 0.00019341504166419757,
+          "std_importance": 0.0003350046791104415
+        },
+        {
+          "feature": "reasoning_max_rise",
+          "mean_importance": 0.00018597801823878415,
+          "std_importance": 0.00032212302032935295
+        },
+        {
+          "feature": "answer_zero_crossings",
+          "mean_importance": 0.0001317388987444251,
+          "std_importance": 0.0002281784659585161
+        },
+        {
+          "feature": "reasoning_direction_changes",
+          "mean_importance": 9.041378730027343e-05,
+          "std_importance": 0.0001397456571356904
+        },
+        {
+          "feature": "reasoning_mid_mean",
+          "mean_importance": 7.910563272221435e-05,
+          "std_importance": 0.0001185289323058684
+        },
+        {
+          "feature": "answer_direction_changes",
+          "mean_importance": 3.090131554506215e-05,
+          "std_importance": 5.3522648544765594e-05
+        },
+        {
+          "feature": "reasoning_max_drop",
+          "mean_importance": 2.207353247653948e-05,
+          "std_importance": 2.2283208514379425e-05
+        },
+        {
+          "feature": "answer_monotonicity",
+          "mean_importance": 1.7553428557091157e-05,
+          "std_importance": 3.040341895177363e-05
+        },
+        {
+          "feature": "reasoning_min",
+          "mean_importance": 1.6538588347640253e-05,
+          "std_importance": 2.7125658832599013e-05
+        },
+        {
+          "feature": "answer_start_minus_reasoning_end",
+          "mean_importance": 1.2256198642461117e-05,
+          "std_importance": 1.7904610026558622e-05
+        },
+        {
+          "feature": "reasoning_monotonicity",
+          "mean_importance": 1.0032259878815323e-05,
+          "std_importance": 1.4984893921116733e-05
+        },
+        {
+          "feature": "answer_max_rise",
+          "mean_importance": 7.831705621204795e-06,
+          "std_importance": 1.3564912045849479e-05
+        },
+        {
+          "feature": "reasoning_zero_crossings",
+          "mean_importance": 6.491229113079454e-06,
+          "std_importance": 1.1243138627423875e-05
+        },
+        {
+          "feature": "answer_fall_from_peak",
+          "mean_importance": 5.483159796956331e-07,
+          "std_importance": 9.49331900618669e-07
+        },
+        {
+          "feature": "answer_minus_reasoning_mean",
+          "mean_importance": 3.1988691910749194e-08,
+          "std_importance": 5.540603965708515e-08
+        },
+        {
+          "feature": "reasoning_curvature_abs_mean",
+          "mean_importance": 2.2698831064760228e-08,
+          "std_importance": 3.931552867658747e-08
+        },
+        {
+          "feature": "answer_curvature_abs_mean",
+          "mean_importance": 9.806165481481463e-09,
+          "std_importance": 1.5211943977716558e-08
+        },
+        {
+          "feature": "answer_rebound_from_trough",
+          "mean_importance": 2.952006639134197e-09,
+          "std_importance": 5.113025483261073e-09
+        },
+        {
+          "feature": "answer_time_negative",
+          "mean_importance": 0.0,
+          "std_importance": 0.0
+        }
+      ]
     }
   },
   "top_univariate_features": [

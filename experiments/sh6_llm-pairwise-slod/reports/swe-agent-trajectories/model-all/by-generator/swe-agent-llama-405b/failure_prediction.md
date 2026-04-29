@@ -3,10 +3,10 @@
 ## Setup
 
 - Target label: `final_answer_correct`
-- Items analysed: 30
-- Positive class (`final_answer_correct=true`): 17
-- Negative class (`final_answer_correct=false`): 13
-- Label agreement (`is_correct` vs `final_answer_correct`): 100.0% over 30 items
+- Items analysed: 236
+- Positive class (`final_answer_correct=true`): 106
+- Negative class (`final_answer_correct=false`): 130
+- Label agreement (`is_correct` vs `final_answer_correct`): 100.0% over 236 items
 - Final answer correct but reasoning wrong: 0
 - Final answer wrong but reasoning clean: 0
 
@@ -14,44 +14,45 @@
 
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
-| length_only | 1 | 0.800 +/- 0.138 | 0.818 +/- 0.137 | 0.800 +/- 0.138 | 0.800 +/- 0.125 | 0.815 +/- 0.112 |
-| trajectory_shape | 29 | 0.811 +/- 0.129 | 0.825 +/- 0.127 | 0.800 +/- 0.138 | 0.800 +/- 0.125 | 0.815 +/- 0.112 |
-| trajectory_full | 29 | 0.787 +/- 0.133 | 0.818 +/- 0.137 | 0.800 +/- 0.138 | 0.800 +/- 0.125 | 0.815 +/- 0.112 |
-| mode_stack | 6 | 0.835 +/- 0.130 | 0.841 +/- 0.119 | 0.800 +/- 0.138 | 0.800 +/- 0.125 | 0.815 +/- 0.112 |
+| length_only (logreg) | 1 | 0.529 +/- 0.096 | 0.499 +/- 0.046 | 0.524 +/- 0.062 | 0.543 +/- 0.064 | 0.401 +/- 0.069 |
+| trajectory_shape (logreg) | 29 | 0.717 +/- 0.043 | 0.676 +/- 0.046 | 0.665 +/- 0.060 | 0.665 +/- 0.061 | 0.640 +/- 0.070 |
+| trajectory_full (logreg) | 29 | 0.718 +/- 0.043 | 0.679 +/- 0.047 | 0.665 +/- 0.060 | 0.665 +/- 0.061 | 0.640 +/- 0.070 |
+| trajectory_full (lightgbm) | 29 | 0.758 +/- 0.045 | 0.711 +/- 0.057 | 0.723 +/- 0.043 | 0.724 +/- 0.044 | 0.698 +/- 0.045 |
+| mode_stack (logreg) | 6 | 0.741 +/- 0.043 | 0.634 +/- 0.051 | 0.722 +/- 0.061 | 0.704 +/- 0.064 | 0.734 +/- 0.050 |
 
 ## Top Single Features
 
 | Feature | Family | Signal ROC-AUC | Direction |
 |---|---|---|---|
-| reasoning_n_chunks | length | 0.800 | higher -> correct |
-| reasoning_start | shape | 0.800 | higher -> correct |
-| reasoning_end | landing | 0.800 | higher -> correct |
-| reasoning_end_minus_start | landing | 0.800 | higher -> correct |
-| reasoning_std | shape | 0.800 | higher -> correct |
-| reasoning_range | commitment | 0.800 | higher -> correct |
-| reasoning_min | shape | 0.800 | higher -> correct |
-| reasoning_max | shape | 0.800 | higher -> correct |
-| reasoning_early_mean | shape | 0.800 | higher -> correct |
-| reasoning_mid_mean | shape | 0.800 | higher -> correct |
-| reasoning_late_mean | landing | 0.800 | higher -> correct |
-| reasoning_late_minus_early | transition | 0.800 | higher -> correct |
+| reasoning_mid_mean | shape | 0.595 | higher -> correct |
+| reasoning_range | commitment | 0.576 | higher -> wrong |
+| reasoning_total_variation | thrashing | 0.574 | higher -> correct |
+| reasoning_max_rise | shape | 0.572 | higher -> correct |
+| reasoning_rebound_from_trough | shape | 0.568 | higher -> wrong |
+| reasoning_fall_from_peak | derailment | 0.567 | higher -> wrong |
+| reasoning_end | landing | 0.564 | higher -> wrong |
+| reasoning_start | shape | 0.562 | higher -> correct |
+| reasoning_direction_changes | thrashing | 0.556 | higher -> wrong |
+| reasoning_max_rise_pos | timing | 0.556 | higher -> correct |
+| reasoning_early_mean | shape | 0.550 | higher -> correct |
+| reasoning_peak_pos | timing | 0.549 | higher -> correct |
 
 ## Strongest Multivariate Coefficients
 
 | Feature | Family | Coefficient | Direction |
 |---|---|---|---|
-| reasoning_time_negative | shape | 0.049 | higher -> correct |
-| reasoning_time_positive | shape | -0.049 | higher -> wrong |
-| reasoning_late_minus_early | transition | 0.049 | higher -> correct |
-| reasoning_positive_mass | shape | 0.049 | higher -> correct |
-| reasoning_std | shape | 0.049 | higher -> correct |
-| reasoning_fall_from_peak | derailment | 0.049 | higher -> correct |
-| reasoning_n_chunks | length | -0.049 | higher -> wrong |
-| reasoning_start | shape | 0.049 | higher -> correct |
-| reasoning_late_mean | landing | 0.049 | higher -> correct |
-| reasoning_direction_changes | thrashing | -0.049 | higher -> wrong |
-| reasoning_zero_crossings | thrashing | -0.049 | higher -> wrong |
-| reasoning_max_rise_pos | timing | 0.049 | higher -> correct |
+| reasoning_zero_crossings | thrashing | -1.311 | higher -> wrong |
+| reasoning_start | shape | -1.090 | higher -> wrong |
+| reasoning_curvature_abs_mean | thrashing | 1.044 | higher -> correct |
+| reasoning_max_rise | shape | -0.899 | higher -> wrong |
+| reasoning_mid_mean | shape | -0.788 | higher -> wrong |
+| reasoning_max | shape | -0.773 | higher -> wrong |
+| reasoning_std | shape | -0.738 | higher -> wrong |
+| reasoning_min | shape | -0.620 | higher -> wrong |
+| reasoning_end | landing | -0.606 | higher -> wrong |
+| reasoning_total_variation | thrashing | 0.564 | higher -> correct |
+| reasoning_late_mean | landing | 0.539 | higher -> correct |
+| reasoning_max_drop | derailment | -0.523 | higher -> wrong |
 
 ## Interpretable Failure-Mode Detectors
 
@@ -85,30 +86,30 @@ Flag-level metrics (precision / recall / F1 / lift) are reported only when the v
 
 | Mode | Verdict | Scored | Score AUC (95% CI) | Base Fail Rate | Flagged | Precision | Recall | F1 | Lift |
 |---|---|---|---|---|---|---|---|---|---|
-| premature_exit | inverted | 30 | 0.195 [0.068, 0.350] | 0.433 | 0 | - | - | - | - |
-| rambling_overlong | confirmed | 30 | 0.805 [0.650, 0.932] | 0.433 | 0 | - | - | - | - |
-| thrashing | confirmed | 30 | 0.805 [0.650, 0.932] | 0.433 | 0 | - | - | - | - |
-| no_commitment | inverted | 30 | 0.195 [0.068, 0.350] | 0.433 | 0 | - | - | - | - |
-| derailment_late | inverted | 30 | 0.195 [0.068, 0.350] | 0.433 | 0 | - | - | - | - |
+| premature_exit | inconclusive | 236 | 0.529 [0.458, 0.597] | 0.551 | 13 | - | - | - | - |
+| rambling_overlong | inconclusive | 236 | 0.471 [0.403, 0.542] | 0.551 | 15 | - | - | - | - |
+| thrashing | inconclusive | 236 | 0.503 [0.429, 0.576] | 0.551 | 15 | - | - | - | - |
+| no_commitment | inconclusive | 236 | 0.540 [0.464, 0.617] | 0.551 | 14 | - | - | - | - |
+| derailment_late | inconclusive | 236 | 0.509 [0.433, 0.585] | 0.551 | 15 | - | - | - | - |
 | answer_drift | insufficient_data | 0 | - | - | 0 | - | - | - | - |
 | answer_meandering | insufficient_data | 0 | - | - | 0 | - | - | - | - |
 | answer_volatility | insufficient_data | 0 | - | - | 0 | - | - | - | - |
 | answer_uncommitted | insufficient_data | 0 | - | - | 0 | - | - | - | - |
 | answer_overrange | insufficient_data | 0 | - | - | 0 | - | - | - | - |
-| truncation_abort | confirmed | 30 | 0.835 [0.687, 0.952] | 0.433 | 14 | 0.786 | 0.846 | 0.815 | 1.813 |
+| truncation_abort | confirmed | 236 | 0.723 [0.673, 0.775] | 0.551 | 78 | 0.885 | 0.531 | 0.663 | 1.606 |
 
 ### Verdict summary
 
-- **Confirmed on this run**: rambling_overlong, thrashing, truncation_abort.
-- **Hypothesis falsified (inverted)**: premature_exit, no_commitment, derailment_late. The score direction flipped — higher values predict success, not failure, on this dataset. This is a real negative result, not a detector failure.
+- **Confirmed on this run**: truncation_abort.
+- **Inconclusive**: premature_exit, rambling_overlong, thrashing, no_commitment, derailment_late. The bootstrap CI spans 0.5, so we cannot reject the null on this run.
 
 ### Signal capture
 
 How much of the failure-prediction signal does the named-mode taxonomy actually carry? The `mode_stack` model is a logistic regression on the detector scores only; the comparison set is the `trajectory_full` model fit on all trajectory features.
 
-- `mode_stack` ROC-AUC: **0.835**
-- `trajectory_full` ROC-AUC: **0.787**
-- Above-chance discrimination preserved by the mode stack: **116.4%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
+- `mode_stack` ROC-AUC: **0.741**
+- `trajectory_full` ROC-AUC: **0.718**
+- Above-chance discrimination preserved by the mode stack: **110.3%** ((AUC_modes − 0.5) ÷ (AUC_full − 0.5))
 
 ### Failure coverage
 
@@ -116,8 +117,8 @@ What fraction of failures get flagged by at least one detector? `any` uses the u
 
 | Variant | # Modes | Failures caught | Items flagged | Recall | Precision |
 |---|---|---|---|---|---|
-| confirmed | 3 | 11 / 13 | 14 | 0.846 | 0.786 |
-| any | 11 | 11 / 13 | 14 | 0.846 | 0.786 |
+| confirmed | 1 | 69 / 130 | 78 | 0.531 | 0.885 |
+| any | 11 | 87 / 130 | 125 | 0.669 | 0.696 |
 
 ## Interpretation Notes
 

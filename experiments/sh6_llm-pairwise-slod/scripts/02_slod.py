@@ -190,12 +190,18 @@ def main() -> None:
     project_root = Path(config["_project_root"])
 
     dataset_name = ds.dataset_name(config)
-    slug = args.run_slug or ds.run_slug(config)
-
     data_dir = (project_root / config["paths"]["data_dir"]).resolve()
-    run_dir = data_dir / dataset_name / slug
+    requested_slug = args.run_slug or ds.run_slug(config)
+    slug, run_dir = ds.resolve_run_dir(
+        config,
+        data_dir,
+        requested_slug,
+        required_files=("traces.jsonl",),
+    )
     traces_path = run_dir / "traces.jsonl"
     out_path = run_dir / "chunk_rankings.jsonl"
+    if slug != requested_slug:
+        logger.info("Resolved run slug %s -> %s", requested_slug, slug)
 
     if out_path.exists() and not args.force:
         logger.info("Output exists at %s — use --force to re-run", out_path)

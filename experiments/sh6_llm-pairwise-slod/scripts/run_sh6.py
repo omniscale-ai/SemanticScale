@@ -26,6 +26,7 @@ import argparse
 import subprocess
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -41,6 +42,15 @@ STAGES = [
 
 ANCHOR_STAGE = (6, "06_anchor_validation.py")
 ADVANCED_STAGE = (7, "07_advanced_failure_analysis.py")
+
+
+@dataclass(frozen=True)
+class StageFailure:
+    config_label: str
+    stage_num: int
+    script_name: str
+    returncode: int
+    elapsed_seconds: float
 
 
 def parse_args() -> argparse.Namespace:
@@ -78,9 +88,10 @@ def run_stage(
     stage_num: int,
     script_name: str,
     config_path: Path | None,
+    config_label: str,
     dry_run: bool,
     extra_args: list[str] | None = None,
-) -> None:
+) -> StageFailure | None:
     cmd = [sys.executable, str(SCRIPTS_DIR / script_name)]
     if config_path is not None:
         cmd.extend(["--config", str(config_path)])
@@ -91,16 +102,27 @@ def run_stage(
     print("=" * 70)
     print("$ " + " ".join(cmd), flush=True)
     if dry_run:
-        return
+        return None
     t0 = time.time()
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as exc:
         elapsed = time.time() - t0
-        raise SystemExit(f"\nStage {stage_num:02d} ({script_name}) failed "
-                         f"with exit code {exc.returncode} after {elapsed:.1f}s") from exc
+        print(
+            f"\nStage {stage_num:02d} failed for {config_label} "
+            f"with exit code {exc.returncode} after {elapsed:.1f}s",
+            file=sys.stderr,
+        )
+        return StageFailure(
+            config_label=config_label,
+            stage_num=stage_num,
+            script_name=script_name,
+            returncode=exc.returncode,
+            elapsed_seconds=elapsed,
+        )
     elapsed = time.time() - t0
     print(f"\nStage {stage_num:02d} done in {elapsed:.1f}s")
+    return None
 
 
 def discover_configs() -> list[Path]:
@@ -111,7 +133,9 @@ def run_for_single_config(
     args: argparse.Namespace,
     config_path: Path,
     run_anchor_stage: bool = True,
-) -> None:
+) -> list[StageFailure]:
+    failures: list[StageFailure] = []
+    config_label = str(config_path)
     print(f"Config: {config_path}")
     print(f"Stages: {args.start_from}..{args.stop_at}"
           + (" + 05b" if args.include_05b else "")
@@ -123,23 +147,45 @@ def run_for_single_config(
         extra_args: list[str] | None = None
         if num == 5 and args.include_05b:
             extra_args = ["--models", "logreg", "lightgbm"]
-        run_stage(num, script, config_path, args.dry_run, extra_args=extra_args)
+        failure = run_stage(
+            num,
+            script,
+            config_path,
+            config_label,
+            args.dry_run,
+            extra_args=extra_args,
+        )
+        if failure is not None:
+            failures.append(failure)
 
     if run_anchor_stage and args.start_from <= ANCHOR_STAGE[0] <= args.stop_at:
         num, script = ANCHOR_STAGE
-        run_stage(num, script, None, args.dry_run,
-                  extra_args=["--llm-config", str(config_path)])
+        failure = run_stage(
+            num,
+            script,
+            None,
+            config_label,
+            args.dry_run,
+            extra_args=["--llm-config", str(config_path)],
+        )
+        if failure is not None:
+            failures.append(failure)
 
     if args.include_advanced and args.start_from <= ADVANCED_STAGE[0] <= args.stop_at:
         num, script = ADVANCED_STAGE
-        run_stage(num, script, config_path, args.dry_run)
+        failure = run_stage(num, script, config_path, config_label, args.dry_run)
+        if failure is not None:
+            failures.append(failure)
+
+    return failures
 
 
-def run_for_all_configs(args: argparse.Namespace) -> None:
+def run_for_all_configs(args: argparse.Namespace) -> list[StageFailure]:
     configs = discover_configs()
     if not configs:
         raise SystemExit(f"No config YAML files found under {CONFIGS_DIR}")
 
+    failures: list[StageFailure] = []
     print(f"Configs: {len(configs)} found under {CONFIGS_DIR}")
     print(f"Stages: {args.start_from}..{args.stop_at}"
           + (" + 05b" if args.include_05b else "")
@@ -150,13 +196,42 @@ def run_for_all_configs(args: argparse.Namespace) -> None:
         print(f"CONFIG {idx:02d}/{len(configs)}: {cfg}")
         print("#" * 70)
         cfg = cfg.resolve()
-        run_for_single_config(args, cfg, run_anchor_stage=False)
+        failures.extend(run_for_single_config(args, cfg, run_anchor_stage=False))
 
     # Stage 06 is cross-dataset; run it once after config-aware stages.
     if args.start_from <= ANCHOR_STAGE[0] <= args.stop_at:
         num, script = ANCHOR_STAGE
-        run_stage(num, script, None, args.dry_run,
-                  extra_args=["--llm-config", str(configs[0].resolve())])
+        anchor_config = configs[0].resolve()
+        failure = run_stage(
+            num,
+            script,
+            None,
+            f"anchor-validation via {anchor_config}",
+            args.dry_run,
+            extra_args=["--llm-config", str(anchor_config)],
+        )
+        if failure is not None:
+            failures.append(failure)
+
+    return failures
+
+
+def print_failure_summary(failures: list[StageFailure], total_elapsed: float) -> None:
+    print("\n" + "=" * 70)
+    print(f"All requested stages completed in {total_elapsed:.1f}s")
+    if not failures:
+        print("No stage failures")
+        print("=" * 70)
+        return
+
+    print(f"Failures: {len(failures)}")
+    for failure in failures:
+        print(
+            f"- {failure.config_label}: stage {failure.stage_num:02d} "
+            f"({failure.script_name}) exited {failure.returncode} "
+            f"after {failure.elapsed_seconds:.1f}s"
+        )
+    print("=" * 70)
 
 
 def main() -> None:
@@ -164,16 +239,17 @@ def main() -> None:
 
     overall_t0 = time.time()
     if args.all_configs:
-        run_for_all_configs(args)
+        failures = run_for_all_configs(args)
     else:
         config_path = Path(args.config).resolve()
         if not config_path.exists():
             raise SystemExit(f"Config not found: {config_path}")
-        run_for_single_config(args, config_path)
+        failures = run_for_single_config(args, config_path)
 
-    print("\n" + "=" * 70)
-    print(f"All requested stages completed in {time.time() - overall_t0:.1f}s")
-    print("=" * 70)
+    total_elapsed = time.time() - overall_t0
+    print_failure_summary(failures, total_elapsed)
+    if failures:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

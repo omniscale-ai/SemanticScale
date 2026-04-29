@@ -71,6 +71,50 @@ def run_slug(config: dict, overrides: dict | None = None) -> str:
     return module.run_slug(config, overrides or {})
 
 
+def resolve_run_dir(
+    config: dict,
+    data_dir: Path,
+    run_slug: str,
+    *,
+    required_files: tuple[str, ...] = (),
+) -> tuple[str, Path]:
+    """Resolve a run slug to an on-disk directory.
+
+    SH6 partial FrontierScience runs may live under a suffixed slug like
+    ``..._types-research`` even when the config-derived base slug omits that
+    suffix. When there is a single matching suffixed directory, prefer it.
+    """
+    dataset_dir = data_dir / dataset_name(config)
+    run_dir = dataset_dir / run_slug
+    if run_dir.exists() and all((run_dir / name).exists() for name in required_files):
+        return run_slug, run_dir
+
+    parent = run_dir.parent
+    if not parent.exists():
+        return run_slug, run_dir
+
+    prefix = f"{run_dir.name}_"
+    matches = [
+        candidate
+        for candidate in sorted(parent.iterdir())
+        if candidate.is_dir()
+        and candidate.name.startswith(prefix)
+        and all((candidate / name).exists() for name in required_files)
+    ]
+    if not matches:
+        return run_slug, run_dir
+    if len(matches) > 1:
+        options = ", ".join(str(path.relative_to(dataset_dir)) for path in matches)
+        raise ValueError(
+            f"Multiple SH6 run directories match '{run_slug}': {options}. "
+            "Pass --run-slug explicitly."
+        )
+
+    resolved_dir = matches[0]
+    resolved_slug = str(resolved_dir.relative_to(dataset_dir))
+    return resolved_slug, resolved_dir
+
+
 def produce_traces(
     config: dict,
     project_root: Path,
