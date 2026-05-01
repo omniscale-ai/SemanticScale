@@ -104,7 +104,7 @@ These contain intermediate and final results from reanalysis of SH5 data:
 | File/Dir | Format | Size | Description |
 |---|---|---|---|
 | `{dataset}/{slug}/traces.jsonl` | JSONL | ~4 MB | Reasoning traces with outcome labels |
-| `{dataset}/{slug}/chunk_rankings.jsonl` | JSONL | ~3.6 MB | Pairwise SLoD comparisons and Bradley-Terry ranks |
+| `{dataset}/{slug}/chunk_rankings.jsonl` | JSONL | ~3.6 MB | Pairwise SLoD comparisons and Plackett-Luce ranks |
 | `{dataset}/{slug}/trajectory_features.csv` | CSV | ~100 KB | Shape and structural features from SLoD trajectories |
 | `anchor_validation/` | Dir | ~500 KB | Absolute SLoD calibration results |
 

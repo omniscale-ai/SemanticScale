@@ -2,7 +2,7 @@
 """SH6 — Stage 2: Traces → SLoD.
 
 For each trace, compute a per-chunk Semantic Level of Detail (SLoD) ranking
-via pairwise LLM comparisons followed by Bradley-Terry aggregation.
+via pairwise LLM comparisons followed by Plackett-Luce aggregation.
 
 Chunking behaviour:
   * If the trace already carries ``reasoning_chunks`` / ``answer_chunks``

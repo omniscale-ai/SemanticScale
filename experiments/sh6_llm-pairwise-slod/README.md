@@ -20,7 +20,7 @@ success and failure.
 
 2. `02_slod.py`
    Runs pairwise SLoD comparisons over trace chunks and aggregates them with a
-   Bradley-Terry model.
+   Plackett-Luce model.
    Output: `chunk_rankings.jsonl`
 
 3. `03_analyze_accuracy.py`

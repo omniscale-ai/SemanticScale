@@ -18,7 +18,7 @@ Two implementation details are worth calling out because they affect how
 results should be interpreted:
 
 - Trajectories are mean-centered before feature extraction. That keeps the
-  analysis focused on within-trace shape rather than absolute Bradley-Terry
+  analysis focused on within-trace shape rather than absolute Plackett-Luce
   offsets, which are only comparable within a single problem.
 - Pair-density fields are retained in the CSV output as diagnostics, but they
   are excluded from the predictive models because they describe tournament
@@ -458,7 +458,7 @@ def _cross_features(reasoning_params: list[float], answer_params: list[float]) -
 
     These are only meaningful because Stage 2 ranks reasoning and answer
     chunks jointly for a single item, putting both traces onto one local
-    Bradley-Terry scale.
+    Plackett-Luce scale.
     """
     names = [
         "answer_minus_reasoning_mean",

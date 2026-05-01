@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SH6 illustration — SWE-agent · llama-70B · ReproNim__repr</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+  options: { renderActions: { addMenu: [] } }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         max-width: 1200px; margin: 1.2em auto; padding: 0 1em; color: #222; }
+  h1 { font-size: 1.15em; margin-bottom: 0.1em; }
+  .subtitle { font-size: 0.9em; color: #555; line-height: 1.45; margin-bottom: 1em; }
+  .stats { font-family: monospace; font-size: 0.82em; color: #333;
+           background: #f4f4f4; padding: 0.45em 0.7em; border-radius: 4px;
+           display: inline-block; margin-top: 0.4em; }
+  #plot { height: 460px; margin-bottom: 0.6em; }
+  .legend { font-size: 0.82em; color: #666; margin: 0.4em 0 1em 0; }
+  .legend code { background: #f0f0f0; padding: 0 0.3em; border-radius: 3px; }
+  #chunks h3 { font-size: 0.95em; margin: 1.2em 0 0.5em 0; color: #555; font-weight: 600;
+               border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+  .chunk { padding: 0.55em 0.8em; margin: 0.5em 0; border-radius: 6px;
+           border-left: 4px solid #ccc; background: #fafafa; transition: background 0.15s; }
+  .chunk.macro { border-left-color: #1f77b4; background: #f0f7ff; }
+  .chunk.micro { border-left-color: #d62728; background: #fff3f0; }
+  .chunk.highlight { background: #fff3a8 !important; box-shadow: 0 0 0 2px #f59f00; }
+  .chunk-meta { font-size: 0.78em; color: #666; font-family: monospace; margin-bottom: 0.3em; }
+  .chunk-meta .score { font-weight: 600; }
+  .chunk-meta .score.pos { color: #1f77b4; }
+  .chunk-meta .score.neg { color: #d62728; }
+  .chunk-meta .flip { color: #d68000; font-weight: 600; }
+  .chunk-text { white-space: pre-wrap; line-height: 1.45; font-size: 0.93em;
+                word-wrap: break-word; overflow-wrap: break-word; }
+  details.problem { margin: 0.4em 0 1em 0; }
+  details.problem summary { cursor: pointer; font-size: 0.88em; color: #555;
+                             padding: 0.3em 0.5em; background: #f4f4f4; border-radius: 4px; }
+  details.problem .body { padding: 0.6em 0.8em; border: 1px solid #eee; border-top: 0; font-size: 0.9em; line-height: 1.45; white-space: pre-wrap; }
+  .diagnosis { background: #fff8e0; border: 1px solid #f0d878; border-left: 4px solid #d6a000;
+               padding: 0.7em 0.9em; margin: 0.6em 0 1em 0; line-height: 1.5; font-size: 0.92em; }
+  .diagnosis code { background: rgba(0,0,0,0.06); padding: 0 0.25em; border-radius: 3px; font-size: 0.92em; }
+  a.back { font-size: 0.85em; color: #1f77b4; text-decoration: none; }
+  a.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← back to index</a>
+<h1>SWE-agent · llama-70B · ReproNim__reproman-518 · ReproNim/reproman issue 518 · WRONG, exit_context</h1>
+<div class="subtitle"><b>flags:</b> thrashing + rambling_overlong + no_commitment</div>
+<div class="stats">n = 5 reasoning chunks &nbsp;·&nbsp; BT range -4.3 … +6.4 &nbsp;·&nbsp; 4 sign flips (100% of edges)</div>
+<div class="diagnosis"><b>Verified failure — agent never located the relevant code.</b> All five chunks fight the search tool: (0) <code>search_dir "run" src</code> — fails because there's no <code>src/</code> dir; (1) <code>search_dir "run"</code> — bare search returns too much; (2) <code>search_dir "run" --name "*.py"</code> — invented flag, syntax error; (3) same invented flag, retried verbatim; (4) falls back to <code>grep -r "run" .</code>, which would dump the whole repo. Then the trace ends (<code>exit_context</code>). The agent never opened a file, never read the issue text, never made an edit. Failure mode: stuck at the very first navigation step, unable to settle on a search invocation that works — the textbook <code>thrashing</code> + <code>no_commitment</code> case the SLoD detectors are designed to catch.</div>
+<details class="problem"><summary>📄 problem statement</summary><div class="body">ReproNim__reproman-518</div></details>
+<div id="plot"></div>
+<p class="legend">
+  Click any point on the chart to jump to that chunk below.
+  Blue = <code>+</code> macro/framing chunk · red = <code>−</code> micro/detail chunk ·
+  orange edges = sign flip (the visual signature of <code>thrashing</code>).
+</p>
+<div id="chunks">
+<h3>reasoning chunks (in order)</h3>
+<div class="chunk macro" id="chunk-0"><div class="chunk-meta">#000 · <span class="score pos">BT +6.43</span></div><div class="chunk-text">First, let&#x27;s search for the `run` and `jobs` code within the repository to locate where these functionalities are implemented. This will help us identify the files that we need to modify.
+```
+search_dir &quot;run&quot; src
+```</div></div>
+<div class="chunk micro" id="chunk-1"><div class="chunk-meta">#001 · <span class="score neg">BT -4.27</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Since the `src` directory is not found, we&#x27;ll search within the current directory for the `run` and `jobs` code to locate their implementations.
+```
+search_dir &quot;run&quot;
+```</div></div>
+<div class="chunk macro" id="chunk-2"><div class="chunk-meta">#002 · <span class="score pos">BT +2.14</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">To narrow down our search, let&#x27;s look for the `run` and `jobs` code specifically in the Python files within the repository, as they are more likely to contain the logic we need to modify.
+```
+search_dir &quot;run&quot; --name &quot;*.py&quot;
+```</div></div>
+<div class="chunk micro" id="chunk-3"><div class="chunk-meta">#003 · <span class="score neg">BT -4.30</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">It seems I made an error with the command syntax. Let&#x27;s correct that and search for the `run` code in Python files within the repository.
+```
+search_dir &quot;run&quot; --name &quot;*.py&quot;
+```</div></div>
+<div class="chunk macro" id="chunk-4"><div class="chunk-meta">#004 · <span class="score pos">BT +0.00</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Apologies for the oversight. Let&#x27;s try using the `grep` command to search for the `run` code in Python files within the repository, as it allows us to specify the file type to search in.
+```
+grep -r &quot;run&quot; .
+```</div></div>
+</div>
+<script>
+const trajectory = [{"r": 6.426262718525301, "preview": "First, let&#x27;s search for the `run` and `jobs` code within the repository to locate where these functionalities are implemented. This will he\u2026"}, {"r": -4.26871384746762, "preview": "Since the `src` directory is not found, we&#x27;ll search within the current directory for the `run` and `jobs` code to locate their implementat\u2026"}, {"r": 2.1430293349088885, "preview": "To narrow down our search, let&#x27;s look for the `run` and `jobs` code specifically in the Python files within the repository, as they are mor\u2026"}, {"r": -4.303405601711535, "preview": "It seems I made an error with the command syntax. Let&#x27;s correct that and search for the `run` code in Python files within the repository. `\u2026"}, {"r": 0.0028273957449798104, "preview": "Apologies for the oversight. Let&#x27;s try using the `grep` command to search for the `run` code in Python files within the repository, as it a\u2026"}];
+const colors = trajectory.map(d => d.r > 0 ? '#1f77b4' : '#d62728');
+const previews = trajectory.map(d => d.preview);
+
+const trace = {
+  x: trajectory.map((_, i) => i),
+  y: trajectory.map(d => d.r),
+  mode: 'lines+markers',
+  marker: { color: colors, size: 11, line: { color: 'white', width: 1 } },
+  line: { color: 'rgba(0,0,0,0.35)', width: 1 },
+  text: previews,
+  hovertemplate: '<b>chunk %{x}</b> · BT %{y:+.2f}<br>%{text}<br><span style="font-size:0.8em;color:#888">click to jump to text</span><extra></extra>'
+};
+
+const flipShapes = [];
+for (let i = 1; i < trajectory.length; i++) {
+  const a = trajectory[i-1].r, b = trajectory[i].r;
+  if ((a > 0) !== (b > 0)) {
+    flipShapes.push({
+      type: 'line',
+      x0: i-1, x1: i, y0: a, y1: b,
+      line: { color: 'orange', width: 3.5 },
+      layer: 'below'
+    });
+  }
+}
+
+const layout = {
+  margin: { t: 20, l: 60, r: 20, b: 50 },
+  xaxis: { title: 'chunk index', zeroline: false },
+  yaxis: { title: 'SLoD (BT score) — +macro / −micro', zeroline: true, zerolinecolor: '#bbb' },
+  shapes: flipShapes,
+  hovermode: 'closest',
+  hoverlabel: { align: 'left', bgcolor: 'white', font: { size: 12 } }
+};
+
+Plotly.newPlot('plot', [trace], layout, { displayModeBar: false, responsive: true });
+
+document.getElementById('plot').on('plotly_click', e => {
+  const idx = e.points[0].pointIndex;
+  document.querySelectorAll('.chunk').forEach(el => el.classList.remove('highlight'));
+  const target = document.getElementById('chunk-' + idx);
+  if (target) {
+    target.classList.add('highlight');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
+</body>
+</html>
