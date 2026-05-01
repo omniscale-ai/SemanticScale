@@ -36,3 +36,5 @@ Thumbs.db
 *.bin
 .env
 *.log
+AgentErrorBench.pdf
+AgentHallu.pdf

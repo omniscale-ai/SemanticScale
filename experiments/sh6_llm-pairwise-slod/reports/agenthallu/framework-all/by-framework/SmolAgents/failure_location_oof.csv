@@ -1,0 +1,58 @@
+id,fold,subject,failure_type,true_step_index,predicted_step_index,predicted_step_probability,n_steps,correct
+SmolAgents/001,0,Math,Planning Hallucination,0,0,0.8994235227131988,3,1
+SmolAgents/002,1,Science,Reasoning Hallucination,6,0,0.5952246206234315,7,0
+SmolAgents/003,1,Math,Planning Hallucination,0,5,0.5270696725010676,12,0
+SmolAgents/006,3,General Assistant,Retrieval Hallucination,4,7,0.6069347475171771,10,0
+SmolAgents/008,4,Math,Reasoning Hallucination,1,0,0.8845395672502299,3,0
+SmolAgents/009,4,General Assistant,Reasoning Hallucination,4,0,0.8504112681034094,5,0
+SmolAgents/012,0,General Assistant,Planning Hallucination,0,0,0.7796182507900137,6,1
+SmolAgents/014,3,World Knowledge,Planning Hallucination,0,1,0.8706363647095204,3,0
+SmolAgents/015,0,General Assistant,Retrieval Hallucination,10,0,0.3856467688494068,13,0
+SmolAgents/017,0,Science,Retrieval Hallucination,1,0,0.8622769255322024,4,0
+SmolAgents/018,2,Math,Reasoning Hallucination,8,1,0.6308115964091816,10,0
+SmolAgents/020,3,General Assistant,Retrieval Hallucination,4,0,0.7702534967834561,8,0
+SmolAgents/021,1,Science,Planning Hallucination,0,0,0.7986468922664043,4,1
+SmolAgents/022,2,Science,Planning Hallucination,0,0,0.8327595352008195,5,1
+SmolAgents/023,2,Math,Planning Hallucination,0,0,0.8241987699944203,4,1
+SmolAgents/024,2,World Knowledge,Retrieval Hallucination,5,0,0.6554814443642418,7,0
+SmolAgents/025,4,General Assistant,Reasoning Hallucination,6,0,0.6744229891767233,7,0
+SmolAgents/026,0,Science,Retrieval Hallucination,3,0,0.8012194379692997,5,0
+SmolAgents/027,3,World Knowledge,Reasoning Hallucination,3,0,0.7515599200552601,5,0
+SmolAgents/028,2,Math,Planning Hallucination,0,0,0.8807888428870245,3,1
+SmolAgents/031,0,General Assistant,Retrieval Hallucination,3,0,0.6607080047351723,7,0
+SmolAgents/032,3,General Assistant,Reasoning Hallucination,3,0,0.8093183195299785,4,0
+SmolAgents/033,2,Math,Planning Hallucination,0,0,0.7084979726034386,6,1
+SmolAgents/034,1,World Knowledge,Retrieval Hallucination,2,2,0.8134929125605326,4,1
+SmolAgents/036,2,Science,Retrieval Hallucination,2,0,0.6127927970798949,5,0
+SmolAgents/037,3,World Knowledge,Retrieval Hallucination,1,0,0.8285338956390853,6,0
+SmolAgents/039,0,Science,Reasoning Hallucination,1,0,0.9156080416697053,3,0
+SmolAgents/040,1,Math,Planning Hallucination,0,0,0.8486893279998816,3,1
+SmolAgents/043,2,World Knowledge,Retrieval Hallucination,1,2,0.6440929163278462,4,0
+SmolAgents/045,4,World Knowledge,Retrieval Hallucination,4,0,0.7087407778210105,6,0
+SmolAgents/046,3,Math,Reasoning Hallucination,4,0,0.9226408681206144,5,0
+SmolAgents/047,3,Math,Reasoning Hallucination,1,5,0.7959539318918573,7,0
+SmolAgents/048,0,Math,Reasoning Hallucination,1,0,0.7201762014672752,6,0
+SmolAgents/049,3,Math,Planning Hallucination,0,0,0.8840289535124368,3,1
+SmolAgents/050,4,Math,Reasoning Hallucination,2,0,0.6936062163486757,4,0
+SmolAgents/051,4,Math,Reasoning Hallucination,1,0,0.8141310178051797,4,0
+SmolAgents/053,4,Science,Retrieval Hallucination,4,0,0.6559949326879309,7,0
+SmolAgents/054,4,World Knowledge,Planning Hallucination,0,0,0.7388694667148715,5,1
+SmolAgents/055,0,World Knowledge,Planning Hallucination,0,3,0.6878176457661295,6,0
+SmolAgents/056,0,World Knowledge,Planning Hallucination,0,0,0.7011678939197017,4,1
+SmolAgents/058,4,World Knowledge,Planning Hallucination,0,0,0.9221310772080532,3,1
+SmolAgents/059,1,World Knowledge,Retrieval Hallucination,2,0,0.744024847652325,4,0
+SmolAgents/060,1,World Knowledge,Planning Hallucination,0,0,0.9066636692643547,3,1
+SmolAgents/061,3,World Knowledge,Planning Hallucination,0,0,0.7920807175136612,4,1
+SmolAgents/066,3,World Knowledge,Retrieval Hallucination,2,0,0.9521482810791576,6,0
+SmolAgents/068,0,World Knowledge,Retrieval Hallucination,2,2,0.8458097446799565,4,1
+SmolAgents/072,1,Science,Planning Hallucination,0,1,0.43128176431236603,7,0
+SmolAgents/076,2,Science,Reasoning Hallucination,6,6,0.5659771062027517,9,1
+SmolAgents/077,4,Science,Planning Hallucination,0,0,0.8387576032700008,6,1
+SmolAgents/078,2,Science,Planning Hallucination,0,0,0.724498750013246,3,1
+SmolAgents/079,4,Science,Planning Hallucination,0,3,0.47496921930800473,10,0
+SmolAgents/080,2,Math,Planning Hallucination,0,0,0.8968461735762161,5,1
+SmolAgents/081,1,Math,Planning Hallucination,0,0,0.7613040030784531,5,1
+SmolAgents/083,1,Math,Planning Hallucination,0,4,0.7475928949824051,6,0
+SmolAgents/084,1,Math,Planning Hallucination,0,4,0.7515467462093439,6,0
+SmolAgents/085,4,Math,Reasoning Hallucination,2,0,0.9147564809003057,3,0
+SmolAgents/089,0,Math,Reasoning Hallucination,1,0,0.7964062481181479,3,0

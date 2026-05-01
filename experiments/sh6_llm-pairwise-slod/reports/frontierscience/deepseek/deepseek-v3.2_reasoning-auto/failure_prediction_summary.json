@@ -3863,9 +3863,9 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "answer_meandering",
         "answer_overrange",
         "answer_volatility",
+        "answer_meandering",
         "answer_uncommitted"
       ],
       "n_flagged": 68,

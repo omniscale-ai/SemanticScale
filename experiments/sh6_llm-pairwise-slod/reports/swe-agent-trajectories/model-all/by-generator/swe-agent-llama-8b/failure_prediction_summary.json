@@ -8956,10 +8956,10 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "rambling_overlong",
-        "thrashing",
         "truncation_abort",
-        "no_commitment"
+        "thrashing",
+        "no_commitment",
+        "rambling_overlong"
       ],
       "n_flagged": 311,
       "n_caught": 242,

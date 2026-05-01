@@ -3779,11 +3779,11 @@
     "confirmed": {
       "n_modes": 5,
       "modes": [
-        "answer_meandering",
-        "answer_uncommitted",
         "answer_volatility",
+        "premature_exit",
         "no_commitment",
-        "premature_exit"
+        "answer_meandering",
+        "answer_uncommitted"
       ],
       "n_flagged": 98,
       "n_caught": 88,

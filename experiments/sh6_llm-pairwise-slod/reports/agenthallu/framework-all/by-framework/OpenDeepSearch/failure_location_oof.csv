@@ -1,0 +1,59 @@
+id,fold,subject,failure_type,true_step_index,predicted_step_index,predicted_step_probability,n_steps,correct
+OpenDeepSearch/000,4,General Assistant,Retrieval Hallucination,6,7,0.6662954861351288,9,0
+OpenDeepSearch/001,1,Science,Planning Hallucination,0,0,0.8140915972124434,3,1
+OpenDeepSearch/003,0,World Knowledge,Reasoning Hallucination,10,9,0.6383114135955166,12,0
+OpenDeepSearch/004,3,World Knowledge,Retrieval Hallucination,4,7,0.6845481104487887,9,0
+OpenDeepSearch/005,2,Science,Retrieval Hallucination,2,1,0.8100216638806843,4,0
+OpenDeepSearch/006,2,General Assistant,Retrieval Hallucination,5,4,0.7179705516960313,7,0
+OpenDeepSearch/007,2,Science,Retrieval Hallucination,1,1,0.723244119101257,4,1
+OpenDeepSearch/010,1,Science,Planning Hallucination,0,1,0.6967365690995315,4,0
+OpenDeepSearch/011,1,Math,Retrieval Hallucination,2,3,0.6067384316107629,5,0
+OpenDeepSearch/012,4,Math,Reasoning Hallucination,1,0,0.7190467747292587,4,0
+OpenDeepSearch/013,1,General Assistant,Retrieval Hallucination,2,1,0.7467300784127835,4,0
+OpenDeepSearch/015,3,General Assistant,Reasoning Hallucination,3,0,0.5552413831135022,5,0
+OpenDeepSearch/016,2,Science,Planning Hallucination,0,4,0.7127320749286823,6,0
+OpenDeepSearch/017,0,General Assistant,Planning Hallucination,0,1,0.6943241463050451,4,0
+OpenDeepSearch/018,2,Science,Planning Hallucination,0,3,0.7644876544923922,5,0
+OpenDeepSearch/019,3,General Assistant,Retrieval Hallucination,1,1,0.7731725242808241,5,1
+OpenDeepSearch/020,1,General Assistant,Reasoning Hallucination,6,11,0.46550279244231957,12,0
+OpenDeepSearch/021,0,Science,Reasoning Hallucination,2,1,0.7581150368380092,4,0
+OpenDeepSearch/023,1,Math,Reasoning Hallucination,1,1,0.7807384513457951,3,1
+OpenDeepSearch/025,4,Science,Reasoning Hallucination,3,0,0.7102236680406736,5,0
+OpenDeepSearch/026,1,General Assistant,Reasoning Hallucination,2,1,0.7143049751862217,6,0
+OpenDeepSearch/027,4,World Knowledge,Retrieval Hallucination,1,1,0.8001811517613412,3,1
+OpenDeepSearch/029,0,Math,Retrieval Hallucination,1,2,0.7621945198251887,5,0
+OpenDeepSearch/030,4,Math,Reasoning Hallucination,1,0,0.7549204826082602,4,0
+OpenDeepSearch/031,4,Math,Reasoning Hallucination,1,4,0.4964061130000104,9,0
+OpenDeepSearch/032,0,Math,Reasoning Hallucination,4,5,0.7717597566349316,7,0
+OpenDeepSearch/033,2,Math,Reasoning Hallucination,1,1,0.7871779278968569,3,1
+OpenDeepSearch/034,3,World Knowledge,Retrieval Hallucination,2,8,0.6339906098363539,9,0
+OpenDeepSearch/035,0,World Knowledge,Retrieval Hallucination,1,1,0.8096655217836362,3,1
+OpenDeepSearch/039,0,World Knowledge,Retrieval Hallucination,3,4,0.660423723800633,6,0
+OpenDeepSearch/041,3,World Knowledge,Reasoning Hallucination,2,0,0.723282156368961,4,0
+OpenDeepSearch/042,3,World Knowledge,Retrieval Hallucination,1,0,0.8469857870053141,3,0
+OpenDeepSearch/043,3,World Knowledge,Retrieval Hallucination,2,1,0.7801486269308395,4,0
+OpenDeepSearch/045,4,World Knowledge,Retrieval Hallucination,1,0,0.75020359440514,3,0
+OpenDeepSearch/046,0,World Knowledge,Retrieval Hallucination,1,1,0.7845346826966864,3,1
+OpenDeepSearch/047,4,Math,Reasoning Hallucination,1,0,0.6412746380068083,6,0
+OpenDeepSearch/061,1,World Knowledge,Retrieval Hallucination,4,3,0.5955576101357278,6,0
+OpenDeepSearch/063,1,World Knowledge,Retrieval Hallucination,1,0,0.7813595069533907,3,0
+OpenDeepSearch/067,2,World Knowledge,Retrieval Hallucination,3,4,0.7582439497812111,6,0
+OpenDeepSearch/069,2,World Knowledge,Retrieval Hallucination,2,1,0.7532148330701927,4,0
+OpenDeepSearch/070,2,World Knowledge,Retrieval Hallucination,8,1,0.4296495115532621,10,0
+OpenDeepSearch/074,3,World Knowledge,Reasoning Hallucination,4,1,0.575370243600038,6,0
+OpenDeepSearch/076,4,World Knowledge,Planning Hallucination,0,1,0.7920929546587049,3,0
+OpenDeepSearch/078,3,World Knowledge,Planning Hallucination,0,0,0.7592798606277136,4,1
+OpenDeepSearch/079,0,World Knowledge,Planning Hallucination,0,1,0.8176911523515825,3,0
+OpenDeepSearch/080,0,World Knowledge,Planning Hallucination,0,1,0.8345946723313398,4,0
+OpenDeepSearch/081,1,World Knowledge,Retrieval Hallucination,1,1,0.7177192705470965,4,1
+OpenDeepSearch/082,1,World Knowledge,Reasoning Hallucination,2,1,0.766433697071784,3,0
+OpenDeepSearch/086,3,World Knowledge,Retrieval Hallucination,1,0,0.7797218632950623,3,0
+OpenDeepSearch/087,4,World Knowledge,Retrieval Hallucination,3,1,0.5914973984387347,5,0
+OpenDeepSearch/088,2,Science,Planning Hallucination,0,1,0.8744823242463273,3,0
+OpenDeepSearch/089,0,Science,Planning Hallucination,0,1,0.7599987488267793,5,0
+OpenDeepSearch/090,2,Science,Planning Hallucination,0,1,0.7464700053905496,4,0
+OpenDeepSearch/091,3,Science,Planning Hallucination,0,0,0.7460540758982998,4,1
+OpenDeepSearch/095,4,Math,Reasoning Hallucination,2,1,0.740572577969807,4,0
+OpenDeepSearch/096,1,Math,Planning Hallucination,0,1,0.6014589642904555,6,0
+OpenDeepSearch/097,4,Math,Planning Hallucination,0,0,0.7718654649297315,3,1
+OpenDeepSearch/098,0,Math,Planning Hallucination,0,1,0.7718180967294878,3,0

@@ -53,6 +53,6 @@ failure_analysis:
 failure_attribution:
   cv_folds: 5
   random_state: 42
-  # Drop critical_error_type classes with fewer than this many samples before
+  # Drop critical_error_module classes with fewer than this many samples before
   # fitting the multi-class classifier; tiny classes destabilise stratified CV.
   min_class_count: 5

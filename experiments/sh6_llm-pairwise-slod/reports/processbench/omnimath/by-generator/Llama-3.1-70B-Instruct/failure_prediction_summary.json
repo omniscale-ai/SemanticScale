@@ -1850,9 +1850,9 @@
     "confirmed": {
       "n_modes": 3,
       "modes": [
+        "thrashing",
         "no_commitment",
-        "rambling_overlong",
-        "thrashing"
+        "rambling_overlong"
       ],
       "n_flagged": 18,
       "n_caught": 16,

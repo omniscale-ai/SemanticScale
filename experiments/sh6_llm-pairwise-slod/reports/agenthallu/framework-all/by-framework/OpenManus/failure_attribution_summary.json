@@ -1,0 +1,166 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all/by-framework/OpenManus",
+  "type_field": "hallucination_category",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 84,
+    "n_step_rows": 467,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.4642857142857143,
+    "by_failure_type": {
+      "Human-Interaction Hallucination": {
+        "step_localization_accuracy": 0.5952380952380952,
+        "n_failed": 42
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.6,
+        "n_failed": 20
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.09090909090909091,
+        "n_failed": 22
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 2
+      },
+      "Math": {
+        "step_localization_accuracy": 0.6470588235294118,
+        "n_failed": 17
+      },
+      "Science": {
+        "step_localization_accuracy": 0.6451612903225806,
+        "n_failed": 31
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.23529411764705882,
+        "n_failed": 34
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "hallucination_category",
+    "n_items": 84,
+    "n_classes": 3,
+    "classes": [
+      "Human-Interaction Hallucination",
+      "Reasoning Hallucination",
+      "Retrieval Hallucination"
+    ],
+    "class_counts": {
+      "Human-Interaction Hallucination": 42,
+      "Retrieval Hallucination": 22,
+      "Reasoning Hallucination": 20
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.5277454855459971,
+      "macro_recall": 0.5215007215007215,
+      "macro_f1": 0.5234723095188212,
+      "accuracy": 0.5476190476190477
+    },
+    "per_class": {
+      "Human-Interaction Hallucination": {
+        "precision": 0.5909090909090909,
+        "recall": 0.6190476190476191,
+        "f1": 0.6046511627906976,
+        "support": 42
+      },
+      "Reasoning Hallucination": {
+        "precision": 0.47058823529411764,
+        "recall": 0.4,
+        "f1": 0.43243243243243246,
+        "support": 20
+      },
+      "Retrieval Hallucination": {
+        "precision": 0.5217391304347826,
+        "recall": 0.5454545454545454,
+        "f1": 0.5333333333333333,
+        "support": 22
+      }
+    },
+    "confusion_matrix": {
+      "Human-Interaction Hallucination": {
+        "Human-Interaction Hallucination": 26,
+        "Reasoning Hallucination": 8,
+        "Retrieval Hallucination": 8
+      },
+      "Reasoning Hallucination": {
+        "Human-Interaction Hallucination": 9,
+        "Reasoning Hallucination": 8,
+        "Retrieval Hallucination": 3
+      },
+      "Retrieval Hallucination": {
+        "Human-Interaction Hallucination": 9,
+        "Reasoning Hallucination": 1,
+        "Retrieval Hallucination": 12
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "macro_precision": 0.3333333333333333,
+        "macro_recall": 0.3333333333333333,
+        "macro_f1": 0.3333333333333333,
+        "accuracy": 0.5,
+        "n_items": 2
+      },
+      "Math": {
+        "macro_precision": 0.49242424242424243,
+        "macro_recall": 0.4212962962962963,
+        "macro_f1": 0.43333333333333335,
+        "accuracy": 0.6470588235294118,
+        "n_items": 17
+      },
+      "Science": {
+        "macro_precision": 0.3490196078431373,
+        "macro_recall": 0.30454545454545456,
+        "macro_f1": 0.3251823251823252,
+        "accuracy": 0.4838709677419355,
+        "n_items": 31
+      },
+      "World Knowledge": {
+        "macro_precision": 0.3908496732026144,
+        "macro_recall": 0.36996336996337,
+        "macro_f1": 0.37719298245614036,
+        "accuracy": 0.5588235294117647,
+        "n_items": 34
+      }
+    }
+  }
+}

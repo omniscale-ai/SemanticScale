@@ -50,9 +50,11 @@ Other scripts:
 - `05b_lightgbm_comparison.py`: Tests interaction signal using LightGBM.
 - `05z_aggregate_models.py`: Aggregates model results across datasets.
 - `05d/e/f/g`: UMAP diagnostics and categorical analyses for specific datasets.
-- `05h_agenthallu_slod_prediction.py`: AgentHallu-only SLoD baseline for
-  judgment + responsible-step attribution, using existing `chunk_rankings.jsonl`
-  rather than an external judge model.
+- `05h_failure_attribution.py`: dataset-agnostic SLoD-only baseline that
+  predicts failure **location** (responsible step) on every dataset with
+  step-level error labels, and failure **type** (categorical) on datasets that
+  carry one. Consumes existing `chunk_rankings.jsonl` rather than calling an
+  external judge.
 - `run_sh6.py`: Orchestrator for the full pipeline.
 
 ## Stage 5: Failure Analysis
@@ -341,28 +343,55 @@ Meaning:
   SH6 scores hallucinated samples with the paper's 1-5 GEVAL rubric and
   reports the average GEVAL score alongside step localization accuracy.
 
-For the separate SLoD-only AgentHallu baseline, `agenthallu_slod_prediction`
+For the separate SLoD-only failure-attribution baseline, `failure_attribution`
 controls the offline prediction pass:
 
 ```yaml
-agenthallu_slod_prediction:
-  judgment_model: logreg
-  judgment_feature_set: trajectory_full
+failure_attribution:
   cv_folds: 5
   random_state: 42
+  min_class_count: 5   # min samples per failure-type class to keep
 ```
 
-This path does **not** call the external AgentHallu judge. It consumes the
-existing SH6 `chunk_rankings.jsonl` and predicts:
+This path does **not** call any external judge. It consumes the existing SH6
+`chunk_rankings.jsonl` and predicts, per dataset:
 
-- judgment (hallucination vs no hallucination) from trajectory features
-- attribution (responsible step) from per-step SLoD sequence features
+- **Failure location** (responsible step) from per-step SLoD sequence features,
+  whenever traces carry an `error_step_index`. Trained on failed traces only,
+  scored by GroupKFold over trace ids; the per-trace prediction is the step
+  with the highest "responsible" probability.
+- **Failure type** (multi-class) from trajectory-level features, whenever the
+  dataset carries a categorical failure-type label. The label field is
+  selected per dataset:
 
-Run it with:
+  | Dataset | Location | Type label |
+  |---|---|---|
+  | `processbench` | yes | — (skipped) |
+  | `agenthallu` | yes | `hallucination_category` |
+  | `agenterrorbench` | yes | `critical_error_module` |
+
+  Classes with fewer than `min_class_count` samples are dropped before fitting
+  to keep stratified CV stable.
+
+Outputs land in `reports/{dataset}/{run_slug}/`:
+
+- `failure_attribution_summary.json`
+- `failure_attribution.md`
+- `failure_location_oof.csv`, `failure_location_step_scores.csv`
+  (when location ran)
+- `failure_type_oof.csv` (when type ran)
+
+Run it with the dataset config you want to evaluate, e.g.:
 
 ```bash
-uv run python experiments/sh6_llm-pairwise-slod/scripts/05h_agenthallu_slod_prediction.py \
+uv run python experiments/sh6_llm-pairwise-slod/scripts/05h_failure_attribution.py \
   --config experiments/sh6_llm-pairwise-slod/config/agenthallu.yaml
+
+uv run python experiments/sh6_llm-pairwise-slod/scripts/05h_failure_attribution.py \
+  --config experiments/sh6_llm-pairwise-slod/config/processbench-gsm8k.yaml
+
+uv run python experiments/sh6_llm-pairwise-slod/scripts/05h_failure_attribution.py \
+  --config experiments/sh6_llm-pairwise-slod/config/agenterrorbench.yaml
 ```
 
 For AgentErrorBench, the `dataset` block controls local snapshot loading:

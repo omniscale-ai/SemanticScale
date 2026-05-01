@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import logging
+from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -45,7 +46,7 @@ logger = logging.getLogger(__name__)
 
 _TYPE_LABEL_BY_DATASET: dict[str, str] = {
     "agenthallu": "hallucination_category",
-    "agenterrorbench": "critical_error_type",
+    "agenterrorbench": "critical_error_module",
 }
 
 
@@ -370,25 +371,21 @@ def evaluate_type(
     return summary, oof
 
 
-def evaluate_run(
-    config: dict,
+def _evaluate_loaded(
+    merged: list[dict],
+    feature_df: pd.DataFrame,
     *,
-    run_slug: str | None = None,
-) -> tuple[dict, dict[str, pd.DataFrame], Path]:
-    """Run the full SLoD-only failure-attribution baseline for one SH6 run."""
-    cfg = _cfg(config)
-    cv_folds = int(cfg.get("cv_folds", 5))
-    random_state = int(cfg.get("random_state", 42))
-    min_class_count = int(cfg.get("min_class_count", 5))
-
-    merged, feature_df, dataset_name, resolved_slug, reports_dir = load_run(
-        config, run_slug=run_slug
-    )
-    type_field = _resolve_type_label_field(dataset_name)
-
+    dataset_name: str,
+    run_slug: str,
+    type_field: str | None,
+    cv_folds: int,
+    random_state: int,
+    min_class_count: int,
+) -> tuple[dict, dict[str, pd.DataFrame]]:
+    """Run location + type evaluation on already-loaded merged traces."""
     summary: dict = {
         "dataset": dataset_name,
-        "run_slug": resolved_slug,
+        "run_slug": run_slug,
         "type_field": type_field,
         "config": {
             "cv_folds": cv_folds,
@@ -437,7 +434,119 @@ def evaluate_run(
             ),
         }
 
+    return summary, outputs
+
+
+def evaluate_run(
+    config: dict,
+    *,
+    run_slug: str | None = None,
+) -> tuple[dict, dict[str, pd.DataFrame], Path]:
+    """Run the full SLoD-only failure-attribution baseline for one SH6 run."""
+    cfg = _cfg(config)
+    cv_folds = int(cfg.get("cv_folds", 5))
+    random_state = int(cfg.get("random_state", 42))
+    min_class_count = int(cfg.get("min_class_count", 5))
+
+    merged, feature_df, dataset_name, resolved_slug, reports_dir = load_run(
+        config, run_slug=run_slug
+    )
+    type_field = _resolve_type_label_field(dataset_name)
+
+    summary, outputs = _evaluate_loaded(
+        merged,
+        feature_df,
+        dataset_name=dataset_name,
+        run_slug=resolved_slug,
+        type_field=type_field,
+        cv_folds=cv_folds,
+        random_state=random_state,
+        min_class_count=min_class_count,
+    )
     return summary, outputs, reports_dir
+
+
+def _safe_slice_dir(value: str) -> str:
+    return value.replace("/", "_")
+
+
+def evaluate_run_with_slices(
+    config: dict,
+    *,
+    run_slug: str | None = None,
+) -> list[tuple[dict, dict[str, pd.DataFrame], Path]]:
+    """Run failure attribution globally and per-slice for one SH6 run.
+
+    The first entry is the global run. When the dataset declares a slice
+    dimension (e.g. ``framework`` for AgentHallu, ``environment`` for
+    AgentErrorBench), additional entries are produced — one per slice — with
+    ``run_slug`` extended as ``{run_slug}/by-{slice_name}/{label}`` and
+    ``reports_dir`` placed under ``<run reports>/by-{slice_name}/{label}/``.
+    """
+    cfg = _cfg(config)
+    cv_folds = int(cfg.get("cv_folds", 5))
+    random_state = int(cfg.get("random_state", 42))
+    min_class_count = int(cfg.get("min_class_count", 5))
+
+    merged, feature_df, dataset_name, resolved_slug, reports_dir = load_run(
+        config, run_slug=run_slug
+    )
+    type_field = _resolve_type_label_field(dataset_name)
+
+    results: list[tuple[dict, dict[str, pd.DataFrame], Path]] = []
+
+    global_summary, global_outputs = _evaluate_loaded(
+        merged,
+        feature_df,
+        dataset_name=dataset_name,
+        run_slug=resolved_slug,
+        type_field=type_field,
+        cv_folds=cv_folds,
+        random_state=random_state,
+        min_class_count=min_class_count,
+    )
+    results.append((global_summary, global_outputs, reports_dir))
+
+    sl_name = ds.slice_name(config)
+    if not sl_name:
+        return results
+
+    slices: dict[str, list[dict]] = defaultdict(list)
+    for item in merged:
+        label = ds.slice_label(config, item)
+        if label is None:
+            continue
+        slices[label].append(item)
+
+    has_id = "id" in feature_df.columns
+    for label, items in sorted(slices.items()):
+        slice_ids = {item["id"] for item in items}
+        if has_id:
+            slice_feature_df = feature_df[feature_df["id"].isin(slice_ids)].copy()
+        else:
+            slice_feature_df = feature_df.copy()
+        slice_run_slug = f"{resolved_slug}/by-{sl_name}/{label}"
+        slice_reports_dir = reports_dir / f"by-{sl_name}" / _safe_slice_dir(label)
+        logger.info(
+            "Per-%s slice %s: %d items → %s",
+            sl_name,
+            label,
+            len(items),
+            slice_reports_dir,
+        )
+        slice_summary, slice_outputs = _evaluate_loaded(
+            items,
+            slice_feature_df,
+            dataset_name=dataset_name,
+            run_slug=slice_run_slug,
+            type_field=type_field,
+            cv_folds=cv_folds,
+            random_state=random_state,
+            min_class_count=min_class_count,
+        )
+        results.append((slice_summary, slice_outputs, slice_reports_dir))
+
+    return results
 
 
 def _format_pct(value) -> str:

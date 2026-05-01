@@ -1,0 +1,31 @@
+id,fold,subject,failure_type,true_step_index,predicted_step_index,predicted_step_probability,n_steps,correct
+Octotools/002,0,Math,Reasoning Hallucination,7,1,0.6057395127779062,11,0
+Octotools/005,3,Science,Reasoning Hallucination,1,4,0.8692274811862927,6,0
+Octotools/006,1,World Knowledge,Retrieval Hallucination,2,1,0.5464009407016484,5,0
+Octotools/008,1,General Assistant,Reasoning Hallucination,1,4,0.7036762851692502,11,0
+Octotools/009,4,Science,Reasoning Hallucination,1,2,0.6318331961113842,3,0
+Octotools/010,0,Science,Reasoning Hallucination,2,2,0.800625542500213,4,1
+Octotools/011,0,General Assistant,Reasoning Hallucination,1,1,0.708780423642991,3,1
+Octotools/012,3,Math,Reasoning Hallucination,1,4,0.7769447778586808,7,0
+Octotools/014,3,Science,Planning Hallucination,0,1,0.8861824033948892,3,0
+Octotools/015,3,World Knowledge,Reasoning Hallucination,3,2,0.7305316223367442,5,0
+Octotools/017,1,Math,Reasoning Hallucination,1,4,0.6332304504922632,5,0
+Octotools/018,0,General Assistant,Reasoning Hallucination,3,2,0.5909720659450494,6,0
+Octotools/019,4,Science,Reasoning Hallucination,1,1,0.7479511859362046,5,1
+Octotools/021,2,Science,Reasoning Hallucination,4,1,0.5549443222631526,6,0
+Octotools/022,2,Math,Reasoning Hallucination,2,1,0.8266473468582146,4,0
+Octotools/023,3,World Knowledge,Reasoning Hallucination,3,2,0.7620206422681829,4,0
+Octotools/024,4,World Knowledge,Reasoning Hallucination,4,4,0.5655433971670262,6,1
+Octotools/025,3,World Knowledge,Retrieval Hallucination,1,1,0.7820696291568048,3,1
+Octotools/026,4,World Knowledge,Retrieval Hallucination,4,2,0.5462896994037097,6,0
+Octotools/027,1,World Knowledge,Retrieval Hallucination,2,3,0.6072170278346901,4,0
+Octotools/029,4,Math,Reasoning Hallucination,1,1,0.8288765163225712,3,1
+Octotools/030,2,Math,Reasoning Hallucination,3,4,0.7767164077691628,5,0
+Octotools/031,4,Math,Reasoning Hallucination,2,2,0.7178606271828126,4,1
+Octotools/033,0,Science,Reasoning Hallucination,1,1,0.6507517448327217,3,1
+Octotools/034,0,Science,Reasoning Hallucination,2,2,0.5667918010471535,4,1
+Octotools/035,1,Science,Reasoning Hallucination,1,1,0.7419061100349552,3,1
+Octotools/039,2,World Knowledge,Reasoning Hallucination,5,1,0.6075602983952471,7,0
+Octotools/043,4,Math,Reasoning Hallucination,1,1,0.6746517179919777,3,1
+Octotools/044,2,Math,Reasoning Hallucination,1,1,0.6229647102658439,3,1
+Octotools/046,2,Math,Reasoning Hallucination,1,2,0.6565306977320464,3,0

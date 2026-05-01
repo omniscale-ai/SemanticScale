@@ -3793,10 +3793,10 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "answer_meandering",
-        "answer_overrange",
         "answer_volatility",
-        "answer_uncommitted"
+        "answer_meandering",
+        "answer_uncommitted",
+        "answer_overrange"
       ],
       "n_flagged": 64,
       "n_caught": 52,

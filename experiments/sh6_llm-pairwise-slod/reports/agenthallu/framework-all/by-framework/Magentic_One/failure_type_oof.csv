@@ -1,0 +1,55 @@
+id,fold,subject,true_type,pred_type,correct,prob_Planning Hallucination,prob_Reasoning Hallucination,prob_Retrieval Hallucination
+Magentic_One/001,1,Science,Reasoning Hallucination,Planning Hallucination,0,0.9991866964006886,0.0008132992381617676,4.361149574328645e-09
+Magentic_One/002,3,Science,Reasoning Hallucination,Retrieval Hallucination,0,0.0005902302104539421,0.2625965523805701,0.736813217408976
+Magentic_One/005,0,World Knowledge,Reasoning Hallucination,Planning Hallucination,0,0.8892065733950805,0.06913145495729855,0.041661971647620956
+Magentic_One/007,4,Science,Reasoning Hallucination,Planning Hallucination,0,0.5692452237884047,0.4307469190743341,7.85713726122617e-06
+Magentic_One/008,3,General Assistant,Retrieval Hallucination,Reasoning Hallucination,0,0.0007099358476174003,0.9679955837260988,0.031294480426283855
+Magentic_One/010,1,Science,Planning Hallucination,Planning Hallucination,1,0.9797765210817129,0.019907912015507147,0.00031556690277993786
+Magentic_One/011,4,Science,Planning Hallucination,Planning Hallucination,1,0.6056730243846592,0.3903231789900113,0.0040037966253296114
+Magentic_One/012,0,Math,Planning Hallucination,Reasoning Hallucination,0,0.4715152714522261,0.5281625072392014,0.000322221308572323
+Magentic_One/013,1,General Assistant,Retrieval Hallucination,Planning Hallucination,0,0.6148134676958585,0.36900474433295427,0.016181787971187134
+Magentic_One/016,0,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.14958630903657674,0.018230739764543705,0.8321829511988795
+Magentic_One/017,2,General Assistant,Reasoning Hallucination,Retrieval Hallucination,0,0.08205384133085605,0.16142697945659057,0.7565191792125534
+Magentic_One/018,1,Math,Reasoning Hallucination,Planning Hallucination,0,0.415526188658141,0.38091280461142335,0.2035610067304356
+Magentic_One/019,2,World Knowledge,Reasoning Hallucination,Retrieval Hallucination,0,0.09366881725157872,0.014720600062528183,0.891610582685893
+Magentic_One/020,0,General Assistant,Reasoning Hallucination,Reasoning Hallucination,1,0.041111627090493964,0.9395134520545231,0.01937492085498295
+Magentic_One/021,4,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,8.573076336626779e-05,0.05524355635919281,0.944670712877441
+Magentic_One/022,1,World Knowledge,Planning Hallucination,Reasoning Hallucination,0,0.0001589145612773448,0.7564284540229201,0.24341263141580244
+Magentic_One/023,4,Math,Reasoning Hallucination,Planning Hallucination,0,0.9987931501229533,0.001204727564708969,2.1223123377694085e-06
+Magentic_One/024,0,World Knowledge,Reasoning Hallucination,Planning Hallucination,0,0.9127486438969881,0.030622805062103096,0.056628551040908914
+Magentic_One/025,0,World Knowledge,Reasoning Hallucination,Reasoning Hallucination,1,0.03443409922695639,0.8222582628996055,0.14330763787343812
+Magentic_One/028,0,Science,Planning Hallucination,Planning Hallucination,1,0.9925995932420522,0.0065756669596776385,0.000824739798270205
+Magentic_One/031,2,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.3529777513362374,0.24017292964410006,0.4068493190196626
+Magentic_One/032,2,Math,Planning Hallucination,Reasoning Hallucination,0,0.46059508590124265,0.5107944824103952,0.028610431688362234
+Magentic_One/034,2,World Knowledge,Retrieval Hallucination,Planning Hallucination,0,0.4989951421150747,0.26239139734506023,0.23861346053986515
+Magentic_One/035,2,World Knowledge,Reasoning Hallucination,Planning Hallucination,0,0.6131207992938517,0.10629701482400032,0.280582185882148
+Magentic_One/037,3,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.0026051464970944425,0.16051748366196825,0.8368773698409374
+Magentic_One/038,0,World Knowledge,Reasoning Hallucination,Reasoning Hallucination,1,0.11142029394150628,0.8626279268952999,0.02595177916319381
+Magentic_One/041,0,World Knowledge,Reasoning Hallucination,Reasoning Hallucination,1,0.014080975440603695,0.9847692270440197,0.0011497975153766185
+Magentic_One/042,4,World Knowledge,Reasoning Hallucination,Retrieval Hallucination,0,0.0012901071342891666,0.050807701463134895,0.947902191402576
+Magentic_One/043,3,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.005019362162730217,0.11720653974422446,0.8777740980930453
+Magentic_One/045,4,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.46021011511157167,0.4922285260651056,0.04756135882332271
+Magentic_One/046,3,Science,Planning Hallucination,Planning Hallucination,1,0.7310766913627732,0.2688866245707447,3.668406648222083e-05
+Magentic_One/047,4,Science,Planning Hallucination,Planning Hallucination,1,0.9979383171401461,0.002049511506518989,1.2171353334763333e-05
+Magentic_One/051,3,General Assistant,Reasoning Hallucination,Planning Hallucination,0,0.999973736737215,2.193040385908873e-05,4.332858926008292e-06
+Magentic_One/052,4,General Assistant,Reasoning Hallucination,Reasoning Hallucination,1,0.10834826360148392,0.8916505142608798,1.2221376363457595e-06
+Magentic_One/054,3,General Assistant,Reasoning Hallucination,Reasoning Hallucination,1,0.015136207262978485,0.9847868719358899,7.692080113161256e-05
+Magentic_One/058,1,General Assistant,Planning Hallucination,Planning Hallucination,1,0.5316960224739508,0.32652544311030707,0.14177853441574217
+Magentic_One/059,1,General Assistant,Reasoning Hallucination,Planning Hallucination,0,0.8346043483850629,0.15887531290617693,0.006520338708760063
+Magentic_One/061,4,General Assistant,Planning Hallucination,Reasoning Hallucination,0,0.001926269845742176,0.9980731386636252,5.914906325805109e-07
+Magentic_One/069,1,World Knowledge,Retrieval Hallucination,Reasoning Hallucination,0,0.050128773672211,0.94824255390304,0.0016286724247490825
+Magentic_One/071,2,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.012170631651031348,0.0071720880507872,0.9806572802981813
+Magentic_One/073,2,Science,Planning Hallucination,Reasoning Hallucination,0,0.12341945164223019,0.876000889585897,0.0005796587718727579
+Magentic_One/074,0,Science,Planning Hallucination,Planning Hallucination,1,0.6947682297345725,0.26611815970705316,0.03911361055837438
+Magentic_One/075,1,Science,Reasoning Hallucination,Planning Hallucination,0,0.9993207908660143,0.0006398233636574785,3.938577032818829e-05
+Magentic_One/076,2,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.11725530248933527,0.8743154305913435,0.008429266919321167
+Magentic_One/078,1,Science,Planning Hallucination,Planning Hallucination,1,0.5744870110668167,0.37972798240532885,0.04578500652785449
+Magentic_One/079,2,Science,Planning Hallucination,Reasoning Hallucination,0,0.11240570538260339,0.8746090316953492,0.012985262922047467
+Magentic_One/084,0,Science,Planning Hallucination,Reasoning Hallucination,0,0.0846362453017728,0.9153637311144754,2.3583751833324306e-08
+Magentic_One/087,3,Math,Planning Hallucination,Reasoning Hallucination,0,0.0003672345600959911,0.8564140985150879,0.1432186669248162
+Magentic_One/088,4,Math,Planning Hallucination,Reasoning Hallucination,0,0.0008712147975383699,0.9957509772296478,0.0033778079728136864
+Magentic_One/089,3,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.004019518129165228,0.9148322911023302,0.08114819076850464
+Magentic_One/090,3,Math,Planning Hallucination,Planning Hallucination,1,0.6400596015556649,0.01697357929881901,0.3429668191455161
+Magentic_One/091,3,Math,Planning Hallucination,Planning Hallucination,1,0.9166364297022386,0.07992470261681606,0.0034388676809452385
+Magentic_One/092,2,Math,Planning Hallucination,Planning Hallucination,1,0.6179096041702697,0.1353798249667011,0.24671057086302917
+Magentic_One/093,1,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.011699068888037603,0.9780240392992393,0.010276891812723078

@@ -1,0 +1,58 @@
+id,fold,subject,true_type,pred_type,correct,prob_Planning Hallucination,prob_Reasoning Hallucination,prob_Retrieval Hallucination
+SmolAgents/001,1,Math,Planning Hallucination,Reasoning Hallucination,0,0.014303665201281134,0.921552292606559,0.06414404219215987
+SmolAgents/002,0,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.0007353782818596294,0.6304231604723932,0.36884146124574724
+SmolAgents/003,3,Math,Planning Hallucination,Retrieval Hallucination,0,0.3340924709394202,0.1988938812187262,0.46701364784185356
+SmolAgents/006,3,General Assistant,Retrieval Hallucination,Reasoning Hallucination,0,2.833620313274048e-05,0.5788413425914721,0.421130321205395
+SmolAgents/008,4,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.3271825921795169,0.5228008628468328,0.15001654497365033
+SmolAgents/009,1,General Assistant,Reasoning Hallucination,Retrieval Hallucination,0,0.4442414601311201,0.039749034925596394,0.5160095049432836
+SmolAgents/012,0,General Assistant,Planning Hallucination,Planning Hallucination,1,0.8439701993840215,0.08708898234004821,0.06894081827593025
+SmolAgents/014,4,World Knowledge,Planning Hallucination,Retrieval Hallucination,0,0.24312070597337165,0.2260362317851941,0.5308430622414342
+SmolAgents/015,3,General Assistant,Retrieval Hallucination,Planning Hallucination,0,0.5624954833526016,0.01878648469804306,0.41871803194935536
+SmolAgents/017,0,Science,Retrieval Hallucination,Planning Hallucination,0,0.6843159672100378,0.26309047802902863,0.052593554760933574
+SmolAgents/018,3,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.027175678074815825,0.004667521876782357,0.9681568000484018
+SmolAgents/020,1,General Assistant,Retrieval Hallucination,Planning Hallucination,0,0.6707814365751356,0.286257622207744,0.04296094121712051
+SmolAgents/021,2,Science,Planning Hallucination,Planning Hallucination,1,0.6077423748474224,0.27371488023361695,0.11854274491896054
+SmolAgents/022,1,Science,Planning Hallucination,Retrieval Hallucination,0,0.18951661854077992,0.05712471167457254,0.7533586697846475
+SmolAgents/023,2,Math,Planning Hallucination,Planning Hallucination,1,0.5010949393944587,0.2839051629525623,0.21499989765297906
+SmolAgents/024,4,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,3.365253316375447e-05,9.24517176550803e-07,0.9999654229496596
+SmolAgents/025,4,General Assistant,Reasoning Hallucination,Planning Hallucination,0,0.6591596141205471,0.3306961719611152,0.010144213918337707
+SmolAgents/026,2,Science,Retrieval Hallucination,Reasoning Hallucination,0,0.2903213308217059,0.704080227416109,0.0055984417621851605
+SmolAgents/027,2,World Knowledge,Reasoning Hallucination,Reasoning Hallucination,1,0.37993820971452197,0.5949172333793812,0.02514455690609675
+SmolAgents/028,0,Math,Planning Hallucination,Planning Hallucination,1,0.5647588827709643,0.353245624592429,0.0819954926366066
+SmolAgents/031,0,General Assistant,Retrieval Hallucination,Planning Hallucination,0,0.500367052565562,0.4879647456630099,0.011668201771428072
+SmolAgents/032,1,General Assistant,Reasoning Hallucination,Planning Hallucination,0,0.6845006367089238,0.10647162851621911,0.209027734774857
+SmolAgents/033,4,Math,Planning Hallucination,Reasoning Hallucination,0,0.017229721599008613,0.9825499514764316,0.0002203269245598921
+SmolAgents/034,2,World Knowledge,Retrieval Hallucination,Planning Hallucination,0,0.7810971430593049,0.0888306774757012,0.130072179464994
+SmolAgents/036,3,Science,Retrieval Hallucination,Retrieval Hallucination,1,0.08064614714388085,0.4492365065180312,0.4701173463380879
+SmolAgents/037,4,World Knowledge,Retrieval Hallucination,Planning Hallucination,0,0.46623426662617484,0.36261273749239087,0.17115299588143434
+SmolAgents/039,0,Science,Reasoning Hallucination,Planning Hallucination,0,0.5647588827709643,0.353245624592429,0.0819954926366066
+SmolAgents/040,1,Math,Planning Hallucination,Planning Hallucination,1,0.8467274305167649,0.09667636238065722,0.05659620710257785
+SmolAgents/043,1,World Knowledge,Retrieval Hallucination,Reasoning Hallucination,0,0.30429670520513513,0.6573644772285577,0.03833881756630722
+SmolAgents/045,0,World Knowledge,Retrieval Hallucination,Planning Hallucination,0,0.47359891806591353,0.29923845080865613,0.22716263112543023
+SmolAgents/046,0,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.20922349789395947,0.028688723014820564,0.7620877790912199
+SmolAgents/047,0,Math,Reasoning Hallucination,Planning Hallucination,0,0.460369031529227,0.30039404057886737,0.2392369278919057
+SmolAgents/048,2,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.09544658668440645,0.06694215796762625,0.8376112553479674
+SmolAgents/049,0,Math,Planning Hallucination,Planning Hallucination,1,0.5077251061008302,0.2909999608165923,0.20127493308257757
+SmolAgents/050,4,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.26063947780066493,0.3502707341760958,0.38908978802323924
+SmolAgents/051,3,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.07210993950111039,0.8155003894120206,0.11238967108686886
+SmolAgents/053,4,Science,Retrieval Hallucination,Reasoning Hallucination,0,6.360787117138949e-05,0.9855577893318919,0.014378602796936747
+SmolAgents/054,2,World Knowledge,Planning Hallucination,Planning Hallucination,1,0.551967005066659,0.4371199847052502,0.010913010228090776
+SmolAgents/055,3,World Knowledge,Planning Hallucination,Retrieval Hallucination,0,0.00391048885943199,0.09574542951240159,0.9003440816281665
+SmolAgents/056,0,World Knowledge,Planning Hallucination,Reasoning Hallucination,0,0.22201878676617842,0.39871941560565977,0.37926179762816187
+SmolAgents/058,0,World Knowledge,Planning Hallucination,Planning Hallucination,1,0.5647588827709643,0.353245624592429,0.0819954926366066
+SmolAgents/059,2,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.041698754346538414,0.06896517629766127,0.8893360693558002
+SmolAgents/060,4,World Knowledge,Planning Hallucination,Planning Hallucination,1,0.44973593860716493,0.4231384874649183,0.12712557392791696
+SmolAgents/061,3,World Knowledge,Planning Hallucination,Reasoning Hallucination,0,0.17496900884703087,0.5951239808653911,0.22990701028757807
+SmolAgents/066,1,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.06728029459341632,0.018923036153259847,0.9137966692533238
+SmolAgents/068,1,World Knowledge,Retrieval Hallucination,Reasoning Hallucination,0,0.05692878995364723,0.6479717047929947,0.29509950525335815
+SmolAgents/072,4,Science,Planning Hallucination,Retrieval Hallucination,0,0.4141847071990397,0.03281539382407571,0.5529998989768846
+SmolAgents/076,1,Science,Reasoning Hallucination,Retrieval Hallucination,0,0.0447191950611173,0.0027426661789451677,0.9525381387599375
+SmolAgents/077,3,Science,Planning Hallucination,Reasoning Hallucination,0,0.39073232937284635,0.5901221733245858,0.019145497302567732
+SmolAgents/078,4,Science,Planning Hallucination,Reasoning Hallucination,0,0.011583869566367422,0.988400471021601,1.5659412031661066e-05
+SmolAgents/079,1,Science,Planning Hallucination,Reasoning Hallucination,0,0.300473537273296,0.6971339820772005,0.0023924806495036048
+SmolAgents/080,2,Math,Planning Hallucination,Retrieval Hallucination,0,0.2563143679782818,0.13957366755889694,0.6041119644628212
+SmolAgents/081,2,Math,Planning Hallucination,Retrieval Hallucination,0,0.05907123622724812,0.004207823896945252,0.9367209398758067
+SmolAgents/083,3,Math,Planning Hallucination,Planning Hallucination,1,0.7613151504340252,0.23285387770224258,0.005830971863732236
+SmolAgents/084,1,Math,Planning Hallucination,Planning Hallucination,1,0.8161727418294589,0.16739195882967253,0.016435299340868532
+SmolAgents/085,2,Math,Reasoning Hallucination,Planning Hallucination,0,0.4870921062739674,0.4632626536053172,0.049645240120715535
+SmolAgents/089,3,Math,Reasoning Hallucination,Planning Hallucination,0,0.5573054121526732,0.10264657853592782,0.34004800931139906

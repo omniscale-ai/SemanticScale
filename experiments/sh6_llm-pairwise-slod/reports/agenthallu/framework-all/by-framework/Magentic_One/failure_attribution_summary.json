@@ -1,0 +1,166 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all/by-framework/Magentic_One",
+  "type_field": "hallucination_category",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 54,
+    "n_step_rows": 560,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.2777777777777778,
+    "by_failure_type": {
+      "Planning Hallucination": {
+        "step_localization_accuracy": 0.7,
+        "n_failed": 20
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 26
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.125,
+        "n_failed": 8
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.1,
+        "n_failed": 10
+      },
+      "Math": {
+        "step_localization_accuracy": 0.23076923076923078,
+        "n_failed": 13
+      },
+      "Science": {
+        "step_localization_accuracy": 0.5625,
+        "n_failed": 16
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.13333333333333333,
+        "n_failed": 15
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "hallucination_category",
+    "n_items": 54,
+    "n_classes": 3,
+    "classes": [
+      "Planning Hallucination",
+      "Reasoning Hallucination",
+      "Retrieval Hallucination"
+    ],
+    "class_counts": {
+      "Reasoning Hallucination": 26,
+      "Planning Hallucination": 20,
+      "Retrieval Hallucination": 8
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.4514837819185645,
+      "macro_recall": 0.4782051282051282,
+      "macro_f1": 0.46053475543826855,
+      "accuracy": 0.46296296296296297
+    },
+    "per_class": {
+      "Planning Hallucination": {
+        "precision": 0.4782608695652174,
+        "recall": 0.55,
+        "f1": 0.5116279069767442,
+        "support": 20
+      },
+      "Reasoning Hallucination": {
+        "precision": 0.47619047619047616,
+        "recall": 0.38461538461538464,
+        "f1": 0.425531914893617,
+        "support": 26
+      },
+      "Retrieval Hallucination": {
+        "precision": 0.4,
+        "recall": 0.5,
+        "f1": 0.4444444444444444,
+        "support": 8
+      }
+    },
+    "confusion_matrix": {
+      "Planning Hallucination": {
+        "Planning Hallucination": 11,
+        "Reasoning Hallucination": 9,
+        "Retrieval Hallucination": 0
+      },
+      "Reasoning Hallucination": {
+        "Planning Hallucination": 10,
+        "Reasoning Hallucination": 10,
+        "Retrieval Hallucination": 6
+      },
+      "Retrieval Hallucination": {
+        "Planning Hallucination": 2,
+        "Reasoning Hallucination": 2,
+        "Retrieval Hallucination": 4
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "macro_precision": 0.2833333333333333,
+        "macro_recall": 0.3333333333333333,
+        "macro_f1": 0.2929292929292929,
+        "accuracy": 0.4,
+        "n_items": 10
+      },
+      "Math": {
+        "macro_precision": 0.3111111111111111,
+        "macro_recall": 0.25396825396825395,
+        "macro_f1": 0.27777777777777773,
+        "accuracy": 0.38461538461538464,
+        "n_items": 13
+      },
+      "Science": {
+        "macro_precision": 0.3666666666666667,
+        "macro_recall": 0.3444444444444444,
+        "macro_f1": 0.3545454545454545,
+        "accuracy": 0.5625,
+        "n_items": 16
+      },
+      "World Knowledge": {
+        "macro_precision": 0.4222222222222222,
+        "macro_recall": 0.34722222222222215,
+        "macro_f1": 0.37606837606837606,
+        "accuracy": 0.4666666666666667,
+        "n_items": 15
+      }
+    }
+  }
+}

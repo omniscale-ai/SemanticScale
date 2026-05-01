@@ -1,0 +1,85 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all/by-framework/Octotools",
+  "type_field": "hallucination_category",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 30,
+    "n_step_rows": 145,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.4,
+    "by_failure_type": {
+      "Planning Hallucination": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 1
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.44,
+        "n_failed": 25
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.25,
+        "n_failed": 4
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.3333333333333333,
+        "n_failed": 3
+      },
+      "Math": {
+        "step_localization_accuracy": 0.4,
+        "n_failed": 10
+      },
+      "Science": {
+        "step_localization_accuracy": 0.5555555555555556,
+        "n_failed": 9
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.25,
+        "n_failed": 8
+      }
+    }
+  },
+  "type": {
+    "skipped": true,
+    "reason": "Fewer than 2 failure-type classes have >= 5 samples (counts: {'Reasoning Hallucination': 25, 'Retrieval Hallucination': 4, 'Planning Hallucination': 1}).",
+    "min_class_count": 5,
+    "class_counts": {
+      "Reasoning Hallucination": 25,
+      "Retrieval Hallucination": 4,
+      "Planning Hallucination": 1
+    }
+  }
+}

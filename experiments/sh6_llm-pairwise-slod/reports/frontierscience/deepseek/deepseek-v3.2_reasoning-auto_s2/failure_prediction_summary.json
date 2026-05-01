@@ -3907,8 +3907,8 @@
       "modes": [
         "answer_overrange",
         "answer_volatility",
-        "answer_meandering",
-        "answer_uncommitted"
+        "answer_uncommitted",
+        "answer_meandering"
       ],
       "n_flagged": 72,
       "n_caught": 60,

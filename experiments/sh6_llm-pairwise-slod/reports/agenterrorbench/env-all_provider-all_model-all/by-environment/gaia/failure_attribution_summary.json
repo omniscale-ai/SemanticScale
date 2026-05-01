@@ -1,0 +1,158 @@
+{
+  "dataset": "agenterrorbench",
+  "run_slug": "env-all_provider-all_model-all/by-environment/gaia",
+  "type_field": "critical_error_module",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 49,
+    "n_step_rows": 713,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.22448979591836735,
+    "by_failure_type": {
+      "action": {
+        "step_localization_accuracy": 0.16666666666666666,
+        "n_failed": 6
+      },
+      "memory": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 5
+      },
+      "planning": {
+        "step_localization_accuracy": 0.3076923076923077,
+        "n_failed": 26
+      },
+      "reflection": {
+        "step_localization_accuracy": 0.125,
+        "n_failed": 8
+      },
+      "system": {
+        "step_localization_accuracy": 0.25,
+        "n_failed": 4
+      }
+    },
+    "by_subject": {
+      "gaia": {
+        "step_localization_accuracy": 0.22448979591836735,
+        "n_failed": 49
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "critical_error_module",
+    "n_items": 45,
+    "n_classes": 4,
+    "classes": [
+      "action",
+      "memory",
+      "planning",
+      "reflection"
+    ],
+    "class_counts": {
+      "planning": 26,
+      "reflection": 8,
+      "action": 6,
+      "memory": 5
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.38839285714285715,
+      "macro_recall": 0.3681089743589744,
+      "macro_f1": 0.37384259259259256,
+      "accuracy": 0.5333333333333333
+    },
+    "per_class": {
+      "action": {
+        "precision": 0.16666666666666666,
+        "recall": 0.16666666666666666,
+        "f1": 0.16666666666666666,
+        "support": 6
+      },
+      "memory": {
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "support": 5
+      },
+      "planning": {
+        "precision": 0.6785714285714286,
+        "recall": 0.7307692307692307,
+        "f1": 0.7037037037037037,
+        "support": 26
+      },
+      "reflection": {
+        "precision": 0.375,
+        "recall": 0.375,
+        "f1": 0.375,
+        "support": 8
+      }
+    },
+    "confusion_matrix": {
+      "action": {
+        "action": 1,
+        "memory": 2,
+        "planning": 3,
+        "reflection": 0
+      },
+      "memory": {
+        "action": 1,
+        "memory": 1,
+        "planning": 2,
+        "reflection": 1
+      },
+      "planning": {
+        "action": 3,
+        "memory": 0,
+        "planning": 19,
+        "reflection": 4
+      },
+      "reflection": {
+        "action": 1,
+        "memory": 0,
+        "planning": 4,
+        "reflection": 3
+      }
+    },
+    "by_subject": {
+      "gaia": {
+        "macro_precision": 0.38839285714285715,
+        "macro_recall": 0.3681089743589744,
+        "macro_f1": 0.37384259259259256,
+        "accuracy": 0.5333333333333333,
+        "n_items": 45
+      }
+    }
+  }
+}

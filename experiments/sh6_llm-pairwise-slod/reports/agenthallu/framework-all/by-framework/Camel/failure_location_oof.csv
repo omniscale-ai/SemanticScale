@@ -1,0 +1,58 @@
+id,fold,subject,failure_type,true_step_index,predicted_step_index,predicted_step_probability,n_steps,correct
+Camel/000,1,Math,Reasoning Hallucination,7,2,0.7088646646943619,14,0
+Camel/003,2,Math,Reasoning Hallucination,12,10,0.6799332269478171,13,0
+Camel/004,4,Science,Reasoning Hallucination,9,1,0.7256276969725229,11,0
+Camel/005,3,General Assistant,Reasoning Hallucination,15,8,0.8654802957027571,18,0
+Camel/006,0,Science,Reasoning Hallucination,2,1,0.7876628794122892,3,0
+Camel/008,0,Math,Human-Interaction Hallucination,3,1,0.7690554760248699,8,0
+Camel/009,2,Math,Reasoning Hallucination,3,3,0.6379595454852323,14,1
+Camel/011,1,Science,Reasoning Hallucination,2,1,0.5258244626984883,3,0
+Camel/012,0,General Assistant,Retrieval Hallucination,17,2,0.24692715976564103,35,0
+Camel/014,3,Science,Retrieval Hallucination,2,3,0.7021281010932484,15,0
+Camel/016,0,World Knowledge,Planning Hallucination,0,6,0.7298443703416171,9,0
+Camel/018,1,Science,Planning Hallucination,0,7,0.7636358984768791,10,0
+Camel/019,3,General Assistant,Reasoning Hallucination,2,3,0.9526712534296784,4,0
+Camel/020,1,World Knowledge,Retrieval Hallucination,6,6,0.8139038543206463,9,1
+Camel/021,1,Science,Retrieval Hallucination,3,0,0.5551569015623763,7,0
+Camel/022,2,General Assistant,Retrieval Hallucination,3,3,0.7303923686935847,8,1
+Camel/024,2,General Assistant,Planning Hallucination,0,1,0.7769472735502315,11,0
+Camel/026,1,Math,Reasoning Hallucination,2,2,0.8071771509347998,6,1
+Camel/027,3,Math,Reasoning Hallucination,4,9,0.8263567711782804,11,0
+Camel/029,0,World Knowledge,Human-Interaction Hallucination,4,4,0.8052366480218611,7,1
+Camel/030,4,Science,Reasoning Hallucination,2,1,0.8361372329843404,3,0
+Camel/031,1,Science,Reasoning Hallucination,2,2,0.8785897804965029,3,1
+Camel/032,4,Science,Reasoning Hallucination,2,1,0.9243388059072816,3,0
+Camel/034,2,General Assistant,Human-Interaction Hallucination,14,1,0.5206890516713957,21,0
+Camel/037,4,General Assistant,Human-Interaction Hallucination,4,11,0.7324251941024615,16,0
+Camel/038,3,General Assistant,Human-Interaction Hallucination,7,8,0.8883934244565459,10,0
+Camel/039,2,World Knowledge,Human-Interaction Hallucination,2,3,0.7176682345688423,7,0
+Camel/044,2,World Knowledge,Human-Interaction Hallucination,2,5,0.7766515952182965,9,0
+Camel/045,1,World Knowledge,Human-Interaction Hallucination,8,6,0.8163733033172329,12,0
+Camel/046,4,World Knowledge,Human-Interaction Hallucination,2,5,0.8913652972168987,8,0
+Camel/049,3,World Knowledge,Retrieval Hallucination,4,3,0.7875173088823147,13,0
+Camel/051,0,World Knowledge,Retrieval Hallucination,6,6,0.7361982485568223,11,1
+Camel/052,4,Science,Human-Interaction Hallucination,2,5,0.9293025963617194,7,0
+Camel/053,1,Science,Human-Interaction Hallucination,2,2,0.8092123362517841,5,1
+Camel/054,2,Science,Human-Interaction Hallucination,2,2,0.9113812808581035,6,1
+Camel/055,4,Science,Planning Hallucination,0,2,0.7422292291714223,13,0
+Camel/056,4,Science,Human-Interaction Hallucination,2,2,0.7082907031005841,17,1
+Camel/057,2,Science,Human-Interaction Hallucination,2,2,0.9456926595353925,4,1
+Camel/058,0,Science,Human-Interaction Hallucination,2,2,0.7686312071379187,4,1
+Camel/059,0,Science,Human-Interaction Hallucination,2,6,0.783747627934357,7,0
+Camel/060,3,Science,Human-Interaction Hallucination,2,3,0.6741248445686028,7,0
+Camel/063,4,Science,Human-Interaction Hallucination,2,2,0.8624225052711412,5,1
+Camel/065,4,Science,Human-Interaction Hallucination,2,5,0.9239665522385868,10,0
+Camel/066,1,Science,Human-Interaction Hallucination,2,2,0.6524863035052518,26,1
+Camel/067,0,Science,Human-Interaction Hallucination,2,4,0.8917233442958014,5,0
+Camel/070,0,Science,Human-Interaction Hallucination,2,2,0.8296110813670523,4,1
+Camel/071,1,Science,Human-Interaction Hallucination,2,2,0.8095348023057898,4,1
+Camel/072,3,Science,Reasoning Hallucination,3,2,0.7289872715629355,4,0
+Camel/073,2,Science,Human-Interaction Hallucination,2,2,0.8246658909056558,6,1
+Camel/074,3,Science,Human-Interaction Hallucination,2,5,0.949722092681674,8,0
+Camel/075,1,Science,Planning Hallucination,0,2,0.8347026083481548,7,0
+Camel/087,4,Math,Human-Interaction Hallucination,2,2,0.7638254184637774,7,1
+Camel/088,3,Math,Human-Interaction Hallucination,2,5,0.941178872249647,6,0
+Camel/089,2,Math,Human-Interaction Hallucination,2,2,0.7576181861091358,4,1
+Camel/090,0,Math,Human-Interaction Hallucination,2,6,0.7249243489329258,13,0
+Camel/091,3,Math,Human-Interaction Hallucination,2,2,0.9048359207274407,7,1
+Camel/092,4,Math,Human-Interaction Hallucination,2,1,0.8970029723348387,5,0

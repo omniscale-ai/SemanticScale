@@ -1,7 +1,7 @@
 {
   "dataset": "agenterrorbench",
   "run_slug": "env-all_provider-all_model-all",
-  "type_field": "critical_error_type",
+  "type_field": "critical_error_module",
   "config": {
     "cv_folds": 5,
     "random_state": 42,
@@ -40,85 +40,29 @@
     "cv_folds": 5,
     "step_localization_accuracy": 0.12562814070351758,
     "by_failure_type": {
-      "Parameter_error": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 1
+      "action": {
+        "step_localization_accuracy": 0.22727272727272727,
+        "n_failed": 22
       },
-      "causal_misattribution": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 5
+      "memory": {
+        "step_localization_accuracy": 0.05263157894736842,
+        "n_failed": 38
       },
-      "constraint_ignorance": {
-        "step_localization_accuracy": 0.3076923076923077,
-        "n_failed": 13
+      "plan": {
+        "step_localization_accuracy": 0.04081632653061224,
+        "n_failed": 49
       },
-      "environment_error": {
-        "step_localization_accuracy": 0.14285714285714285,
-        "n_failed": 7
+      "planning": {
+        "step_localization_accuracy": 0.3103448275862069,
+        "n_failed": 29
       },
-      "hallucination": {
-        "step_localization_accuracy": 0.15384615384615385,
-        "n_failed": 13
+      "reflection": {
+        "step_localization_accuracy": 0.1282051282051282,
+        "n_failed": 39
       },
-      "impossible_action": {
-        "step_localization_accuracy": 0.1,
-        "n_failed": 10
-      },
-      "inefficient_plan": {
-        "step_localization_accuracy": 0.11627906976744186,
-        "n_failed": 43
-      },
-      "invalid_action": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 1
-      },
-      "llm_limit": {
-        "step_localization_accuracy": 1.0,
-        "n_failed": 1
-      },
-      "memory_retrieval_failure": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 2
-      },
-      "misalignment": {
-        "step_localization_accuracy": 0.14285714285714285,
-        "n_failed": 7
-      },
-      "outcome_misinterpretation": {
-        "step_localization_accuracy": 0.08333333333333333,
-        "n_failed": 12
-      },
-      "over_simplification": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 20
-      },
-      "parameter_error": {
-        "step_localization_accuracy": 0.3333333333333333,
-        "n_failed": 3
-      },
-      "plan_inefficient": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 3
-      },
-      "progress_misjudge": {
-        "step_localization_accuracy": 0.21052631578947367,
-        "n_failed": 19
-      },
-      "step_limit": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 8
-      },
-      "tool_execution_error": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 3
-      },
-      "tool_execution_error ": {
-        "step_localization_accuracy": 0.0,
-        "n_failed": 1
-      },
-      "unknown": {
-        "step_localization_accuracy": 0.14814814814814814,
-        "n_failed": 27
+      "system": {
+        "step_localization_accuracy": 0.09090909090909091,
+        "n_failed": 22
       }
     },
     "by_subject": {
@@ -139,276 +83,141 @@
   "type": {
     "model": "logreg",
     "feature_set": "trajectory_full",
-    "type_field": "critical_error_type",
-    "n_items": 157,
-    "n_classes": 11,
+    "type_field": "critical_error_module",
+    "n_items": 199,
+    "n_classes": 6,
     "classes": [
-      "causal_misattribution",
-      "constraint_ignorance",
-      "environment_error",
-      "hallucination",
-      "impossible_action",
-      "inefficient_plan",
-      "misalignment",
-      "outcome_misinterpretation",
-      "over_simplification",
-      "progress_misjudge",
-      "step_limit"
+      "action",
+      "memory",
+      "plan",
+      "planning",
+      "reflection",
+      "system"
     ],
     "class_counts": {
-      "inefficient_plan": 43,
-      "over_simplification": 20,
-      "progress_misjudge": 19,
-      "constraint_ignorance": 13,
-      "hallucination": 13,
-      "outcome_misinterpretation": 12,
-      "impossible_action": 10,
-      "step_limit": 8,
-      "environment_error": 7,
-      "misalignment": 7,
-      "causal_misattribution": 5
+      "plan": 49,
+      "reflection": 39,
+      "memory": 38,
+      "planning": 29,
+      "system": 22,
+      "action": 22
     },
     "cv_folds": 5,
     "metrics": {
-      "macro_precision": 0.13666692944767814,
-      "macro_recall": 0.12824901536651842,
-      "macro_f1": 0.13125558271899734,
-      "accuracy": 0.1592356687898089
+      "macro_precision": 0.2825265199733285,
+      "macro_recall": 0.27595860769311636,
+      "macro_f1": 0.2777980858757702,
+      "accuracy": 0.2864321608040201
     },
     "per_class": {
-      "causal_misattribution": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "support": 5
+      "action": {
+        "precision": 0.12,
+        "recall": 0.13636363636363635,
+        "f1": 0.1276595744680851,
+        "support": 22
       },
-      "constraint_ignorance": {
-        "precision": 0.25,
-        "recall": 0.23076923076923078,
-        "f1": 0.24,
-        "support": 13
+      "memory": {
+        "precision": 0.3333333333333333,
+        "recall": 0.3157894736842105,
+        "f1": 0.32432432432432434,
+        "support": 38
       },
-      "environment_error": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "support": 7
+      "plan": {
+        "precision": 0.38461538461538464,
+        "recall": 0.30612244897959184,
+        "f1": 0.3409090909090909,
+        "support": 49
       },
-      "hallucination": {
-        "precision": 0.09090909090909091,
-        "recall": 0.07692307692307693,
-        "f1": 0.08333333333333333,
-        "support": 13
+      "planning": {
+        "precision": 0.4444444444444444,
+        "recall": 0.41379310344827586,
+        "f1": 0.42857142857142855,
+        "support": 29
       },
-      "impossible_action": {
-        "precision": 0.058823529411764705,
-        "recall": 0.1,
-        "f1": 0.07407407407407407,
-        "support": 10
+      "reflection": {
+        "precision": 0.2127659574468085,
+        "recall": 0.2564102564102564,
+        "f1": 0.23255813953488372,
+        "support": 39
       },
-      "inefficient_plan": {
-        "precision": 0.2702702702702703,
-        "recall": 0.23255813953488372,
-        "f1": 0.25,
-        "support": 43
-      },
-      "misalignment": {
+      "system": {
         "precision": 0.2,
-        "recall": 0.14285714285714285,
-        "f1": 0.16666666666666666,
-        "support": 7
-      },
-      "outcome_misinterpretation": {
-        "precision": 0.25,
-        "recall": 0.25,
-        "f1": 0.25,
-        "support": 12
-      },
-      "over_simplification": {
-        "precision": 0.19047619047619047,
-        "recall": 0.2,
-        "f1": 0.1951219512195122,
-        "support": 20
-      },
-      "progress_misjudge": {
-        "precision": 0.05,
-        "recall": 0.05263157894736842,
-        "f1": 0.05128205128205128,
-        "support": 19
-      },
-      "step_limit": {
-        "precision": 0.14285714285714285,
-        "recall": 0.125,
-        "f1": 0.13333333333333333,
-        "support": 8
+        "recall": 0.22727272727272727,
+        "f1": 0.2127659574468085,
+        "support": 22
       }
     },
     "confusion_matrix": {
-      "causal_misattribution": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 1,
-        "environment_error": 1,
-        "hallucination": 0,
-        "impossible_action": 0,
-        "inefficient_plan": 1,
-        "misalignment": 0,
-        "outcome_misinterpretation": 1,
-        "over_simplification": 0,
-        "progress_misjudge": 1,
-        "step_limit": 0
+      "action": {
+        "action": 3,
+        "memory": 7,
+        "plan": 5,
+        "planning": 2,
+        "reflection": 4,
+        "system": 1
       },
-      "constraint_ignorance": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 3,
-        "environment_error": 0,
-        "hallucination": 0,
-        "impossible_action": 1,
-        "inefficient_plan": 4,
-        "misalignment": 1,
-        "outcome_misinterpretation": 0,
-        "over_simplification": 1,
-        "progress_misjudge": 2,
-        "step_limit": 1
+      "memory": {
+        "action": 6,
+        "memory": 12,
+        "plan": 5,
+        "planning": 1,
+        "reflection": 12,
+        "system": 2
       },
-      "environment_error": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 0,
-        "environment_error": 0,
-        "hallucination": 2,
-        "impossible_action": 0,
-        "inefficient_plan": 3,
-        "misalignment": 0,
-        "outcome_misinterpretation": 0,
-        "over_simplification": 2,
-        "progress_misjudge": 0,
-        "step_limit": 0
+      "plan": {
+        "action": 9,
+        "memory": 6,
+        "plan": 15,
+        "planning": 2,
+        "reflection": 9,
+        "system": 8
       },
-      "hallucination": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 1,
-        "environment_error": 2,
-        "hallucination": 1,
-        "impossible_action": 2,
-        "inefficient_plan": 2,
-        "misalignment": 2,
-        "outcome_misinterpretation": 1,
-        "over_simplification": 1,
-        "progress_misjudge": 1,
-        "step_limit": 0
+      "planning": {
+        "action": 2,
+        "memory": 3,
+        "plan": 3,
+        "planning": 12,
+        "reflection": 6,
+        "system": 3
       },
-      "impossible_action": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 0,
-        "environment_error": 0,
-        "hallucination": 1,
-        "impossible_action": 1,
-        "inefficient_plan": 3,
-        "misalignment": 0,
-        "outcome_misinterpretation": 1,
-        "over_simplification": 2,
-        "progress_misjudge": 2,
-        "step_limit": 0
+      "reflection": {
+        "action": 5,
+        "memory": 6,
+        "plan": 5,
+        "planning": 7,
+        "reflection": 10,
+        "system": 6
       },
-      "inefficient_plan": {
-        "causal_misattribution": 5,
-        "constraint_ignorance": 4,
-        "environment_error": 2,
-        "hallucination": 2,
-        "impossible_action": 6,
-        "inefficient_plan": 10,
-        "misalignment": 0,
-        "outcome_misinterpretation": 3,
-        "over_simplification": 5,
-        "progress_misjudge": 3,
-        "step_limit": 3
-      },
-      "misalignment": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 0,
-        "environment_error": 0,
-        "hallucination": 0,
-        "impossible_action": 1,
-        "inefficient_plan": 2,
-        "misalignment": 1,
-        "outcome_misinterpretation": 0,
-        "over_simplification": 0,
-        "progress_misjudge": 3,
-        "step_limit": 0
-      },
-      "outcome_misinterpretation": {
-        "causal_misattribution": 1,
-        "constraint_ignorance": 0,
-        "environment_error": 0,
-        "hallucination": 2,
-        "impossible_action": 1,
-        "inefficient_plan": 1,
-        "misalignment": 0,
-        "outcome_misinterpretation": 3,
-        "over_simplification": 1,
-        "progress_misjudge": 2,
-        "step_limit": 1
-      },
-      "over_simplification": {
-        "causal_misattribution": 0,
-        "constraint_ignorance": 0,
-        "environment_error": 2,
-        "hallucination": 2,
-        "impossible_action": 4,
-        "inefficient_plan": 3,
-        "misalignment": 1,
-        "outcome_misinterpretation": 0,
-        "over_simplification": 4,
-        "progress_misjudge": 3,
-        "step_limit": 1
-      },
-      "progress_misjudge": {
-        "causal_misattribution": 1,
-        "constraint_ignorance": 2,
-        "environment_error": 0,
-        "hallucination": 1,
-        "impossible_action": 1,
-        "inefficient_plan": 6,
-        "misalignment": 0,
-        "outcome_misinterpretation": 3,
-        "over_simplification": 4,
-        "progress_misjudge": 1,
-        "step_limit": 0
-      },
-      "step_limit": {
-        "causal_misattribution": 1,
-        "constraint_ignorance": 1,
-        "environment_error": 0,
-        "hallucination": 0,
-        "impossible_action": 0,
-        "inefficient_plan": 2,
-        "misalignment": 0,
-        "outcome_misinterpretation": 0,
-        "over_simplification": 1,
-        "progress_misjudge": 2,
-        "step_limit": 1
+      "system": {
+        "action": 0,
+        "memory": 2,
+        "plan": 6,
+        "planning": 3,
+        "reflection": 6,
+        "system": 5
       }
     },
     "by_subject": {
       "alfworld": {
-        "macro_precision": 0.14531680440771352,
-        "macro_recall": 0.14354256854256853,
-        "macro_f1": 0.14178182928182928,
-        "accuracy": 0.2,
-        "n_items": 70
+        "macro_precision": 0.14774114774114772,
+        "macro_recall": 0.1564269064269064,
+        "macro_f1": 0.14881193843434404,
+        "accuracy": 0.18,
+        "n_items": 100
       },
       "gaia": {
-        "macro_precision": 0.1303030303030303,
-        "macro_recall": 0.11464646464646465,
-        "macro_f1": 0.12077922077922079,
-        "accuracy": 0.16666666666666666,
-        "n_items": 42
+        "macro_precision": 0.27619047619047615,
+        "macro_recall": 0.28247863247863253,
+        "macro_f1": 0.2729851708575113,
+        "accuracy": 0.40816326530612246,
+        "n_items": 49
       },
       "webshop": {
-        "macro_precision": 0.08672438672438672,
-        "macro_recall": 0.05296143250688705,
-        "macro_f1": 0.05944055944055944,
-        "accuracy": 0.08888888888888889,
-        "n_items": 45
+        "macro_precision": 0.31283068783068785,
+        "macro_recall": 0.25438596491228066,
+        "macro_f1": 0.2723892723892724,
+        "accuracy": 0.38,
+        "n_items": 50
       }
     }
   }

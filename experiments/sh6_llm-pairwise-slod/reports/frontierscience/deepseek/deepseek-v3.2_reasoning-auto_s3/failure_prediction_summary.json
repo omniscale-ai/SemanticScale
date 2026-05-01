@@ -3863,10 +3863,10 @@
     "confirmed": {
       "n_modes": 4,
       "modes": [
-        "answer_uncommitted",
         "answer_overrange",
-        "answer_volatility",
-        "answer_meandering"
+        "answer_meandering",
+        "answer_uncommitted",
+        "answer_volatility"
       ],
       "n_flagged": 61,
       "n_caught": 52,

@@ -1,0 +1,85 @@
+id,fold,subject,true_type,pred_type,correct,prob_Human-Interaction Hallucination,prob_Reasoning Hallucination,prob_Retrieval Hallucination
+OpenManus/002,0,General Assistant,Retrieval Hallucination,Human-Interaction Hallucination,0,0.652521966160688,0.06978100463145578,0.2776970292078561
+OpenManus/003,4,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.3070976967004878,0.6236521547529426,0.06925014854656963
+OpenManus/004,4,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.000744437573465317,0.9992518736178028,3.688808731742502e-06
+OpenManus/005,2,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.9019173545653317,0.0831222111813317,0.014960434253336551
+OpenManus/006,3,General Assistant,Reasoning Hallucination,Reasoning Hallucination,1,0.1071226000497197,0.8924834783943092,0.00039392155597118823
+OpenManus/007,1,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.0023497115222005627,1.3774167922966443e-06,0.9976489110610072
+OpenManus/009,0,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.002820648722538937,6.129946154893425e-07,0.9971787382828456
+OpenManus/010,1,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.10285832988248231,0.16374659494330895,0.7333950751742089
+OpenManus/011,0,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9604944089449775,0.03905557498471637,0.00045001607030613306
+OpenManus/013,1,Science,Reasoning Hallucination,Retrieval Hallucination,0,0.045887724555469224,0.034341522349985776,0.919770753094545
+OpenManus/014,4,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.6279650785992905,3.853587934426162e-05,0.37199638552136516
+OpenManus/015,3,World Knowledge,Retrieval Hallucination,Reasoning Hallucination,0,0.0055927026604648015,0.994407254688188,4.2651347297169437e-08
+OpenManus/017,3,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.006384275575040304,0.9936152850482561,4.3937670341502085e-07
+OpenManus/018,1,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.709660212965399,0.2903100134960751,2.9773538525674657e-05
+OpenManus/019,3,Math,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9304679574139106,0.06827229991436287,0.0012597426717266347
+OpenManus/020,1,Math,Reasoning Hallucination,Retrieval Hallucination,0,0.18745152206740498,0.001959487531704235,0.8105889904008908
+OpenManus/021,0,Math,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9999729944933546,2.687341322548909e-05,1.3209341988541932e-07
+OpenManus/022,1,Math,Reasoning Hallucination,Reasoning Hallucination,1,0.024837245967330647,0.9749258415147842,0.00023691251788510075
+OpenManus/023,0,Math,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9971418453530584,5.9064372510093236e-05,0.0027990902744316863
+OpenManus/025,1,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.4775839068155691,0.026493980544641693,0.495922112639789
+OpenManus/026,0,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.7555438754603876,0.07366828762300352,0.17078783691660884
+OpenManus/027,4,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.4976994506519141,0.011763510177500896,0.490537039170585
+OpenManus/029,4,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.7462514659827749,0.0005771556874349865,0.25317137832979014
+OpenManus/030,3,World Knowledge,Human-Interaction Hallucination,Retrieval Hallucination,0,0.3474679261455984,0.1012454743677216,0.5512865994866799
+OpenManus/031,3,World Knowledge,Human-Interaction Hallucination,Retrieval Hallucination,0,0.0039152785311099315,0.007611542675424178,0.988473178793466
+OpenManus/032,2,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.7553711200215951,0.0044643323716892285,0.24016454760671568
+OpenManus/033,0,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.07404075738592233,7.454211106687682e-05,0.9258847005030107
+OpenManus/036,2,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.8577636181426939,0.1422349919472013,1.3899101049910606e-06
+OpenManus/038,3,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.995014526513652,0.0048160721629950795,0.0001694013233529055
+OpenManus/039,2,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.20268207574254396,0.7964159554254062,0.000901968832049832
+OpenManus/040,4,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9732223964218105,0.025175310634650446,0.0016022929435389995
+OpenManus/041,2,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.08212363852882285,0.9178763614009056,7.027172402989066e-11
+OpenManus/043,4,Science,Reasoning Hallucination,Reasoning Hallucination,1,0.03550443866696617,0.9643916130332887,0.00010394829974514987
+OpenManus/044,1,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.5127936492892725,0.46468385347413793,0.022522497236589393
+OpenManus/045,2,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.8893546527694537,0.06296642622780438,0.04767892100274201
+OpenManus/046,2,Science,Human-Interaction Hallucination,Retrieval Hallucination,0,0.0013438211424810975,0.3481804906463525,0.6504756882111664
+OpenManus/047,0,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.32069557002293203,0.0001529309953381711,0.6791514989817299
+OpenManus/050,3,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.05387122984268424,0.00047902524047896866,0.9456497449168367
+OpenManus/052,3,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.606673717725243,0.05425785414058839,0.3390684281341685
+OpenManus/053,4,World Knowledge,Human-Interaction Hallucination,Retrieval Hallucination,0,0.04572332762162709,0.0008282581379081885,0.9534484142404648
+OpenManus/054,2,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.7397799031316524,0.23181158143111116,0.02840851543723652
+OpenManus/055,4,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.0016640716756673745,3.632506799920548e-05,0.9982996032563335
+OpenManus/056,2,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9317573373331031,0.06824222662025761,4.3604663942913026e-07
+OpenManus/057,3,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.867673886154603,0.004505084620764962,0.1278210292246321
+OpenManus/058,1,World Knowledge,Human-Interaction Hallucination,Retrieval Hallucination,0,0.14362039991370976,0.001390530860394388,0.8549890692258959
+OpenManus/059,0,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.001653142255261296,1.7107242781382976e-06,0.9983451470204606
+OpenManus/060,1,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.944121695991622,0.005171252697091656,0.05070705131128643
+OpenManus/063,4,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.10126302357620917,0.0007350046380720969,0.8980019717857188
+OpenManus/064,2,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.8575629966425118,0.13311252259532277,0.009324480762165323
+OpenManus/065,1,World Knowledge,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.5662411887777705,0.00010835507624540649,0.43365045614598413
+OpenManus/066,2,World Knowledge,Human-Interaction Hallucination,Reasoning Hallucination,0,0.39837452458550043,0.5937126609632065,0.007912814451292986
+OpenManus/067,0,World Knowledge,Human-Interaction Hallucination,Retrieval Hallucination,0,0.14932978954167608,0.3130945471279105,0.5375756633304135
+OpenManus/068,1,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.00824063530549121,0.0001444290643295961,0.9916149356301792
+OpenManus/070,2,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.6012406990772959,0.021072280005966917,0.3776870209167371
+OpenManus/071,3,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.35165282858074753,0.023772770436426862,0.6245744009828256
+OpenManus/072,4,World Knowledge,Retrieval Hallucination,Retrieval Hallucination,1,0.053364621773024166,0.0033991575949211313,0.9432362206320547
+OpenManus/073,1,World Knowledge,Retrieval Hallucination,Human-Interaction Hallucination,0,0.9618763776128387,0.001443115909203281,0.03668050647795803
+OpenManus/074,3,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,0.07890625169233692,0.9205846517869527,0.0005090965207103065
+OpenManus/075,2,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,0.28262764449451044,0.7173273687971655,4.498670832406137e-05
+OpenManus/076,3,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,0.36324203960109974,0.6366127802284062,0.0001451801704939656
+OpenManus/077,4,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.581267017771536,0.4177445263294169,0.0009884558990471259
+OpenManus/078,4,Science,Human-Interaction Hallucination,Retrieval Hallucination,0,0.1450254755348775,0.00036847702205821564,0.8546060474430643
+OpenManus/079,2,Science,Human-Interaction Hallucination,Retrieval Hallucination,0,0.09770962401519966,0.0003462114474916706,0.9019441645373086
+OpenManus/081,0,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9535873923892267,0.04632258872403559,9.00188867376418e-05
+OpenManus/082,4,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9161375744959509,0.05934667852807436,0.024515746975974733
+OpenManus/083,0,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.6753613745792973,0.2643473945020484,0.0602912309186542
+OpenManus/084,3,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,0.41584668974271,0.5087631589471902,0.07539015131009995
+OpenManus/085,0,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9989147398965326,0.0005948632859654795,0.0004903968175018871
+OpenManus/086,1,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,6.70133975463675e-08,0.9999999312316229,1.7549796800250523e-09
+OpenManus/087,0,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.5248998700031321,0.4351542781119549,0.03994585188491295
+OpenManus/088,3,Science,Human-Interaction Hallucination,Reasoning Hallucination,0,0.12516521427441282,0.8748347420383568,4.368723043260353e-08
+OpenManus/089,1,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9953582400003886,0.0016088444961687982,0.0030329155034424394
+OpenManus/090,3,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.993863851339583,0.006135611967752037,5.366926647251806e-07
+OpenManus/091,0,Science,Reasoning Hallucination,Human-Interaction Hallucination,0,0.9600273229811312,0.0375979341565448,0.002374742862323932
+OpenManus/092,2,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9988225845346594,0.0002458855816983735,0.0009315298836421853
+OpenManus/093,0,Science,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.7277440095856621,0.2630100301113746,0.009245960302963221
+OpenManus/094,3,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9999803758575553,1.9595474642952398e-05,2.8667801861887968e-08
+OpenManus/096,4,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.523627019980171,7.194652937681972e-05,0.47630103349045205
+OpenManus/097,1,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.969923640391469,5.1402442052636595e-05,0.030024957166478475
+OpenManus/098,2,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.5829299386863726,0.3998408601127752,0.01722920120085222
+OpenManus/100,0,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.9958169161784205,0.004148393102676504,3.469071890299888e-05
+OpenManus/101,2,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.6129723114917214,0.07160806351558528,0.3154196249926934
+OpenManus/102,4,Math,Human-Interaction Hallucination,Reasoning Hallucination,0,0.09868194806596499,0.5209313270546978,0.3803867248793373
+OpenManus/103,1,Math,Human-Interaction Hallucination,Human-Interaction Hallucination,1,0.8418967187146835,0.004678066857594321,0.15342521442772214

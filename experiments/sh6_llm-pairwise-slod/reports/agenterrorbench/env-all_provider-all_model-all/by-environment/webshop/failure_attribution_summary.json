@@ -1,0 +1,158 @@
+{
+  "dataset": "agenterrorbench",
+  "run_slug": "env-all_provider-all_model-all/by-environment/webshop",
+  "type_field": "critical_error_module",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 50,
+    "n_step_rows": 1296,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.18,
+    "by_failure_type": {
+      "action": {
+        "step_localization_accuracy": 0.5,
+        "n_failed": 2
+      },
+      "memory": {
+        "step_localization_accuracy": 0.2,
+        "n_failed": 15
+      },
+      "plan": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 19
+      },
+      "reflection": {
+        "step_localization_accuracy": 0.3333333333333333,
+        "n_failed": 9
+      },
+      "system": {
+        "step_localization_accuracy": 0.4,
+        "n_failed": 5
+      }
+    },
+    "by_subject": {
+      "webshop": {
+        "step_localization_accuracy": 0.18,
+        "n_failed": 50
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "critical_error_module",
+    "n_items": 48,
+    "n_classes": 4,
+    "classes": [
+      "memory",
+      "plan",
+      "reflection",
+      "system"
+    ],
+    "class_counts": {
+      "plan": 19,
+      "memory": 15,
+      "reflection": 9,
+      "system": 5
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.3025,
+      "macro_recall": 0.289766081871345,
+      "macro_f1": 0.28607503607503604,
+      "accuracy": 0.3958333333333333
+    },
+    "per_class": {
+      "memory": {
+        "precision": 0.25,
+        "recall": 0.2,
+        "f1": 0.2222222222222222,
+        "support": 15
+      },
+      "plan": {
+        "precision": 0.56,
+        "recall": 0.7368421052631579,
+        "f1": 0.6363636363636364,
+        "support": 19
+      },
+      "reflection": {
+        "precision": 0.4,
+        "recall": 0.2222222222222222,
+        "f1": 0.2857142857142857,
+        "support": 9
+      },
+      "system": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      }
+    },
+    "confusion_matrix": {
+      "memory": {
+        "memory": 3,
+        "plan": 7,
+        "reflection": 1,
+        "system": 4
+      },
+      "plan": {
+        "memory": 3,
+        "plan": 14,
+        "reflection": 2,
+        "system": 0
+      },
+      "reflection": {
+        "memory": 2,
+        "plan": 3,
+        "reflection": 2,
+        "system": 2
+      },
+      "system": {
+        "memory": 4,
+        "plan": 1,
+        "reflection": 0,
+        "system": 0
+      }
+    },
+    "by_subject": {
+      "webshop": {
+        "macro_precision": 0.3025,
+        "macro_recall": 0.289766081871345,
+        "macro_f1": 0.28607503607503604,
+        "accuracy": 0.3958333333333333,
+        "n_items": 48
+      }
+    }
+  }
+}

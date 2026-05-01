@@ -1,0 +1,181 @@
+{
+  "dataset": "agenterrorbench",
+  "run_slug": "env-all_provider-all_model-all/by-environment/alfworld",
+  "type_field": "critical_error_module",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 100,
+    "n_step_rows": 3000,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.06,
+    "by_failure_type": {
+      "action": {
+        "step_localization_accuracy": 0.07142857142857142,
+        "n_failed": 14
+      },
+      "memory": {
+        "step_localization_accuracy": 0.05555555555555555,
+        "n_failed": 18
+      },
+      "plan": {
+        "step_localization_accuracy": 0.06666666666666667,
+        "n_failed": 30
+      },
+      "planning": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 3
+      },
+      "reflection": {
+        "step_localization_accuracy": 0.045454545454545456,
+        "n_failed": 22
+      },
+      "system": {
+        "step_localization_accuracy": 0.07692307692307693,
+        "n_failed": 13
+      }
+    },
+    "by_subject": {
+      "alfworld": {
+        "step_localization_accuracy": 0.06,
+        "n_failed": 100
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "critical_error_module",
+    "n_items": 97,
+    "n_classes": 5,
+    "classes": [
+      "action",
+      "memory",
+      "plan",
+      "reflection",
+      "system"
+    ],
+    "class_counts": {
+      "plan": 30,
+      "reflection": 22,
+      "memory": 18,
+      "action": 14,
+      "system": 13
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.1887322515212982,
+      "macro_recall": 0.18675990675990675,
+      "macro_f1": 0.1795823972512224,
+      "accuracy": 0.1958762886597938
+    },
+    "per_class": {
+      "action": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 14
+      },
+      "memory": {
+        "precision": 0.20689655172413793,
+        "recall": 0.3333333333333333,
+        "f1": 0.2553191489361702,
+        "support": 18
+      },
+      "plan": {
+        "precision": 0.4117647058823529,
+        "recall": 0.23333333333333334,
+        "f1": 0.2978723404255319,
+        "support": 30
+      },
+      "reflection": {
+        "precision": 0.125,
+        "recall": 0.13636363636363635,
+        "f1": 0.13043478260869565,
+        "support": 22
+      },
+      "system": {
+        "precision": 0.2,
+        "recall": 0.23076923076923078,
+        "f1": 0.21428571428571427,
+        "support": 13
+      }
+    },
+    "confusion_matrix": {
+      "action": {
+        "action": 0,
+        "memory": 6,
+        "plan": 3,
+        "reflection": 3,
+        "system": 2
+      },
+      "memory": {
+        "action": 3,
+        "memory": 6,
+        "plan": 3,
+        "reflection": 6,
+        "system": 0
+      },
+      "plan": {
+        "action": 3,
+        "memory": 7,
+        "plan": 7,
+        "reflection": 8,
+        "system": 5
+      },
+      "reflection": {
+        "action": 6,
+        "memory": 8,
+        "plan": 0,
+        "reflection": 3,
+        "system": 5
+      },
+      "system": {
+        "action": 0,
+        "memory": 2,
+        "plan": 4,
+        "reflection": 4,
+        "system": 3
+      }
+    },
+    "by_subject": {
+      "alfworld": {
+        "macro_precision": 0.1887322515212982,
+        "macro_recall": 0.18675990675990675,
+        "macro_f1": 0.1795823972512224,
+        "accuracy": 0.1958762886597938,
+        "n_items": 97
+      }
+    }
+  }
+}

@@ -17,6 +17,10 @@ Outputs under ``reports/{dataset}/{run_slug}/``:
     failure_location_oof.csv               (when location ran)
     failure_location_step_scores.csv       (when location ran)
     failure_type_oof.csv                   (when type ran)
+
+When the dataset declares a slice dimension (``framework`` for AgentHallu,
+``environment`` for AgentErrorBench), the same artifacts are also written
+per-slice under ``reports/{dataset}/{run_slug}/by-{slice}/{label}/``.
 """
 
 from __future__ import annotations
@@ -24,7 +28,10 @@ from __future__ import annotations
 import argparse
 import logging
 
-from semanticscale.sh6.failure_attribution import evaluate_run, write_outputs
+from semanticscale.sh6.failure_attribution import (
+    evaluate_run_with_slices,
+    write_outputs,
+)
 from semanticscale.utils import load_config, setup_logging
 
 logger = logging.getLogger(__name__)
@@ -52,10 +59,11 @@ def main() -> None:
     args = parse_args()
     config = load_config(args.config)
 
-    summary, outputs, reports_dir = evaluate_run(config, run_slug=args.run_slug)
-    paths = write_outputs(summary, outputs, reports_dir)
-    logger.info("Saved failure-attribution summary to %s", paths["summary_json"])
-    logger.info("Saved failure-attribution markdown to %s", paths["summary_md"])
+    results = evaluate_run_with_slices(config, run_slug=args.run_slug)
+    for summary, outputs, reports_dir in results:
+        paths = write_outputs(summary, outputs, reports_dir)
+        logger.info("Saved failure-attribution summary to %s", paths["summary_json"])
+        logger.info("Saved failure-attribution markdown to %s", paths["summary_md"])
 
 
 if __name__ == "__main__":

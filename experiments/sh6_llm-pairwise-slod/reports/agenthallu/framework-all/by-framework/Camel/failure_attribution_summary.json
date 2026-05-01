@@ -1,0 +1,187 @@
+{
+  "dataset": "agenthallu",
+  "run_slug": "framework-all/by-framework/Camel",
+  "type_field": "hallucination_category",
+  "config": {
+    "cv_folds": 5,
+    "random_state": 42,
+    "min_class_count": 5
+  },
+  "location": {
+    "model": "logreg",
+    "feature_cols": [
+      "n_steps",
+      "step_pos",
+      "remaining_steps",
+      "slod_value",
+      "slod_centered",
+      "slod_from_start",
+      "slod_to_end",
+      "delta_prev",
+      "delta_next",
+      "abs_delta_prev",
+      "abs_delta_next",
+      "curvature",
+      "fall_from_peak",
+      "rebound_from_trough",
+      "is_peak_so_far",
+      "is_trough_so_far",
+      "reasoning_range",
+      "reasoning_monotonicity",
+      "reasoning_total_variation",
+      "reasoning_direction_changes",
+      "reasoning_curvature_abs_mean",
+      "reasoning_n_chunks",
+      "reasoning_peak_pos",
+      "reasoning_trough_pos"
+    ],
+    "n_failed": 57,
+    "n_step_rows": 523,
+    "cv_folds": 5,
+    "step_localization_accuracy": 0.3508771929824561,
+    "by_failure_type": {
+      "Human-Interaction Hallucination": {
+        "step_localization_accuracy": 0.45161290322580644,
+        "n_failed": 31
+      },
+      "Planning Hallucination": {
+        "step_localization_accuracy": 0.0,
+        "n_failed": 5
+      },
+      "Reasoning Hallucination": {
+        "step_localization_accuracy": 0.21428571428571427,
+        "n_failed": 14
+      },
+      "Retrieval Hallucination": {
+        "step_localization_accuracy": 0.42857142857142855,
+        "n_failed": 7
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "step_localization_accuracy": 0.125,
+        "n_failed": 8
+      },
+      "Math": {
+        "step_localization_accuracy": 0.4166666666666667,
+        "n_failed": 12
+      },
+      "Science": {
+        "step_localization_accuracy": 0.39285714285714285,
+        "n_failed": 28
+      },
+      "World Knowledge": {
+        "step_localization_accuracy": 0.3333333333333333,
+        "n_failed": 9
+      }
+    }
+  },
+  "type": {
+    "model": "logreg",
+    "feature_set": "trajectory_full",
+    "type_field": "hallucination_category",
+    "n_items": 57,
+    "n_classes": 4,
+    "classes": [
+      "Human-Interaction Hallucination",
+      "Planning Hallucination",
+      "Reasoning Hallucination",
+      "Retrieval Hallucination"
+    ],
+    "class_counts": {
+      "Human-Interaction Hallucination": 31,
+      "Reasoning Hallucination": 14,
+      "Retrieval Hallucination": 7,
+      "Planning Hallucination": 5
+    },
+    "cv_folds": 5,
+    "metrics": {
+      "macro_precision": 0.2013888888888889,
+      "macro_recall": 0.17453917050691245,
+      "macro_f1": 0.1870026525198939,
+      "accuracy": 0.3157894736842105
+    },
+    "per_class": {
+      "Human-Interaction Hallucination": {
+        "precision": 0.5555555555555556,
+        "recall": 0.4838709677419355,
+        "f1": 0.5172413793103449,
+        "support": 31
+      },
+      "Planning Hallucination": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "Reasoning Hallucination": {
+        "precision": 0.25,
+        "recall": 0.21428571428571427,
+        "f1": 0.23076923076923078,
+        "support": 14
+      },
+      "Retrieval Hallucination": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    },
+    "confusion_matrix": {
+      "Human-Interaction Hallucination": {
+        "Human-Interaction Hallucination": 15,
+        "Planning Hallucination": 3,
+        "Reasoning Hallucination": 6,
+        "Retrieval Hallucination": 7
+      },
+      "Planning Hallucination": {
+        "Human-Interaction Hallucination": 2,
+        "Planning Hallucination": 0,
+        "Reasoning Hallucination": 3,
+        "Retrieval Hallucination": 0
+      },
+      "Reasoning Hallucination": {
+        "Human-Interaction Hallucination": 4,
+        "Planning Hallucination": 5,
+        "Reasoning Hallucination": 3,
+        "Retrieval Hallucination": 2
+      },
+      "Retrieval Hallucination": {
+        "Human-Interaction Hallucination": 6,
+        "Planning Hallucination": 1,
+        "Reasoning Hallucination": 0,
+        "Retrieval Hallucination": 0
+      }
+    },
+    "by_subject": {
+      "General Assistant": {
+        "macro_precision": 0.0625,
+        "macro_recall": 0.08333333333333333,
+        "macro_f1": 0.07142857142857142,
+        "accuracy": 0.125,
+        "n_items": 8
+      },
+      "Math": {
+        "macro_precision": 0.25,
+        "macro_recall": 0.19285714285714284,
+        "macro_f1": 0.21634615384615385,
+        "accuracy": 0.4166666666666667,
+        "n_items": 12
+      },
+      "Science": {
+        "macro_precision": 0.23717948717948717,
+        "macro_recall": 0.19642857142857142,
+        "macro_f1": 0.21485411140583555,
+        "accuracy": 0.35714285714285715,
+        "n_items": 28
+      },
+      "World Knowledge": {
+        "macro_precision": 0.125,
+        "macro_recall": 0.1,
+        "macro_f1": 0.1111111111111111,
+        "accuracy": 0.2222222222222222,
+        "n_items": 9
+      }
+    }
+  }
+}
