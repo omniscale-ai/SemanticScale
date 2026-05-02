@@ -1,0 +1,264 @@
+{
+  "n_runs": 5,
+  "runs": [
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4"
+  ],
+  "slod": {
+    "n_attempts": 483,
+    "base_accuracy": 0.6024844720496895,
+    "base_risk": 0.39751552795031053,
+    "points": [
+      {
+        "coverage": 0.002070393374741201,
+        "retained_n": 1,
+        "risk": 0.0,
+        "accuracy": 1.0
+      },
+      {
+        "coverage": 0.05459300424975482,
+        "retained_n": 26,
+        "risk": 0.23076923076923073,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "coverage": 0.10711561512476844,
+        "retained_n": 52,
+        "risk": 0.2692307692307693,
+        "accuracy": 0.7307692307692307
+      },
+      {
+        "coverage": 0.15963822599978209,
+        "retained_n": 77,
+        "risk": 0.3116883116883117,
+        "accuracy": 0.6883116883116883
+      },
+      {
+        "coverage": 0.2121608368747957,
+        "retained_n": 102,
+        "risk": 0.303921568627451,
+        "accuracy": 0.696078431372549
+      },
+      {
+        "coverage": 0.2646834477498093,
+        "retained_n": 128,
+        "risk": 0.2890625,
+        "accuracy": 0.7109375
+      },
+      {
+        "coverage": 0.31720605862482293,
+        "retained_n": 153,
+        "risk": 0.2679738562091504,
+        "accuracy": 0.7320261437908496
+      },
+      {
+        "coverage": 0.3697286694998365,
+        "retained_n": 179,
+        "risk": 0.26256983240223464,
+        "accuracy": 0.7374301675977654
+      },
+      {
+        "coverage": 0.42225128037485016,
+        "retained_n": 204,
+        "risk": 0.2598039215686274,
+        "accuracy": 0.7401960784313726
+      },
+      {
+        "coverage": 0.4747738912498638,
+        "retained_n": 229,
+        "risk": 0.2532751091703057,
+        "accuracy": 0.7467248908296943
+      },
+      {
+        "coverage": 0.5272965021248774,
+        "retained_n": 255,
+        "risk": 0.26274509803921564,
+        "accuracy": 0.7372549019607844
+      },
+      {
+        "coverage": 0.5798191129998911,
+        "retained_n": 280,
+        "risk": 0.2678571428571429,
+        "accuracy": 0.7321428571428571
+      },
+      {
+        "coverage": 0.6323417238749047,
+        "retained_n": 305,
+        "risk": 0.28524590163934427,
+        "accuracy": 0.7147540983606557
+      },
+      {
+        "coverage": 0.6848643347499184,
+        "retained_n": 331,
+        "risk": 0.29607250755287007,
+        "accuracy": 0.7039274924471299
+      },
+      {
+        "coverage": 0.7373869456249319,
+        "retained_n": 356,
+        "risk": 0.3174157303370787,
+        "accuracy": 0.6825842696629213
+      },
+      {
+        "coverage": 0.7899095564999455,
+        "retained_n": 382,
+        "risk": 0.3403141361256544,
+        "accuracy": 0.6596858638743456
+      },
+      {
+        "coverage": 0.8424321673749592,
+        "retained_n": 407,
+        "risk": 0.3513513513513513,
+        "accuracy": 0.6486486486486487
+      },
+      {
+        "coverage": 0.8949547782499728,
+        "retained_n": 432,
+        "risk": 0.36111111111111116,
+        "accuracy": 0.6388888888888888
+      },
+      {
+        "coverage": 0.9474773891249865,
+        "retained_n": 458,
+        "risk": 0.37554585152838427,
+        "accuracy": 0.6244541484716157
+      },
+      {
+        "coverage": 1.0,
+        "retained_n": 483,
+        "risk": 0.39751552795031053,
+        "accuracy": 0.6024844720496895
+      }
+    ]
+  },
+  "length": {
+    "n_attempts": 483,
+    "base_accuracy": 0.6024844720496895,
+    "base_risk": 0.39751552795031053,
+    "points": [
+      {
+        "coverage": 0.002070393374741201,
+        "retained_n": 1,
+        "risk": 1.0,
+        "accuracy": 0.0
+      },
+      {
+        "coverage": 0.05459300424975482,
+        "retained_n": 26,
+        "risk": 0.3076923076923077,
+        "accuracy": 0.6923076923076923
+      },
+      {
+        "coverage": 0.10711561512476844,
+        "retained_n": 52,
+        "risk": 0.3653846153846154,
+        "accuracy": 0.6346153846153846
+      },
+      {
+        "coverage": 0.15963822599978209,
+        "retained_n": 77,
+        "risk": 0.36363636363636365,
+        "accuracy": 0.6363636363636364
+      },
+      {
+        "coverage": 0.2121608368747957,
+        "retained_n": 102,
+        "risk": 0.3431372549019608,
+        "accuracy": 0.6568627450980392
+      },
+      {
+        "coverage": 0.2646834477498093,
+        "retained_n": 128,
+        "risk": 0.328125,
+        "accuracy": 0.671875
+      },
+      {
+        "coverage": 0.31720605862482293,
+        "retained_n": 153,
+        "risk": 0.33333333333333337,
+        "accuracy": 0.6666666666666666
+      },
+      {
+        "coverage": 0.3697286694998365,
+        "retained_n": 179,
+        "risk": 0.33519553072625696,
+        "accuracy": 0.664804469273743
+      },
+      {
+        "coverage": 0.42225128037485016,
+        "retained_n": 204,
+        "risk": 0.32843137254901966,
+        "accuracy": 0.6715686274509803
+      },
+      {
+        "coverage": 0.4747738912498638,
+        "retained_n": 229,
+        "risk": 0.32751091703056767,
+        "accuracy": 0.6724890829694323
+      },
+      {
+        "coverage": 0.5272965021248774,
+        "retained_n": 255,
+        "risk": 0.3294117647058824,
+        "accuracy": 0.6705882352941176
+      },
+      {
+        "coverage": 0.5798191129998911,
+        "retained_n": 280,
+        "risk": 0.3392857142857143,
+        "accuracy": 0.6607142857142857
+      },
+      {
+        "coverage": 0.6323417238749047,
+        "retained_n": 305,
+        "risk": 0.3475409836065574,
+        "accuracy": 0.6524590163934426
+      },
+      {
+        "coverage": 0.6848643347499184,
+        "retained_n": 331,
+        "risk": 0.3383685800604229,
+        "accuracy": 0.6616314199395771
+      },
+      {
+        "coverage": 0.7373869456249319,
+        "retained_n": 356,
+        "risk": 0.3426966292134831,
+        "accuracy": 0.6573033707865169
+      },
+      {
+        "coverage": 0.7899095564999455,
+        "retained_n": 382,
+        "risk": 0.3481675392670157,
+        "accuracy": 0.6518324607329843
+      },
+      {
+        "coverage": 0.8424321673749592,
+        "retained_n": 407,
+        "risk": 0.35380835380835385,
+        "accuracy": 0.6461916461916462
+      },
+      {
+        "coverage": 0.8949547782499728,
+        "retained_n": 432,
+        "risk": 0.36111111111111116,
+        "accuracy": 0.6388888888888888
+      },
+      {
+        "coverage": 0.9474773891249865,
+        "retained_n": 458,
+        "risk": 0.3799126637554585,
+        "accuracy": 0.6200873362445415
+      },
+      {
+        "coverage": 1.0,
+        "retained_n": 483,
+        "risk": 0.39751552795031053,
+        "accuracy": 0.6024844720496895
+      }
+    ]
+  }
+}
