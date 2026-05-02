@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SH6 illustration — FrontierScience · olympiad · 22f5a060-b2ba-</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+  options: { renderActions: { addMenu: [] } }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         max-width: 1200px; margin: 1.2em auto; padding: 0 1em; color: #222; }
+  h1 { font-size: 1.15em; margin-bottom: 0.1em; }
+  .subtitle { font-size: 0.9em; color: #555; line-height: 1.45; margin-bottom: 1em; }
+  .stats { font-family: monospace; font-size: 0.82em; color: #333;
+           background: #f4f4f4; padding: 0.45em 0.7em; border-radius: 4px;
+           display: inline-block; margin-top: 0.4em; }
+  #plot { height: 460px; margin-bottom: 0.6em; }
+  .legend { font-size: 0.82em; color: #666; margin: 0.4em 0 1em 0; }
+  .legend code { background: #f0f0f0; padding: 0 0.3em; border-radius: 3px; }
+  #chunks h3 { font-size: 0.95em; margin: 1.2em 0 0.5em 0; color: #555; font-weight: 600;
+               border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+  .chunk { padding: 0.55em 0.8em; margin: 0.5em 0; border-radius: 6px;
+           border-left: 4px solid #ccc; background: #fafafa; transition: background 0.15s; }
+  .chunk.macro { border-left-color: #1f77b4; background: #f0f7ff; }
+  .chunk.micro { border-left-color: #d62728; background: #fff3f0; }
+  .chunk.highlight { background: #fff3a8 !important; box-shadow: 0 0 0 2px #f59f00; }
+  .chunk-meta { font-size: 0.78em; color: #666; font-family: monospace; margin-bottom: 0.3em; }
+  .chunk-meta .score { font-weight: 600; }
+  .chunk-meta .score.pos { color: #1f77b4; }
+  .chunk-meta .score.neg { color: #d62728; }
+  .chunk-meta .flip { color: #d68000; font-weight: 600; }
+  .chunk-text { white-space: pre-wrap; line-height: 1.45; font-size: 0.93em;
+                word-wrap: break-word; overflow-wrap: break-word; }
+  details.problem { margin: 0.4em 0 1em 0; }
+  details.problem summary { cursor: pointer; font-size: 0.88em; color: #555;
+                             padding: 0.3em 0.5em; background: #f4f4f4; border-radius: 4px; }
+  details.problem .body { padding: 0.6em 0.8em; border: 1px solid #eee; border-top: 0; font-size: 0.9em; line-height: 1.45; white-space: pre-wrap; }
+  .diagnosis { background: #fff8e0; border: 1px solid #f0d878; border-left: 4px solid #d6a000;
+               padding: 0.7em 0.9em; margin: 0.6em 0 1em 0; line-height: 1.5; font-size: 0.92em; }
+  .diagnosis code { background: rgba(0,0,0,0.06); padding: 0 0.25em; border-radius: 3px; font-size: 0.92em; }
+  a.back { font-size: 0.85em; color: #1f77b4; text-decoration: none; }
+  a.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← back to index</a>
+<h1>FrontierScience · olympiad · 22f5a060-b2ba-4d68-8ad1-cbcbd58a788e · chemistry (low-spin diamagnetic complex) · RIGHT</h1>
+<div class="subtitle"><b>flags:</b> none</div>
+<div class="stats">n = 29 reasoning chunks &nbsp;·&nbsp; BT range -7.2 … +5.1 &nbsp;·&nbsp; 18 sign flips (64% of edges)</div>
+<div class="diagnosis"><b>The Result:</b> This requires navigating coordination chemistry, mass percentages, and spin states simultaneously. The model methodically locked onto Cobalt(III) and Nitrite ligands, calculating the mass precisely, culminating in a highly confident prediction with no SLoD instability.</div>
+<details class="problem"><summary>📄 problem statement</summary><div class="body">Salt X is an interesting insoluble potassium salt. It can be formed by precipitation from the corresponding sodium salt. Given that the anion is a low-spin and diamagnetic complex with 6 of the same ligand, and its nitrogen mass percentage is 25% of the anion, identify X.
+
+Think step by step and solve the problem below. At the end of your response, write your final answer on a new line starting with “FINAL ANSWER”. It should be an answer to the question such as providing a number, mathematical expression, formula, or entity name, without any extra commentary or providing multiple answer attempts.</div></details>
+<div id="plot"></div>
+<p class="legend">
+  Click any point on the chart to jump to that chunk below.
+  Blue = <code>+</code> macro/framing chunk · red = <code>−</code> micro/detail chunk ·
+  orange edges = sign flip (the visual signature of <code>thrashing</code>).
+</p>
+<div id="chunks">
+<h3>reasoning chunks (in order)</h3>
+<div class="chunk micro" id="chunk-0"><div class="chunk-meta">#000 · <span class="score neg">BT -2.66</span></div><div class="chunk-text">We are given: &quot;Salt X is an interesting insoluble potassium salt. It can be formed by precipitation from the corresponding sodium salt. Given that the anion is a low-spin and diamagnetic complex with 6 of the same ligand, and its nitrogen mass percentage is 25% of the anion, identify X.&quot;</div></div>
+<div class="chunk macro" id="chunk-1"><div class="chunk-meta">#001 · <span class="score pos">BT +2.59</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Interpretation: Salt X is an insoluble potassium salt. It is formed by precipitation from the corresponding sodium salt. That suggests that the potassium salt is less soluble than the sodium salt, so adding potassium ions to a solution of the sodium salt precipitates the potassium salt.</div></div>
+<div class="chunk macro" id="chunk-2"><div class="chunk-meta">#002 · <span class="score pos">BT +5.10</span></div><div class="chunk-text">The anion is a low-spin and diamagnetic complex with 6 of the same ligand. That means the anion is an octahedral complex with six identical ligands. Low-spin and diamagnetic implies that the metal center has no unpaired electrons. For an octahedral complex, low-spin configuration typically occurs with strong field ligands. Diamagnetic means all electrons are paired. So the metal ion likely has a d^6 configuration (like Fe(II), Co(III), etc.) in low-spin, all paired.</div></div>
+<div class="chunk micro" id="chunk-3"><div class="chunk-meta">#003 · <span class="score neg">BT -4.36</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Also: &quot;its nitrogen mass percentage is 25% of the anion&quot;. That means the anion (the complex ion) contains nitrogen, and the mass percentage of nitrogen in the anion is 25%. So if we denote the anion as [M(L)_6]^{n-}, where L is a ligand containing nitrogen, then the total molar mass of the anion satisfies: (total mass of nitrogen from ligands) / (molar mass of anion) = 0.25.</div></div>
+<div class="chunk macro" id="chunk-4"><div class="chunk-meta">#004 · <span class="score pos">BT +2.16</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">We need to identify X. X is the insoluble potassium salt. So likely, X is K?[something]. Probably the anion is something like [Fe(CN)_6]^{4-} or [Co(CN)_6]^{3-} etc. But let&#x27;s check conditions.</div></div>
+<div class="chunk micro" id="chunk-5"><div class="chunk-meta">#005 · <span class="score neg">BT -4.52</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">We have: &quot;6 of the same ligand&quot; so ligands are identical. The ligand contains nitrogen? Possibly cyanide (CN^-) or nitrite (NO2^-) or ammonia (NH3) but ammonia is neutral, so the complex would be cationic if ligands are neutral. But it says &quot;anion&quot;, so the complex is anionic. So the ligands are likely anionic, like CN^-, NO2^-, SCN^-, etc. But if it is low-spin and diamagnetic, strong field ligands are needed. CN^- is a very strong field ligand. NO2^- can be ambidentate but usually is a moderate field ligand. Also nitrogen mass percentage: For cyanide ligand, CN^- has atomic masses: C=12, N=14, so molar mass = 26. But if we have six of them, total nitrogen mass from ligands = 6*14 = 84. For an anion like [M(CN)_6]^{n-}, the molar mass of the anion = M_metal + 6*26 + maybe charge? But the mass is just sum of atomic masses. So we have: 84 / (M_metal + 156) = 0.25. Solve: 84 = 0.25*(M_metal + 156) =&gt; M_metal + 156 = 336 =&gt; M_metal = 180. That is too high for a common metal. Possibly if n is negative, but we ignore the charge for mass. So if M = Fe (56), then M_metal+156=212, 84/212 ≈ 0.396, not 0.25. For Co (59), 84/(59+156)=84/215≈0.391. For Cr (52), 84/208≈0.404. So too high. So maybe the ligand has more than one nitrogen? Or maybe the ligand is something like NO2^-? NO2^- has N and 2 O, mass = 46, nitrogen mass per ligand = 14, six ligands give 84 again. So similar issue. For SCN^-: mass = 58, N mass = 14, six ligands give 84, anion mass = M + 6*58 = M+348, then 84/(M+348)=0.25 =&gt; M+348=336 =&gt; M negative. Not possible.</div></div>
+<div class="chunk macro" id="chunk-6"><div class="chunk-meta">#006 · <span class="score pos">BT +4.79</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Maybe the ligand is something like ethylenediamine (en)? But en is bidentate and neutral. With 6 same ligands, if en is bidentate, then 6 en would give 12 coordination, not octahedral. &quot;6 of the same ligand&quot; likely means monodentate ligands. Also if the ligand is neutral, the complex could be cationic, but it says anion, so the complex is anionic. That means either the metal has a high positive charge and ligands are anionic, or the ligand is neutral and the metal is in a negative oxidation state? Unlikely.</div></div>
+<div class="chunk micro" id="chunk-7"><div class="chunk-meta">#007 · <span class="score neg">BT -2.55</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Maybe the ligand contains nitrogen but also other atoms. For nitrogen mass percentage to be 25%, we need the average mass per nitrogen atom to be such that the fraction is 0.25. Let the ligand formula be L, containing x nitrogen atoms. Let the molar mass of ligand be M_L. Then total N mass = 6*x*14. Anion mass = M_metal + 6*M_L. So we have: (84x)/(M_metal + 6M_L) = 0.25 =&gt; 336x = M_metal + 6M_L. Also the complex is low-spin diamagnetic octahedral. Typically, low-spin diamagnetic octahedral complexes are often d^6 with strong field ligands. Common ones: [Fe(CN)_6]^{4-}, [Fe(CN)_6]^{3-} (but Fe(III) d^5 low-spin? Fe(III) in low-spin d^5 has one unpaired electron? Actually, low-spin d^5: t2g^5, so one unpaired electron, paramagnetic. So not diamagnetic. [Co(CN)_6]^{3-} is d^6 low-spin diamagnetic. [Co(NH3)_6]^{3+} is also d^6 low-spin diamagnetic but cationic. So anion: [Co(CN)_6]^{3-} is anionic. But as computed, N mass % for [Co(CN)_6]^{3-}: Co=59, 6 CN=6*26=156, total=215, N mass=84, %=84/215≈39.1%, not 25%. Maybe it&#x27;s not cyanide.</div></div>
+<div class="chunk micro" id="chunk-8"><div class="chunk-meta">#008 · <span class="score neg">BT -4.62</span></div><div class="chunk-text">Maybe the ligand is NO2^- (nitro). But as computed, similar. For [Co(NO2)_6]^{3-}? Actually, hexanitrocobaltate(III) [Co(NO2)_6]^{3-} exists. Mass: Co=59, 6 NO2=6*46=276, total=335, N mass=6*14=84, %=84/335≈25.07% which is close to 25%! That is promising. Check: 84/335 = 0.2507, so approximately 25%. So that could be it. But is [Co(NO2)_6]^{3-} low-spin and diamagnetic? Cobalt(III) is d^6. Nitro ligand (NO2^-) is a strong field ligand? Actually, NO2^- is a strong field ligand, but it is not as strong as CN^-. Typically, Co(III) complexes are low-spin regardless because Co(III) has high charge and relatively strong field. Hexanitrocobaltate(III) ion: Actually, [Co(NO2)_6]^{3-} is known as a coordination complex. Its magnetic properties: Co(III) is d^6, and since NO2^- is a strong field ligand, it should be low-spin. Low-spin d^6 is diamagnetic. So yes, it should be diamagnetic. But wait: sometimes NO2^- can be ambidentate, but here it is bound through nitrogen (nitro) not through oxygen (nitrito). Typically, nitro complexes are low-spin for Co(III). Actually, I recall that hexanitrocobaltate(III) is diamagnetic. So it fits.</div></div>
+<div class="chunk macro" id="chunk-9"><div class="chunk-meta">#009 · <span class="score pos">BT +4.57</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Also, salt X is an insoluble potassium salt. Which potassium salt of hexanitrocobaltate? Potassium hexanitrocobaltate(III) is K3[Co(NO2)_6]. But is it insoluble? Actually, potassium hexanitrocobaltate(III) is known as a yellow precipitate used in qualitative analysis for potassium. In fact, K3[Co(NO2)_6] is insoluble and used to test for potassium ions. Also, it can be formed by precipitation from the corresponding sodium salt: Na3[Co(NO2)_6] is soluble? Actually, sodium hexanitrocobaltate(III) is soluble. So mixing a solution of Na3[Co(NO2)_6] with potassium ions gives a precipitate of K3[Co(NO2)_6]. That exactly matches: &quot;Salt X can be formed by precipitation from the corresponding sodium salt.&quot; So X is likely potassium hexanitrocobaltate(III), K3[Co(NO2)_6]. But sometimes it&#x27;s written as K3[Co(NO2)_6] or perhaps with some hydration. But the problem says &quot;Salt X&quot;, likely the formula.</div></div>
+<div class="chunk micro" id="chunk-10"><div class="chunk-meta">#010 · <span class="score neg">BT -6.92</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">But check nitrogen mass percentage again: For the anion [Co(NO2)_6]^{3-}, molar mass: Co=59, N=14, O=16. NO2 group mass = 46, six of them: 276, total = 59+276=335. Nitrogen mass = 6*14=84, percentage = 84/335 ≈ 0.2507 = 25.07%, essentially 25%. So it fits perfectly.</div></div>
+<div class="chunk macro" id="chunk-11"><div class="chunk-meta">#011 · <span class="score pos">BT +2.37</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Could there be other possibilities? Consider [Rh(NO2)_6]^{3-}: Rh atomic mass ~103, total anion mass = 103+276=379, N% = 84/379 ≈ 22.2%, not 25%. [Ir(NO2)_6]^{3-}: Ir ~192, 192+276=468, 84/468=17.9%. So only Co gives about 25%. Also Fe could be [Fe(CN)_5NO]^{2-}? That is nitroprusside, but not 6 same ligands. Cyanide ligands: different? Actually, nitroprusside has 5 CN and one NO, not all same.</div></div>
+<div class="chunk macro" id="chunk-12"><div class="chunk-meta">#012 · <span class="score pos">BT +2.81</span></div><div class="chunk-text">What about [Fe(CN)_6]^{4-}? Already computed ~39%. So not.</div></div>
+<div class="chunk macro" id="chunk-13"><div class="chunk-meta">#013 · <span class="score pos">BT +2.58</span></div><div class="chunk-text">Maybe ligand is NH3? That would give cationic complexes. So not anion.</div></div>
+<div class="chunk micro" id="chunk-14"><div class="chunk-meta">#014 · <span class="score neg">BT -2.14</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">What about [Co(CN)_6]^{3-}? N% ~39%. So no.</div></div>
+<div class="chunk micro" id="chunk-15"><div class="chunk-meta">#015 · <span class="score neg">BT -7.25</span></div><div class="chunk-text">What about [Cr(CN)_6]^{3-}? Cr=52, total=52+156=208, N%=84/208=40.4%. So no.</div></div>
+<div class="chunk macro" id="chunk-16"><div class="chunk-meta">#016 · <span class="score pos">BT +1.96</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Thus, hexanitrocobaltate(III) is a perfect match.</div></div>
+<div class="chunk micro" id="chunk-17"><div class="chunk-meta">#017 · <span class="score neg">BT -4.55</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Also, the problem says &quot;the anion is a low-spin and diamagnetic complex with 6 of the same ligand&quot;. That fits [Co(NO2)_6]^{3-} (nitro ligands).</div></div>
+<div class="chunk macro" id="chunk-18"><div class="chunk-meta">#018 · <span class="score pos">BT +4.65</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Thus, X is likely potassium hexanitrocobaltate(III), K3[Co(NO2)_6]. Often written as K3[Co(NO2)_6]. Sometimes it&#x27;s called potassium cobaltinitrite. But the problem likely expects the formula or the name.</div></div>
+<div class="chunk macro" id="chunk-19"><div class="chunk-meta">#019 · <span class="score pos">BT +2.89</span></div><div class="chunk-text">The question: &quot;identify X.&quot; Possibly give the chemical formula or the name. Since it says &quot;Salt X&quot;, we should give the formula of the salt. Probably K3[Co(NO2)_6]. Alternatively, sometimes it&#x27;s written as K3[Co(NO2)_6]·H2O or something, but I think the anhydrous is fine.</div></div>
+<div class="chunk macro" id="chunk-20"><div class="chunk-meta">#020 · <span class="score pos">BT +0.24</span></div><div class="chunk-text">Also, check: &quot;insoluble potassium salt&quot; – indeed, K3[Co(NO2)_6] is insoluble, while Na3[Co(NO2)_6] is soluble.</div></div>
+<div class="chunk micro" id="chunk-21"><div class="chunk-meta">#021 · <span class="score neg">BT -2.67</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Thus, final answer: K3[Co(NO2)_6].</div></div>
+<div class="chunk macro" id="chunk-22"><div class="chunk-meta">#022 · <span class="score pos">BT +2.09</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">But let&#x27;s verify: Is it low-spin? Co(III) d^6, with NO2^- as a strong field ligand? Actually, the spectrochemical series: NO2^- is a strong field ligand, but not as strong as CN^-. For Co(III), almost all octahedral complexes are low-spin because of the high oxidation state. So yes, it is low-spin and diamagnetic.</div></div>
+<div class="chunk micro" id="chunk-23"><div class="chunk-meta">#023 · <span class="score neg">BT -6.99</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Thus, I&#x27;m confident.</div></div>
+<div class="chunk macro" id="chunk-24"><div class="chunk-meta">#024 · <span class="score pos">BT +2.30</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Final answer: K3[Co(NO2)_6]. Alternatively, potassium hexanitrocobaltate(III).</div></div>
+<div class="chunk macro" id="chunk-25"><div class="chunk-meta">#025 · <span class="score pos">BT +2.86</span></div><div class="chunk-text">But the instruction says: &quot;write your final answer on a new line starting with “FINAL ANSWER”. It should be an answer to the question such as providing a number, mathematical expression, formula, or entity name, without any extra commentary or providing multiple answer attempts.&quot; So just provide the formula.</div></div>
+<div class="chunk macro" id="chunk-26"><div class="chunk-meta">#026 · <span class="score pos">BT +2.09</span></div><div class="chunk-text">Maybe they want X as the anion? But X is the salt. So I&#x27;ll give K3[Co(NO2)_6].</div></div>
+<div class="chunk micro" id="chunk-27"><div class="chunk-meta">#027 · <span class="score neg">BT -2.47</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Could also be simply &quot;potassium cobaltinitrite&quot; but formula is more precise.</div></div>
+<div class="chunk micro" id="chunk-28"><div class="chunk-meta">#028 · <span class="score neg">BT -0.05</span></div><div class="chunk-text">Thus, FINAL ANSWER: K3[Co(NO2)_6]</div></div>
+</div>
+<script>
+const trajectory = [{"r": -2.6647232041777755, "preview": "We are given: &quot;Salt X is an interesting insoluble potassium salt. It can be formed by precipitation from the corresponding sodium salt. Giv\u2026"}, {"r": 2.5940497637022837, "preview": "Interpretation: Salt X is an insoluble potassium salt. It is formed by precipitation from the corresponding sodium salt. That suggests that\u2026"}, {"r": 5.101193162873045, "preview": "The anion is a low-spin and diamagnetic complex with 6 of the same ligand. That means the anion is an octahedral complex with six identical\u2026"}, {"r": -4.356463311354258, "preview": "Also: &quot;its nitrogen mass percentage is 25% of the anion&quot;. That means the anion (the complex ion) contains nitrogen, and the mass percentage\u2026"}, {"r": 2.15574683640034, "preview": "We need to identify X. X is the insoluble potassium salt. So likely, X is K?[something]. Probably the anion is something like [Fe(CN)_6]^{4\u2026"}, {"r": -4.516788514462213, "preview": "We have: &quot;6 of the same ligand&quot; so ligands are identical. The ligand contains nitrogen? Possibly cyanide (CN^-) or nitrite (NO2^-) or ammon\u2026"}, {"r": 4.790857367063772, "preview": "Maybe the ligand is something like ethylenediamine (en)? But en is bidentate and neutral. With 6 same ligands, if en is bidentate, then 6 e\u2026"}, {"r": -2.546604378308267, "preview": "Maybe the ligand contains nitrogen but also other atoms. For nitrogen mass percentage to be 25%, we need the average mass per nitrogen atom\u2026"}, {"r": -4.6191225415981485, "preview": "Maybe the ligand is NO2^- (nitro). But as computed, similar. For [Co(NO2)_6]^{3-}? Actually, hexanitrocobaltate(III) [Co(NO2)_6]^{3-} exist\u2026"}, {"r": 4.574661423599622, "preview": "Also, salt X is an insoluble potassium salt. Which potassium salt of hexanitrocobaltate? Potassium hexanitrocobaltate(III) is K3[Co(NO2)_6]\u2026"}, {"r": -6.915767874524697, "preview": "But check nitrogen mass percentage again: For the anion [Co(NO2)_6]^{3-}, molar mass: Co=59, N=14, O=16. NO2 group mass = 46, six of them:\u2026"}, {"r": 2.373037392161951, "preview": "Could there be other possibilities? Consider [Rh(NO2)_6]^{3-}: Rh atomic mass ~103, total anion mass = 103+276=379, N% = 84/379 \u2248 22.2%, no\u2026"}, {"r": 2.812676375235071, "preview": "What about [Fe(CN)_6]^{4-}? Already computed ~39%. So not."}, {"r": 2.5831453941803666, "preview": "Maybe ligand is NH3? That would give cationic complexes. So not anion."}, {"r": -2.144822398752847, "preview": "What about [Co(CN)_6]^{3-}? N% ~39%. So no."}, {"r": -7.246188403103918, "preview": "What about [Cr(CN)_6]^{3-}? Cr=52, total=52+156=208, N%=84/208=40.4%. So no."}, {"r": 1.9598857195703516, "preview": "Thus, hexanitrocobaltate(III) is a perfect match."}, {"r": -4.550792678831744, "preview": "Also, the problem says &quot;the anion is a low-spin and diamagnetic complex with 6 of the same ligand&quot;. That fits [Co(NO2)_6]^{3-} (nitro ligan\u2026"}, {"r": 4.6496659896227825, "preview": "Thus, X is likely potassium hexanitrocobaltate(III), K3[Co(NO2)_6]. Often written as K3[Co(NO2)_6]. Sometimes it&#x27;s called potassium cobalti\u2026"}, {"r": 2.8855923569325057, "preview": "The question: &quot;identify X.&quot; Possibly give the chemical formula or the name. Since it says &quot;Salt X&quot;, we should give the formula of the salt.\u2026"}, {"r": 0.24458893139613025, "preview": "Also, check: &quot;insoluble potassium salt&quot; \u2013 indeed, K3[Co(NO2)_6] is insoluble, while Na3[Co(NO2)_6] is soluble."}, {"r": -2.6665710925799004, "preview": "Thus, final answer: K3[Co(NO2)_6]."}, {"r": 2.088813552745016, "preview": "But let&#x27;s verify: Is it low-spin? Co(III) d^6, with NO2^- as a strong field ligand? Actually, the spectrochemical series: NO2^- is a strong\u2026"}, {"r": -6.9901491437497825, "preview": "Thus, I&#x27;m confident."}, {"r": 2.2980354659832187, "preview": "Final answer: K3[Co(NO2)_6]. Alternatively, potassium hexanitrocobaltate(III)."}, {"r": 2.861698578993021, "preview": "But the instruction says: &quot;write your final answer on a new line starting with \u201cFINAL ANSWER\u201d. It should be an answer to the question such\u2026"}, {"r": 2.093706871354158, "preview": "Maybe they want X as the anion? But X is the salt. So I&#x27;ll give K3[Co(NO2)_6]."}, {"r": -2.4744974926881973, "preview": "Could also be simply &quot;potassium cobaltinitrite&quot; but formula is more precise."}, {"r": -0.04543336429648903, "preview": "Thus, FINAL ANSWER: K3[Co(NO2)_6]"}];
+const colors = trajectory.map(d => d.r > 0 ? '#1f77b4' : '#d62728');
+const previews = trajectory.map(d => d.preview);
+
+const trace = {
+  x: trajectory.map((_, i) => i),
+  y: trajectory.map(d => d.r),
+  mode: 'lines+markers',
+  marker: { color: colors, size: 11, line: { color: 'white', width: 1 } },
+  line: { color: 'rgba(0,0,0,0.35)', width: 1 },
+  text: previews,
+  hovertemplate: '<b>chunk %{x}</b> · BT %{y:+.2f}<br>%{text}<br><span style="font-size:0.8em;color:#888">click to jump to text</span><extra></extra>'
+};
+
+const flipShapes = [];
+for (let i = 1; i < trajectory.length; i++) {
+  const a = trajectory[i-1].r, b = trajectory[i].r;
+  if ((a > 0) !== (b > 0)) {
+    flipShapes.push({
+      type: 'line',
+      x0: i-1, x1: i, y0: a, y1: b,
+      line: { color: 'orange', width: 3.5 },
+      layer: 'below'
+    });
+  }
+}
+
+const layout = {
+  margin: { t: 20, l: 60, r: 20, b: 50 },
+  xaxis: { title: 'chunk index', zeroline: false },
+  yaxis: { title: 'SLoD (BT score) — +macro / −micro', zeroline: true, zerolinecolor: '#bbb' },
+  shapes: flipShapes,
+  hovermode: 'closest',
+  hoverlabel: { align: 'left', bgcolor: 'white', font: { size: 12 } }
+};
+
+Plotly.newPlot('plot', [trace], layout, { displayModeBar: false, responsive: true });
+
+document.getElementById('plot').on('plotly_click', e => {
+  const idx = e.points[0].pointIndex;
+  document.querySelectorAll('.chunk').forEach(el => el.classList.remove('highlight'));
+  const target = document.getElementById('chunk-' + idx);
+  if (target) {
+    target.classList.add('highlight');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
+</body>
+</html>

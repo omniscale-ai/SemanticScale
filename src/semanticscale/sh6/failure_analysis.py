@@ -216,7 +216,7 @@ FEATURE_FAMILY_RULES = [
 
 MODEL_DISPLAY_NAMES = {
     "length_only": "length_only (logreg)",
-    "lenght_abort": "lenght_abort (logreg)",
+    "length_abort": "length_abort (logreg)",
     "trajectory_shape": "trajectory_shape (logreg)",
     "trajectory_full": "trajectory_full (logreg)",
     "minirocket_reasoning_traj": "reasoning_traj (MiniRocket)",
@@ -227,7 +227,7 @@ MODEL_DISPLAY_NAMES = {
 
 MODEL_REPORT_ORDER = (
     "length_only",
-    "lenght_abort",
+    "length_abort",
     "trajectory_shape",
     "trajectory_full",
     "minirocket_reasoning_traj",
@@ -238,7 +238,7 @@ MODEL_REPORT_ORDER = (
 
 MODEL_ROC_STYLES = (
     ("length_only", "#8c8c8c"),
-    ("lenght_abort", "#8c8c8c"),
+    ("length_abort", "#8c8c8c"),
     ("trajectory_shape", "#2166ac"),
     ("trajectory_full", "#b2182b"),
     ("minirocket_reasoning_traj", "#ef8a62"),
@@ -1270,7 +1270,7 @@ def compute_capture_ratio(model_results: dict[str, dict]) -> dict | None:
     Caveat: on FrontierScience the captured-fraction is **inflated** because
     the answer-side detectors were selected for predictive power on FS. The
     SWE-agent number is unbiased because the reasoning-side detectors were
-    pre-registered. See ``failure_modes`` module docstring for the full
+    formulated a priori. See ``failure_modes`` module docstring for the full
     methodological note.
     """
     modes_result = model_results.get("mode_stack")
@@ -1427,7 +1427,7 @@ def write_markdown_report(
                 "",
                 "## Interpretable Failure-Mode Detectors",
                 "",
-                "Each detector encodes a pre-registered hypothesis: *higher detector score implies a higher probability of failure*.",
+                "Each detector encodes a directional hypothesis: *higher detector score implies a higher probability of failure*.",
                 "For every run we compute a 95% percentile-bootstrap CI on the score's failure-AUC and assign one of four verdicts:",
                 "",
                 "- `confirmed` — CI lower bound above 0.5; the directional claim holds.",
@@ -1513,7 +1513,7 @@ def write_markdown_report(
                     "were selected post-hoc by ranking univariate AUCs on this "
                     "dataset. Treat this number as a descriptive upper bound. "
                     "The SWE-agent capture number, where the reasoning-side "
-                    "detectors were pre-registered, is the unbiased estimate."
+                    "detectors were formulated a priori, is the unbiased estimate."
                 )
 
         if coverage and coverage.get("n_failures"):

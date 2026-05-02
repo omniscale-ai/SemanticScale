@@ -1,0 +1,57 @@
+paths:
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
+
+dataset:
+  name: gpqa-diamond-freeform
+  hf_path: Idavidrein/gpqa
+  config: gpqa_diamond
+  split: train
+  max_samples: null
+
+traces:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: true
+    extra_body:
+      max_tokens: 65536
+  max_concurrent: 40
+  max_retries: 5
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+grader:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: false
+    extra_body:
+      max_tokens: 65536
+  max_concurrent: 40
+
+pairwise_slod:
+  model:
+    name: deepseek/deepseek-v3.2
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    reasoning:
+      enabled: false
+    extra_body:
+      max_tokens: 65536
+  max_concurrent: 40
+  extra_comparisons_per_problem: 20
+  max_reasoning_chunks: 24
+  max_answer_chunks: 4
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

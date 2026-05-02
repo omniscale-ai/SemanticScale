@@ -158,6 +158,14 @@ def _minirocket_trajectory_cols(features_csv: Path) -> list[str]:
     return sorted(c for c in header.columns if c.startswith("reasoning_traj_t"))
 
 
+def _has_observed_values(features_csv: Path, cols: list[str]) -> bool:
+    """True when at least one selected feature column has a non-null value."""
+    if not cols:
+        return False
+    values = pd.read_csv(features_csv, usecols=cols)
+    return bool(values.notna().any(axis=None))
+
+
 def _run_model_comparison_for_run(
     *,
     reports_dir: Path,
@@ -210,6 +218,11 @@ def _run_model_comparison_for_run(
                 logger.warning(
                     "MiniRocket requested but no reasoning_traj_t* columns found in %s "
                     "— re-run without --skip-failure-analysis to regenerate the CSV",
+                    features_csv,
+                )
+            elif not _has_observed_values(features_csv, traj_cols):
+                logger.warning(
+                    "MiniRocket requested but reasoning_traj_t* columns are all missing in %s",
                     features_csv,
                 )
             else:
@@ -532,10 +545,10 @@ def _run_failure_analysis(
             if truncation_feature not in length_features:
                 length_features.append(truncation_feature)
             feature_sets.pop("length_only", None)
-            baseline_feature_set = "lenght_abort"
+            baseline_feature_set = "length_abort"
             feature_sets[baseline_feature_set] = length_features
             baseline_note = (
-                "The `lenght_abort` baseline includes both chunk-count features "
+                "The `length_abort` baseline includes both chunk-count features "
                 "and `truncation_abort_score` on this run."
             )
     else:

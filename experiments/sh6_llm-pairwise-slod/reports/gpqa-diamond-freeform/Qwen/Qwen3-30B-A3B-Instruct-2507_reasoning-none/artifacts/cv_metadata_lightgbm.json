@@ -1,0 +1,101 @@
+{
+  "model_name": "lightgbm",
+  "feature_set": "trajectory_full",
+  "n_features": 47,
+  "feature_cols": [
+    "answer_n_chunks",
+    "answer_start",
+    "answer_end",
+    "answer_end_minus_start",
+    "answer_std",
+    "answer_range",
+    "answer_min",
+    "answer_max",
+    "answer_early_mean",
+    "answer_mid_mean",
+    "answer_late_mean",
+    "answer_late_minus_early",
+    "answer_total_variation",
+    "answer_monotonicity",
+    "answer_direction_changes",
+    "answer_zero_crossings",
+    "answer_peak_pos",
+    "answer_trough_pos",
+    "answer_rebound_from_trough",
+    "answer_fall_from_peak",
+    "answer_max_rise",
+    "answer_max_drop",
+    "answer_max_rise_pos",
+    "answer_max_drop_pos",
+    "answer_curvature_abs_mean",
+    "answer_positive_mass",
+    "answer_negative_mass",
+    "answer_time_positive",
+    "answer_time_negative",
+    "answer_traj_t01",
+    "answer_traj_t02",
+    "answer_traj_t03",
+    "answer_traj_t04",
+    "answer_traj_t05",
+    "answer_traj_t06",
+    "answer_traj_t07",
+    "answer_traj_t08",
+    "answer_traj_t09",
+    "answer_traj_t10",
+    "answer_traj_t11",
+    "answer_traj_t12",
+    "answer_traj_t13",
+    "answer_traj_t14",
+    "answer_traj_t15",
+    "answer_traj_t16",
+    "answer_traj_t17",
+    "answer_traj_t18"
+  ],
+  "cv_folds": 5,
+  "random_state": 42,
+  "target_label": "auto-resolved",
+  "target_counts": {
+    "n_items": 197,
+    "n_positive": 134,
+    "n_negative": 63
+  },
+  "fold_metrics": {
+    "roc_auc": {
+      "mean": 0.506483307765359,
+      "std": 0.09894067282840402
+    },
+    "average_precision": {
+      "mean": 0.7019134012794289,
+      "std": 0.06657063377827549
+    },
+    "accuracy": {
+      "mean": 0.6185897435897436,
+      "std": 0.06198290362576073
+    },
+    "balanced_accuracy": {
+      "mean": 0.5467948717948719,
+      "std": 0.06495460958235293
+    },
+    "f1": {
+      "mean": 0.7251711181899861,
+      "std": 0.05047834080738664
+    }
+  },
+  "confusion_matrix": {
+    "tn": 22,
+    "fp": 41,
+    "fn": 34,
+    "tp": 100
+  },
+  "duration_seconds": 0.8320735859742854,
+  "timestamp_utc": "2026-05-02T11:17:12+00:00",
+  "git_sha": "ef99c09",
+  "python_version": "3.12.3",
+  "library_versions": {
+    "sklearn": "1.7.2",
+    "lightgbm": "4.6.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1"
+  }
+}

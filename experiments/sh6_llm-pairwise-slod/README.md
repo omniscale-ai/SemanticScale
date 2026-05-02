@@ -9,6 +9,9 @@ success and failure.
 1. `01_traces.py`
    Loads or generates traces and assigns an outcome label.
    For `frontierscience`, this means inference plus grading.
+   For `gpqa-diamond-freeform`, Stage 1 reformulates GPQA-Diamond as a
+   FrontierScience/Olympiad-style free-form answer task and grades the final
+   answer with an LLM against the ground truth.
    For `processbench`, traces already exist and include step-level error labels.
    For `agenterrorbench`, traces already exist as JSON/JSONL trajectories; if
    `critical_error` annotations are present, Stage 1 uses them to localise the

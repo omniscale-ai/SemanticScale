@@ -146,6 +146,87 @@ CASES = [
             "the textbook <code>thrashing</code> + <code>no_commitment</code> case the SLoD detectors are designed to catch."
         ),
     ),
+    dict(
+        slug="fs_olympiad_bdb3fc5f_relativistic_conductor",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="bdb3fc5f-9374-4e37-9af9-6036e3e29093",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="physics (relativistic moving conductor)",
+        verdict="WRONG",
+        flags="rambling_overlong + derailment_late + answer_drift",
+        failure_summary=(
+            "<b>The Error:</b> The problem asks for the induced current density $\\vec{J}(t)$ of a semi-infinite perfect conductor moving at relativistic velocity $v$. The model derived the first-order approximation: $\\vec{J}(t) \\propto (1 - v/c)\\cos(\\omega(1 - v/c)t)$. However, the exactly correct relativistic expression requires the full Lorentz transformations, yielding the second-order terms: $\\vec{J}(t) \\propto (1 - v^2/c^2)\\cos(\\omega(1 - v^2/c^2)t)$.<br><br>"
+            "<b>Interpretation:</b> The model correctly reasoned through the boundary conditions for the majority of the trace but failed to stick to the exact Lorentz transformations, drifting into a non-relativistic or first-order approximation at the very end of the derivation. The SLoD trajectory clearly maps a late-stage derailment and drift as the model abandoned the exact calculus to simplify the final terms."
+        ),
+    ),
+    dict(
+        slug="fs_olympiad_f3ba1aae_oscillating_elliptical_object",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="physics (oscillating elliptical object)",
+        verdict="WRONG",
+        flags="answer_volatility",
+        failure_summary=(
+            "<b>The Error:</b> The model was tasked with finding the frequency of oscillation $\\omega$ for a uniform 3D object with an elliptical cross-section. The model output $\\omega = 2\\sqrt{\\frac{g(A^{2}-B^{2})}{B(A^{2}+5B^{2})}}$. The correct answer is exactly the reciprocal of the terms inside the square root, and with a factor of $\\pi$ instead of $2$: $\\omega = \\pi\\sqrt{\\frac{(A^{2}+5B^{2})B}{g(A^{2}-B^{2})}}$.<br><br>"
+            "<b>Interpretation:</b> The model inverted the relationship between the restoring torque and the moment of inertia. The <code>answer_volatility</code> SLoD flag perfectly captures this: the model frequently flipped the placement of its physical terms (numerator vs. denominator) and waffled between assumptions, leading to an inverted physical expression."
+        ),
+    ),
+    dict(
+        slug="fs_olympiad_8b695bb3_scrna_seq_tumor",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="8b695bb3-ea3c-4372-9222-9f0b79a68b6c",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="biology (scRNA-seq tumor biopsy)",
+        verdict="WRONG",
+        flags="answer_volatility + answer_uncommitted",
+        failure_summary=(
+            "<b>The Error:</b> The question had two blanks: it asked the model to identify a non-biological artifact separating samples (\"batch\" effects) and a specific method to visualize cell populations (\"UMAP\"). The model merely answered <code>t-SNE</code>. It entirely ignored the first question and provided an alternative (but incorrect compared to the reference) clustering algorithm for the second.<br><br>"
+            "<b>Interpretation:</b> The model recognized that two answers were needed but failed to firmly commit to the \"batch effect\" diagnosis. This lack of commitment and volatility in the internal semantic representations flagged exactly the moment the model decided to silently drop the first half of the question and just throw out a single dimensionality reduction acronym."
+        ),
+    ),
+    dict(
+        slug="fs_olympiad_ecb58594_high_temp_bismuth",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="ecb58594-7fd9-4a94-b799-0f1c13acb752",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="chemistry (high-temperature bismuth reaction)",
+        verdict="RIGHT",
+        flags="none",
+        failure_summary=(
+            "<b>The Result:</b> Flawless deduction. The model confidently recognized the heavy element (Bismuth), the oxidation state changes with bromine/NaOH, and assembled the correct mass (>230). The trace was direct and lacked any meandering."
+        ),
+    ),
+    dict(
+        slug="fs_olympiad_4a737e9f_monovalent_anion",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="4a737e9f-5afd-4a14-a17b-c468cda1a8bb",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="chemistry (monovalent anion deduction)",
+        verdict="RIGHT",
+        flags="none",
+        failure_summary=(
+            "<b>The Result:</b> The model correctly identified Nitrogen as the versatile element forming multiple monovalent anions (like nitrite, nitrate, etc.) and swiftly constructed the target sodium salt without getting stuck or rambling."
+        ),
+    ),
+    dict(
+        slug="fs_olympiad_22f5a060_low_spin_diamagnetic",
+        rank_src=FS_RANK, trace_src=TRACE_FS,
+        item_id="22f5a060-b2ba-4d68-8ad1-cbcbd58a788e",
+        side="reasoning",
+        dataset_label="FrontierScience · olympiad",
+        subject="chemistry (low-spin diamagnetic complex)",
+        verdict="RIGHT",
+        flags="none",
+        failure_summary=(
+            "<b>The Result:</b> This requires navigating coordination chemistry, mass percentages, and spin states simultaneously. The model methodically locked onto Cobalt(III) and Nitrite ligands, calculating the mass precisely, culminating in a highly confident prediction with no SLoD instability."
+        ),
+    ),
 ]
 
 

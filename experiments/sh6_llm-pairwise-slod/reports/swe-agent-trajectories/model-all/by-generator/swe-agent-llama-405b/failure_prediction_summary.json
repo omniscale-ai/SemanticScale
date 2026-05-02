@@ -5,7 +5,7 @@
   "n_items": 236,
   "n_positive": 106,
   "n_negative": 130,
-  "analysis_note": "The `lenght_abort` baseline includes both chunk-count features and `truncation_abort_score` on this run.",
+  "analysis_note": "The `length_abort` baseline includes both chunk-count features and `truncation_abort_score` on this run.",
   "label_alignment": {
     "n_items": 236,
     "agreement": 1.0,
@@ -1125,7 +1125,7 @@
         "tp": 74
       }
     },
-    "lenght_abort": {
+    "length_abort": {
       "n_features": 2,
       "feature_cols": [
         "reasoning_n_chunks",

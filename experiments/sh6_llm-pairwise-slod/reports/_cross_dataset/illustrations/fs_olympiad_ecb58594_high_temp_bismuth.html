@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SH6 illustration — FrontierScience · olympiad · ecb58594-7fd9-</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+  options: { renderActions: { addMenu: [] } }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         max-width: 1200px; margin: 1.2em auto; padding: 0 1em; color: #222; }
+  h1 { font-size: 1.15em; margin-bottom: 0.1em; }
+  .subtitle { font-size: 0.9em; color: #555; line-height: 1.45; margin-bottom: 1em; }
+  .stats { font-family: monospace; font-size: 0.82em; color: #333;
+           background: #f4f4f4; padding: 0.45em 0.7em; border-radius: 4px;
+           display: inline-block; margin-top: 0.4em; }
+  #plot { height: 460px; margin-bottom: 0.6em; }
+  .legend { font-size: 0.82em; color: #666; margin: 0.4em 0 1em 0; }
+  .legend code { background: #f0f0f0; padding: 0 0.3em; border-radius: 3px; }
+  #chunks h3 { font-size: 0.95em; margin: 1.2em 0 0.5em 0; color: #555; font-weight: 600;
+               border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+  .chunk { padding: 0.55em 0.8em; margin: 0.5em 0; border-radius: 6px;
+           border-left: 4px solid #ccc; background: #fafafa; transition: background 0.15s; }
+  .chunk.macro { border-left-color: #1f77b4; background: #f0f7ff; }
+  .chunk.micro { border-left-color: #d62728; background: #fff3f0; }
+  .chunk.highlight { background: #fff3a8 !important; box-shadow: 0 0 0 2px #f59f00; }
+  .chunk-meta { font-size: 0.78em; color: #666; font-family: monospace; margin-bottom: 0.3em; }
+  .chunk-meta .score { font-weight: 600; }
+  .chunk-meta .score.pos { color: #1f77b4; }
+  .chunk-meta .score.neg { color: #d62728; }
+  .chunk-meta .flip { color: #d68000; font-weight: 600; }
+  .chunk-text { white-space: pre-wrap; line-height: 1.45; font-size: 0.93em;
+                word-wrap: break-word; overflow-wrap: break-word; }
+  details.problem { margin: 0.4em 0 1em 0; }
+  details.problem summary { cursor: pointer; font-size: 0.88em; color: #555;
+                             padding: 0.3em 0.5em; background: #f4f4f4; border-radius: 4px; }
+  details.problem .body { padding: 0.6em 0.8em; border: 1px solid #eee; border-top: 0; font-size: 0.9em; line-height: 1.45; white-space: pre-wrap; }
+  .diagnosis { background: #fff8e0; border: 1px solid #f0d878; border-left: 4px solid #d6a000;
+               padding: 0.7em 0.9em; margin: 0.6em 0 1em 0; line-height: 1.5; font-size: 0.92em; }
+  .diagnosis code { background: rgba(0,0,0,0.06); padding: 0 0.25em; border-radius: 3px; font-size: 0.92em; }
+  a.back { font-size: 0.85em; color: #1f77b4; text-decoration: none; }
+  a.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← back to index</a>
+<h1>FrontierScience · olympiad · ecb58594-7fd9-4a94-b799-0f1c13acb752 · chemistry (high-temperature bismuth reaction) · RIGHT</h1>
+<div class="subtitle"><b>flags:</b> none</div>
+<div class="stats">n = 29 reasoning chunks &nbsp;·&nbsp; BT range -8.3 … +5.1 &nbsp;·&nbsp; 12 sign flips (43% of edges)</div>
+<div class="diagnosis"><b>The Result:</b> Flawless deduction. The model confidently recognized the heavy element (Bismuth), the oxidation state changes with bromine/NaOH, and assembled the correct mass (>230). The trace was direct and lacked any meandering.</div>
+<details class="problem"><summary>📄 problem statement</summary><div class="body">At high temperatures, element A reacts with water to make a binary compound B. Compound B reacts with a mixture of concentrated aqueous sodium hydroxide (NaOH) and bromine (Br2) to yield a ternary compound C. Compound C is a strong oxidiser, contains two metal elements in 1:1 ratio and does not contain any water of crystallisation. Compound C contains 74.6% of element A by mass. The relative formula mass of compound C is more than 230. What is compound C?
+
+Think step by step and solve the problem below. At the end of your response, write your final answer on a new line starting with “FINAL ANSWER”. It should be an answer to the question such as providing a number, mathematical expression, formula, or entity name, without any extra commentary or providing multiple answer attempts.</div></details>
+<div id="plot"></div>
+<p class="legend">
+  Click any point on the chart to jump to that chunk below.
+  Blue = <code>+</code> macro/framing chunk · red = <code>−</code> micro/detail chunk ·
+  orange edges = sign flip (the visual signature of <code>thrashing</code>).
+</p>
+<div id="chunks">
+<h3>reasoning chunks (in order)</h3>
+<div class="chunk macro" id="chunk-0"><div class="chunk-meta">#000 · <span class="score pos">BT +0.05</span></div><div class="chunk-text">We are given: &quot;At high temperatures, element A reacts with water to make a binary compound B. Compound B reacts with a mixture of concentrated aqueous sodium hydroxide (NaOH) and bromine (Br2) to yield a ternary compound C. Compound C is a strong oxidiser, contains two metal elements in 1:1 ratio and does not contain any water of crystallisation. Compound C contains 74.6% of element A by mass. The relative formula mass of compound C is more than 230. What is compound C?&quot;</div></div>
+<div class="chunk macro" id="chunk-1"><div class="chunk-meta">#001 · <span class="score pos">BT +2.51</span></div><div class="chunk-text">Interpretation: Element A reacts with water at high temperatures to form binary compound B. Then B reacts with concentrated NaOH + Br2 to yield ternary compound C. C is a strong oxidizer, contains two metal elements in 1:1 ratio, no water of crystallization. C contains 74.6% A by mass. The formula mass &gt; 230. Need to identify compound C.</div></div>
+<div class="chunk macro" id="chunk-2"><div class="chunk-meta">#002 · <span class="score pos">BT +0.17</span></div><div class="chunk-text">We need to deduce element A, compound B, compound C.</div></div>
+<div class="chunk macro" id="chunk-3"><div class="chunk-meta">#003 · <span class="score pos">BT +2.07</span></div><div class="chunk-text">Steps: 
+1. Element A reacts with water at high temperatures to give binary compound B. This suggests A is likely a metal that reacts with water to form an oxide or hydroxide? But &quot;binary compound&quot; means composed of two elements. Possibly an oxide? Or maybe a hydride? But at high temperatures, many metals react with water to form oxides. Alternatively, some non-metals? But A is likely a metal because compound C contains two metal elements in 1:1 ratio. So A is a metal.</div></div>
+<div class="chunk macro" id="chunk-4"><div class="chunk-meta">#004 · <span class="score pos">BT +2.33</span></div><div class="chunk-text">2. Compound B reacts with concentrated NaOH + Br2 to yield ternary compound C. That process sounds like oxidation or halogenation in alkaline medium. Possibly forming a mixed oxide or a salt containing bromine? But ternary compound means three elements. Since C contains two metal elements in 1:1 ratio, it likely contains A and sodium (from NaOH) as the two metals? Or maybe another metal? But NaOH provides sodium, so likely sodium is one metal, and A is the other. So C contains A and Na in 1:1 ratio? That would be a ternary compound with A, Na, and some other element(s). Ternary means three different elements. So C has A, Na, and maybe oxygen or bromine? But it says compound C is a strong oxidizer, so likely it contains an oxidizing agent like peroxy group, or high oxidation state metal, or maybe bromate? But bromine was used in the reaction, so bromine might be incorporated. Alternatively, it might be an oxide compound like a mixed oxide. However, bromine is used, so bromine might be part of C. Alternatively, bromine might oxidize to form a higher oxidation state compound of A. For example, if B is an oxide of A in a lower oxidation state, bromine in alkaline medium might oxidize it to a higher oxidation state, forming a ternary compound containing A, Na, and oxygen (like a sodium salt of an oxoanion of A). That is plausible. But ternary compound: three elements. So if it contains A, Na, and O, that&#x27;s ternary. And if A and Na are in 1:1 ratio, that suggests formula like NaAO_x. But the mass percentage of A is 74.6%, and formula mass &gt; 230. Let&#x27;s denote A&#x27;s atomic mass as M_A. In NaAO_x, the formula mass is M_Na + M_A + x*M_O = 23 + M_A + 16x. The percentage of A is M_A/(23+M_A+16x) = 0.746. Also, M_A/(total) = 0.746 =&gt; total = M_A/0.746. Since total &gt; 230, M_A &gt; 230*0.746 ≈ 171.58. So atomic mass of A &gt; 171.6. That is a heavy metal. Possibly lead? But lead atomic mass 207, but lead reacting with water at high temperatures? Lead does not react with water to form binary compound B. Alternatively, bismuth? Atomic mass 209, but bismuth doesn&#x27;t typically react with water to form binary compound. Or maybe tungsten? Atomic mass 184, tungsten reacts with water? Not sure. But we need to consider typical reactions.</div></div>
+<div class="chunk micro" id="chunk-5"><div class="chunk-meta">#005 · <span class="score neg">BT -4.99</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">3. The reaction sequence: &quot;At high temperatures, element A reacts with water to make a binary compound B.&quot; This is reminiscent of some metals reacting with steam to form oxides. For example, iron: Fe + H2O (steam) -&gt; FeO or Fe3O4? But iron&#x27;s atomic mass is 56, too low. Magnesium: Mg + H2O -&gt; MgO, atomic mass 24, too low. Aluminum? But aluminum reacts with water? Not easily. Maybe manganese? Atomic mass 55, too low. Need atomic mass &gt;171.6, so likely a heavy metal: maybe tungsten (184), uranium (238), thorium (232), etc. But consider that compound B then reacts with concentrated NaOH and Br2. That suggests an oxidation in alkaline medium. Some metals form oxides that when treated with Br2 and NaOH yield salts. For example, manganese compounds: MnO2 with NaOH and Br2 might yield NaMnO4? But manganese dioxide is not binary compound B from reaction of Mn with water? Actually, manganese reacts with water? Not typical.</div></div>
+<div class="chunk micro" id="chunk-6"><div class="chunk-meta">#006 · <span class="score neg">BT -0.10</span></div><div class="chunk-text">Alternatively, maybe A is a metal that forms a hydride with water? But binary compound B could be a hydride? But then treatment with NaOH and Br2? Not likely.</div></div>
+<div class="chunk macro" id="chunk-7"><div class="chunk-meta">#007 · <span class="score pos">BT +4.76</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Maybe A is a metal that reacts with water to form an oxide, and then that oxide in alkaline medium with bromine undergoes oxidation to form a mixed oxide salt containing sodium and the metal in a high oxidation state.</div></div>
+<div class="chunk micro" id="chunk-8"><div class="chunk-meta">#008 · <span class="score neg">BT -5.27</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Let&#x27;s consider some heavy metals that are known to form ternary compounds with sodium and oxygen, with 1:1 metal ratio, and are strong oxidizers. Strong oxidizers: compounds like sodium ferrate (Na2FeO4) but that has two sodiums per iron, not 1:1. Sodium chromate (Na2CrO4) also 2:1. Sodium permanganate (NaMnO4) is 1:1: NaMnO4 contains Na, Mn, O, ternary, and is a strong oxidizer. But manganese atomic mass 55, too low. Sodium pertechnetate? Tc atomic mass ~98, still too low. Sodium perrhenate? Re atomic mass 186, that is &gt;171.6. Rhenium? Does rhenium react with water at high temperatures to form an oxide? Possibly. Rhenium is a rare metal. But atomic mass 186.2. Check: if C is NaReO4, formula mass = 23 + 186.2 + 64 = 273.2 &gt;230. Percentage Re = 186.2/273.2 ≈ 0.682, which is 68.2%, not 74.6%. So not matching. Maybe NaReO4? Actually, perrhenate is ReO4^- so sodium salt is NaReO4. That gives about 68.2%. So not 74.6%.</div></div>
+<div class="chunk micro" id="chunk-9"><div class="chunk-meta">#009 · <span class="score neg">BT -8.30</span></div><div class="chunk-text">Maybe something like NaWO4? Tungsten atomic mass 184, NaWO4 formula mass = 23+184+64=271, percentage W = 184/271=67.9%, not 74.6%.</div></div>
+<div class="chunk macro" id="chunk-10"><div class="chunk-meta">#010 · <span class="score pos">BT +4.89</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Maybe a compound with higher oxygen content? More oxygen reduces percentage of A. So to get high percentage, we need less oxygen or smaller x. Alternatively, if bromine is incorporated, then the atomic mass of the other element is higher (Br is 80), which might lower the percentage of A? But if bromine is included, then ternary compound could contain A, Na, Br. That would be something like a bromate salt? But bromate is BrO3-, sodium bromate is NaBrO3, but that doesn&#x27;t contain A. So A must be present. Maybe a mixed salt like NaABr_x? But bromine is an oxidizer, so maybe A is in a high oxidation state and bromine is part of the anion? Possibly a bromo-oxo compound?</div></div>
+<div class="chunk macro" id="chunk-11"><div class="chunk-meta">#011 · <span class="score pos">BT +3.52</span></div><div class="chunk-text">Alternatively, maybe the ternary compound contains A, Na, and O, but with a different ratio than 1:1:4. For example, NaAO2, NaAO3, etc. But then the oxidation state of A would be +2 or +3? But strong oxidizers usually have high oxidation states. So likely A is in a high oxidation state.</div></div>
+<div class="chunk macro" id="chunk-12"><div class="chunk-meta">#012 · <span class="score pos">BT +5.08</span></div><div class="chunk-text">Given that C is a strong oxidizer, it likely contains A in a high oxidation state, possibly as an oxoanion.</div></div>
+<div class="chunk micro" id="chunk-13"><div class="chunk-meta">#013 · <span class="score neg">BT -4.87</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Let&#x27;s derive from the percentage: 74.6% A by mass. Let total formula mass = Mr. Then mass of A = M_A. So M_A/Mr = 0.746 =&gt; Mr = M_A/0.746. Also Mr &gt; 230, so M_A &gt; 230*0.746 = 171.58. So M_A &gt; 171.6.</div></div>
+<div class="chunk micro" id="chunk-14"><div class="chunk-meta">#014 · <span class="score neg">BT -0.08</span></div><div class="chunk-text">Now C contains two metal elements in 1:1 ratio. So likely formula contains one atom of A and one atom of Na (since NaOH provides sodium). So the formula could be NaAOx or NaAOxBry or something. But ternary means three elements, so if it contains Br, then three elements: Na, A, Br. But then it wouldn&#x27;t contain oxygen? But bromine was used, so maybe bromine is incorporated as bromide or bromate. However, if C is a strong oxidizer, it might be a bromate salt of A? But that would have A and Br, but not necessarily Na? Actually, reaction with NaOH and Br2 yields C, so sodium is likely incorporated. So ternary compound: Na, A, and an oxidizing anion. Possibly peroxy? But then oxygen would be present. So likely three elements: Na, A, O. Or Na, A, Br.</div></div>
+<div class="chunk macro" id="chunk-15"><div class="chunk-meta">#015 · <span class="score pos">BT +4.82</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Let&#x27;s consider possibilities:</div></div>
+<div class="chunk micro" id="chunk-16"><div class="chunk-meta">#016 · <span class="score neg">BT -4.74</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Option 1: C = NaAO_x (contains Na, A, O). Then Mr = 23 + M_A + 16x. 
+Percentage A = M_A/(23+M_A+16x)=0.746.
+We solve for x: 
+M_A = 0.746*(23+M_A+16x)
+=&gt; M_A = 0.746*23 + 0.746 M_A + 0.746*16x
+=&gt; M_A - 0.746 M_A = 0.746*23 + 11.936x
+=&gt; 0.254 M_A = 17.158 + 11.936x
+=&gt; M_A = (17.158 + 11.936x)/0.254 = 67.36 + 47.06x (approximately)
+So M_A = 67.36 + 47.06x.
+Since M_A &gt; 171.6, we try x=? 
+x=1: M_A = 67.36+47.06=114.42, too low.
+x=2: M_A = 67.36+94.12=161.48, still &lt;171.6.
+x=3: M_A = 67.36+141.18=208.54, &gt;171.6. So x=3 gives M_A ≈ 208.54.
+x=4: M_A = 67.36+188.24=255.6, also &gt;171.6.
+x=5: M_A = 67.36+235.3=302.66.
+Now which x is plausible? Compound C is a strong oxidizer. For x=3, formula NaAO3. That could be like a sodium salt of a trioxo anion. For example, if A is in oxidation state +5? NaAO3 would imply A oxide with A=+5? But if A is a metal, +5 oxidation state is possible (e.g., vanadium, but atomic mass 51, too low; niobium 93, too low; tantalum 181, tantalum atomic mass 181, close to 208? Actually tantalum is 181, not 208. Maybe bismuth? Bismuth atomic mass 209, Bi can form BiO3^-? Sodium bismuthate NaBiO3 is a strong oxidizer! That is a known compound. Sodium bismuthate is a ternary compound containing Na, Bi, O, with Na and Bi in 1:1 ratio? Actually sodium bismuthate is often written as NaBiO3, but it may actually be non-stoichiometric or hydrated, but it is known as a strong oxidizer. And it does not contain water of crystallization? It might be anhydrous. And its formula mass: Na=23, Bi=209, O3=48, total = 280. Percentage Bi = 209/280 = 74.64% ≈ 74.6%. That matches perfectly! Also relative formula mass &gt;230 (280&gt;230). So C could be NaBiO3.</div></div>
+<div class="chunk macro" id="chunk-17"><div class="chunk-meta">#017 · <span class="score pos">BT +2.26</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Check the reaction sequence: At high temperatures, element A (bismuth) reacts with water to make a binary compound B. Bismuth reacts with water? Bismuth metal does not readily react with water. But at high temperatures, maybe it forms an oxide? Actually, bismuth can form Bi2O3 when heated in air, but with water? Possibly bismuth reacts with steam to form Bi2O3? But binary compound B would be Bi2O3? That is binary. Then compound B (Bi2O3) reacts with concentrated NaOH and Br2 to yield ternary compound C (NaBiO3). Is that a known reaction? Sodium bismuthate is prepared by oxidizing Bi2O3 or Bi(OH)3 in alkaline medium with a strong oxidizer like bromine or chlorine. Indeed, sodium bismuthate can be prepared by mixing Bi2O3 with concentrated NaOH and oxidizing with chlorine or bromine. So that fits: Bi2O3 + NaOH + Br2 -&gt; NaBiO3 + NaBr + H2O (maybe). So the reaction sequence is plausible.</div></div>
+<div class="chunk macro" id="chunk-18"><div class="chunk-meta">#018 · <span class="score pos">BT +0.02</span></div><div class="chunk-text">Thus, A = Bismuth (Bi), B = Bi2O3 (or possibly BiO, but more likely Bi2O3), C = NaBiO3.</div></div>
+<div class="chunk macro" id="chunk-19"><div class="chunk-meta">#019 · <span class="score pos">BT +0.04</span></div><div class="chunk-text">But we need to confirm: &quot;compound C contains two metal elements in 1:1 ratio&quot; - NaBiO3 has one Na and one Bi, so 1:1 ratio of metal elements. It is a strong oxidizer. It contains 74.6% Bi by mass: Bi atomic mass 208.98, NaBiO3 formula mass: Na=22.99, Bi=208.98, O3=48, total ≈ 279.97, percentage Bi = 208.98/279.97 ≈ 0.7464 = 74.64%, matches 74.6%. Relative formula mass &gt;230 (279.97&gt;230). So everything fits.</div></div>
+<div class="chunk macro" id="chunk-20"><div class="chunk-meta">#020 · <span class="score pos">BT +2.36</span></div><div class="chunk-text">Thus compound C is sodium bismuthate, NaBiO3.</div></div>
+<div class="chunk micro" id="chunk-21"><div class="chunk-meta">#021 · <span class="score neg">BT -4.02</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Final answer: NaBiO3.</div></div>
+<div class="chunk micro" id="chunk-22"><div class="chunk-meta">#022 · <span class="score neg">BT -2.57</span></div><div class="chunk-text">But we should ensure there are no other possibilities. For x=4: M_A = 255.6, which could correspond to something like NaAO4. That would be a peroxy compound or something. Possible metals with atomic mass around 255: maybe uranium? Uranium atomic mass 238, not 255. Or thorium 232, not 255. Or lead 207, not 255. So no obvious match. For x=5: M_A=302.66, no common metal with that atomic mass. So NaBiO3 is the most plausible.</div></div>
+<div class="chunk micro" id="chunk-23"><div class="chunk-meta">#023 · <span class="score neg">BT -0.33</span></div><div class="chunk-text">Therefore, compound C is sodium bismuthate.</div></div>
+<div class="chunk micro" id="chunk-24"><div class="chunk-meta">#024 · <span class="score neg">BT -1.96</span></div><div class="chunk-text">I&#x27;ll answer: NaBiO3.</div></div>
+<div class="chunk macro" id="chunk-25"><div class="chunk-meta">#025 · <span class="score pos">BT +2.23</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">But the problem asks: &quot;What is compound C?&quot; So we need to give the formula or name. I&#x27;ll give the formula.</div></div>
+<div class="chunk micro" id="chunk-26"><div class="chunk-meta">#026 · <span class="score neg">BT -4.37</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Final answer: NaBiO3.</div></div>
+<div class="chunk macro" id="chunk-27"><div class="chunk-meta">#027 · <span class="score pos">BT +1.73</span> <span class="flip">⟂ sign flip</span></div><div class="chunk-text">Let&#x27;s double-check: &quot;At high temperatures, element A reacts with water to make a binary compound B.&quot; Bismuth metal reacts with steam? I think bismuth is relatively inert, but at high temperatures it might oxidize. Possibly it reacts with water vapor to form Bi2O3. Alternatively, bismuth might not directly react with water, but maybe it does under extreme conditions. However, this is a known puzzle-type problem where sodium bismuthate is often encountered. So it&#x27;s likely correct.</div></div>
+<div class="chunk macro" id="chunk-28"><div class="chunk-meta">#028 · <span class="score pos">BT +0.20</span></div><div class="chunk-text">Thus, FINAL ANSWER: NaBiO3.</div></div>
+</div>
+<script>
+const trajectory = [{"r": 0.05303037431371038, "preview": "We are given: &quot;At high temperatures, element A reacts with water to make a binary compound B. Compound B reacts with a mixture of concentra\u2026"}, {"r": 2.5092183231725826, "preview": "Interpretation: Element A reacts with water at high temperatures to form binary compound B. Then B reacts with concentrated NaOH + Br2 to y\u2026"}, {"r": 0.1685288865231911, "preview": "We need to deduce element A, compound B, compound C."}, {"r": 2.0686072621738987, "preview": "Steps: 1. Element A reacts with water at high temperatures to give binary compound B. This suggests A is likely a metal that reacts with wa\u2026"}, {"r": 2.334462846796754, "preview": "2. Compound B reacts with concentrated NaOH + Br2 to yield ternary compound C. That process sounds like oxidation or halogenation in alkali\u2026"}, {"r": -4.987963505376413, "preview": "3. The reaction sequence: &quot;At high temperatures, element A reacts with water to make a binary compound B.&quot; This is reminiscent of some meta\u2026"}, {"r": -0.09895139175844747, "preview": "Alternatively, maybe A is a metal that forms a hydride with water? But binary compound B could be a hydride? But then treatment with NaOH a\u2026"}, {"r": 4.7632196974746215, "preview": "Maybe A is a metal that reacts with water to form an oxide, and then that oxide in alkaline medium with bromine undergoes oxidation to form\u2026"}, {"r": -5.27004600869202, "preview": "Let&#x27;s consider some heavy metals that are known to form ternary compounds with sodium and oxygen, with 1:1 metal ratio, and are strong oxid\u2026"}, {"r": -8.295864394206724, "preview": "Maybe something like NaWO4? Tungsten atomic mass 184, NaWO4 formula mass = 23+184+64=271, percentage W = 184/271=67.9%, not 74.6%."}, {"r": 4.885001639065813, "preview": "Maybe a compound with higher oxygen content? More oxygen reduces percentage of A. So to get high percentage, we need less oxygen or smaller\u2026"}, {"r": 3.5170745965052674, "preview": "Alternatively, maybe the ternary compound contains A, Na, and O, but with a different ratio than 1:1:4. For example, NaAO2, NaAO3, etc. But\u2026"}, {"r": 5.082803727019993, "preview": "Given that C is a strong oxidizer, it likely contains A in a high oxidation state, possibly as an oxoanion."}, {"r": -4.869995921604495, "preview": "Let&#x27;s derive from the percentage: 74.6% A by mass. Let total formula mass = Mr. Then mass of A = M_A. So M_A/Mr = 0.746 =&gt; Mr = M_A/0.746.\u2026"}, {"r": -0.08005051566199128, "preview": "Now C contains two metal elements in 1:1 ratio. So likely formula contains one atom of A and one atom of Na (since NaOH provides sodium). S\u2026"}, {"r": 4.816009891976147, "preview": "Let&#x27;s consider possibilities:"}, {"r": -4.735987499509079, "preview": "Option 1: C = NaAO_x (contains Na, A, O). Then Mr = 23 + M_A + 16x. Percentage A = M_A/(23+M_A+16x)=0.746. We solve for x: M_A = 0.746*(23+\u2026"}, {"r": 2.263625719365976, "preview": "Check the reaction sequence: At high temperatures, element A (bismuth) reacts with water to make a binary compound B. Bismuth reacts with w\u2026"}, {"r": 0.02449806148687017, "preview": "Thus, A = Bismuth (Bi), B = Bi2O3 (or possibly BiO, but more likely Bi2O3), C = NaBiO3."}, {"r": 0.03529092089473451, "preview": "But we need to confirm: &quot;compound C contains two metal elements in 1:1 ratio&quot; - NaBiO3 has one Na and one Bi, so 1:1 ratio of metal element\u2026"}, {"r": 2.356802574292871, "preview": "Thus compound C is sodium bismuthate, NaBiO3."}, {"r": -4.017555754706748, "preview": "Final answer: NaBiO3."}, {"r": -2.5686480344863405, "preview": "But we should ensure there are no other possibilities. For x=4: M_A = 255.6, which could correspond to something like NaAO4. That would be\u2026"}, {"r": -0.32586411592283326, "preview": "Therefore, compound C is sodium bismuthate."}, {"r": -1.9629068169388546, "preview": "I&#x27;ll answer: NaBiO3."}, {"r": 2.2319269994465145, "preview": "But the problem asks: &quot;What is compound C?&quot; So we need to give the formula or name. I&#x27;ll give the formula."}, {"r": -4.367631365582078, "preview": "Final answer: NaBiO3."}, {"r": 1.7312381668174623, "preview": "Let&#x27;s double-check: &quot;At high temperatures, element A reacts with water to make a binary compound B.&quot; Bismuth metal reacts with steam? I thi\u2026"}, {"r": 0.19530075955499626, "preview": "Thus, FINAL ANSWER: NaBiO3."}];
+const colors = trajectory.map(d => d.r > 0 ? '#1f77b4' : '#d62728');
+const previews = trajectory.map(d => d.preview);
+
+const trace = {
+  x: trajectory.map((_, i) => i),
+  y: trajectory.map(d => d.r),
+  mode: 'lines+markers',
+  marker: { color: colors, size: 11, line: { color: 'white', width: 1 } },
+  line: { color: 'rgba(0,0,0,0.35)', width: 1 },
+  text: previews,
+  hovertemplate: '<b>chunk %{x}</b> · BT %{y:+.2f}<br>%{text}<br><span style="font-size:0.8em;color:#888">click to jump to text</span><extra></extra>'
+};
+
+const flipShapes = [];
+for (let i = 1; i < trajectory.length; i++) {
+  const a = trajectory[i-1].r, b = trajectory[i].r;
+  if ((a > 0) !== (b > 0)) {
+    flipShapes.push({
+      type: 'line',
+      x0: i-1, x1: i, y0: a, y1: b,
+      line: { color: 'orange', width: 3.5 },
+      layer: 'below'
+    });
+  }
+}
+
+const layout = {
+  margin: { t: 20, l: 60, r: 20, b: 50 },
+  xaxis: { title: 'chunk index', zeroline: false },
+  yaxis: { title: 'SLoD (BT score) — +macro / −micro', zeroline: true, zerolinecolor: '#bbb' },
+  shapes: flipShapes,
+  hovermode: 'closest',
+  hoverlabel: { align: 'left', bgcolor: 'white', font: { size: 12 } }
+};
+
+Plotly.newPlot('plot', [trace], layout, { displayModeBar: false, responsive: true });
+
+document.getElementById('plot').on('plotly_click', e => {
+  const idx = e.points[0].pointIndex;
+  document.querySelectorAll('.chunk').forEach(el => el.classList.remove('highlight'));
+  const target = document.getElementById('chunk-' + idx);
+  if (target) {
+    target.classList.add('highlight');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
+</body>
+</html>

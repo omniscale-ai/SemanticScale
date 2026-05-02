@@ -1,0 +1,48 @@
+paths:
+  data_dir: ../../../data/sh6
+  reports_dir: ../reports
+
+dataset:
+  name: gpqa-diamond-freeform
+  hf_path: Idavidrein/gpqa
+  config: gpqa_diamond
+  split: train
+  max_samples: null
+
+traces:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8000/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+  max_retries: 3
+  retry_min_wait: 1.0
+  retry_max_wait: 60.0
+
+grader:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8000/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+
+pairwise_slod:
+  model:
+    name: Qwen/Qwen3-30B-A3B-Instruct-2507
+    base_url: http://localhost:8000/v1
+    api_key_env: LOCAL_LLM_API_KEY
+    backend: local
+  max_concurrent: 8
+  extra_comparisons_per_problem: 20
+  max_reasoning_chunks: 24
+  max_answer_chunks: 24
+  min_chunks: 2
+
+failure_analysis:
+  target_label: auto
+  interp_points: 20
+  cv_folds: 5
+  random_state: 42
+  top_k_features: 12

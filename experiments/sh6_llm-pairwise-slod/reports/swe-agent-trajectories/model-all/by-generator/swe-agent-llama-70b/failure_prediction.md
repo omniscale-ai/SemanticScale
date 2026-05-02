@@ -12,13 +12,13 @@
 
 ## Status
 
-- The `lenght_abort` baseline includes both chunk-count features and `truncation_abort_score` on this run.
+- The `length_abort` baseline includes both chunk-count features and `truncation_abort_score` on this run.
 
 ## Cross-Validated Prediction
 
 | Model | # Features | ROC-AUC | Avg Precision | Balanced Acc. | Accuracy | F1 |
 |---|---|---|---|---|---|---|
-| lenght_abort (logreg) | 2 | 0.632 +/- 0.025 | 0.512 +/- 0.016 | 0.585 +/- 0.048 | 0.548 +/- 0.045 | 0.605 +/- 0.044 |
+| length_abort (logreg) | 2 | 0.632 +/- 0.025 | 0.512 +/- 0.016 | 0.585 +/- 0.048 | 0.548 +/- 0.045 | 0.605 +/- 0.044 |
 | trajectory_shape (logreg) | 47 | 0.896 +/- 0.008 | 0.847 +/- 0.008 | 0.809 +/- 0.010 | 0.812 +/- 0.011 | 0.780 +/- 0.011 |
 | trajectory_full (logreg) | 47 | 0.896 +/- 0.008 | 0.848 +/- 0.008 | 0.809 +/- 0.010 | 0.812 +/- 0.011 | 0.780 +/- 0.011 |
 | reasoning_traj (MiniRocket) | 20 | 0.899 +/- 0.007 | 0.853 +/- 0.009 | 0.809 +/- 0.011 | 0.809 +/- 0.012 | 0.780 +/- 0.012 |

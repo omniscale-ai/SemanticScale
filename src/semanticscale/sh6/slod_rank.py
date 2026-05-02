@@ -70,6 +70,24 @@ def chunk_text(text: str) -> list[str]:
     return [c.strip() for c in text.split("\n\n") if c.strip()]
 
 
+def coalesce_chunks(chunks: list[str], max_chunks: int | None) -> list[str]:
+    """Merge adjacent chunks into at most max_chunks ordered groups.
+
+    Free-form models can emit hundreds of blank-line-separated paragraphs.
+    Coalescing preserves order and text while bounding pairwise tournament
+    cost for configs that opt into it.
+    """
+    if max_chunks is None or max_chunks <= 0 or len(chunks) <= max_chunks:
+        return chunks
+    n_chunks = len(chunks)
+    merged = []
+    for i in range(max_chunks):
+        start = i * n_chunks // max_chunks
+        end = (i + 1) * n_chunks // max_chunks
+        merged.append("\n\n".join(chunks[start:end]))
+    return merged
+
+
 # ---------------------------------------------------------------------------
 # Comparison cache
 # ---------------------------------------------------------------------------
@@ -443,6 +461,8 @@ async def rank_all(
         pre_a = item.get("answer_chunks")
         r_chunks = list(pre_r) if pre_r else chunk_text(item.get("reasoning_text") or "")
         a_chunks = list(pre_a) if pre_a else chunk_text(item.get("answer_text") or "")
+        r_chunks = coalesce_chunks(r_chunks, sr.get("max_reasoning_chunks"))
+        a_chunks = coalesce_chunks(a_chunks, sr.get("max_answer_chunks"))
 
         n_r = len(r_chunks)
         n_a = len(a_chunks)

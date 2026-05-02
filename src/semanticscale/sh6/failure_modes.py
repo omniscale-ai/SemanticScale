@@ -24,7 +24,7 @@ mind when interpreting verdicts:
   ``derailment_late``, ``rambling_overlong``, ``premature_exit``,
   ``truncation_abort``) were named from a qualitative read of SWE-agent
   failure traces *before* AUCs were computed. Their directional hypothesis
-  ("higher score implies more failure-like") is genuinely pre-registered;
+  ("higher score implies more failure-like") was formulated a priori;
   the bootstrap-CI verdict is therefore a real falsification test on every
   run, including the SWE-agent run that motivated them.
 - **Answer-side detectors** (``answer_meandering``, ``answer_volatility``,
@@ -339,7 +339,7 @@ def _bootstrap_auc_ci(
 
 
 def _verdict_from_ci(ci_lo: float | None, ci_hi: float | None) -> str:
-    """Map the bootstrap CI to a pre-registered verdict."""
+    """Map the bootstrap CI to a hypothesis verdict."""
     if ci_lo is None or ci_hi is None:
         return VERDICT_INSUFFICIENT
     if ci_lo > 0.5:
@@ -356,7 +356,7 @@ def evaluate_mode_detectors(
 ) -> list[dict]:
     """Evaluate every detector against the failure label with a falsifiability test.
 
-    Each detector encodes a pre-registered hypothesis ("higher score means
+    Each detector encodes a directional hypothesis ("higher score means
     more failure-like"). For each run we compute a 95% percentile-bootstrap CI
     on the score-vs-failure AUC and map it to a verdict:
 

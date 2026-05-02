@@ -44,6 +44,7 @@ from . import (
     agenthallu,
     frontierscience,
     gpqa_diamond,
+    gpqa_diamond_freeform,
     processbench,
     swe_agent_trajectories,
 )
@@ -56,6 +57,7 @@ _REGISTRY: dict[str, object] = {
     "agenterrorbench": agenterrorbench,
     "agenthallu": agenthallu,
     "gpqa-diamond": gpqa_diamond,
+    "gpqa-diamond-freeform": gpqa_diamond_freeform,
 }
 
 
