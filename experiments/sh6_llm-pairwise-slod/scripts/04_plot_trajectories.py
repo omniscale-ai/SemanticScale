@@ -101,11 +101,13 @@ def plot_mean_trajectories(merged: list[dict], reports_dir: Path) -> None:
             ax.plot(x, mean, color=color, linewidth=2, label=label)
             ax.fill_between(x, mean - std, mean + std, color=color, alpha=0.15)
         ax.set_xlabel("Normalised position")
-        ax.set_ylabel("SLoD parameter (higher = more abstract)")
-        ax.set_title(title)
+        ax.set_ylabel("SLoD (higher = more abstract)")
+        # ax.set_title(title)
         ax.legend(fontsize=9)
         ax.axhline(0, color="gray", linewidth=0.5, linestyle="--")
 
+    fig.set_size_inches(4.1, 3.1)
+    fig.savefig(reports_dir / "trajectory_mean.pdf", bbox_inches="tight")
     fig.suptitle("Mean SLoD trajectory: correct vs wrong answers", fontsize=13)
     fig.tight_layout()
     out = reports_dir / "trajectory_mean.png"

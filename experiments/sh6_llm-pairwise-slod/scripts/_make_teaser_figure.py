@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import textwrap
 from pathlib import Path
 
 import matplotlib.patches as mpatches
@@ -218,37 +219,58 @@ def render_panel_b(ax, bt_scores: list[float], chunk_labels: list[str],
 
     span = max(abs(min(bt_scores)), abs(max(bt_scores))) or 1.0
     ax.set_xlim(-0.6, n - 0.4)
-    ax.set_ylim(min(bt_scores) - span * 0.3, max(bt_scores) + span * 0.3)
+    ax.set_ylim(min(bt_scores) - span * 0.4, max(bt_scores) + span * 0.45)
 
     annotations = []
     for x, y, label in zip(xs, bt_scores, chunk_labels):
-        snippet = label if len(label) <= 34 else label[:33].rstrip() + "…"
-        yoff = -span * 0.18 if y < span * 0.3 else span * 0.14
-        va = "top" if yoff < 0 else "bottom"
-        if yoff < 0:
+        if len(label) <= 34:
+            snippet = "\n".join(textwrap.wrap(label, width=18))
+        else:
+            snippet = "\n".join(textwrap.wrap(label[:33].rstrip() + "…", width=18))
+        
+        if n == 5:
             if x == 0:
-                xoff = 0.14
+                xoff, yoff = 0.05, span * 0.15
+                ha, va = "left", "bottom"
+            elif x == 1:
+                xoff, yoff = 0.0, -span * 0.20
+                ha, va = "center", "top"
+            elif x == 2:
+                xoff, yoff = 0.0, span * 0.20
+                ha, va = "center", "bottom"
+            elif x == 3:
+                xoff, yoff = 0.0, -span * 0.20
+                ha, va = "center", "top"
+            elif x == 4:
+                xoff, yoff = -0.05, -span * 0.15
+                ha, va = "right", "top"
+        else:
+            if y >= 0:
+                yoff = span * 0.25 + (x % 2) * span * 0.15
+                va = "bottom"
+            else:
+                yoff = -span * 0.25 - (x % 2) * span * 0.15
+                va = "top"
+                
+            if x == 0:
+                xoff = 0.1
                 ha = "left"
             elif x == n - 1:
-                xoff = -0.14
+                xoff = -0.1
                 ha = "right"
             else:
-                direction = -1 if x < 0.5 * (n - 1) else 1
-                xoff = 0.22 * direction
-                ha = "right" if direction < 0 else "left"
-        else:
-            xoff = 0.0
-            ha = "center"
+                xoff = 0.0
+                ha = "center"
 
         annotations.append(ax.annotate(
             snippet, xy=(x, y), xytext=(x + xoff, y + yoff),
-            fontsize=9, ha=ha, va=va,
+            fontsize=7.5, ha=ha, va=va,
             color=NEUTRAL, family="monospace",
             bbox=dict(boxstyle="round,pad=0.25", facecolor="white",
                       edgecolor=LIGHT, linewidth=0.5),
+            arrowprops=dict(arrowstyle="-|>", color=NEUTRAL, lw=1.0, shrinkA=0, shrinkB=6)
         ))
 
-    _expand_limits_to_annotations(ax, annotations)
     ax.set_xlabel("Reasoning chunk index", fontsize=9.5)
     ax.set_xticks(xs)
     ax.tick_params(axis="x", labelsize=9)
@@ -258,7 +280,7 @@ def render_panel_b(ax, bt_scores: list[float], chunk_labels: list[str],
     leg_micro = mpatches.Patch(color=MICRO_C, label="− micro")
     leg_flip = mpatches.Patch(color=FLIP_C, alpha=0.6, label="sign-flip (thrashing)")
     ax.legend(handles=[leg_macro, leg_micro, leg_flip], loc="upper right",
-              fontsize=9, frameon=True, framealpha=0.95)
+              fontsize=8, frameon=True, framealpha=0.95)
 
     if caption:
         ax.text(0.5 * (n - 1), min(bt_scores) - span * 0.78, caption,
@@ -306,7 +328,7 @@ def save_panel_pdf(out_path: Path, render, *, figsize: tuple[float, float],
     fig, ax = plt.subplots(figsize=figsize)
     render(ax)
     fig.subplots_adjust(**adjust)
-    fig.savefig(out_path, facecolor="white", bbox_inches="tight")
+    fig.savefig(out_path, facecolor="white")
     plt.close(fig)
 
 
@@ -356,21 +378,28 @@ def main() -> None:
     save_panel_pdf(
         panel_outputs["b"],
         lambda ax: render_panel_b(ax, bt_scores, chunk_labels, args.caption),
-        figsize=(4.1*1.3, 3.1*1.3),
-        adjust={"left": 0.12, "right": 0.98, "top": 0.98, "bottom": 0.16},
+        figsize=(4.1, 3.1),
+        adjust={"left": 0.15, "right": 0.96, "top": 0.96, "bottom": 0.18},
     )
     save_panel_pdf(
         panel_outputs["c"],
         render_panel_c,
-        figsize=(4.1, 3.2),
-        adjust={"left": 0.14, "right": 0.98, "top": 0.98, "bottom": 0.17},
+        figsize=(4.1, 3.1),
+        adjust={"left": 0.15, "right": 0.98, "top": 0.96, "bottom": 0.18},
     )
-
+    
     save_panel_pdf(
         args.out.with_name(f"{stem}_b.png"),
         lambda ax: render_panel_b(ax, bt_scores, chunk_labels, args.caption),
-        figsize=(4.1*1.3, 3.1*1.3),
-        adjust={"left": 0.12, "right": 0.98, "top": 0.98, "bottom": 0.16},
+        figsize=(4.1, 3.1),
+        adjust={"left": 0.15, "right": 0.96, "top": 0.96, "bottom": 0.18},
+    )
+
+    save_panel_pdf(
+        args.out.with_name(f"{stem}_c.png"),
+        render_panel_c,
+        figsize=(4.1, 3.1),
+        adjust={"left": 0.15, "right": 0.98, "top": 0.96, "bottom": 0.18},
     )
 
     print(f"saved {args.out}")
