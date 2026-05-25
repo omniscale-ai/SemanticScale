@@ -1,0 +1,145 @@
+{
+  "subset": "olympiad",
+  "runs": [
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4"
+  ],
+  "verifier_model": "deepseek/deepseek-v3.2",
+  "n_problems": 100,
+  "n_runs": 5,
+  "baseline_pass1_avg_per_attempt": 0.582,
+  "pass5": 0.83,
+  "verify_pass1": 0.67,
+  "delta_vs_avg_pass1": 0.08800000000000008,
+  "oracle_gap_recovered": 0.35483870967741965,
+  "per_run": [
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto",
+      "n_attempts": 100,
+      "n_verified": 100,
+      "n_verify_errors": 0,
+      "pass1": 0.61,
+      "verifier_pred_correct_rate": 0.74,
+      "true_correct_rate_on_verified": 0.61,
+      "verifier_label_agreement": 0.75,
+      "verifier_oof_auc": 0.7335014712063892,
+      "mean_confidence": 84.35
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "n_attempts": 100,
+      "n_verified": 100,
+      "n_verify_errors": 0,
+      "pass1": 0.56,
+      "verifier_pred_correct_rate": 0.75,
+      "true_correct_rate_on_verified": 0.56,
+      "verifier_label_agreement": 0.67,
+      "verifier_oof_auc": 0.7674512987012987,
+      "mean_confidence": 85.51
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "n_attempts": 100,
+      "n_verified": 100,
+      "n_verify_errors": 0,
+      "pass1": 0.58,
+      "verifier_pred_correct_rate": 0.73,
+      "true_correct_rate_on_verified": 0.58,
+      "verifier_label_agreement": 0.75,
+      "verifier_oof_auc": 0.7608784893267653,
+      "mean_confidence": 86.91
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "n_attempts": 100,
+      "n_verified": 100,
+      "n_verify_errors": 0,
+      "pass1": 0.58,
+      "verifier_pred_correct_rate": 0.79,
+      "true_correct_rate_on_verified": 0.58,
+      "verifier_label_agreement": 0.75,
+      "verifier_oof_auc": 0.8031609195402298,
+      "mean_confidence": 85.88
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "n_attempts": 100,
+      "n_verified": 100,
+      "n_verify_errors": 0,
+      "pass1": 0.58,
+      "verifier_pred_correct_rate": 0.7,
+      "true_correct_rate_on_verified": 0.58,
+      "verifier_label_agreement": 0.68,
+      "verifier_oof_auc": 0.7292692939244664,
+      "mean_confidence": 84.99
+    }
+  ],
+  "per_subject": [
+    {
+      "subject": "biology",
+      "n_problems": 10,
+      "avg_pass1": 0.32,
+      "pass5": 0.7,
+      "verify_pass1": 0.2,
+      "mean_selected_confidence": 85.0
+    },
+    {
+      "subject": "chemistry",
+      "n_problems": 40,
+      "avg_pass1": 0.65,
+      "pass5": 0.875,
+      "verify_pass1": 0.75,
+      "mean_selected_confidence": 94.225
+    },
+    {
+      "subject": "physics",
+      "n_problems": 50,
+      "avg_pass1": 0.58,
+      "pass5": 0.82,
+      "verify_pass1": 0.7,
+      "mean_selected_confidence": 92.54
+    }
+  ],
+  "selective_curve": [
+    {
+      "min_signed_score": 0,
+      "coverage": 0.96,
+      "n_problems": 96,
+      "selective_pass1": 0.6979166666666666
+    },
+    {
+      "min_signed_score": 25,
+      "coverage": 0.96,
+      "n_problems": 96,
+      "selective_pass1": 0.6979166666666666
+    },
+    {
+      "min_signed_score": 50,
+      "coverage": 0.96,
+      "n_problems": 96,
+      "selective_pass1": 0.6979166666666666
+    },
+    {
+      "min_signed_score": 75,
+      "coverage": 0.96,
+      "n_problems": 96,
+      "selective_pass1": 0.6979166666666666
+    },
+    {
+      "min_signed_score": 90,
+      "coverage": 0.81,
+      "n_problems": 81,
+      "selective_pass1": 0.7283950617283951
+    }
+  ],
+  "attempts_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_llm_verify_attempts.csv",
+  "selected_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_llm_verify_selected.csv"
+}

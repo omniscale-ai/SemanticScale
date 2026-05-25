@@ -1,0 +1,335 @@
+id,subject,run,run_slug_short,run_order,answered,is_correct,predicted_answer,verify_verdict,verify_confidence,verify_error,verify_signed_score
+078d0957-0a51-46be-b820-da8f749b30b5,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,Malonic acid,correct,100,,100.0
+079657b3-e215-4944-8a67-8bb5347e4f15,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,False,False,,correct,95,,95.0
+0949d931-d0ad-4146-86e7-ef725919e3de,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,"3a,4,7,7a-Tetrahydro-1-benzothiophene-1,1-dioxide",correct,85,,85.0
+0ea11f5b-df09-4330-92cc-302a63c22008,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\displaystyle \frac{\Delta T}{\Delta h} = -\frac{M g \beta}{\alpha R} \frac{1+\alpha \rho_s}{1+\alpha \beta \rho_s}\),correct,95,,95.0
+111d5872-2705-42c0-8df4-0fb386ba7084,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,Histone deacetylation,incorrect,50,,-50.0
+11c1fcc0-bcad-4507-951b-550e19f1e2aa,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\theta = \arccos\left( -\frac{\mu_0 q_e q_m}{4\pi L} \right)\),correct,100,,100.0
+1440c195-fba2-48dc-a03d-7b9420891daf,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,7.59 μg,correct,100,,100.0
+1510d6bd-6785-456d-8988-b9382a3aef9c,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,"Multimeric open circular DNA, Open circular DNA, Linear DNA, Supercoiled DNA, Single-stranded circular DNA",correct,80,,80.0
+16318af5-cfa6-4b2c-bf25-9eb3ac468b48,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,-f/(2T),correct,95,,95.0
+19962a30-eaf9-4b7e-86c7-17c02cdb01bd,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,"\(\sigma(x, y, z) = \frac{Q}{4\pi abc \sqrt{\frac{x^2}{a^4} + \frac{y^2}{b^4} + \frac{z^2}{c^4}}}\)",correct,100,,100.0
+1dba0086-bca8-4b25-8843-e6e428f9284d,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,\(\sqrt{\frac{s^2}{N} + \frac{a^2}{12N}}\),correct,90,,90.0
+1e2f4cbe-4a38-4dd3-9378-14df40f7599f,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,\(3k_BT\),correct,95,,95.0
+1eca2503-b141-4f9f-ab10-e27d272c93b0,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,False,28,correct,100,,100.0
+20daab54-df1b-4006-a544-7198daee7847,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,\( v_x^2 + \left(v_y - \sqrt{\left(\frac{GMm}{L}\right)^2 + \frac{2E}{m}}\right)^2 = \left(\frac{GMm}{L}\right)^2 \),correct,100,,100.0
+20fcf049-b356-45cf-83d8-833f280ee107,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,\alpha = \frac{J}{k_B T},correct,96,,96.0
+218df0c2-18db-495f-8c53-eb6758feaff2,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\frac{\tau_f}{\tau_i} = \sqrt{\frac{b + a H_f^2}{b + a H_i^2}}\),correct,95,,95.0
+22f5a060-b2ba-4d68-8ad1-cbcbd58a788e,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,K₃[Co(NO₂)₆],correct,100,,100.0
+239c543b-7543-445a-b492-89c994b9ba7c,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,\(R_{eq} = \frac{R}{3}\),correct,95,,95.0
+23cb57a5-1c57-4f6e-8205-7ffb6116a16a,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,3-(trifluoromethyl)aniline,correct,95,,95.0
+27c865e6-1c87-489b-b7ea-b197fe3356ba,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,False,False,,correct,100,,100.0
+2c46387b-36e6-43cb-9e73-dbf1341bfafd,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,1.57,correct,95,,95.0
+319ae242-19fc-4542-b75a-d32b325ea923,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,cyclobutadiene,correct,85,,85.0
+328c6a47-15d7-470e-99f5-73e468634614,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,φ_{n+1} = φ_n - \frac{2α \sin(φ_n)}{u},correct,85,,85.0
+36c373f1-468f-4bba-a8d9-5a73a3be5876,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,-8,correct,100,,100.0
+3a998a27-4c4b-47c6-bd2c-dd1c9deb3d63,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,"\(\frac{1}{r}\frac{d}{dt}\left(r^2 \dot{\theta}\right) = 2\omega \sin\phi \, \dot{r}\)",correct,90,,90.0
+3d762ba1-3958-453b-b34e-fe24c2822994,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,\( K_M = K_s + \frac{[S]^2}{J_s} \),correct,90,,90.0
+4195adea-9fa5-4f25-91ef-ebd6c57cfb88,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(T = T_0 \left(\frac{N}{N_0}\right)^{1/5}\),correct,85,,85.0
+422512ca-5a0c-4a23-b987-7fa2eb2024e6,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,19,correct,95,,95.0
+4225f097-0cee-4e43-b5b9-6efbab4c3447,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,False,\vec{B}_1 = \vec{B}_0 \left(1 - \sqrt{\frac{16R^2 + d^2}{4R^2 + d^2}}\right),correct,95,,95.0
+441c416a-8f5e-431c-9675-faeac34ff290,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,"2,3,4,5,6,7,8,9-octamethyl-decanedioate",correct,90,,90.0
+469cc7c7-ae71-4ea2-bc13-3af3770fd8da,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,3 I4O9 + 12 OH^- → I^- + 11 IO_3^- + 6 H2O,correct,100,,100.0
+4842f95d-b84a-4ff4-8165-64fc7bfcf00d,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,B1: Furfural; B2: Mucobromic acid; B3: K₂[C₄HBrNO₃]; B4: Hexanitroethane; B5: Tetranitroethylene,correct,85,,85.0
+4a737e9f-5afd-4a14-a17b-c468cda1a8bb,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,NaNO₃,correct,95,,95.0
+4ee82eb3-a457-42c5-9c62-5730d41f67a6,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,TLR9 signaling pathway,correct,90,,90.0
+4f1cf869-3ea3-400c-8fa3-e4d3f6fe1cdf,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,"\[
+\boxed{R_C = \left( 12 \frac{\rho_M}{\rho} R_0^3 \right)^{1/3}}
+\]",correct,95,,95.0
+50f7d1e4-51bd-4013-a570-a02988ca3aa2,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,6.98,correct,100,,100.0
+516da073-8d2a-4db5-a739-c752655ec14c,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,"\(\mathbf{E}(r,\theta) = E_0 \left[ \left(1 + \frac{a^2}{r^2}\right) \cos\theta \, \hat{r} - \left(1 - \frac{a^2}{r^2}\right) \sin\theta \, \hat{\theta} \right]\)",correct,100,,100.0
+57390923-7cfd-4adf-8d0b-33c5791f6e51,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,tert-butyl acetoacetate,correct,95,,95.0
+5c97845c-c039-48d8-abcf-703afc476b98,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,\frac{E e^4}{\rho L^4 g},correct,80,,80.0
+5ef8b29d-7665-45e6-a26a-bd4a27f450ad,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,CC(O)(OCC)CCC[C@](C)(O)CH2OH,correct,85,,85.0
+62dc1c65-0200-41d8-91fd-aa3c606e46cc,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,0,correct,95,,95.0
+6646019d-bda1-4b1c-83ac-7953e853effd,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,\frac{\hbar e^4}{32\pi^2\epsilon_0^2 m^2 \omega_0^3},correct,100,,100.0
+6681ea07-9b3a-4a71-9b31-a88212189f27,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,2.10 × 10^{-6},correct,95,,95.0
+677d66f3-b5f3-432d-bb04-2a8807d5491f,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,2,correct,95,,95.0
+69bd11e8-5f96-45dc-8123-b9d800101430,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,\frac{2\sqrt{2}}{3} M_0^3 \sqrt{\rho \kappa},correct,100,,100.0
+6e9aca19-46c4-46ea-9643-86b138e8f2f5,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,\(\vec{PA}\),correct,95,,95.0
+70929247-a356-4a12-8534-49fd885f0c3e,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\Omega^2 > \frac{2gl}{a^2},correct,95,,95.0
+710c1336-0995-4d45-bfea-48ff475f255f,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\vec{E} = v B_0 \frac{\varepsilon - \varepsilon_0}{\varepsilon + 2\varepsilon_0} a^3 \frac{3(\hat{x} \cdot \vec{r}) \vec{r} - r^2 \hat{x}}{r^5}\),correct,95,,95.0
+84b13a21-19c8-47a2-8661-a1b59f1062f5,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,benzyne,correct,100,,100.0
+84bba88d-2aee-4fcb-baab-4c6eea17b0d8,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\Delta S = c_1 \ln\left(\frac{c_1 T_1 + c_2 T_2}{(c_1+c_2)T_1}\right) + c_2 \ln\left(\frac{c_1 T_1 + c_2 T_2}{(c_1+c_2)T_2}\right)\),correct,95,,95.0
+85b4f862-d881-4a79-8c5d-3e927b486b71,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,"Fe: 77.78%, Fe₂O₃: 22.22%",correct,100,,100.0
+8a983c4c-070e-45b1-b2ce-300c7a68feb6,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,f(y) = 2 + \frac{\ln(2+\sqrt{3})}{\sqrt{3}} - \cosh\left(\frac{2\sqrt{3}y}{L}\right),correct,95,,95.0
+8b695bb3-ea3c-4372-9222-9f0b79a68b6c,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,UMAP,correct,85,,85.0
+8be6ce44-a0c8-4636-80ca-2667dcc9d2af,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,methoxyacetonitrile,correct,95,,95.0
+8f121749-9809-45f1-bcb8-7118ccb5d4cc,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,NaBiO3,correct,100,,100.0
+90ddb7c3-4bf1-43b6-820a-c89f3858781a,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,autophagy,correct,85,,85.0
+94c55a69-1e8d-4934-ae59-2cf0401e1b01,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,"y(x) = -\frac{\rho g}{6 Y r^2} (x^4 - 4L x^3 + 6L^2 x^2), \quad \alpha = -\frac{2 \rho g L^3}{3 Y r^2}",correct,100,,100.0
+953ba4b1-94ae-42ac-9621-408386bc382b,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,10,correct,95,,95.0
+a2d2c8a2-86ef-49a6-9e56-804cbb89c848,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,5-cyclopropyl-2-hydroxy-4--iodobenzaldehyde,correct,95,,95.0
+a74ccc5b-fd37-49fa-b784-871dbcc41e9e,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,9,correct,90,,90.0
+adadda00-bef8-417d-97d6-cfd9dec33cba,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,0.0456 M,correct,85,,85.0
+ae667a28-9659-4f33-a51e-7a19f133e111,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,\(\left(\frac{\partial C_H}{\partial H}\right)_\tau = \tau V H \left(\frac{\partial^2 \chi}{\partial \tau^2}\right)_H\),correct,95,,95.0
+aeaa8d2c-fcb9-423f-b1c0-ac9c122999e6,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,0.2,correct,95,,95.0
+af36a1cb-5949-4385-93a0-1f875500c34a,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,read noise from the EMCCD camera,correct,85,,85.0
+afb2ebc7-421e-4e61-8073-7c4393aa9855,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,\frac{m}{M} f \frac{L_x L_y}{R},incorrect,40,,-40.0
+b188cad8-92b9-4c72-98a2-b78e04b764f1,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,A4B9X20,correct,95,,95.0
+b36273bb-c098-4037-90cc-cfd05cbe5bb9,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,4-nitrocinnamic acid,correct,95,,95.0
+b7337452-ab08-43e5-9f3b-419107415280,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,D₂EO₄,correct,95,,95.0
+b75893ef-5c56-4d43-9ae1-8c9caaf32ee2,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,False,"N,N-diisopropylethylamine",correct,95,,95.0
+b90fc8dc-2fca-4ff7-9c9f-a2e6a0ac7812,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,\( T_1 = T_0 \frac{B_1}{B_0} \),correct,100,,100.0
+bb0539ef-d9fd-4215-bf16-b0eca44a8778,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,2.31 × 10^6 K,correct,98,,98.0
+bc8a05ac-9db5-47b4-8618-84aa4a46466a,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4,deepseek/deepseek-v3.2_reasoning-auto_s4,4,True,True,\(T = \frac{2\pi}{\omega}\),correct,100,,100.0
+bdb3fc5f-9374-4e37-9af9-6036e3e29093,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,\vec{J}(t) = \frac{2E_0}{\mu_0 (c+v)} \cos\left( \omega \frac{c-v}{c} t \right) \hat{y},correct,95,,95.0
+c982b5bc-0fb8-4f12-94fa-f05715209ead,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,C5H12O2,correct,80,,80.0
+cb11faa6-e12a-4621-9fa7-f6f4b11a9300,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,"\left( \frac{M_1-M_2}{2(M_1+M_2)} R, \frac{\sqrt{3}}{2} R \right)",correct,100,,100.0
+cc251e69-6a32-4ed7-9315-beee80404866,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,"2,3-dimethoxy-4-methylaniline",correct,95,,95.0
+cfa05761-b488-4491-9f77-8854ece1cf98,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,\(z_i = \theta \left(d + D + \frac{w}{1+\xi C_0}\right)\),incorrect,65,,-65.0
+d1cec1fb-13bb-475a-b2f1-956db5ef3b77,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,\( U = -\frac{2e^2 x_1 x_2}{4\pi\varepsilon_0 R^3} \),correct,95,,95.0
+dbe975d5-c431-4d73-8f7c-f8bba77ea458,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,\(\frac{8\pi \epsilon \sigma R^2 T_0^3 T_1}{3c}\),correct,95,,95.0
+dcc38501-c38e-4a8e-a069-1a401d6432c0,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,False,"</think>好的，这道题要求我们求 \(\angle AFD\) 的角度，并证明其是一个定值。给出的条件是：在 \(\triangle ABC\) 中，\(D\) 为 \(BC\) 的中点，\(E\) 是 \(AC\) 上的一点，满足 \(BE \perp AC\)，而 \(AF \perp DE\) 于 \(F\)，并且 \(AB = 2DE\)。
+
+---
+
+**第一步：建立几何模型**
+
+1. 设 \(\triangle ABC\) 中，\(D\) 是 \(BC\) 的中点，所以 \(BD = DC\)。
+2. \(BE \perp AC\)，所以 \(\angle BEC = 90^\circ\)。
+3. \(E\) 在 \(AC\) 上。
+4. 作 \(AF \perp DE\)，\(F\) 是垂足，在 \(DE\) 上（或者其延长线上，根据图，应该是交于 \(DE\) 上）。
+5. 已知 \(AB = 2DE\)。
+
+题目要求：\(\angle AFD\) 为定值。
+
+---
+
+**第二步：猜测可能的几何关系**
+
+\(D\) 是 \(BC\) 中点，\(BE\) 是 \(AC\) 边上的高。常见思路：\(DE\) 可能和某条边平行或者有特殊比例。
+
+尝试画图：设 \(AC\) 为水平线，\(B\) 在上方，\(E\) 是垂足在 \(AC\) 上。\(D\) 在 \(BC\) 中点。连接 \(DE\)。
+
+由于 \(D\) 是 \(BC\) 中点，\(\triangle BEC\) 是直角三角形（\(\angle BEC=90^\circ\)），所以 \(D\) 是直角边 \(BC\) 的中点，所以 \(DE = DC\) 吗？等一下，不是 \(DC\)，而是——
+
+在直角三角形 \(BEC\) 中，\(BC\) 是斜边，不，等一下，\(\angle BEC=90^\circ\)，所以 \(BC\) 是直角三角形的斜边（点 \(B,E,C\)，直角在 \(E\)）。是的，因为 \(BE \perp AC\)，所以 \(E\) 在 \(AC\) 上，直角顶点是 \(E\)，所以 \(BC\) 是 \(\triangle BEC\) 的斜边。
+
+因此 \(D\) 是斜边 \(BC\) 的中点，所以 \(D\) 是直角 \(\triangle BEC\) 斜边中点，故 \(D\) 到 \(B,E,C\) 距离相等：  
+\[
+DB = DE = DC
+\]
+这是因为直角三角形斜边中线等于斜边的一半，而 \(BC\) 是斜边，\(BD = DC = \frac12 BC\)，同时 \(DE\) 也是斜边上的中线？等一下，\(E\) 是直角顶点，连接斜边中点 \(D\) 与直角顶点 \(E\)，则 \(DE = \frac12 BC\)。是的，所以在直角三角形 \(BEC\) 中，\(D\) 是 \(BC\) 中点，那么 \(DE = \frac12 BC = DB = DC\)。
+
+所以 \(DE = DB\)，因此 \(\triangle DBE\) 是等腰三角形。
+
+---
+
+**第三步：利用条件 \(AB = 2DE\)**
+
+我们有 \(DE = \frac12 BC\)（从直角 \(\triangle BEC\)），所以 \(2DE = BC\)。  
+而 \(AB = 2DE\)，所以 \(AB = BC\)。所以 \(\triangle ABC\) 中 \(AB = BC\)，即 \(\triangle ABC\) 是等腰三角形，顶点 \(B\) 处的角是顶角？不，等边 \(AB=BC\)，那么 \(A\) 和 \(C\) 是底角顶点吗？  
+设 \(AB = BC\)，则 \(\triangle ABC\) 中，\(AB\) 与 \(BC\) 是两条边，夹角是 \(\angle ABC\)，所以 \(A\) 与 \(C\) 地位对称，那么 \(AC\) 是底边吗？我们不知道，但先知道：\(AB = BC\)。
+
+---
+
+**第四步：求 \(\angle AFD\)**
+
+我们有 \(DE = DB\)（从直角 \(\triangle BEC\) 斜边中线性质），所以 \(D\) 在 \(BE\) 的垂直平分线上吗？不是必须的。  
+已知 \(AF \perp DE\)，设 \(\angle AFD = \theta\)，则 \(\angle ADF = 90^\circ - \theta\)？不一定，看 \(\triangle ADF\)，\(\angle AFD\) 是 \(F\) 处的角，\(\angle ADF\) 是 \(D\) 处的角，\(\angle DAF = 90^\circ - \angle ADF\) 吗？乱。
+
+先直接定位：\(AB = BC\)，结合 \(BD = DC\)，\(D\) 是 \(BC\) 中点，则 \(AD\) 是 \(\triangle ABC\) 的中线，且 \(AB=BC\)，但不一定等腰对着 \(A\) 与 \(C\)？实际上 \(AB=BC\) 说明 \(B\) 处的角是顶角？不对，如果 \(AB=BC\)，则 \(B\) 是顶点吗？画图：三角形 \(ABC\)，边 \(AB\) 和 \(BC\) 相等，那么 \(AC\) 是底边，\(B\) 是顶点，所以 \(\angle B\) 是顶角，\(A\) 和 \(C\) 是底角。
+
+所以 \(\triangle ABC\) 是等腰三角形，\(BA = BC\)，\(B\) 是顶点。
+
+---
+
+**第五步：连接 \(AD\) 与 \(DE\) 的关系**
+
+\(D\) 是 \(BC\) 中点，\(AD\) 是中线，在等腰三角形 \(ABC\) 中，\(AD \perp BC\)（因为等腰三角形底边中线也是高）。  
+所以 \(\angle ADB = 90^\circ\)。
+
+而 \(DE = DB\)（前面已证：\(D\) 是直角 \(\triangle BEC\) 斜边中点，所以 \(DE=DB=DC\)）。  
+所以 \(DE = DB\)，且 \(AD \perp BD\)，即 \(AD \perp DE\) 吗？注意 \(D,B,E\) 不一定共线，但是 \(AD \perp BC\) 而 \(BC\) 过 \(B,D,C\)，\(DE\) 是从 \(D\) 到 \(E\) 的线段，不一定与 \(BC\) 垂直，所以 \(AD\) 不一定垂直于 \(DE\)。要小心。
+
+实际上，\(\angle ADB = 90^\circ\)，即 \(AD \perp BD\)。\(DE\) 和 \(BD\) 夹角为 \(\angle BDE\)，不等于 \(0\)，所以 \(AD\) 不一定垂直 \(DE\)。
+
+---
+
+**第六步：建立坐标计算**
+
+设 \(A(0,0)\)，\(C(c,0)\)，\(B\) 在 \(y\) 轴上？不，等腰三角形 \(BA=BC\)，顶点 \(B\) 在 \(AC\) 的垂直平分线上。  
+设 \(AC = 2m\)，中点为 \(M(m,0)\)，则 \(B\) 坐标为 \((m, h)\)。
+
+则 \(AB = \sqrt{m^2 + h^2}\)，\(BC = \sqrt{(c-m)^2 + h^2} = \sqrt{m^2 + h^2}\)（因为 \(c=2m\)，所以 \(c-m = m\)），所以自动满足，没问题。
+
+更简便：设 \(A(-1,0)\)，\(C(1,0)\)，则 \(AC=2\)，\(M(0,0)\) 是 \(AC\) 中点吗？等一下，设 \(A(0,0)\)，\(C(2,0)\)，则 \(M(1,0)\) 是 \(AC\) 中点。等腰 \(BA=BC\)，顶点 \(B\) 在 \(x=1\) 的直线上，设 \(B(1,b)\)，\(b>0\)。
+
+则 \(AB = \sqrt{1 + b^2}\)，\(BC = \sqrt{1 + b^2}\)，相等。
+
+\(D\) 是 \(BC\) 中点：\(B(1,b)\)，\(C(2,0)\)，所以 \(D\left( \frac{1+2}{2}, \frac{b+0}{2} \right) = \left(1.5, \frac{b}{2} \right)\)。
+
+---
+
+**第七步：点 \(E\)**
+
+\(BE \perp AC\)，\(AC\) 在 \(x\) 轴上，所以 \(BE\) 垂直 \(x\) 轴，所以 \(E\) 的横坐标与 \(B\) 相同，为 \(1\)，且 \(E\) 在 \(AC\) 上，即 \(y=0\)，所以 \(E(1,0)\)。  
+那 \(M\) 就是 \(E\)？等一下，之前 \(M\) 是 \(AC\) 中点，\(E\) 是垂足，\(B\) 的横坐标是 \(1\)，而 \(A(0,0)\)，\(C(2,0)\)，中点 \(M\) 横坐标是 \(1\)，所以 \(E\) 就是 \(M\)。所以 \(E\) 是 \(AC\) 中点。
+
+---
+
+**第八步：验证性质**
+
+\(D\) 是 \(BC\) 中点，\(E\) 是 \(AC\) 中点，所以 \(DE\) 是两条中位线？不是，\(D\) 在 \(BC\) 上，\(E\) 在 \(AC\) 上，\(DE\) 是三角形 \(ABC\) 内的一条线段。  
+在直角 \(\triangle BEC\) 中，直角在 \(E\)，斜边 \(BC\)，\(D\) 是 \(BC\) 中点，所以 \(DE = \frac12 BC\)，而 \(BC = \sqrt{1 + b^2}\)？  
+\(B(1,b)\)，\(C(2,0)\)，\(BC = \sqrt{(1-2)^2 + b^2} = \sqrt{1 + b^2}\)。所以 \(DE = \frac12 \sqrt{1+b^2}\)。
+
+而 \(AB = \sqrt{1 + b^2}\)，所以 \(AB = 2DE\)，与已知一致。
+
+---
+
+**第九步：求 \(F\) 与 \(\angle AFD\)**
+
+\(AF \perp DE\)，\(F\) 是垂足。
+
+先求 \(D\) 和 \(E\)：\(E(1,0)\)，\(D(1.5, b/2)\)。
+
+直线 \(DE\)：斜率 \(m_{DE} = \frac{b/2 - 0}{1.5 - 1} = \frac{b/2}{0.5} = b\)。  
+所以 \(DE\) 方程：过 \(E(1,0)\)，\(y = b(x-1)\)。
+
+\(AF \perp DE\)，斜率是 \(-1/b\)（若 \(b \neq 0\)），过 \(A(0,0)\)，所以 \(AF\) 方程：\(y = -\frac1b x\)。
+
+交点 \(F\)：解  
+\[
+b(x-1) = -\frac1b x
+\]
+\[
+b^2(x-1) = -x
+\]
+\[
+b^2 x - b^2 = -x
+\]
+\[
+(b^2 + 1) x = b^2
+\]
+\[
+x = \frac{b^2}{b^2+1}, \quad y = -\frac1b \cdot \frac{b^2}{b^2+1} = -\frac{b}{b^2+1}
+\]
+
+所以 \(F\left( \frac{b^2}{b^2+1}, -\frac{b}{b^2+1} \right)\)。
+
+---
+
+**第十步：向量求角**
+
+\(\angle AFD\) 是 \(F\) 处的角，即向量 \(FA\) 与 \(FD\) 的夹角。
+
+\(FA = A - F = \left( -\frac{b^2}{b^2+1}, \frac{b}{b^2+1} \right)\)。
+
+\(FD = D - F = \left( 1.5 - \frac{b^2}{b^2+1}, \frac{b}{2} + \frac{b}{b^2+1} \right)\)。
+
+为方便，设 \(t = b^2+1\)，则 \(b^2 = t-1\)，\(b = \sqrt{t-1}\)。
+
+但也许直接算角度与 \(b\) 无关。
+
+考虑用向量点积：  
+\[
+FA \cdot FD = |FA|\,|FD|\,\cos \angle AFD
+\]
+
+先算 \(FA\) 和 \(FD\) 表达式更简洁。
+
+设 \(k = b^2+1\)，则 \(F\left( \frac{b^2}{k}, -\frac{b}{k} \right)\)。
+
+\(A(0,0)\)，所以 \(FA = \left( -\frac{b^2}{k}, \frac{b}{k} \right)\)。
+
+\(D\left( \frac{3}{2}, \frac{b}{2} \right)\)，所以 \(FD = \left( \frac{3}{2} - \frac{b^2}{k}, \frac{b}{2} + \frac{b}{k} \right)\)。
+
+代入 \(k = b^2+1\)，则：
+
+\(\frac{b^2}{k} = \frac{b^2}{b^2+1}\)，  
+\(\frac{b}{k} = \frac{b}{b^2+1}\)。
+
+---
+
+**第十一步：尝试特殊值看是否为定角**
+
+令 \(b=1\)：  
+\(k=2\)，\(F(0.5, -0.5)\)，  
+\(FA = (-0.5, 0.5)\)，  
+\(D(1.5, 0.5)\)，\(FD = (1.0, 1.0)\)。
+
+点积 \((-0.5)(1.0) + (0.5)(1.0) = 0\)，所以 \(\angle AFD = 90^\circ\)。
+
+令 \(b=2\)：  
+\(k=5\)，\(F(4/5, -2/5)\)，  
+\(FA = (-4/5, 2/5)\)，  
+\(D(1.5, 1)\)，\(FD = (1.5-0.8, 1+0.4) = (0.7, 1.4)\)。
+
+点积 \((-0.8)(0.7) + (0.4)(1.4) = -0.56 + 0.56 = 0\)，还是垂直。
+
+令 \(b=3\)：  
+\(k=10\)，\(F(0.9, -0.3)\)，  
+\(FA = (-0.9, 0.3)\)，  
+\(D(1.5, 1.5)\)，\(FD = (0.6, 1.8)\)。
+
+点积 \((-0.9)(0.6) + (0.3)(1.8) = -0.54 + 0.54 = 0\)。
+
+所以 \(\angle AFD = 90^\circ\) 恒成立。
+
+---
+
+**第十二步：证明垂直**
+
+观察到 \(FA \cdot FD = 0\) 对所有 \(b\) 成立，因为上面例子都是 0，可一般证明：
+
+设 \(u = b^2/k = \frac{b^2}{b^2+1}\)，\(v = b/k = \frac{b}{b^2+1}\)。
+
+则 \(F(u, -v)\)，\(A(0,0)\)，所以 \(FA = (-u, v)\)。
+
+\(D(3/2, b/2)\)，所以 \(FD = \left( \frac{3}{2} - u, \frac{b}{2} + v \right)\)。
+
+点积：
+\[
+(-u)\left( \frac{3}{2} - u \right) + v\left( \frac{b}{2} + v \right)
+= -\frac{3u}{2} + u^2 + \frac{b v}{2} + v^2
+\]
+
+代入 \(u = \frac{b^2}{b^2+1}\)，\(v = \frac{b}{b^2+1}\)：
+
+\[
+u^2 + v^2 = \frac{b^4 + b^2}{(b^2+1)^2} = \frac{b^2(b^2+1)}{(b^2+1)^2} = \frac{b^2}{b^2+1} = u
+\]
+
+并且 \(\frac{b v}{2} = \frac{b \cdot \frac{b}{b^2+1}}{2} = \frac{b^2}{2(b^2+1)} = \frac{u}{2}\)
+
+所以点积：
+\[
+-\frac{3u}{2} + u + \frac{u}{2} = (-1.5u + u + 0.5u) = 0
+\]
+
+因此 \(FA \cdot FD = 0\)，即 \(FA \perp FD\)，所以 \(\angle AFD = 90^\circ\) 为定值。
+
+---
+
+**结论：**
+
+\[
+\boxed{90^\circ}
+\]
+
+证明见上。",correct,85,,85.0
+e1b0b588-915d-46ad-990e-ba5aa554053e,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,\frac{\eta}{\rho} \left( \frac{\partial^2 g}{\partial r^2} + \frac{1}{r} \frac{\partial g}{\partial r} - \frac{g}{r^2} \right),correct,98,,98.0
+e2bef5ee-c2ee-4704-b52a-63bb2e7aea7a,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,True,\frac{qB}{m} + \sqrt{\frac{2qe}{m}},correct,100,,100.0
+ea576eec-eb50-4d75-9849-ccd4c83a15fe,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,7,correct,95,,95.0
+ecb58594-7fd9-4a94-b799-0f1c13acb752,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,NaBiO₃,correct,98,,98.0
+ee749fc0-8faa-45f7-881b-b5703b1a4b01,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,5.4,correct,95,,95.0
+eeb31abb-41cb-4fe6-9864-f98fdcef338d,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,RNase H activity,correct,90,,90.0
+eec8840a-2d00-4e70-b043-0da51bd1b288,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,SO2Cl2,correct,100,,100.0
+f040ed81-6802-4359-beff-42e319c1b0f1,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,1.06 mg,correct,95,,95.0
+f10254b9-f0a1-407f-8af9-3169e23eee5e,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,"\[
+x(z) = \frac{g}{k^2 \omega^2} \left( \sqrt{1 - \left(1 + \frac{k^2 \omega^2}{g} z\right)^2} - \arccos\left(1 + \frac{k^2 \omega^2}{g} z\right) \right)
+\]",correct,95,,95.0
+f12a8706-3ddd-4255-9234-0655babceb8e,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2,deepseek/deepseek-v3.2_reasoning-auto_s2,2,True,True,S₂O₃²⁻ will disproportionate to S and SO₂; E° = 0.08 V,correct,98,,98.0
+f398c3ad-6cff-45b1-a21d-5ce963db75aa,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,\( x = -R \left(1 + \frac{5}{12} \alpha \right) \),correct,95,,95.0
+f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,\(\omega = 2\sqrt{\frac{g(A^{2}-B^{2})}{B(A^{2}+5B^{2})}}\),correct,95,,95.0
+f44b0903-1c29-44a5-9f9b-b6ccdd164e1c,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,docosahexaenoic acid (22:6),correct,85,,85.0
+f4681d73-b08d-450c-89d3-85b9d1250419,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,\(\sqrt{ \frac{c^4}{a^2(1 - v^2/c^2)} + \frac{2c^2 L}{a} + L^2 } - \frac{c^2}{a\sqrt{1 - v^2/c^2}}\),correct,95,,95.0
+f7b49518-6e84-44e3-9480-4cf91d149702,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,Endocytosis,correct,90,,90.0
+f88cc0c0-2ca6-4cb0-bd1e-a37ddcf11294,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,False,False,,incorrect,45,,-45.0
+f9fdb988-7a10-4510-a8ab-d011e663be3f,physics,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3,deepseek/deepseek-v3.2_reasoning-auto_s3,3,True,False,"For \( y > 0 \): \(\overrightarrow{B} = 0\).
+For \( y < 0 \): \(\overrightarrow{B} = \mu_0 \sigma k e^{k y} \left( -\sin(kx) \hat{x} + \cos(kx) \hat{y} \right)\).",correct,95,,95.0
+fbec81f3-a103-43e1-b4a8-bb2487cc24e8,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1,deepseek/deepseek-v3.2_reasoning-auto_s1,1,True,True,0.011 g,correct,95,,95.0
+fcbd76ad-1b45-4f40-ad9d-d2bc5016f02c,biology,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,False,Degradation of killed bacteria provides amino acids to macrophages.,correct,95,,95.0
+ff4a744b-45ac-46d9-b0ba-6461a71e278a,chemistry,frontierscience/deepseek/deepseek-v3.2_reasoning-auto,deepseek/deepseek-v3.2_reasoning-auto,0,True,True,SeO₂,correct,98,,98.0
