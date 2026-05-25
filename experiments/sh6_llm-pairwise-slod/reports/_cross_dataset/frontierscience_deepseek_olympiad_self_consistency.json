@@ -1,0 +1,115 @@
+{
+  "subset": "olympiad",
+  "runs": [
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+    "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4"
+  ],
+  "n_problems": 100,
+  "n_runs": 5,
+  "baseline_pass1_avg_per_attempt": 0.582,
+  "pass5": 0.83,
+  "sc_pass1": 0.68,
+  "sc_gain_vs_avg_pass1": 0.09800000000000009,
+  "oracle_gap_recovered_by_sc": 0.395161290322581,
+  "mean_consistency": 0.47800000000000004,
+  "per_run": [
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto",
+      "answered": 85,
+      "errors": 15,
+      "pass1": 0.61
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s1",
+      "answered": 87,
+      "errors": 13,
+      "pass1": 0.56
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s2",
+      "answered": 87,
+      "errors": 13,
+      "pass1": 0.58
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s3",
+      "answered": 89,
+      "errors": 11,
+      "pass1": 0.58
+    },
+    {
+      "run": "frontierscience/deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "run_slug_short": "deepseek/deepseek-v3.2_reasoning-auto_s4",
+      "answered": 83,
+      "errors": 17,
+      "pass1": 0.58
+    }
+  ],
+  "per_subject": [
+    {
+      "subject": "biology",
+      "n_problems": 10,
+      "avg_pass1": 0.32,
+      "pass5": 0.7,
+      "sc_pass1": 0.2,
+      "mean_consistency": 0.76
+    },
+    {
+      "subject": "chemistry",
+      "n_problems": 40,
+      "avg_pass1": 0.65,
+      "pass5": 0.875,
+      "sc_pass1": 0.8,
+      "mean_consistency": 0.6050000000000001
+    },
+    {
+      "subject": "physics",
+      "n_problems": 50,
+      "avg_pass1": 0.58,
+      "pass5": 0.82,
+      "sc_pass1": 0.68,
+      "mean_consistency": 0.31999999999999995
+    }
+  ],
+  "selective_curve": [
+    {
+      "min_winning_count": 1,
+      "coverage": 1.0,
+      "n_problems": 100,
+      "sc_pass1": 0.68
+    },
+    {
+      "min_winning_count": 2,
+      "coverage": 0.6,
+      "n_problems": 60,
+      "sc_pass1": 0.7333333333333333
+    },
+    {
+      "min_winning_count": 3,
+      "coverage": 0.36,
+      "n_problems": 36,
+      "sc_pass1": 0.75
+    },
+    {
+      "min_winning_count": 4,
+      "coverage": 0.26,
+      "n_problems": 26,
+      "sc_pass1": 0.7692307692307693
+    },
+    {
+      "min_winning_count": 5,
+      "coverage": 0.17,
+      "n_problems": 17,
+      "sc_pass1": 0.7058823529411765
+    }
+  ],
+  "attempts_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_self_consistency_attempts.csv",
+  "votes_csv": "/home/kna/SemanticScale/experiments/sh6_llm-pairwise-slod/reports/_cross_dataset/frontierscience_deepseek_olympiad_self_consistency_votes.csv"
+}

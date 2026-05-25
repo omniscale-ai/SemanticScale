@@ -1,0 +1,101 @@
+id,subject,n_attempts,n_answered,winning_norm,winning_count,n_distinct_answers,consistency,sc_correct,any_correct,all_correct,mean_correct
+078d0957-0a51-46be-b820-da8f749b30b5,chemistry,5,5,malonic acid,4,2,0.8,True,True,True,1.0
+079657b3-e215-4944-8a67-8bb5347e4f15,chemistry,5,3,pt9cl18o20h30,1,3,0.2,False,False,False,0.0
+0949d931-d0ad-4146-86e7-ef725919e3de,chemistry,5,4,"3a,4,7,7a-tetrahydro-1-benzothiophene-1,1-dioxide",1,4,0.2,True,True,False,0.6
+0ea11f5b-df09-4330-92cc-302a63c22008,physics,5,5,\(\displaystyle \frac{\delta t}{\delta h} = -\frac{m g \beta}{\alpha r} \frac{1+\alpha \rho_s}{1+\alpha \beta \rho_s}\,1,5,0.2,True,True,True,1.0
+111d5872-2705-42c0-8df4-0fb386ba7084,biology,5,5,histone deacetylation,5,1,1.0,False,True,False,0.2
+11c1fcc0-bcad-4507-951b-550e19f1e2aa,physics,5,5,\(\theta = \arccos\left( -\frac{\mu_0 q_e q_m}{4\pi l} \right)\,2,4,0.4,True,True,False,0.6
+1440c195-fba2-48dc-a03d-7b9420891daf,chemistry,5,4,7.59,3,2,0.6,True,True,False,0.8
+1510d6bd-6785-456d-8988-b9382a3aef9c,biology,5,5,"multimeric open circular dna, open circular dna, linear dna, supercoiled dna, single-stranded circular dna",2,4,0.4,True,True,True,1.0
+16318af5-cfa6-4b2c-bf25-9eb3ac468b48,physics,5,4,\(-\frac{f}{2t}\,2,3,0.4,True,True,False,0.8
+19962a30-eaf9-4b7e-86c7-17c02cdb01bd,physics,5,4,"\(\sigma(x,y,z) = \frac{q}{4\pi abc \sqrt{\frac{x^2}{a^4} + \frac{y^2}{b^4} + \frac{z^2}{c^4}}}\",1,4,0.2,True,True,False,0.8
+1dba0086-bca8-4b25-8843-e6e428f9284d,physics,5,5,\(\sqrt{\frac{s^2}{n} + \frac{a^2}{12}}\,2,3,0.4,False,True,False,0.6
+1e2f4cbe-4a38-4dd3-9378-14df40f7599f,physics,5,4,3 k_b t,2,3,0.4,True,True,False,0.8
+1eca2503-b141-4f9f-ab10-e27d272c93b0,biology,5,5,28,5,1,1.0,False,False,False,0.0
+20daab54-df1b-4006-a544-7198daee7847,physics,5,5,"\( a = \sqrt{\left( \frac{gmm}{l} \right)^2 + \frac{2e}{m}} \), \( b = \left( \frac{gmm}{l} \right)^2 \",2,4,0.4,True,True,False,0.6
+20fcf049-b356-45cf-83d8-833f280ee107,physics,5,5,\(\alpha = \frac{j}{k_b t}\,3,2,0.6,True,True,True,1.0
+218df0c2-18db-495f-8c53-eb6758feaff2,physics,5,4,\(\frac{\tau_f}{\tau_i} = \sqrt{\frac{b + a h_f^2}{b + a h_i^2}}\,2,3,0.4,True,True,False,0.8
+22f5a060-b2ba-4d68-8ad1-cbcbd58a788e,chemistry,5,5,k3[co(no2)6,5,1,1.0,True,True,True,1.0
+239c543b-7543-445a-b492-89c994b9ba7c,physics,5,3,\(\frac{r}{3}\,1,3,0.2,True,True,False,0.6
+23cb57a5-1c57-4f6e-8205-7ffb6116a16a,chemistry,5,5,3-(trifluoromethyl)aniline,3,3,0.6,True,True,False,0.6
+27c865e6-1c87-489b-b7ea-b197fe3356ba,physics,5,3,"u(t,p) = ct",1,3,0.2,True,True,False,0.6
+2c46387b-36e6-43cb-9e73-dbf1341bfafd,physics,5,4,1.57,2,3,0.4,False,True,False,0.2
+319ae242-19fc-4542-b75a-d32b325ea923,chemistry,5,5,cyclobutadiene,5,1,1.0,False,False,False,0.0
+328c6a47-15d7-470e-99f5-73e468634614,physics,5,3,\phi_{n+1} = \phi_n - \frac{\alpha}{u} \sin \phi_n,1,3,0.2,False,True,False,0.4
+36c373f1-468f-4bba-a8d9-5a73a3be5876,chemistry,5,4,-8,3,2,0.6,True,True,False,0.6
+3a998a27-4c4b-47c6-bd2c-dd1c9deb3d63,physics,5,4,\frac{1}{r}\frac{d}{dt}\left(r^2 \dot{\theta}\right) = 2\omega \sin\phi \dot{r,1,4,0.2,False,False,False,0.0
+3d762ba1-3958-453b-b34e-fe24c2822994,chemistry,5,5,\( k_m = k_s + \frac{[s]^2}{j_s} \,2,3,0.4,False,True,False,0.4
+4195adea-9fa5-4f25-91ef-ebd6c57cfb88,physics,5,4,\(t = t_0 \left(\frac{n}{n_0}\right)^{1/5}\,1,4,0.2,True,True,False,0.6
+422512ca-5a0c-4a23-b987-7fa2eb2024e6,physics,5,4,19,4,1,0.8,True,True,False,0.8
+4225f097-0cee-4e43-b5b9-6efbab4c3447,physics,5,5,\(\vec{b}_1 = -\vec{b}_0\,1,5,0.2,True,True,False,0.2
+441c416a-8f5e-431c-9675-faeac34ff290,chemistry,5,5,"2,3,4,5,6,7,8,9-octamethyldecanedioate",2,4,0.4,False,False,False,0.0
+469cc7c7-ae71-4ea2-bc13-3af3770fd8da,chemistry,5,4,3 i4o9 + 12 oh− → i− + 11 io3− + 6 h2o,1,4,0.2,True,True,False,0.8
+4842f95d-b84a-4ff4-8165-64fc7bfcf00d,chemistry,5,4,"b1: 2-furaldehyde; b2: (z)-2,3-dibromo-4-oxobut-2-enoic acid; b3: dipotassium 2-bromo-3-nitro-2-butenedioate; b4: hexanitroethane; b5: tetranitroethylene",1,4,0.2,True,True,False,0.2
+4a737e9f-5afd-4a14-a17b-c468cda1a8bb,chemistry,5,4,nano3,4,1,0.8,True,True,False,0.8
+4ee82eb3-a457-42c5-9c62-5730d41f67a6,biology,5,5,tlr9 signaling pathway,5,1,1.0,False,False,False,0.0
+4f1cf869-3ea3-400c-8fa3-e4d3f6fe1cdf,physics,5,4,r_c = \left(12\frac{\rho_m}{\rho}\right)^{1/3} r_0,1,4,0.2,True,True,False,0.8
+50f7d1e4-51bd-4013-a570-a02988ca3aa2,chemistry,5,5,6.98,5,1,1.0,True,True,True,1.0
+516da073-8d2a-4db5-a739-c752655ec14c,physics,5,5,"\(\mathbf{e}(r,\theta) = e_0 \left[ \left(1 + \frac{a^2}{r^2}\right) \cos\theta \, \hat{r} - \left(1 - \frac{a^2}{r^2}\right) \sin\theta \, \hat{\theta} \right]\",1,5,0.2,True,True,True,1.0
+57390923-7cfd-4adf-8d0b-33c5791f6e51,chemistry,5,5,tert-butyl acetoacetate,2,4,0.4,True,True,True,1.0
+5c97845c-c039-48d8-abcf-703afc476b98,physics,5,5,\frac{e e^4}{\rho l^4 g,2,4,0.4,True,True,False,0.8
+5ef8b29d-7665-45e6-a26a-bd4a27f450ad,chemistry,5,3,"1,1,2,2-tetraethoxyethane",1,3,0.2,False,True,False,0.2
+62dc1c65-0200-41d8-91fd-aa3c606e46cc,physics,5,5,0,3,3,0.6,False,True,False,0.4
+6646019d-bda1-4b1c-83ac-7953e853effd,physics,5,5,\(c = \dfrac{\hbar e^4}{32\pi^2\varepsilon_0^2 m^2 \omega_0^3}\,1,5,0.2,True,True,True,1.0
+6681ea07-9b3a-4a71-9b31-a88212189f27,chemistry,5,5,2.10 × 10^{-6,2,4,0.4,True,True,True,1.0
+677d66f3-b5f3-432d-bb04-2a8807d5491f,chemistry,5,4,2,1,4,0.2,False,False,False,0.0
+69bd11e8-5f96-45dc-8123-b9d800101430,physics,5,5,\frac{2\sqrt{2}}{3} m_0^3 \sqrt{\rho \kappa,1,5,0.2,False,True,False,0.8
+6e9aca19-46c4-46ea-9643-86b138e8f2f5,physics,5,3,\vec{pa,1,3,0.2,True,True,False,0.6
+70929247-a356-4a12-8534-49fd885f0c3e,physics,5,4,\omega > \frac{\sqrt{2gl}}{a,2,3,0.4,True,True,False,0.8
+710c1336-0995-4d45-bfea-48ff475f255f,physics,5,4,\(\vec{e} = v b_0 \frac{\varepsilon - \varepsilon_0}{\varepsilon + 2\varepsilon_0} a^3 \frac{3(\hat{x} \cdot \vec{r}) \vec{r} - r^2 \hat{x}}{r^5}\,1,4,0.2,True,True,False,0.4
+84b13a21-19c8-47a2-8661-a1b59f1062f5,chemistry,5,5,benzyne,5,1,1.0,True,True,True,1.0
+84bba88d-2aee-4fcb-baab-4c6eea17b0d8,physics,5,5,\(\delta s = c_1 \ln\left(\frac{c_1 t_1 + c_2 t_2}{(c_1+c_2)t_1}\right) + c_2 \ln\left(\frac{c_1 t_1 + c_2 t_2}{(c_1+c_2)t_2}\right)\,2,4,0.4,True,True,False,0.6
+85b4f862-d881-4a79-8c5d-3e927b486b71,chemistry,5,5,"fe: 77.78%, fe2o3: 22.22%",2,4,0.4,False,False,False,0.0
+8a983c4c-070e-45b1-b2ce-300c7a68feb6,physics,5,5,f(y) = 2 + \frac{\ln(2+\sqrt{3})}{\sqrt{3}} - \cosh\left(\frac{2\sqrt{3}y}{l}\right,2,4,0.4,True,True,False,0.6
+8b695bb3-ea3c-4372-9222-9f0b79a68b6c,biology,5,5,umap,4,2,0.8,False,True,False,0.2
+8be6ce44-a0c8-4636-80ca-2667dcc9d2af,chemistry,5,3,azidoethane,1,3,0.2,False,True,False,0.2
+8f121749-9809-45f1-bcb8-7118ccb5d4cc,chemistry,5,5,nabio3,5,1,1.0,True,True,True,1.0
+90ddb7c3-4bf1-43b6-820a-c89f3858781a,biology,5,5,autophagy,3,2,0.6,False,True,False,0.4
+94c55a69-1e8d-4934-ae59-2cf0401e1b01,physics,5,5,"\(y(x) = -\frac{\rho g x^2}{6 y r^2} (6l^2 - 4l x + x^2)\), \(\alpha = -\frac{2 \rho g l^3}{3 y r^2}\",1,5,0.2,True,True,True,1.0
+953ba4b1-94ae-42ac-9621-408386bc382b,physics,5,1,10,1,1,0.2,True,True,False,0.2
+a2d2c8a2-86ef-49a6-9e56-804cbb89c848,chemistry,5,3,4-cyclopropyl-2-hydroxy-5-iodobenzaldehyde,2,2,0.4,True,True,False,0.4
+a74ccc5b-fd37-49fa-b784-871dbcc41e9e,chemistry,5,5,9,5,1,1.0,True,True,True,1.0
+adadda00-bef8-417d-97d6-cfd9dec33cba,chemistry,5,4,0.0456 m,4,1,0.8,True,True,False,0.8
+ae667a28-9659-4f33-a51e-7a19f133e111,physics,5,4,\(\left( \frac{\partial c_h}{\partial h} \right)_\tau = \tau v h \left( \frac{\partial^2 \chi}{\partial \tau^2} \right)_h\,2,3,0.4,True,True,False,0.8
+aeaa8d2c-fcb9-423f-b1c0-ac9c122999e6,physics,5,3,0.2,3,1,0.6,True,True,False,0.6
+af36a1cb-5949-4385-93a0-1f875500c34a,biology,5,5,read noise,3,3,0.6,False,True,False,0.2
+afb2ebc7-421e-4e61-8073-7c4393aa9855,physics,5,5,\langle v \rangle = \frac{m}{m} f \left[ 2 l_y \arctan\left(\frac{l_x}{l_y}\right) + l_x \ln\left(1 + \left(\frac{l_y}{l_x}\right)^2\right) \right,1,5,0.2,False,False,False,0.0
+b188cad8-92b9-4c72-98a2-b78e04b764f1,chemistry,5,5,a4b9x20,5,1,1.0,True,True,True,1.0
+b36273bb-c098-4037-90cc-cfd05cbe5bb9,chemistry,5,5,4-nitrocinnamic acid,3,3,0.6,True,True,True,1.0
+b7337452-ab08-43e5-9f3b-419107415280,chemistry,5,4,d2eo4,4,1,0.8,True,True,False,0.8
+b75893ef-5c56-4d43-9ae1-8c9caaf32ee2,chemistry,5,4,dibutylamine (di-n-butylamine,1,4,0.2,True,True,False,0.4
+b90fc8dc-2fca-4ff7-9c9f-a2e6a0ac7812,physics,5,5,\(t_1 = t_0 \frac{b_1}{b_0}\,3,2,0.6,True,True,True,1.0
+bb0539ef-d9fd-4215-bf16-b0eca44a8778,physics,5,5,2.31 × 10^6 k,4,2,0.8,True,True,True,1.0
+bc8a05ac-9db5-47b4-8618-84aa4a46466a,physics,5,4,t = \frac{2\pi}{\omega,1,4,0.2,True,True,False,0.8
+bdb3fc5f-9374-4e37-9af9-6036e3e29093,physics,5,2,\(\vec{j}(t) = -\frac{2e_0}{c\mu_0} \left(1 - \frac{v}{c}\right) \cos\left(\omega \left(1 - \frac{v}{c}\right) t\right) \hat{y}\,1,2,0.2,False,False,False,0.0
+c982b5bc-0fb8-4f12-94fa-f05715209ead,chemistry,5,1,c5h12o2,1,1,0.2,True,True,False,0.2
+cb11faa6-e12a-4621-9fa7-f6f4b11a9300,physics,5,5,"\(\left( \frac{m_1-m_2}{2(m_1+m_2)} r, \frac{\sqrt{3}}{2} r \right)\",1,5,0.2,True,True,True,1.0
+cc251e69-6a32-4ed7-9315-beee80404866,chemistry,5,4,"2,3-dimethoxy-4-methylaniline",4,1,0.8,True,True,False,0.8
+cfa05761-b488-4491-9f77-8854ece1cf98,physics,5,4,\(z_i = \theta \left(d + d + \frac{w}{1+\xi c_0}\right)\,1,4,0.2,False,False,False,0.0
+d1cec1fb-13bb-475a-b2f1-956db5ef3b77,physics,5,4,\( u = -\frac{2e^2 x_1 x_2}{4\pi\varepsilon_0 r^3} \,2,3,0.4,True,True,False,0.8
+dbe975d5-c431-4d73-8f7c-f8bba77ea458,physics,5,5,\(\frac{8\pi \epsilon \sigma r^2 t_0^3 t_1}{3c}\,1,5,0.2,True,True,True,1.0
+dcc38501-c38e-4a8e-a069-1a401d6432c0,physics,5,3,0,1,3,0.2,False,False,False,0.0
+e1b0b588-915d-46ad-990e-ba5aa554053e,physics,5,5,\frac{\eta}{\rho} \left( \frac{\partial^2 g}{\partial r^2} + \frac{1}{r} \frac{\partial g}{\partial r} - \frac{g}{r^2} \right,2,3,0.4,False,False,False,0.0
+e2bef5ee-c2ee-4704-b52a-63bb2e7aea7a,physics,5,3,\(\frac{qb}{m} + \sqrt{\frac{2qe}{m}}\,1,3,0.2,True,True,False,0.6
+ea576eec-eb50-4d75-9849-ccd4c83a15fe,chemistry,5,5,7,5,1,1.0,True,True,True,1.0
+ecb58594-7fd9-4a94-b799-0f1c13acb752,chemistry,5,5,nabio3,5,1,1.0,True,True,True,1.0
+ee749fc0-8faa-45f7-881b-b5703b1a4b01,chemistry,5,5,5.4,5,1,1.0,True,True,True,1.0
+eeb31abb-41cb-4fe6-9864-f98fdcef338d,biology,5,5,rnase h activity,5,1,1.0,True,True,True,1.0
+eec8840a-2d00-4e70-b043-0da51bd1b288,chemistry,5,5,so2cl2,5,1,1.0,True,True,True,1.0
+f040ed81-6802-4359-beff-42e319c1b0f1,chemistry,5,3,1.06 mg,1,3,0.2,True,True,False,0.4
+f10254b9-f0a1-407f-8af9-3169e23eee5e,physics,5,5,\[ x(z) = \frac{g}{k^2 \omega^2} \left( \sqrt{1 - \left(1 + \frac{k^2 \omega^2}{g} z\right)^2} - \arccos\left(1 + \frac{k^2 \omega^2}{g} z\right) \right) \,1,5,0.2,False,False,False,0.0
+f12a8706-3ddd-4255-9234-0655babceb8e,chemistry,5,5,thiosulfate will disproportionate to s and so2 with a potential of 0.08 v,1,5,0.2,True,True,False,0.8
+f398c3ad-6cff-45b1-a21d-5ce963db75aa,physics,5,5,\( x = -r \left(1 + \frac{5}{12} \alpha \right) \,2,4,0.4,True,True,True,1.0
+f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d,physics,5,5,\(\omega = \sqrt{\frac{4g(a^2 - b^2)}{b(a^2 + 5b^2)}}\,2,4,0.4,False,False,False,0.0
+f44b0903-1c29-44a5-9f9b-b6ccdd164e1c,chemistry,5,3,docosahexaenoic acid (22:6,2,2,0.4,True,True,False,0.4
+f4681d73-b08d-450c-89d3-85b9d1250419,physics,5,4,\sqrt{ \left( \frac{c^2}{a} + l \right)^2 + \frac{c^2 v^2}{a^2 (1 - v^2/c^2)} } - \frac{c^2}{a \sqrt{1 - v^2/c^2,1,4,0.2,False,True,False,0.6
+f7b49518-6e84-44e3-9480-4cf91d149702,biology,5,5,endocytosis,5,1,1.0,False,False,False,0.0
+f88cc0c0-2ca6-4cb0-bd1e-a37ddcf11294,physics,5,4,8.6e39 j,1,4,0.2,False,True,False,0.4
+f9fdb988-7a10-4510-a8ab-d011e663be3f,physics,5,2,for \(y > 0\): \(\overrightarrow{b} = 0\). for \(y < 0\): \(\overrightarrow{b} = \mu_0 \sigma k e^{k y} \left( -\sin(kx) \hat{i} + \cos(kx) \hat{j} \right)\,1,2,0.2,False,False,False,0.0
+fbec81f3-a103-43e1-b4a8-bb2487cc24e8,chemistry,5,4,0.011 g,4,1,0.8,True,True,False,0.8
+fcbd76ad-1b45-4f40-ad9d-d2bc5016f02c,biology,5,5,degradation of killed bacteria provides amino acids to macrophages,1,5,0.2,False,True,False,0.2
+ff4a744b-45ac-46d9-b0ba-6461a71e278a,chemistry,5,5,seo2,5,1,1.0,True,True,True,1.0
