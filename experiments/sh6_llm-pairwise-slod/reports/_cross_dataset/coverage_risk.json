@@ -260,5 +260,21 @@
         "accuracy": 0.6024844720496895
       }
     ]
-  }
+  },
+  "baselines": [
+    {
+      "label": "Self-consistency",
+      "coverage": 0.2,
+      "accuracy": 0.68,
+      "marker": "*",
+      "color": "#d95f02"
+    },
+    {
+      "label": "LLM self-verification",
+      "coverage": 0.2,
+      "accuracy": 0.67,
+      "marker": "^",
+      "color": "#1b9e77"
+    }
+  ]
 }

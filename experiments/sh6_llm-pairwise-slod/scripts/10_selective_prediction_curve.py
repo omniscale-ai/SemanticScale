@@ -61,6 +61,13 @@ RUNS = [
 ORIGIN = "olympiad"
 LENGTH_FEATURES = ["reasoning_n_chunks", "answer_n_chunks", "total_n_chunks"]
 
+# Single-selection sampling baselines (one attempt per problem). They are
+# defined only at the best-of-5 operating point, so we overlay them as
+# reference markers at coverage 1/5 rather than as full curves.
+SELF_CONSISTENCY_JSON = CROSS_DATASET_DIR / "frontierscience_deepseek_olympiad_self_consistency.json"
+LLM_VERIFY_JSON = CROSS_DATASET_DIR / "frontierscience_deepseek_olympiad_llm_verify.json"
+BASELINE_COVERAGE = 1.0 / 5.0
+
 
 def _slod_oof_path(run: str) -> Path:
     return REPORTS_ROOT / run / f"by-origin/{ORIGIN}/artifacts/oof_predictions_lightgbm.parquet"
@@ -157,7 +164,54 @@ def coverage_risk_curve(scores: pd.DataFrame, n_steps: int = 20) -> dict:
     }
 
 
-def render_figure(slod_curve: dict, length_curve: dict, out_path: Path) -> None:
+def load_baseline_points() -> list[dict]:
+    """Single-selection sampling baselines for overlay (self-consistency,
+    LLM self-verification).
+
+    Each retains exactly one attempt per problem, so it lives at the best-of-5
+    operating point (coverage 1/5) on the pooled coverage--accuracy axis; we
+    plot them as markers, not curves, because they are defined only at that one
+    coverage. Missing files are skipped so the figure still builds from the
+    SLoD and length curves alone.
+    """
+    specs = [
+        ("Self-consistency", SELF_CONSISTENCY_JSON, "sc_pass1", "*", "#d95f02"),
+        ("LLM self-verification", LLM_VERIFY_JSON, "verify_pass1", "^", "#1b9e77"),
+    ]
+    points: list[dict] = []
+    for label, path, key, marker, color in specs:
+        if not path.exists():
+            logger.warning("baseline file missing, skipping marker: %s", path)
+            continue
+        data = json.loads(path.read_text())
+        if key not in data:
+            logger.warning("key %s missing in %s, skipping marker", key, path)
+            continue
+        points.append(
+            {
+                "label": label,
+                "coverage": BASELINE_COVERAGE,
+                "accuracy": float(data[key]),
+                "marker": marker,
+                "color": color,
+            }
+        )
+        logger.info(
+            "baseline %s: Pass@1=%.3f at coverage=%.3f",
+            label,
+            float(data[key]),
+            BASELINE_COVERAGE,
+        )
+    return points
+
+
+def render_figure(
+    slod_curve: dict,
+    length_curve: dict,
+    out_path: Path,
+    baselines: list[dict] | None = None,
+) -> None:
+    baselines = baselines or []
     out_path.parent.mkdir(parents=True, exist_ok=True)
     slod_pts = slod_curve["points"]
     length_pts = length_curve["points"]
@@ -190,13 +244,26 @@ def render_figure(slod_curve: dict, length_curve: dict, out_path: Path) -> None:
         label=f"No selection ({100 * slod_curve['base_accuracy']:.1f}%)",
     )
 
+    for bp in baselines:
+        ax.scatter(
+            [bp["coverage"]],
+            [bp["accuracy"]],
+            marker=bp["marker"],
+            s=55,
+            color=bp["color"],
+            edgecolor="black",
+            linewidth=0.4,
+            zorder=5,
+            label=f"{bp['label']} ({100 * bp['accuracy']:.0f}%)",
+        )
+
     ax.set_xlabel("Coverage")
     ax.set_ylabel("Pass@1 on retained")
     ax.set_xlim(0.0, 1.02)
     ymin = min(slod_curve["base_accuracy"], length_curve["base_accuracy"]) - 0.05
     ax.set_ylim(max(0.5, ymin), 1.02)
     ax.grid(True, alpha=0.3, linestyle="--")
-    ax.legend(loc="upper right", fontsize=7, frameon=False)
+    ax.legend(loc="upper right", fontsize=6, frameon=False)
     fig.tight_layout()
     fig.savefig(out_path, bbox_inches="tight")
     plt.close(fig)
@@ -212,18 +279,26 @@ def main() -> None:
     slod_curve = coverage_risk_curve(slod_pool)
     length_curve = coverage_risk_curve(length_pool)
 
+    baselines = load_baseline_points()
+
     sidecar = {
         "n_runs": len(RUNS),
         "runs": RUNS,
         "slod": slod_curve,
         "length": length_curve,
+        "baselines": baselines,
     }
     CROSS_DATASET_DIR.mkdir(parents=True, exist_ok=True)
     sidecar_path = CROSS_DATASET_DIR / "coverage_risk.json"
     sidecar_path.write_text(json.dumps(sidecar, indent=2))
     logger.info("wrote %s", sidecar_path)
 
-    render_figure(slod_curve, length_curve, PAPER_FIGURES / "fig_coverage_risk.pdf")
+    render_figure(
+        slod_curve,
+        length_curve,
+        PAPER_FIGURES / "fig_coverage_risk.pdf",
+        baselines=baselines,
+    )
 
     # Summary print for spot-checking
     base = slod_curve["base_accuracy"]
